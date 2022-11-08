@@ -1,17 +1,18 @@
 import './App.css';
-import { BrowserRouter } from 'react-router-dom';
-// falta importar switch y router 
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import LandingPage from './Components/LandingPage'
+// import Home from './component/Home';
+
+
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        
-          <h1>Food Express</h1>
-        
-      </div>
+      <Routes>
+        <Route path='/' element={<LandingPage />} />
+        {/* <Route path='/home' element={<Home />} /> */}
+      </Routes>
     </BrowserRouter>
   );
-
 }
 
 export default App;
