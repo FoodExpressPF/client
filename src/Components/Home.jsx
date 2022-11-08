@@ -3,12 +3,12 @@ import {
     getFoods
 } from  '../Actions/actions'
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Card from "./Card";
 
-export function Home() {
+export default function Home() {
     const dispatch = useDispatch();
-    const allPlate = useSelector(state=> state.plates)
+    const allPlate = useSelector((state)=> state.plates)
 
 
     return(
@@ -20,8 +20,15 @@ export function Home() {
                 {
                     allPlate?.map((c) =>{
                         return(
-                            <div>
-                                <Card/>
+                            <div key={c.id}>
+                                <Card
+                                key={c.id}
+                                id={c.id}
+                                name={c.name}
+                                rating={c.rating}
+                                price={c.price}
+                                url={c.url}
+                                />
                             </div>
                         )
                     })
