@@ -5,11 +5,23 @@ import {
 } from  '../Actions/actions'
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
-//SDf
+import Pagination from "./Paginated";
+import SearchBar from "./SearchBar";
+
 export default function Home() {
     const dispatch = useDispatch();
     const allPlate = useSelector((state)=> state.plates)
     const [loading, setLoading] = useState(false)
+    const [currentPage, setCurrentPage] = useState(1); 
+    const platesPerPage = 4;
+    const indexLastPlate = currentPage * platesPerPage
+    const indexFirstPlate = indexLastPlate - platesPerPage
+    const currentPlates = allPlate.slice(indexFirstPlate,indexLastPlate)
+    
+
+    const pagination = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
     useEffect(() => {
         setLoading(true);
@@ -22,10 +34,19 @@ export default function Home() {
         <div>
             <h1>principal page</h1>
 
-
+            <div>
+                <div>
+                    <SearchBar/>
+                </div>
+                <Pagination
+                platesPerPage={platesPerPage}
+                allPlate={allPlate.length}
+                pagination={pagination}
+                />
+            </div>
             <div>
                 {
-                    allPlate?.map((c) =>{
+                    currentPlates?.map((c) =>{
                         return(
                             <div key={c.id}>
                                 <Card
