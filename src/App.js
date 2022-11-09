@@ -6,11 +6,6 @@ import Home from './Components/Home';
 import ProductsForm from './Components/ProductsForm'
 import Detail from './Components/Detail';
 
-// import ProductsForm from './Components/ProductsForm';
-// import Detail from './Components/Detail';
-
-// >>>>>>> 623078df2ba859f6774ae957bdc279ca6f6373d5
-
 
 function App() {
   return (

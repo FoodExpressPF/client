@@ -1,18 +1,11 @@
-//REACT
-// import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { initialValues, onSubmit, validationSchema } from './config_form';
+import { initialValues, validationSchema } from './config_form';
 
-//Libraries authentication
+//Libraries
 import {useFormik} from 'formik'
+import axios from 'axios'
 
 
 const ProductsForm = () => {
-
-  const dispatch=useDispatch()
-
-  const formik =useFormik({initialValues,validationSchema,onSubmit})
-  const {handleSubmit, handleChange, handleBlur, errors, touched,values} = formik
 
     ///////////////////////////////////////////////ONCHANGE IMAGE INPUT
 
@@ -28,17 +21,25 @@ const ProductsForm = () => {
       }
     }
 
+    ///////////////////////////////////////////////ONSUBMIT
+    const onSubmit = e=>{
+     
+      axios({
+  method: 'post',
+  headers: {
+    'Content-Type': 'application/json'
+},
+  url: 'http://localhost:3001/createFood',
+  data: values
+})
+    .then(response => console.log(response))
+    .catch(error=>console.log(error));
+  }
 
-  // const handleOnClick = async e =>{
-  //   e.preventDefault()
-  //   const name = e.target.name
-  //   setInput({...input,
-  //     dietTypes: input.dietTypes.includes(name)?
-  //       input.dietTypes.filter(e => e!==name):
-  //       [...input.dietTypes,name]
-  //   })
-  //   // setActive(input.dietTypes)
-  // }
+
+  const formik =useFormik({initialValues,validationSchema,onSubmit})
+  const {handleSubmit, handleChange, handleBlur, errors, touched,values} = formik
+
 console.log(errors)
   return (  
       <div>
@@ -140,19 +141,28 @@ console.log(errors)
                     )}  
                 </div>   
 
-                {/* DIET TYPES */}
+                {/* TYPE */}
 
-             {/* {dietTypes &&
-                    dietTypes.map((e,idx)=>(
-                        <button 
-                            className={input.dietTypes.includes(e.name)?s.button:s.inactive} 
-                            name={e.name} 
-                            onClick={handleOnClick} 
-                            key={idx}>
-                            {e.name}
-                        </button>
-                    ))
-                } */}
+                <div>
+                  <label>
+                    <strong>Diet Type:</strong> <br />
+                    <select 
+                     type="select" 
+                     name="type"
+                     onChange={handleChange}
+                     onBlur={handleBlur}
+                    >
+                      <option value="">Select a Diet Type</option>
+                      <option value="Gluten Free">Gluten Free</option>
+                      <option value="Vegetarian">Vegetarian</option>
+                      <option value="Vegan">Vegan</option>
+                      <option value="Protein">Protein</option>
+                      <option value="Others">Others</option>
+                    </select>
+                  </label>
+                </div>
+
+             
 
 
               {/* Rating */} 
@@ -181,12 +191,13 @@ console.log(errors)
 
          
 
-          <input 
+          <button 
             disabled={Object.entries(errors).length === 0 && touched.name?false:true} 
             type="submit" 
-            value="Crear Receta"
             // className={Object.entries(errors).length === 0?button:disabled}
-          />       
+          >
+            Send
+          </button>       
        </form>
      </div>
   );
