@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getFoods } from "../Actions/actions";
+import { getByName } from "../Actions/actions";
 
 export default function SearchBar(){
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export default function SearchBar(){
     function handleSubmit(e){
         e.preventDefault(e)
         if(name !== '' && isNaN(name)){
-            dispatch(getFoods(name));
+            dispatch(getByName(name));
             setname("");
         }else{
             alert("Please make sure to fill the input correctly");
