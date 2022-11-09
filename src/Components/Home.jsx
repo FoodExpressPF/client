@@ -1,14 +1,21 @@
 import React from "react";
+import {useState, useEffect} from 'react'
 import {
     getFoods
 } from  '../Actions/actions'
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
-
+//SDf
 export default function Home() {
     const dispatch = useDispatch();
     const allPlate = useSelector((state)=> state.plates)
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        setLoading(true);
+        dispatch(getFoods());
+        setLoading(false);
+      }, [dispatch]);
 
 
     return(
