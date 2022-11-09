@@ -1,4 +1,5 @@
 import React from "react";
+import {useState, useEffect} from 'react'
 import {
     getFoods
 } from  '../Actions/actions'
@@ -9,6 +10,13 @@ import Card from "./Card";
 export default function Home() {
     const dispatch = useDispatch();
     const allPlate = useSelector((state)=> state.plates)
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        setLoading(true);
+        dispatch(getFoods());
+        setLoading(false);
+      }, [dispatch]);
 
 
     return(
