@@ -5,7 +5,7 @@ import {
 } from  '../Actions/actions'
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
-
+//SDf
 export default function Home() {
     const dispatch = useDispatch();
     const allPlate = useSelector((state)=> state.plates)
