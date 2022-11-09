@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
 import Pagination from "./Paginated";
 import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -48,15 +49,17 @@ export default function Home() {
                 {
                     currentPlates?.map((c) =>{
                         return(
-                            <div key={c.id}>
+                            <div key={c.id}>   
+                            <Link to={"/foods/" + c.id}>
                                 <Card
                                 key={c.id}
                                 id={c.id}
                                 name={c.name}
                                 rating={c.rating}
                                 price={c.price}
-                                url={c.url}
+                                image={c.image}
                                 />
+                                </Link>                          
                             </div>
                         )
                     })
