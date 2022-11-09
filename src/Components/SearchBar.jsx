@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getPlates } from "../Actions/actions";
+import { getFoods } from "../Actions/actions";
 
 export default function SearchBar(){
     const dispatch = useDispatch();
@@ -14,16 +14,16 @@ export default function SearchBar(){
     function handleSubmit(e){
         e.preventDefault(e)
         if(name !== '' && isNaN(name)){
-            dispatch(getPlates(name));
+            dispatch(getFoods(name));
             setname("");
         }else{
-            alert("Please submit an existing plate");
+            alert("Please make sure to fill the input correctly");
         }
     }
 
     return(
         <div>
-            <input type="text" onCahnge={handleInput} placeholder="Search for a plate..." value={(name)}/>
+            <input type="text" onChange={handleInput} placeholder="Search for a plate..." value={(name)}/>
             <button type="submit" onClick={handleSubmit}>
                 Go
             </button>
