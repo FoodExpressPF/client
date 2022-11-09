@@ -3,7 +3,6 @@ import {useState, useEffect} from 'react'
 import {
     getFoods
 } from  '../Actions/actions'
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
 
