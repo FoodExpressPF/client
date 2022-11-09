@@ -32,7 +32,7 @@ export default function Detail() {
                             <h1 >{details[0].name}</h1>
                             <img src={details[0].image} alt="not found" width="600px" height="400px" />
                             <h3> Price: ${details[0].price}</h3>
-                            <h3>Type: {details[0].type? details[0].type.join(" - "): "Loading"}</h3>
+                            <h3>Type: {details[0].type}</h3>
                             <h3> Rating: {details[0].rating}</h3>
                             <h3>Reviews: {details[0].reviews? details[0].reviews.join(" - "): "Loading"}</h3>
                             <h3>Description: {details[0].description}</h3>
