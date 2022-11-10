@@ -5,11 +5,13 @@ import Home from './Components/Home';
 
 import ProductsForm from './Components/ProductsForm'
 import Detail from './Components/Detail';
+import NavBar from './Components/NavBar';
 
 
 function App() {
   return (
     <BrowserRouter>
+     <NavBar />
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/home' element={<Home />} />

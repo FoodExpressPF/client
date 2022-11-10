@@ -213,7 +213,7 @@ console.log(errors)
 
          <div className="text-center mt-4">
          <button 
-            disabled={Object.entries(errors).length != 0?true:false} 
+            disabled={Object.entries(errors).length !== 0?true:false} 
             type="submit" 
             className={Object.entries(errors).length === 0?"btn btn-danger btn-lg mx-auto":"btn btn-light btn-sm"}
           >
