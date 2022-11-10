@@ -1,0 +1,23 @@
+.textLink {
+    text-decoration: none;
+    color: rgb(57, 57, 57);
+
+}
+
+.imagen-card {
+    width: 390px;
+    height: 380px;
+
+}
+
+.textNav {
+    text-decoration: none;
+    color: rgb(87, 87, 87);
+    size: 80px;
+}
+
+.titleHome {
+    align-content: center;
+    color: rgb(87, 87, 87);
+    size: 40px;
+}
