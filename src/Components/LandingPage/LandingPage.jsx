@@ -15,8 +15,8 @@ export default function LandingPage() {
 
             </div>
             <div >
-                <Link to='/home'>
-                    <span className={style.botonA} >Home</span>
+                <Link className={style.botonA} to='/home'>
+                    <button  className={style.botonA}> Home</button>
                     
 
                 </Link>
