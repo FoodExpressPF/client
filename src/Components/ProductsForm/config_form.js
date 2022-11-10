@@ -6,7 +6,8 @@ export const initialValues = {
     price:0,
     type:[],
     rating:'',
-    image:''
+    image:'',
+    type_user:'Admin'
 }
 
 ///////////////////////////////////////////////VALIDATION
@@ -27,8 +28,8 @@ export const validationSchema = Yup.object().shape({
     .min(0.5,'Price must be greater than 0')
     .required(required),
 
-    type: Yup.string()
-    .required(required),
+    // type: Yup.string()
+    // .required(required),
 
     rating: Yup.number()
     .min(1,'Rating must be between 0 and 5')
@@ -36,13 +37,5 @@ export const validationSchema = Yup.object().shape({
 })
 
 
-
-  ///////////////////////////////////////////////ONSUBMIT
-  export const onSubmit = e=>{
-    e.preventDefault()    
-    // dispatch(postRecipe(input))
-    // .then(response=>alert(response.payload.message))
-    // dispatch(getRecipes())
-  }
 
 

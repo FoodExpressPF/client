@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getFoods() {
     return async function (dispatch) {
-        var Plates = await axios('https://foods-98ee3-default-rtdb.firebaseio.com/Foods.json')
+        var Plates = await axios('http://localhost:3001/foods')
         console.log(Plates)
         return dispatch({
             type: 'GET_PLATES',
@@ -11,25 +11,25 @@ export function getFoods() {
     }
 }
 
-export function getByName(name){
-    return async function(dispatch){
+export function getByName(name) {
+    return async function (dispatch) {
         try {
             var json = await axios.get(`http://localhost:3001/foods?name=${name}`);
-            return dispatch ({
+            return dispatch({
                 type: 'GET_BY_NAME',
                 payload: json.data
             })
         } catch (error) {
-           console.log(error) 
+            console.log(error)
         }
     }
 }
 
-export function getDetail(id){
-    return async function(dispatch){
+export function getDetail(id) {
+    return async function (dispatch) {
         try {
             var json = await axios.get(`http://localhost:3001/foods/${id}`);
-            return dispatch ({
+            return dispatch({
                 type: 'GET_DETAIL',
                 payload: json.data
             })
@@ -39,8 +39,8 @@ export function getDetail(id){
     }
 }
 
-export function getClean () {
-    return{
+export function getClean() {
+    return {
         type: "GET_CLEAN",
         payload: []
     }

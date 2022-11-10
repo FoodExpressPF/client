@@ -1,18 +1,11 @@
-//REACT
-// import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { initialValues, onSubmit, validationSchema } from './config_form';
+import { initialValues, validationSchema } from './config_form';
 
-//Libraries authentication
+//Libraries
 import {useFormik} from 'formik'
+import axios from 'axios'
 
 
 const ProductsForm = () => {
-
-  const dispatch=useDispatch()
-
-  const formik =useFormik({initialValues,validationSchema,onSubmit})
-  const {handleSubmit, handleChange, handleBlur, errors, touched,values} = formik
 
     ///////////////////////////////////////////////ONCHANGE IMAGE INPUT
 
@@ -28,35 +21,48 @@ const ProductsForm = () => {
       }
     }
 
+    ///////////////////////////////////////////////ONSUBMIT
+    const onSubmit = e=>{
+     
+      axios({
+  method: 'post',
+  headers: {
+    'Content-Type': 'application/json'
+},
+  url: 'http://localhost:3001/createFood',
+  data: values
+})
+    .then(response => console.log(response))
+    .catch(error=>console.log(error));
+  }
 
-  // const handleOnClick = async e =>{
-  //   e.preventDefault()
-  //   const name = e.target.name
-  //   setInput({...input,
-  //     dietTypes: input.dietTypes.includes(name)?
-  //       input.dietTypes.filter(e => e!==name):
-  //       [...input.dietTypes,name]
-  //   })
-  //   // setActive(input.dietTypes)
-  // }
+
+  const formik =useFormik({initialValues,validationSchema,onSubmit})
+  const {handleSubmit, handleChange, handleBlur, errors, touched,values} = formik
+
 console.log(errors)
   return (  
       <div>
+        <h2 className='mt-3 text-center'>Create New Product</h2>
 
-        <form onSubmit={handleSubmit}>
+        <form className='mx-auto w-50 my-5'  onSubmit={handleSubmit}>
 
 
             {/* IMAGE */}
 
-         <label><strong>Image:</strong> <br />  
+          <div class="input-group mb-3">
+           <label className= "w-100"><strong>Image:</strong> <br />  
              <input 
-                //  className=
+                 className="form-control"
                  type="file" 
                  name="image"
                  onChange={handleInputFile}
   
-                />
-         </label> 
+              />
+           </label> 
+         </div>
+         
+
             {values.image && (
               <img 
                 src={values.image}
@@ -69,19 +75,25 @@ console.log(errors)
          {/* NAME */}
 
           <fieldset>          
-                <div>
-                    <label><strong>Name:</strong>  
-                     <input 
-                        // className=
-                        type="text" 
-                        name="name" 
-                        value={values.name}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </label>
+                <div >
+                  <div className="form-floating mb-3">
+                    
+                    {/* <strong>Name: <br /></strong>   */}
+                    <input 
+                      className={errors.name&&touched.name?"form-control is-invalid":"form-control"}
+                      id="floatingInput"
+                      placeholder="name@example.com"
+                      type="text" 
+                      name="name" 
+                      value={values.name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    <label for="floatingInput">Name</label>
+                  </div>               
+                    
 
-                 {errors.name && touched.name && (
+                 {errors.name && (
                         <p>{errors.name}
                         </p>
                     )}
@@ -91,22 +103,24 @@ console.log(errors)
 
 
              <div>
-                 <label>
-                     <strong>Description: <br /></strong>
-                     <textarea 
-                            // className=
-                            name="description" 
-                            rows="5" 
-                            cols="30" 
-                            value={values.description} 
-                            placeholder="Write a description of the product here..."
-                            onChange={handleChange}
-                            onBlur={handleBlur}  
-                          >  
-                                  
-                      </textarea>
-                   </label>
-        
+              <div className="form-floating mb-3">
+                <textarea 
+                      className={errors.description&&touched.description?"form-control is-invalid":"form-control"}
+                      class="form-control" 
+                      id="floatingTextarea"
+                      
+                      name="description" 
+                      rows="5" 
+                      cols="30" 
+                      value={values.description} 
+                      placeholder="Write a description of the product here..."
+                      onChange={handleChange}
+                      onBlur={handleBlur}  
+                    >  
+                            
+                </textarea>
+                <label for="floatingTextarea">Write a description of the product here...</label>
+              </div>
 
                     {errors.description && touched.description && (
                       <p 
@@ -120,18 +134,21 @@ console.log(errors)
                 {/* PRICE */}
 
                 <div>
-                    <label>
-                     <strong>Price:</strong> <br />
-
+                     <div className='input-group mb-3'>
+                     <span class="input-group-text">$</span>
                      <input 
-                        //  className=
-                         name="price" 
-                         type="number"
-                         value={values.price} 
-                         onChange={handleChange}
-                         onBlur={handleBlur}
-                        />         
-                    </label> 
+                        className={errors.price&&touched.price?"form-control is-invalid":"form-control"}
+                        aria-label="Amount (to the nearest dollar)"
+                        name="price" 
+                        type="number"
+                        placeholder='Price'
+                        value={values.price} 
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />    
+                      <span class="input-group-text">.00</span>
+                      </div>     
+                    
 
                     {errors.price && (
                       <p 
@@ -140,36 +157,51 @@ console.log(errors)
                     )}  
                 </div>   
 
-                {/* DIET TYPES */}
+                {/* TYPE */}
 
-             {/* {dietTypes &&
-                    dietTypes.map((e,idx)=>(
-                        <button 
-                            className={input.dietTypes.includes(e.name)?s.button:s.inactive} 
-                            name={e.name} 
-                            onClick={handleOnClick} 
-                            key={idx}>
-                            {e.name}
-                        </button>
-                    ))
-                } */}
+                <div>
+                  <label className= "w-100">
+                    <select 
+                     className="form-select" aria-label="Default select example"
+                     type="select" 
+                     name="type"
+                     onChange={handleChange}
+                     onBlur={handleBlur}
+                    >
+                      <option>Select a Diet Type</option>
+                      <option value="Gluten Free">Gluten Free</option>
+                      <option value="Vegetarian">Vegetarian</option>
+                      <option value="Vegan">Vegan</option>
+                      <option value="Protein">Protein</option>
+                      <option value="Others">Others</option>
+                    </select>
+                  </label>
+                </div>
+
+                
+
+             
 
 
               {/* Rating */} 
 
                <div>
-                    <label>
+                    <label className= "w-100">
                      <strong>Rating:</strong> <br />
 
                      <input 
-                        //  className=
+                         className="form-range" 
+                         min="0" 
+                         max="5"
+                         step="0.5"
                          name="rating" 
-                         type="number"
+                         type="range"
                          value={values.rating} 
                          onChange={handleChange}
                          onBlur={handleBlur}
                         />         
                     </label> 
+                    <div>{values.rating}</div>
 
                     {errors.rating && touched.rating && (
                       <p 
@@ -179,14 +211,17 @@ console.log(errors)
                 </div>   
          </fieldset>
 
-         
-
-          <input 
-            disabled={Object.entries(errors).length === 0 && touched.name?false:true} 
+         <div className="text-center mt-4">
+         <button 
+            disabled={Object.entries(errors).length != 0?true:false} 
             type="submit" 
-            value="Crear Receta"
-            // className={Object.entries(errors).length === 0?button:disabled}
-          />       
+            className={Object.entries(errors).length === 0?"btn btn-danger btn-lg mx-auto":"btn btn-light btn-sm"}
+          >
+            Send
+          </button>  
+
+         </div>
+  
        </form>
      </div>
   );
