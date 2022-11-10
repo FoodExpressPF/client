@@ -6,7 +6,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
 import Pagination from "./Paginated";
-import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import '../CSS/Card.css'
 import Filtros from "./Filtros";
@@ -39,7 +38,6 @@ export default function Home() {
 
     return(
         <div>
-          
             <nav className="navbar">
                 <div>
                     <Link className="textNav">Home/</Link>
@@ -71,12 +69,10 @@ export default function Home() {
 </nav>
 <Filtros
 menu={menu}/>
+
 <div className="titleHome">
 <h1>food express</h1>
 </div>
-
-
-
             <div>
                 <Pagination
                 platesPerPage={platesPerPage}
