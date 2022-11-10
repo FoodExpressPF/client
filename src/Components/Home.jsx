@@ -9,6 +9,7 @@ import Pagination from "./Paginated";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import '../CSS/Card.css'
+import Filtros from "./Filtros";
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -19,11 +20,15 @@ export default function Home() {
     const indexLastPlate = currentPage * platesPerPage
     const indexFirstPlate = indexLastPlate - platesPerPage
     const currentPlates = allPlate.slice(indexFirstPlate,indexLastPlate)
+    const [menu, setMenu]= useState(false)
     
 
     const pagination = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
+    const handleOnClick=()=>{
+        setMenu(!menu)
+     }
 
     useEffect(() => {
         setLoading(true);
@@ -45,17 +50,14 @@ export default function Home() {
 </svg></Link>/
 
 <div className="btn-group">
-  <button type="button" className="navbar-toggler" data-bs-toggle="dropdown" aria-expanded="false">
-  <Link className="textNav"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-sliders" viewBox="0 0 16 16">
+  <button type="button" data-bs-toggle="dropdown"    onClick={()=>handleOnClick()}>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-sliders" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
-</svg></Link>
+</svg>Filtros
   </button>
   <ul className="dropdown-menu">
     <li>
 
-  <select name="price" >max</select>
-  <opcion>max</opcion>
-  <opcion>min</opcion>
   </li>
   
   </ul>
@@ -67,6 +69,8 @@ export default function Home() {
                     setCurrentPage={setCurrentPage}/>
                 </div>
 </nav>
+<Filtros
+menu={menu}/>
 <div className="titleHome">
 <h1>food express</h1>
 </div>
