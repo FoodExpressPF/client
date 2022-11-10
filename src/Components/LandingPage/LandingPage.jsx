@@ -16,15 +16,14 @@ export default function LandingPage() {
             </div>
             <div >
                 <Link to='/home'>
-                    <button className={style.botonA}>Home</button>
+                    <span className={style.botonA} >Home</span>
+                    
+
                 </Link>
             </div>
-            {/* <div >
-                <Link to='/home'>
-                    <button className={style.botonB}>Login</button>
-                </Link>
-            </div>
-             */}
+
+
+
             <div>
 
                 <h1 className={style.texto}>Reserve Online</h1>

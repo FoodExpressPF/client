@@ -11,20 +11,18 @@
     display: flex;
 }
 
-.botonA {
+/* .botonA {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: aliceblue;
     background-color: orange;
-    display:inline-flex;
-    align-items: flex-start;
-    flex-direction: row;
-    text-decoration: none;
+  
     border-radius: 8px;
     font-size: 30px;
     margin-top: 680%;
     
     margin-left: 180%;
-     }
+ } */
+
 
 
 
@@ -50,5 +48,19 @@
   
 }
 
+.botonB{
+ position: relative;
+ 
+}
 
-
+.botonA{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: aliceblue;
+    background-color: orange;
+  
+    border-radius: 8px;
+    font-size: 30px;
+    margin-top: 680%;
+    
+    margin-left: 180%;
+}
