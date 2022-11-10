@@ -4,7 +4,7 @@ import LandingPage from './Components/LandingPage/LandingPage'
 import Home from './Components/Home';
 
 import ProductsForm from './Components/ProductsForm'
-import Detail from './Components/Detail';
+import Detail from './Components/Detail/Detail';
 import NavBar from './Components/NavBar';
 
 
