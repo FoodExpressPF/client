@@ -12,12 +12,13 @@ export default function Card({ name, price, rating, image,  }) {
     <div>
 
       <div className="card h-25" >     
-  <img className="card-img-top" src={image}   width="200px" heigth="250px" alt=""/>
+  <img className="imagen-card" src={image}   width="200px" heigth="250px" alt=""/>
   <div className="card-body">
         <h5 className="card-title text-decoration-none">{name}</h5>        
       </div>
   <div className="card-body">
-    <p className="card-text text-decoration-none">{price}</p>
+    <p className="card-text text-decoration-none">
+      price:   {price} $</p>
     <h3>{rating}</h3>
   </div>
 </div>
