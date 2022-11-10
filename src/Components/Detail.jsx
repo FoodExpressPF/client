@@ -5,19 +5,17 @@ import { useEffect } from 'react';
 import { getDetail, getClean } from '../Actions/actions';
 
 export default function Detail() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    let details = useSelector((state) => state.detail);
     let { id } = useParams();
 
-
-
     useEffect(() => {
-        dispatch(getDetail(id))
-        dispatch(getClean())
+        dispatch(getDetail(id));
+        return dispatch(getClean());
     }, [dispatch, id])
 
-
-    let details = useSelector((state) => state.detail);
     console.log(details)
+    console.log(details.length)
 
     return(
         <div>
@@ -27,15 +25,15 @@ export default function Detail() {
                 </Link>
 
                 {
-                    details.length > 0 ?
+                    !!details ?
                         <div class="card">
-                            <img src={details[0].image} class="w-25 mx-auto" alt="not found"/>
-                            <h3 class="card-title">{details[0].name}</h3>
-                            <p class="card-text">Price: ${details[0].price}</p>
-                            <p class="card-text">Type: {details[0].type}</p>
-                            <p class="card-text"> Rating: {details[0].rating}</p>
-                            <p class="card-text">Reviews: {details[0].reviews? details[0].reviews.join(" - "): "Loading"}</p>
-                            <p class="card-text">Description: {details[0].description}</p>
+                            <img src={details.image} class="w-25 mx-auto" alt="not found"/>
+                            <h3 class="card-title">{details.name}</h3>
+                            <p class="card-text">Price: ${details.price}</p>
+                            <p class="card-text">Type: {details.type}</p>
+                            <p class="card-text"> Rating: {details.rating}</p>
+                            <p class="card-text">Reviews: {details.reviews? details.reviews.join(" - "): "Loading"}</p>
+                            <p class="card-text">Description: {details.description}</p>
                         </div>
                         :
                         <div>
