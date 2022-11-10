@@ -37,7 +37,8 @@ export default function Home() {
 
             <div>
                 <div>
-                    <SearchBar/>
+                    <SearchBar 
+                    setCurrentPage={setCurrentPage}/>
                 </div>
                 <Pagination
                 platesPerPage={platesPerPage}
@@ -45,11 +46,12 @@ export default function Home() {
                 pagination={pagination}
                 />
             </div>
-            <div>
+            <div className="row row-cols-1 row-cols-md-3 g-4">
                 {
                     currentPlates?.map((c) =>{
                         return(
-                            <div key={c.id}>   
+                            <div className="col">
+                            <div className="card" key={c.id}>   
                             <Link to={"/foods/" + c.id}>
                                 <Card
                                 key={c.id}
@@ -61,6 +63,7 @@ export default function Home() {
                                 />
                                 </Link>                          
                             </div>
+                                </div>
                         )
                     })
                 }
