@@ -23,23 +23,23 @@ export default function Detail() {
         <div>
             <div>
             <Link to='/home'>
-                    <button>Back</button>
+                    <button class="btn btn-primary h-25">Back</button>
                 </Link>
 
                 {
                     details.length > 0 ?
-                        <div>
-                            <h1 >{details[0].name}</h1>
-                            <img src={details[0].image} alt="not found" width="600px" height="400px" />
-                            <h3> Price: ${details[0].price}</h3>
-                            <h3>Type: {details[0].type}</h3>
-                            <h3> Rating: {details[0].rating}</h3>
-                            <h3>Reviews: {details[0].reviews? details[0].reviews.join(" - "): "Loading"}</h3>
-                            <h3>Description: {details[0].description}</h3>
+                        <div class="card">
+                            <img src={details[0].image} class="w-25 mx-auto" alt="not found"/>
+                            <h3 class="card-title">{details[0].name}</h3>
+                            <p class="card-text">Price: ${details[0].price}</p>
+                            <p class="card-text">Type: {details[0].type}</p>
+                            <p class="card-text"> Rating: {details[0].rating}</p>
+                            <p class="card-text">Reviews: {details[0].reviews? details[0].reviews.join(" - "): "Loading"}</p>
+                            <p class="card-text">Description: {details[0].description}</p>
                         </div>
                         :
                         <div>
-                            <p >Loading...</p>
+                            <p>Loading...</p>
 
                         </div>
                 }

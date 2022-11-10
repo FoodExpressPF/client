@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getByName } from "../Actions/actions";
 
-export default function SearchBar(){
+export default function SearchBar({setCurrentPage}){
     const dispatch = useDispatch();
     const [name , setname] = useState("");
 
@@ -16,16 +16,20 @@ export default function SearchBar(){
         if(name !== '' && isNaN(name)){
             dispatch(getByName(name));
             setname("");
+            setCurrentPage(1)
         }else{
             alert("Please make sure to fill the input correctly");
         }
     }
 
     return(
-        <div>
-            <input type="text" onChange={handleInput} placeholder="Search for a plate..." value={(name)}/>
-            <button type="submit" onClick={handleSubmit}>
-                Go
+        <div class="input-group justify-content-center">
+            <div class="form-outline w-50">
+                <input type="search" id="form1" class="form-control" onChange={handleInput} placeholder="Search for a plate..." value={(name)}/>
+                <label class="form-label" for="form1"></label>
+            </div>
+            <button type="button" class="btn btn-primary h-25" onClick={handleSubmit}>
+                <i class="fas fa-search">Go</i>
             </button>
         </div>
     )
