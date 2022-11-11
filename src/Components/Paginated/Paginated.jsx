@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Paginated/Paginated.css'
 
 
 export default function Paginated({ platesPerPage, allPlate, setCurrentPage, currentPage, paginated }) {
@@ -10,11 +11,11 @@ export default function Paginated({ platesPerPage, allPlate, setCurrentPage, cur
     }
 
     return (
-        <div>
+        <div className='divP'>
 
-            <ul >
+            <ul className="paginadoContainer" >
 
-                <button disabled={currentPage === 1}  onClick={() => {
+                <button className="a" disabled={currentPage === 1}  onClick={() => {
                     setCurrentPage(currentPage === 1 ?
                         currentPage :
                         currentPage - 1
@@ -25,12 +26,12 @@ export default function Paginated({ platesPerPage, allPlate, setCurrentPage, cur
                 </button>
                 {pageNumbers &&
                     pageNumbers.map(number => (
-                        <li key={number}>
-                            <button disabled={currentPage === number}  key={number} onClick={() => paginated(number)}> {number}</button>
+                        <li className="li" key={number}>
+                            <button className="a" disabled={currentPage === number}  key={number} onClick={() => paginated(number)}> {number}</button>
                         </li>
                     ))}
 
-                <button disabled={currentPage === pageNumbers.length}  onClick={() =>
+                <button className="a" disabled={currentPage === pageNumbers.length}  onClick={() =>
                     setCurrentPage(currentPage === numberPage ?
                         currentPage :
                         currentPage + 1
