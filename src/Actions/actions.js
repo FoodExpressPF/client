@@ -14,7 +14,7 @@ export function getFoods() {
 
 export const getByFilters = ( filters ) => 
   dispatch =>
-    axios(`${API_PATH}/foods?${filters}}`)
+    axios(`${API_PATH}/foods?${filters}`)
       .then(response => response.data)
       .then(data => dispatch({
         type: "GET_PLATES_BY_FILTERS",
