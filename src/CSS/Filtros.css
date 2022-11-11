@@ -1,0 +1,33 @@
+.menu-container {
+
+    display: none;
+    align-content: space-between;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+
+
+}
+
+.menu-container.open {
+    display: block;
+}
+
+.slct {
+    color: #636363;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    border-radius: 1rem;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 20px;
+    border-color: #f8f8f8;
+}
+
+.slct:hover {
+    background-color: #abaab9e1;
+    scale: 1.1;
+    transition: 0.8s;
+}
