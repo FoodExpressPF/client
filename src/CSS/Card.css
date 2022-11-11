@@ -1,4 +1,77 @@
-.textLink {
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+
+* {
+  transition: all 0.3s ease-out;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    display: block;
+    top: 0px;
+    position: relative;
+    max-width: 400px;
+    background-color: #dbd5cc4d;
+    border-radius: 4px;
+    padding: 32px 24px;
+    margin: 12px;
+    text-decoration: none;
+    z-index: 0;
+    overflow: hidden;
+    border: 1px solid #5a585828;
+}
+.card:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border: 1px solid #cccccc;
+    background-color: white;
+}
+
+.card:hover:before {
+    transform: scale(2.15);
+  }
+
+
+h5 {
+    color: #262626;
+    font-size: 22px;
+    line-height: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+p {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #080808;
+} 
+img{
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    width: 337px;
+    height: 400px;
+}
+
+/* .textLink {
     text-decoration: none;
     color: rgb(57, 57, 57);
 
@@ -31,4 +104,4 @@
     padding: 4px;
     font-size: 20px;
     border-color: #f8f8f800;
-}
+} */

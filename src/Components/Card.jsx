@@ -1,4 +1,5 @@
 import React from "react";
+import style from "../CSS/Card.css";
 
 
 
@@ -9,19 +10,19 @@ export default function Card({ name, price, rating, image,  }) {
 
   return (
 
-    <div>
-
-      <div className="card h-25" >     
-  <img className="imagen-card" src={image}   width="200px" heigth="250px" alt=""/>
-  <div className="card-body">
-        <h5 className="card-title text-decoration-none">{name}</h5>        
-      </div>
-  <div className="card-body">
-    <p className="card-text text-decoration-none">
-      price:   {price} $</p>
-    <h3>{rating}</h3>
-  </div>
-</div>
+    <div class="container">
+      
+      <div>
+        <img src={image} alt="..."/>
+        </div>
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold text-center"><a>{name}</a></h5>
+            <p class="mb-3">
+               Price:   ${price} 
+            </p>
+            <hr class="my-4"/>
+            <p class="lead"><strong>{rating}/5⭐</strong></p>
+          </div>
       {/* <div>
       <h3>{name}</h3>
         <img src={image} alt="img not found" width="200px" heigth="250px" />
