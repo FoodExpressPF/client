@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getByName } from "../Actions/actions";
 import "../CSS/SearchBar.css"
 
 export default function SearchBar({setCurrentPage}){
@@ -15,7 +14,6 @@ export default function SearchBar({setCurrentPage}){
     function handleSubmit(e){
         e.preventDefault(e)
         if(name !== '' && isNaN(name)){
-            dispatch(getByName(name));
             setname("");
             setCurrentPage(1)
         }else{
