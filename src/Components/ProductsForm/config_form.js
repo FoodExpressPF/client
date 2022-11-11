@@ -5,9 +5,10 @@ export const initialValues = {
     description:'',
     price:0,
     type:[],
-    rating:'',
+    rating:0,
     image:'',
-    type_user:'Admin'
+    type_user:'admin',
+    offer:'false'
 }
 
 ///////////////////////////////////////////////VALIDATION
@@ -28,12 +29,12 @@ export const validationSchema = Yup.object().shape({
     .min(0.5,'Price must be greater than 0')
     .required(required),
 
-    // type: Yup.string()
-    // .required(required),
+    image: Yup.string()
+    .required(required),
 
-    rating: Yup.number()
-    .min(1,'Rating must be between 0 and 5')
-    .max(5,'Rating must be between 0 and 5')
+    type: Yup.string()
+    .required(required),
+
 })
 
 
