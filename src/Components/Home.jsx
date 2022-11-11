@@ -6,6 +6,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
 import Pagination from "./Paginated";
+import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import '../CSS/Card.css'
 import Filtros from "./Filtros";
