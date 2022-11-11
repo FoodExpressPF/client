@@ -1,0 +1,193 @@
+*   [33m942513f[m[33m ([m[1;36mHEAD -> [m[1;32mdev-javier[m[33m, [m[1;31morigin/development[m[33m)[m Merge pull request #29 from FoodExpressPF/dev-agustin
+[31m|[m[32m\[m  
+[31m|[m * [33m0474106[m solucionado el problema de importacion del SearchBar
+* [32m|[m [33mbdc44b4[m Merge pull request #28 from FoodExpressPF/dev-agustin
+[33m|[m[32m\[m[32m|[m 
+[33m|[m * [33m3dbfad7[m cambio de version del react-router-dom
+[33m|[m *   [33m73f3357[m Merge branch 'development' of https://github.com/FoodExpressPF/client into dev-agustin
+[33m|[m [35m|[m[33m\[m  
+[33m|[m [35m|[m[33m/[m  
+[33m|[m[33m/[m[35m|[m   
+* [35m|[m   [33m7fa9067[m Merge pull request #27 from FoodExpressPF/dev-agustin
+[1;31m|[m[1;32m\[m [35m\[m  
+[1;31m|[m [1;32m|[m * [33m1e112f4[m merge
+[1;31m|[m [1;32m|[m[1;32m/[m[1;31m|[m 
+[1;31m|[m [1;32m|[m[1;31m/[m  
+[1;31m|[m[1;31m/[m[1;32m|[m   
+* [1;32m|[m   [33m7eb8a89[m Merge pull request #26 from FoodExpressPF/dev-julio
+[1;35m|[m[1;36m\[m [1;32m\[m  
+[1;35m|[m * [1;32m|[m [33m6f67a51[m big Detail update
+[1;35m|[m[1;35m/[m [1;32m/[m  
+[1;35m|[m * [33m012163d[m solucionado la navbar
+[1;35m|[m[1;35m/[m  
+*   [33mc90d43c[m Merge pull request #25 from FoodExpressPF/dev-javier
+[31m|[m[32m\[m  
+[31m|[m *   [33m35c1030[m Merge branch 'development' into dev-javier
+[31m|[m [33m|[m[31m\[m  
+[31m|[m [33m|[m[31m/[m  
+[31m|[m[31m/[m[33m|[m   
+* [33m|[m   [33m45d4706[m Merge pull request #24 from FoodExpressPF/dev-david
+[35m|[m[36m\[m [33m\[m  
+[35m|[m * [33m|[m [33md1561eb[m NavBar Component
+[35m|[m * [33m|[m   [33m720f539[m Merge branch 'development' of https://github.com/FoodExpressPF/client into dev-david
+[35m|[m [1;31m|[m[1;32m\[m [33m\[m  
+[35m|[m * [1;32m\[m [33m\[m   [33m3b2adec[m Merge branch 'development' of https://github.com/FoodExpressPF/client into dev-david
+[35m|[m [1;33m|[m[1;34m\[m [1;32m\[m [33m\[m  
+[35m|[m [1;33m|[m [1;34m|[m [1;32m|[m * [33m9ed9ae2[m[33m ([m[1;31morigin/dev-javier[m[33m)[m estilos y filtros
+[35m|[m [1;33m|[m [1;34m|[m [1;32m|[m * [33me38f5bf[m boton para aparecer y desaparecer filtros
+[35m|[m [1;33m|[m [1;34m|[m [1;32m|[m *   [33m1ceb2dc[m Merge branch 'development' of https://github.com/FoodExpressPF/client into dev-javier
+[35m|[m [1;33m|[m [1;34m|[m [1;32m|[m [1;35m|[m[35m\[m  
+[35m|[m [1;33m|[m[35m_[m[1;34m|[m[35m_[m[1;32m|[m[35m_[m[1;35m|[m[35m/[m  
+[35m|[m[35m/[m[1;33m|[m [1;34m|[m [1;32m|[m [1;35m|[m   
+* [1;33m|[m [1;34m|[m [1;32m|[m [1;35m|[m   [33mdb2b92d[m Merge pull request #23 from FoodExpressPF/dev-silvia
+[1;32m|[m[32m\[m [1;33m\[m [1;34m\[m [1;32m\[m [1;35m\[m  
+[1;32m|[m [32m|[m[1;32m_[m[1;33m|[m[1;32m_[m[1;34m|[m[1;32m/[m [1;35m/[m  
+[1;32m|[m[1;32m/[m[32m|[m [1;33m|[m [1;34m|[m [1;35m|[m   
+[1;32m|[m * [1;33m|[m [1;34m|[m [1;35m|[m [33m2202838[m Changes in LandingPage (button)
+[1;32m|[m * [1;33m|[m [1;34m|[m [1;35m|[m   [33m22fedba[m Merge branch 'development' of https://github.com/FoodExpressPF/client into dev-silvia
+[1;32m|[m [33m|[m[1;32m\[m [1;33m\[m [1;34m\[m [1;35m\[m  
+[1;32m|[m [33m|[m[1;32m/[m [1;33m/[m [1;34m/[m [1;35m/[m  
+[1;32m|[m[1;32m/[m[33m|[m [1;33m|[m [1;34m|[m [1;35m|[m   
+[1;32m|[m * [1;33m|[m [1;34m|[m [1;35m|[m [33m90a8ecb[m Changes in landingpage(button not working)
+[1;32m|[m * [1;33m|[m [1;34m|[m [1;35m|[m   [33mbe31d01[m Merge branch 'development' of https://github.com/FoodExpressPF/client into dev-silvia
+[1;32m|[m [35m|[m[36m\[m [1;33m\[m [1;34m\[m [1;35m\[m  
+[1;32m|[m * [36m|[m [1;33m|[m [1;34m|[m [1;35m|[m [33m9ca5309[m add images folder and Landing styles
+[1;32m|[m [36m|[m [36m|[m [1;33m|[m [1;34m|[m * [33mea6595a[m estilos cards
+[1;32m|[m [36m|[m[1;32m_[m[36m|[m[1;32m_[m[1;33m|[m[1;32m_[m[1;34m|[m[1;32m/[m  
+[1;32m|[m[1;32m/[m[36m|[m [36m|[m [1;33m|[m [1;34m|[m   
+* [36m|[m [36m|[m [1;33m|[m [1;34m|[m   [33m80e8afa[m Merge pull request #22 from FoodExpressPF/dev-julio
+[36m|[m[1;32m\[m [36m\[m [36m\[m [1;33m\[m [1;34m\[m  
+[36m|[m [1;32m|[m[36m_[m[36m|[m[36m/[m [1;33m/[m [1;34m/[m  
+[36m|[m[36m/[m[1;32m|[m [36m|[m [1;33m|[m [1;34m|[m   
+[36m|[m * [36m|[m [1;33m|[m [1;34m|[m [33m8151e64[m Detail problem fix
+[36m|[m[36m/[m [36m/[m [1;33m/[m [1;34m/[m  
+* [36m|[m [1;33m|[m [1;34m|[m   [33mf1bac86[m Merge pull request #21 from FoodExpressPF/dev-javier
+[1;33m|[m[1;34m\[m [36m\[m [1;33m\[m [1;34m\[m  
+[1;33m|[m * [36m|[m [1;33m|[m [1;34m|[m [33mebf4fbc[m css card/home
+[1;33m|[m * [36m|[m [1;33m|[m [1;34m|[m [33m6a52dae[m cree carpeta  y componente css
+* [1;34m|[m [36m|[m [1;33m|[m [1;34m|[m   [33m00b4d6b[m Merge pull request #20 from FoodExpressPF/dev-david
+[1;34m|[m[1;33m\[m [1;34m\[m [36m\[m [1;33m\[m [1;34m\[m  
+[1;34m|[m [1;33m|[m [1;34m|[m[1;33m_[m[36m|[m[1;33m/[m [1;34m/[m  
+[1;34m|[m [1;33m|[m[1;33m/[m[1;34m|[m [36m|[m [1;34m/[m   
+[1;34m|[m [1;33m|[m[1;34m_[m[1;34m|[m[1;34m_[m[36m|[m[1;34m/[m    
+[1;34m|[m[1;34m/[m[1;33m|[m [1;34m|[m [36m|[m     
+[1;34m|[m * [1;34m|[m [36m|[m [33m4379b84[m Products Forms's Styles
+* [1;36m|[m [1;34m|[m [36m|[m   [33md29c27d[m Merge pull request #19 from FoodExpressPF/dev-javier
+[31m|[m[1;34m\[m [1;36m\[m [1;34m\[m [36m\[m  
+[31m|[m [1;34m|[m [1;36m|[m[1;34m/[m [36m/[m  
+[31m|[m [1;34m|[m[1;34m/[m[1;36m|[m [36m|[m   
+[31m|[m * [1;36m|[m [36m|[m [33m93e4dfa[m styleBoostrap Home/Card
+[31m|[m[31m/[m [1;36m/[m [36m/[m  
+* [1;36m|[m [36m|[m   [33m03db547[m Merge pull request #18 from FoodExpressPF/dev-julio
+[1;36m|[m[34m\[m [1;36m\[m [36m\[m  
+[1;36m|[m [34m|[m[1;36m/[m [36m/[m  
+[1;36m|[m[1;36m/[m[34m|[m [36m|[m   
+[1;36m|[m * [36m|[m [33m0eb677b[m estilo basico agregado al detail, pag y searcbar
+* [34m|[m [36m|[m   [33m93590a0[m Merge pull request #17 from FoodExpressPF/dev-david
+[34m|[m[36m\[m [34m\[m [36m\[m  
+[34m|[m [36m|[m[34m/[m [36m/[m  
+[34m|[m[34m/[m[36m|[m [36m|[m   
+[34m|[m * [36m|[m [33mef392ff[m Progress on the Product Form
+[34m|[m[34m/[m [36m/[m  
+* [36m|[m   [33mb177c50[m Merge pull request #16 from FoodExpressPF/dev-javier
+[36m|[m[1;32m\[m [36m\[m  
+[36m|[m [1;32m|[m[36m/[m  
+[36m|[m[36m/[m[1;32m|[m   
+[36m|[m * [33mf138064[m cambie link de boton se more para detail
+[36m|[m * [33m49b3c18[m cambie ruta de action pedido al back
+[36m|[m[36m/[m  
+*   [33m144e95e[m Merge pull request #15 from FoodExpressPF/dev-silvia
+[1;33m|[m[1;34m\[m  
+[1;33m|[m * [33m73c53b3[m delete duplicate imports
+[1;33m|[m[1;33m/[m  
+*   [33m7f239bc[m Merge pull request #14 from FoodExpressPF/dev-david
+[1;35m|[m[1;36m\[m  
+[1;35m|[m *   [33m4ab7a0f[m Fixing conflic
+[1;35m|[m [31m|[m[1;35m\[m  
+[1;35m|[m [31m|[m[1;35m/[m  
+[1;35m|[m[1;35m/[m[31m|[m   
+* [31m|[m   [33m623078d[m Merge pull request #13 from FoodExpressPF/revert-12-dev-julio
+[33m|[m[34m\[m [31m\[m  
+[33m|[m * [31m|[m [33m13940f3[m Revert "Actualizo React v17 -> v18 para Chakra.ui"
+[33m|[m[33m/[m [31m/[m  
+* [31m|[m   [33mee4fa52[m Merge pull request #12 from FoodExpressPF/dev-julio
+[35m|[m[36m\[m [31m\[m  
+[35m|[m * [31m\[m   [33m97123f8[m Merge branch 'development' into dev-julio
+[35m|[m [1;31m|[m[35m\[m [31m\[m  
+[35m|[m [1;31m|[m[35m/[m [31m/[m  
+[35m|[m[35m/[m[1;31m|[m [31m|[m   
+* [1;31m|[m [31m|[m   [33m5827245[m Merge pull request #11 from FoodExpressPF/dev-david
+[1;33m|[m[1;34m\[m [1;31m\[m [31m\[m  
+[1;33m|[m * [1;31m\[m [31m\[m   [33m8856cf5[m Merge branch 'development' into dev-david
+[1;33m|[m [1;35m|[m[1;33m\[m [1;31m\[m [31m\[m  
+[1;33m|[m [1;35m|[m[1;33m/[m [1;31m/[m [31m/[m  
+[1;33m|[m[1;33m/[m[1;35m|[m [1;31m|[m [31m|[m   
+[1;33m|[m [1;35m|[m * [31m|[m [33m51576fd[m Actualizo React v17 -> v18 para Chakra.ui
+[1;33m|[m [1;35m|[m[1;33m/[m [31m/[m  
+[1;33m|[m[1;33m/[m[1;35m|[m [31m|[m   
+[1;33m|[m [1;35m|[m * [33mcbcb5e5[m Bootstrap implementation
+[1;33m|[m [1;35m|[m[1;35m/[m[1;33m|[m 
+[1;33m|[m [1;35m|[m[1;33m/[m  
+[1;33m|[m[1;33m/[m[1;35m|[m   
+* [1;35m|[m   [33m09be341[m Merge pull request #10 from FoodExpressPF/dev-silvia
+[33m|[m[34m\[m [1;35m\[m  
+[33m|[m * [1;35m|[m [33m4f17e0d[m change code to get type in detail
+[33m|[m * [1;35m|[m [33mcb6655f[m add more info button to card
+[33m|[m * [1;35m|[m [33m968c3f7[m create detail component and render
+[33m|[m * [1;35m|[m [33m2863a91[m add route to detail
+[33m|[m * [1;35m|[m [33m079319d[m remove chakra from provider
+[33m|[m * [1;35m|[m [33m4452af8[m install chakra dependency and add it to provider
+[33m|[m * [1;35m|[m [33m0e75107[m add case getDetail, getClean and getByName,state of detail and allPlates
+[33m|[m * [1;35m|[m   [33m462ef42[m Merge branch 'development' of https://github.com/FoodExpressPF/client into dev-silvia
+[33m|[m [35m|[m[33m\[m [1;35m\[m  
+[33m|[m [35m|[m[33m/[m [1;35m/[m  
+[33m|[m[33m/[m[35m|[m [1;35m|[m   
+[33m|[m * [1;35m|[m   [33m9bcfcd7[m Merge branch 'development' of https://github.com/FoodExpressPF/client into dev-silvia
+[33m|[m [1;31m|[m[1;32m\[m [1;35m\[m  
+[33m|[m [1;31m|[m [1;32m|[m * [33mc3cceab[m Creation Product Form
+[33m|[m [1;31m|[m[33m_[m[1;32m|[m[33m/[m  
+[33m|[m[33m/[m[1;31m|[m [1;32m|[m   
+* [1;31m|[m [1;32m|[m [33mfea4ca9[m Merge pull request #9 from FoodExpressPF/dev-silvia
+[1;32m|[m[1;31m\[m[1;31m|[m [1;32m|[m 
+[1;32m|[m [1;31m|[m[1;32m/[m  
+[1;32m|[m[1;32m/[m[1;31m|[m   
+[1;32m|[m * [33m62582c0[m create the getByName action
+* [1;34m|[m   [33m3e64ba1[m Merge pull request #8 from FoodExpressPF/dev-julio
+[1;34m|[m[1;36m\[m [1;34m\[m  
+[1;34m|[m [1;36m|[m[1;34m/[m  
+[1;34m|[m[1;34m/[m[1;36m|[m   
+[1;34m|[m * [33mbf88d57[m Name fix
+[1;34m|[m * [33m201180e[m Cambios menores
+[1;34m|[m * [33mc3c5ec9[m Creo un paginado de base con pequeña validacion de texto
+[1;34m|[m * [33md08d235[m Agrego SearchBar y Paginado al home
+[1;34m|[m[1;34m/[m  
+*   [33m98cdcb8[m Merge pull request #7 from FoodExpressPF/dev-javier
+[31m|[m[32m\[m  
+[31m|[m * [33mfa42f5d[m imprimen las cards
+[31m|[m * [33mcad03ea[m renderiza cartas
+[31m|[m * [33m6b58fe2[m las cards se imprimen en la pagina
+[31m|[m[31m/[m  
+*   [33m5835354[m Merge pull request #6 from FoodExpressPF/dev-javier
+[33m|[m[34m\[m  
+[33m|[m * [33m738cfa9[m reducer primer estado
+[33m|[m[33m/[m  
+*   [33m6f490e7[m Merge pull request #5 from FoodExpressPF/dev-silvia
+[35m|[m[36m\[m  
+[35m|[m * [33m475bf02[m create getDetail and getClean action
+[35m|[m[35m/[m  
+*   [33mbd11702[m Merge pull request #4 from FoodExpressPF/dev-javier
+[1;31m|[m[1;32m\[m  
+[1;31m|[m * [33m1b8a02d[m redux-thunk and home
+* [1;32m|[m   [33mb307df2[m Merge pull request #2 from FoodExpressPF/dev-julio
+[1;33m|[m[1;34m\[m [1;32m\[m  
+[1;33m|[m * [1;32m|[m [33m345279f[m Component Update: Added SearchBar
+* [1;34m|[m [1;32m|[m   [33mc571079[m Merge pull request #3 from FoodExpressPF/dev-javier
+[1;34m|[m[1;32m\[m [1;34m\[m [1;32m\[m  
+[1;34m|[m [1;32m|[m[1;34m/[m [1;32m/[m  
+[1;34m|[m[1;34m/[m[1;32m|[m [1;32m/[m   
+[1;34m|[m [1;32m|[m[1;32m/[m    
+[1;34m|[m * [33m4b240db[m hlandingpage and home/allplates
+[1;34m|[m[1;34m/[m  
+* [33mb7833f8[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/hotfix[m[33m, [m[1;31morigin/dev-silvia[m[33m, [m[1;31morigin/dev-julio[m[33m, [m[1;31morigin/dev-julian[m[33m, [m[1;31morigin/dev-david[m[33m, [m[1;31morigin/dev-carlos[m[33m, [m[1;31morigin/dev-agustin[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m start with redux and done all folders structures
+* [33m228e9a1[m initial setup
+* [33meb356ce[m Initial commit
