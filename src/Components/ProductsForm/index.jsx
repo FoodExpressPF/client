@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { initialValues, validationSchema } from './config_form';
 
 //Libraries
@@ -7,53 +9,96 @@ import axios from 'axios'
 
 const ProductsForm = () => {
 
+  const [previewImage, setPreviewImage] = useState('https://res.cloudinary.com/dpnrbius0/image/upload/v1668109807/foodExpressRecipes/placeholder_xtwile.png')
+  const [response, setResponse] = useState('')
+  const [loading,setLoading] = useState(true)
+
     ///////////////////////////////////////////////ONCHANGE IMAGE INPUT
 
-    const handleInputFile = e => {
+  const handleInputFile = e => {
 
-      const file =  e.target.files[0]
-      console.log(file)
-  
-      const reader =  new FileReader()
-      reader.readAsDataURL(file)
-      reader.onloadend = ()=>{
-        values.image = reader.result
-      }
+    const file =  e.target.files[0]
+
+    const reader =  new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = ()=>{
+      values.image = reader.result
+      setPreviewImage(reader.result)
     }
+  }
 
     ///////////////////////////////////////////////ONSUBMIT
     const onSubmit = e=>{
+      setLoading(true)
      
       axios({
-  method: 'post',
-  headers: {
-    'Content-Type': 'application/json'
-},
-  url: 'http://localhost:3001/createFood',
-  data: values
-})
-    .then(response => console.log(response))
-    .catch(error=>console.log(error));
-  }
+         method: 'post',
+         headers: {
+          'Content-Type': 'application/json'
+        },
+        url: 'http://localhost:3001/foods/create',
+        data: values
+      })
+     .then(response => {
+      setResponse(response.data.message)
+      setLoading(false)
+     })
+     .catch(error=>{
+      setResponse(error.response.data)
+      setLoading(false)
+     });
+    }
+    console.log('response',response)
 
 
   const formik =useFormik({initialValues,validationSchema,onSubmit})
   const {handleSubmit, handleChange, handleBlur, errors, touched,values} = formik
 
-console.log(errors)
+  
+
+
   return (  
       <div>
         <h2 className='mt-3 text-center'>Create New Product</h2>
+
+        
+        <div class="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                 {loading? 
+                   <div class="d-flex justify-content-center">
+                   <div class="spinner-border" role="status">
+                     <span class="visually-hidden">Loading...</span>
+                   </div>
+                 </div>
+                   :<div>
+                      <h5 className="modal-title">{response}</h5>
+                    </div>    
+                  }
+               </div>
+
+                 <div className="modal-footer">
+                   <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                 </div>
+               </div>
+           </div>
+         </div>
 
         <form className='mx-auto w-50 my-5'  onSubmit={handleSubmit}>
 
 
             {/* IMAGE */}
 
-          <div class="input-group mb-3">
+            <img 
+                src={previewImage}
+                alt="choosen" 
+                style ={{height: '200px'}} 
+              />
+          <div className="input-group mb-3">
            <label className= "w-100"><strong>Image:</strong> <br />  
              <input 
-                 className="form-control"
+                 className={errors.image?"form-control is-invalid":"form-control"}
                  type="file" 
                  name="image"
                  onChange={handleInputFile}
@@ -61,15 +106,7 @@ console.log(errors)
               />
            </label> 
          </div>
-         
 
-            {values.image && (
-              <img 
-                src={values.image}
-                alt="choosen" 
-                style ={{height: '300px'}} 
-              />
-            )}  
 
 
          {/* NAME */}
@@ -78,7 +115,6 @@ console.log(errors)
                 <div >
                   <div className="form-floating mb-3">
                     
-                    {/* <strong>Name: <br /></strong>   */}
                     <input 
                       className={errors.name&&touched.name?"form-control is-invalid":"form-control"}
                       id="floatingInput"
@@ -106,7 +142,6 @@ console.log(errors)
               <div className="form-floating mb-3">
                 <textarea 
                       className={errors.description&&touched.description?"form-control is-invalid":"form-control"}
-                      class="form-control" 
                       id="floatingTextarea"
                       
                       name="description" 
@@ -135,7 +170,7 @@ console.log(errors)
 
                 <div>
                      <div className='input-group mb-3'>
-                     <span class="input-group-text">$</span>
+                     <span className="input-group-text">$</span>
                      <input 
                         className={errors.price&&touched.price?"form-control is-invalid":"form-control"}
                         aria-label="Amount (to the nearest dollar)"
@@ -146,7 +181,7 @@ console.log(errors)
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />    
-                      <span class="input-group-text">.00</span>
+                      <span className="input-group-text">.00</span>
                       </div>     
                     
 
@@ -185,7 +220,7 @@ console.log(errors)
 
               {/* Rating */} 
 
-               <div>
+               {/* <div>
                     <label className= "w-100">
                      <strong>Rating:</strong> <br />
 
@@ -193,7 +228,7 @@ console.log(errors)
                          className="form-range" 
                          min="0" 
                          max="5"
-                         step="0.5"
+                         step="1"
                          name="rating" 
                          type="range"
                          value={values.rating} 
@@ -208,16 +243,18 @@ console.log(errors)
                         // className=
                       >{errors.rating}</p>
                     )}  
-                </div>   
+                </div>    */}
          </fieldset>
 
          <div className="text-center mt-4">
+
          <button 
             disabled={Object.entries(errors).length !== 0?true:false} 
             type="submit" 
             className={Object.entries(errors).length === 0?"btn btn-danger btn-lg mx-auto":"btn btn-light btn-sm"}
+            data-bs-toggle="modal" data-bs-target="#exampleModal"
           >
-            Send
+            Create
           </button>  
 
          </div>
