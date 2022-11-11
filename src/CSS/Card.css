@@ -2,16 +2,17 @@
 
 
 * {
-  transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 html,
 body {
-  height: 100%;
-  font-family: "Nunito", sans-serif;
-  font-size: 16px;
+    height: 100%;
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
 }
-.container{
+
+.container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -20,7 +21,7 @@ body {
     justify-content: center;
 }
 
-.card{
+.card {
     display: block;
     top: 0px;
     position: relative;
@@ -33,18 +34,22 @@ body {
     z-index: 0;
     overflow: hidden;
     border: 1px solid #5a585828;
+    border-radius: 10px;
 }
+
 .card:hover {
     transition: all 0.2s ease-out;
     box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
     top: -4px;
-    border: 1px solid #cccccc;
+    border: 2px solid orange;
+    border-radius: 10px;
+    box-shadow: 5px 4px 20px 4px orange;
     background-color: white;
 }
 
 .card:hover:before {
     transform: scale(2.15);
-  }
+}
 
 
 h5 {
@@ -53,15 +58,16 @@ h5 {
     line-height: 24px;
     font-weight: 700;
     margin-bottom: 4px;
-  }
+}
 
 p {
     font-size: 17px;
     font-weight: 400;
     line-height: 20px;
     color: #080808;
-} 
-.cardImage{
+}
+
+.cardImage {
     object-fit: cover;
     display: block;
     margin-left: auto;
@@ -69,39 +75,19 @@ p {
     width: 50%;
     width: 337px;
     height: 400px;
+    border-radius: 12px;
 }
 
 .textLink {
     text-decoration: none;
 }
 
-/* 
-
-.imagen-card {
-    width: 390px;
-    height: 380px;
-
-}
-
-.textNav {
-    text-decoration: none;
-    color: rgb(87, 87, 87);
-    size: 80px;
-}
-
 .titleHome {
+    text-align: center;
+    color: orange;
     align-content: center;
     color: rgb(87, 87, 87);
     size: 40px;
-}
 
-.buttonFiltros {
-    color: #636363;
-    background-color: #e0e0e000;
-    border-radius: 4px;
-    border-radius: 1rem;
-    cursor: pointer;
-    padding: 4px;
-    font-size: 20px;
-    border-color: #f8f8f800;
-} */
+
+}

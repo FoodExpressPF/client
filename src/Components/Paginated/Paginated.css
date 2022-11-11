@@ -2,19 +2,18 @@
     top: 0px;
     position: relative;
     max-width: 400px;
+    background-color: rgba(255, 218, 149, 0);
     border-radius: 4px;
     padding: 12px 34px;
     margin: 12px;
     text-decoration: none;
-    z-index: 0;
     overflow: hidden;
     justify-content: center;
 }
 
 .paginadoContainer {
-    background-color: #ffefd6;
-    border-radius: 30px;
-    width: fit-content;
+    background-color: #e2e2e2;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     align-content: center;
@@ -40,7 +39,7 @@
     border: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border-radius: 30px;
-    background-color: #ec9006;
+    background-color: orange;
     transition: all 0.25s;
     color: #f8f8f8;
     font-size: 1.1rem;
