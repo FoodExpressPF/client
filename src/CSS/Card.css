@@ -61,7 +61,7 @@ p {
     line-height: 20px;
     color: #080808;
 } 
-img{
+.cardImage{
     object-fit: cover;
     display: block;
     margin-left: auto;

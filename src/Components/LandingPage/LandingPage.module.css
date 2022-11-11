@@ -12,8 +12,10 @@
     padding: 0 20px;
 }
 
+
 .logo{
     width: 10vw;
+    max-height: 100px;
 }
 
 .navButton{
@@ -35,7 +37,9 @@
 .containerImageHero{
     position:absolute;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    object-fit: cover;
+    object-position: center;
     top: 0;
     left: 0;
     z-index: -1;
