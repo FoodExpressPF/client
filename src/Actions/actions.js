@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_PATH } from '../utils/constants.js';
 
 export function getFoods() {
     return async function (dispatch) {
@@ -11,19 +12,16 @@ export function getFoods() {
     }
 }
 
-export function getByName(name) {
-    return async function (dispatch) {
-        try {
-            var json = await axios.get(`http://localhost:3001/foods?name=${name}`);
-            return dispatch({
-                type: 'GET_BY_NAME',
-                payload: json.data
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }
-}
+export const getByFilters = ( filters ) => 
+  dispatch =>
+    axios(`${API_PATH}/foods?${filters}}`)
+      .then(response => response.data)
+      .then(data => dispatch({
+        type: "GET_PLATES_BY_FILTERS",
+        payload: data,
+      }))
+      .catch(error => console.log(error))
+;
 
 export function getDetail(id) {
     return async function (dispatch) {
