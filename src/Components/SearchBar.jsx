@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import "../CSS/SearchBar.css"
 
 export default function SearchBar({setCurrentPage}){
     const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export default function SearchBar({setCurrentPage}){
 
     return(
         <div class="input-group justify-content-center">
-            <div class="form-outline w-50">
+            <div class="form-outline w-75">
                 <input type="search" id="form1" class="form-control" onChange={handleInput} placeholder="Search for a plate..." value={(name)}/>
                 <label class="form-label" for="form1"></label>
             </div>
