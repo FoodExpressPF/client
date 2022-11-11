@@ -16,7 +16,7 @@ export default function Home() {
     const allPlate = useSelector((state)=> state.plates)
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1); 
-    const platesPerPage = 4;
+    const platesPerPage = 3;
     const indexLastPlate = currentPage * platesPerPage
     const indexFirstPlate = indexLastPlate - platesPerPage
     const currentPlates = allPlate.slice(indexFirstPlate,indexLastPlate)
@@ -72,7 +72,7 @@ export default function Home() {
 menu={menu}/>
 
 <div className="titleHome">
-<h1>food express</h1>
+<h1>Food-Express</h1>
 </div>
             <div>
                 <Pagination
