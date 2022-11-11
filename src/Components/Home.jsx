@@ -39,7 +39,7 @@ export default function Home() {
 
 
     return (
-        <div>
+        <div className="back">
             <div >
                 <h1 className="titleHome">Food-Express</h1>
             </div>

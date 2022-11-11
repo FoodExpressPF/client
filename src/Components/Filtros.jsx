@@ -54,6 +54,7 @@ export default function Filtros({ menu }){
       </select>
 
       <button
+      className='button1'
         name="asc"
         type="button"
         onClick={onToggleHandler}
@@ -63,6 +64,7 @@ export default function Filtros({ menu }){
       </button>
 
       <button
+      className='button1'
         name="sortby"
         type="button"
         onClick={onSwitchHandler}
