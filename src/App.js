@@ -7,10 +7,9 @@ import ProductsForm from './Components/ProductsForm'
 import Detail from './Components/Detail/Detail';
 import NavBar from './Components/NavBar';
 
-
 function App() {
   return <>
-    <Route path='/' exact element={<LandingPage />} />
+    <Route exact path='/' component={LandingPage} />
     <Route path='/home'>
       <NavBar />
       <Home />
