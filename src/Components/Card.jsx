@@ -13,7 +13,7 @@ export default function Card({ name, price, rating, image,  }) {
     <div class="container">
       
       <div>
-        <img src={image} alt="..."/>
+        <img className="cardImage" src={image} alt="..."/>
         </div>
           <div class="card-body">
             <h5 class="card-title font-weight-bold text-center"><a>{name}</a></h5>
