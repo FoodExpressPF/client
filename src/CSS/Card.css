@@ -21,3 +21,14 @@
     color: rgb(87, 87, 87);
     size: 40px;
 }
+
+.buttonFiltros {
+    color: #636363;
+    background-color: #e0e0e000;
+    border-radius: 4px;
+    border-radius: 1rem;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 20px;
+    border-color: #f8f8f800;
+}
