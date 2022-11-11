@@ -13,7 +13,7 @@ function rootReducer(state = initialState, action) {
                 allPlates: action.payload,
             }
 
-        case 'GET_BY_NAME':
+        case 'GET_PLATES_BY_FILTERS':
             return {
                 ...state,
                 plates: action.payload,
