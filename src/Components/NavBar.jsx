@@ -7,10 +7,6 @@ const NavBar = () => {
 
     <nav className="navbar navbar-expand-lg py-0 bg-light">
      <div className="container-fluid">
-          <Link to ='/' className="navbar-brand" href="#">
-             <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="." width="30" height="24" className="d-inline-block align-text-top" />
-          </Link>
-
          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
          </button>
@@ -36,7 +32,6 @@ const NavBar = () => {
                 </Link>
              </li>
            </ul>
-        <SearchBar />
     </div>
   </div>
 
