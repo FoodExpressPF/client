@@ -9,6 +9,7 @@ import Paginated from "./Paginated/Paginated";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import '../CSS/Card.css'
+import '../CSS/Home.css'
 import Filtros from "./Filtros";
 
 export default function Home() {
@@ -39,8 +40,8 @@ export default function Home() {
 
     return (
         <div>
-            <div className="titleHome">
-                <h1>Food-Express</h1>
+            <div >
+                <h1 className="titleHome">Food-Express</h1>
             </div>
             <nav className="navbar">
                 <div>
