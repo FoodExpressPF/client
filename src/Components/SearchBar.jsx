@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getByName } from "../Actions/actions";
+import "../CSS/SearchBar.css"
 
 export default function SearchBar({setCurrentPage}){
     const dispatch = useDispatch();

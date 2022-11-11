@@ -2,21 +2,23 @@
     top: 0px;
     position: relative;
     max-width: 400px;
-    background-color: #dbd5cc4d;
     border-radius: 4px;
     padding: 12px 34px;
     margin: 12px;
     text-decoration: none;
     z-index: 0;
     overflow: hidden;
+    justify-content: center;
 }
 
 .paginadoContainer {
-    background-color: #e2e2e2;
+    background-color: #ffefd6;
     border-radius: 30px;
+    width: fit-content;
     display: flex;
     align-items: center;
     align-content: center;
+    padding-left: 10px;
 }
 
 .li {
@@ -36,17 +38,18 @@
 
 .a {
     border: none;
-    font-family: sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border-radius: 30px;
-    background-color: #949494;
+    background-color: #ec9006;
     transition: all 0.25s;
     color: #f8f8f8;
     font-size: 1.1rem;
+    padding-right: 5px;
 }
 
 .a:focus,
 .a:hover,
 .a:active {
-    background-color: #6d6d6d;
+    background-color: rgb(255, 192, 75);
     transform: scale(1.1);
 }

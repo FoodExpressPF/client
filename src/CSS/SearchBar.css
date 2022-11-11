@@ -1,0 +1,18 @@
+.btn-primary{
+    background-color: orange;
+    border-color: rgba(233, 171, 0, 0.623);
+}
+
+.btn-primary:hover{
+    background-color: rgb(255, 192, 75);
+    border-color:rgba(0, 0, 0, 0.185);
+}
+
+.form-control{
+    border-radius: 10px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form-control:hover{
+    border-color: orange;
+}
