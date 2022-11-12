@@ -4,9 +4,14 @@ import { Link } from 'react-router-dom'
 import style from "./LandingPage.module.css";
 import imageHero from "../../images/Food to fill your soul.png"
 
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from "../login/login";
+import LogoutButton from "../login/Logout";
+
 
 
 export default function LandingPage() {
+    const { isAuthenticated } = useAuth0();
     return (
 
         <>
@@ -18,11 +23,7 @@ export default function LandingPage() {
                  alt="logo" 
                 />
 
-             <Link
-                 className={style.navButton}
-                 to='/home'
-                >Sing up    
-             </Link>
+        {isAuthenticated ? <LogoutButton /> : <LoginButton />}
          </div>
          
 

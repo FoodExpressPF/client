@@ -1,28 +1,53 @@
 import "./App.css";
-import { Route } from "react-router-dom";
 
+//Libraries
+import { Route, Redirect, Switch } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+
+//Components
 import LandingPage from "./Components/LandingPage/LandingPage";
 import Home from "./Components/Home";
 import ProductsForm from "./Components/ProductsForm";
 import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar";
+import LoginButton from "./Components/login/login";
 
 function App() {
+  const { isAuthenticated } = useAuth0();
+
+  const RequireAuth = ({children})=>{
+  if(!isAuthenticated) 
+  return  (
+    <>
+    <Redirect to="/" />
+    <div className="alert alert-danger" role="alert">
+    You must log in to see this page!
+    <LoginButton />
+  </div>
+  
+  </>)
+    return children
+}
+
   return (
     <>
-      <Route exact path="/" component={LandingPage} />
-      <Route path="/home">
-        <NavBar />
-        <Home />
-      </Route>
-      <Route path="/createProduct">
-        <NavBar />
-        <ProductsForm />
-      </Route>
-      <Route path="/foods/:id">
-        <NavBar />
-        <Detail />
-      </Route>
+    <Switch>
+    <Route exact path="/" component={LandingPage} />
+      <RequireAuth>
+        <Route path="/home">
+          <NavBar />
+          <Home />
+        </Route>
+        <Route path="/createProduct">
+          <NavBar />
+          <ProductsForm />
+        </Route>
+        <Route path="/foods/:id">
+          <NavBar />
+          <Detail />
+        </Route>
+      </RequireAuth>
+    </Switch>
     </>
   );
 }
