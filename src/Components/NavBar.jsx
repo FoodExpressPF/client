@@ -39,7 +39,7 @@ const NavBar = () => {
             {isAuthenticated ? <LogoutButton /> : <LoginButton />}
 
             <li className="nav-item">
-              <Link className="nav-link active">
+              <Link className="nav-link active" to="/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
