@@ -125,7 +125,7 @@ const ProductsForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              <label for="floatingInput">Name</label>
+              <label htmlFor="floatingInput">Name</label>
             </div>
 
             {errors.name && <p>{errors.name}</p>}
@@ -150,7 +150,7 @@ const ProductsForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               ></textarea>
-              <label for="floatingTextarea">
+              <label htmlFor="floatingTextarea">
                 Write a description of the product here...
               </label>
             </div>
