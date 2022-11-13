@@ -16,17 +16,8 @@ function App() {
   const { isAuthenticated } = useAuth0();
 
   const RequireAuth = ({children})=>{
-  if(!isAuthenticated) 
-  return  (
-    <>
-    <Redirect to="/" />
-    <div className="alert alert-danger" role="alert">
-    You must log in to see this page!
-    <LoginButton />
-  </div>
-  
-  </>)
-    return children
+  if(!isAuthenticated) return <Redirect to="/" />
+  return children
 }
 
   return (

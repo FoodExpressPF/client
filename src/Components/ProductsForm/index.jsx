@@ -51,9 +51,11 @@ const ProductsForm = () => {
       setLoading(false)
      });
      formik.resetForm()
-    }
-    console.log('response',response)
+  }
+  console.log('response',response)
 
+  const formik =useFormik({initialValues,validationSchema,onSubmit})
+  const {handleSubmit, handleChange, handleBlur, errors, touched,values} = formik
 
   return (  
       <div>

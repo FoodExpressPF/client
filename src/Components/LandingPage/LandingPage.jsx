@@ -1,17 +1,21 @@
 
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import style from "./LandingPage.module.css";
 import imageHero from "../../images/Food to fill your soul.png"
 
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "../login/login";
 import LogoutButton from "../login/Logout";
+import ModalAuth from './ModalAuth'
 
 
 
 export default function LandingPage() {
     const { isAuthenticated } = useAuth0();
+    const history = useHistory();
+
+    
     return (
 
         <>
@@ -33,11 +37,26 @@ export default function LandingPage() {
              alt="..." 
             />
 
-         <Link
-             className={style.heroButton}
+                
+       
+         <ModalAuth />
+
+         <button 
+            type="button" 
+            className={style.heroButton} 
+            data-bs-toggle="modal" 
+            data-bs-target="#exampleModal"
+            onClick={()=>history.push("/home")}
+         >
+            Home
+         </button>
+         
+
+         {/* <Link
+             
              to='/home'
             >Home         
-         </Link>
+         </Link> */}
 
         </div>
 
