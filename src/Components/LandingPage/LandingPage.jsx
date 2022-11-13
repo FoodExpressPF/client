@@ -14,6 +14,7 @@ import ModalAuth from './ModalAuth'
 export default function LandingPage() {
     const { isAuthenticated } = useAuth0();
     const history = useHistory();
+    console.log(useAuth0)
 
     
     return (
@@ -52,11 +53,8 @@ export default function LandingPage() {
          </button>
          
 
-         {/* <Link
-             
-             to='/home'
-            >Home         
-         </Link> */}
+        
+        
 
         </div>
 
