@@ -7,7 +7,7 @@ const ModalAuth = () => {
 
         <div 
             className="modal fade" 
-            id="exampleModal" tabindex="-1" 
+            id="exampleModal" tabIndex="-1" 
             aria-labelledby="exampleModalLabel" 
             aria-hidden="true"
         >
@@ -25,7 +25,11 @@ const ModalAuth = () => {
                         Welcome to FoodExpress
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button 
+                              type="button" 
+                              className="btn btn-secondary" 
+                              data-bs-dismiss="modal">Continue
+                            </button>
                         </div>
                     </>
                     :  

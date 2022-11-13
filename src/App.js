@@ -10,7 +10,6 @@ import Home from "./Components/Home";
 import ProductsForm from "./Components/ProductsForm";
 import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar";
-import LoginButton from "./Components/login/login";
 
 function App() {
   const { isAuthenticated } = useAuth0();
