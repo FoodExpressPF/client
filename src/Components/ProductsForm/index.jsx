@@ -54,9 +54,6 @@ const ProductsForm = () => {
     }
     console.log('response',response)
 
-  const formik = useFormik({ initialValues, validationSchema, onSubmit });
-  const { handleSubmit, handleChange, handleBlur, errors, touched, values } =
-    formik;
 
   return (  
       <div>
