@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useState, useEffect } from "react";
 import {
   addToCart,
@@ -6,28 +7,27 @@ import {
   delFromCart,
   getFoods,
 } from "../Actions/actions";
+
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
 import Paginated from "./Paginated/Paginated";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
-import "../CSS/Card.css";
-import "../CSS/Home.css";
+import '../CSS/Card.css'
+import '../CSS/Home.css'
 import Filtros from "./Filtros";
 import CartItem from "./CartItem";
 
 export default function Home() {
-  const dispatch = useDispatch();
-  const allPlate = useSelector((state) => state.plates);
-  const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const platesPerPage = 3;
-  const indexLastPlate = currentPage * platesPerPage;
-  const indexFirstPlate = indexLastPlate - platesPerPage;
-  const currentPlates = allPlate.slice(indexFirstPlate, indexLastPlate);
-  const [menu, setMenu] = useState(false);
-
-  const state = useSelector((state) => state);
+    const dispatch = useDispatch();
+    const allPlate = useSelector((state) => state.plates)
+    const [loading, setLoading] = useState(true)
+    const [currentPage, setCurrentPage] = useState(1);
+    const platesPerPage = 3;
+    const indexLastPlate = currentPage * platesPerPage
+    const indexFirstPlate = indexLastPlate - platesPerPage
+    const currentPlates = allPlate.slice(indexFirstPlate, indexLastPlate)
+    const [menu, setMenu] = useState(false)
 
   const plates = useSelector((state) => state.plates);
   const cart = useSelector((state) => state.cart);
@@ -39,19 +39,35 @@ export default function Home() {
     setMenu(!menu);
   };
 
-  useEffect(() => {
-    dispatch(getFoods()).then(() => setLoading(false));
-  }, [dispatch]);
+    const paginated = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
+    const handleOnClick = () => {
+        setMenu(!menu)
+    }
+
+    useEffect(() => {
+        dispatch(getFoods())
+        .then(()=>setLoading(false))
+    }, [dispatch]);    
 
   return (
     <div className="back">
       <div>
-        <h1 className="titleHome">Food-Express</h1>
+        <h1 className="titleHome">
+          <br/>
+
+          <img
+            src="https://res.cloudinary.com/dowhfu3fj/image/upload/v1668061068/recipes/Dise%C3%B1o_sin_t%C3%ADtulo_7_ia4jsg.png"
+            alt="logo"
+            align="left"
+            className="logo"/>
+            </h1>
       </div>
       <nav className="navbar">
         <div>
           <div className="btn-group">
-            <button className="buttonFiltros" onClick={() => handleOnClick()}>
+            <button className="buttonFiltros bg-dark" onClick={() => handleOnClick()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -69,13 +85,12 @@ export default function Home() {
             </button>
           </div>
         </div>
-
-        <div>
-          <SearchBar setCurrentPage={setCurrentPage} />
-        </div>
       </nav>
 
-      <Filtros menu={menu} />
+      <Filtros 
+        menu={menu} 
+        setCurrentPage={setCurrentPage}
+      />
 
       {loading ? (
         <div className="text-center">
@@ -85,17 +100,7 @@ export default function Home() {
         </div>
       ) : (
         <>
-          <div>
-            <Paginated
-              platesPerPage={platesPerPage}
-              setCurrentPage={setCurrentPage}
-              allPlate={allPlate.length}
-              paginated={paginated}
-              currentPage={currentPage}
-            />
-          </div>
-
-          <div className="row row-cols-1 row-cols-md-3 g-4">
+          <div className="div-container">
             {currentPlates?.map((c) => {
               return (
                 <div className="col">
@@ -114,6 +119,15 @@ export default function Home() {
                 </div>
               );
             })}
+          </div>
+          <div>
+            <Paginated
+              platesPerPage={platesPerPage}
+              setCurrentPage={setCurrentPage}
+              allPlate={allPlate.length}
+              paginated={paginated}
+              currentPage={currentPage}
+            />
           </div>
         </>
       )}

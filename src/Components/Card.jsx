@@ -4,13 +4,15 @@ import "../CSS/Card.css";
 
 export default function Card({ addToCart, name, price, rating, image, id }) {
   return (
-    <div className="container">
+
+    <div class="container">
+      
       <div>
         <img className="cardImage" src={image} alt="..." />
       </div>
       <div className="card-body">
         <h5 className="card-title font-weight-bold text-center">
-          <a href="/">{name}</a>
+          {name}
         </h5>
         <p className="mb-3">Price: ${price}</p>
         <hr className="my-4" />
