@@ -13,9 +13,13 @@
     display: grid;
     justify-content: center;
     background-size: cover;
-    align-items: center;
     align-content: center;
     background-attachment: fixed;
+    
+}
+
+.div-container{
+    display: flex;
 }
 
 .buttonFiltros {

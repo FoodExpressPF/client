@@ -11,7 +11,7 @@ export default function Filtros({ menu }){
   const [ filters, setFilters ] = useState(INITIAL_FILTERS);
 
   const onChangeHandler = (e) => setFilters({...filters, [e.target.name]: e.target.value});
-  // const onToggleHandler = (e) => setFilters({...filters, [e.target.name]: !filters[e.target.name]});
+  const onToggleHandler = (e) => setFilters({...filters, [e.target.name]: !filters[e.target.name]});
   const onSwitchHandler = (e) => setFilters({...filters, [e.target.name]: SWITCH_HANDLER[filters[e.target.name]]});
   
   const onResetHandler = () => setFilters(INITIAL_FILTERS);
@@ -54,15 +54,15 @@ export default function Filtros({ menu }){
         )}
       </select>
 
-      <select
-      className="slct"
+      <button
+      className='button1'
         name="asc"
-        value={filters.asc ? 'asc' : 'desc'}
+        type="button"
+        onClick={onToggleHandler}
       >
-        <option value={null} onClick={e => onChangeHandler(e)} disabled>Alphabetic</option>
-        <option onClick={e => onChangeHandler(e)}value="asc">Asc</option>
-        <option onClick={e => onChangeHandler(e)}value="desc">Desc</option>
-      </select>
+        {/* cambiar por ícono */}
+        {filters.asc ? 'asc' : 'desc'}
+      </button>
 
       <button
       className='button1'
@@ -87,7 +87,7 @@ export default function Filtros({ menu }){
         
       <button
         type="submit"
-        className="btn btn-primary h-25"
+        className="btn btn-primary h-50"
         onClick={onSubmitHandler}
       >
         <i className="fas fa-search">Go</i>
@@ -95,7 +95,7 @@ export default function Filtros({ menu }){
 
       <button
         type="button"
-        className="btn btn-primary h-25"
+        className="btn btn-primary h-50"
         onClick={onResetHandler}
       >
         {/* cambiar por ícono */}

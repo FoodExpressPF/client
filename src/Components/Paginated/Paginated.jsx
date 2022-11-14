@@ -11,7 +11,7 @@ export default function Paginated({
   const pageNumbers = [];
   let numberPage = Math.ceil(allPlate / platesPerPage);
 
-  for (let i = 1; i < Math.ceil(allPlate / platesPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(allPlate / platesPerPage); i++) {
     pageNumbers.push(i);
   }
 
