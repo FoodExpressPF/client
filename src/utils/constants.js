@@ -2,7 +2,7 @@
 
 export const API_PATH = 'http://localhost:3001';
 
-export const TYPES_FOODS = ["All", "Gluten Free", "Vegetarian", "Vegan", "Protein", "Others"];
+export const TYPES_FOODS = ["Gluten Free", "Vegetarian", "Vegan", "Protein", "Others"];
 
 export const SWITCH_HANDLER = {
   // offer:
