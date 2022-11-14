@@ -1,8 +1,13 @@
 import React from "react";
-import { useState, useEffect } from 'react'
+
+import { useState, useEffect } from "react";
 import {
-    getFoods
-} from '../Actions/actions'
+  addToCart,
+  clearCart,
+  delFromCart,
+  getFoods,
+} from "../Actions/actions";
+
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
 import Paginated from "./Paginated/Paginated";
@@ -11,6 +16,7 @@ import { Link } from "react-router-dom";
 import '../CSS/Card.css'
 import '../CSS/Home.css'
 import Filtros from "./Filtros";
+import CartItem from "./CartItem";
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -23,6 +29,15 @@ export default function Home() {
     const currentPlates = allPlate.slice(indexFirstPlate, indexLastPlate)
     const [menu, setMenu] = useState(false)
 
+  const plates = useSelector((state) => state.plates);
+  const cart = useSelector((state) => state.cart);
+
+  const paginated = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+  const handleOnClick = () => {
+    setMenu(!menu);
+  };
 
     const paginated = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -31,87 +46,11 @@ export default function Home() {
         setMenu(!menu)
     }
 
-<<<<<<< HEAD
     useEffect(() => {
         dispatch(getFoods())
         .then(()=>setLoading(false))
-        
     }, [dispatch]);    
 
-
-    return (
-        <div className="back">
-            <div >
-                <h1 className="titleHome">Food-Express</h1>
-            </div>
-            <nav className="navbar">
-                <div>
-                    <div className="btn-group">
-                        <button className="buttonFiltros" onClick={() => handleOnClick()}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-sliders" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
-                            </svg>Filtros
-                        </button>
-                    </div>
-                </div>
-
-                <div>
-                    <SearchBar
-                        setCurrentPage={setCurrentPage} />
-                </div>
-            </nav>
-
-            <Filtros
-                menu={menu}
-            />
-
-            
-            {loading?
-            <div class="text-center">
-                <div class="spinner-border" role="status">
-                  <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-            :
-            <>
-                <div>
-                 <Paginated
-                        platesPerPage={platesPerPage}
-                        setCurrentPage={setCurrentPage}
-                        allPlate={allPlate.length}
-                        paginated={paginated}
-                        currentPage={currentPage}
-                   />
-                </div>
-
-                <div className="row row-cols-1 row-cols-md-3 g-4">
-                {
-                    currentPlates?.map((c) => {
-                        return (
-                            <div className="col">
-                                <div className="card" key={c.id}>
-                                    <Link className="textLink" to={"/foods/" + c.id}>
-                                        <Card
-                                            key={c.id}
-                                            id={c.id}
-                                            name={c.name}
-                                            rating={c.rating}
-                                            price={c.price}
-                                            image={c.image}
-                                        />
-                                    </Link>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-               </div>
-           </>}
-
-        </div>
-    )
-}
-=======
   return (
     <div className="back">
       <div>
@@ -161,23 +100,21 @@ export default function Home() {
         </div>
       ) : (
         <>
-          
-
           <div className="div-container">
             {currentPlates?.map((c) => {
               return (
                 <div className="col">
                   <div className="card" key={c.id}>
-                    <Link className="textLink" to={"/foods/" + c.id}>
-                      <Card
-                        key={c.id}
-                        id={c.id}
-                        name={c.name}
-                        rating={c.rating}
-                        price={c.price}
-                        image={c.image}
-                      />
-                    </Link>
+                    <Link className="textLink" to={"/foods/" + c.id}></Link>
+                    <Card
+                      key={c.id}
+                      id={c.id}
+                      name={c.name}
+                      rating={c.rating}
+                      price={c.price}
+                      image={c.image}
+                      addToCart={() => dispatch(addToCart(c.id))}
+                    />
                   </div>
                 </div>
               );
@@ -194,7 +131,18 @@ export default function Home() {
           </div>
         </>
       )}
+      <h3>Carrito</h3>
+      <article className="box">
+        <button onClick={() => dispatch(clearCart())}>Limpiar Carrito</button>
+        {cart.map((item, index) => (
+          <CartItem
+            key={index}
+            data={item}
+            delOneFromCart={() => dispatch(delFromCart(item.id))}
+            delAllFromCart={() => dispatch(delFromCart(item.id, true))}
+          />
+        ))}
+      </article>
     </div>
   );
 }
->>>>>>> 45534930a4f68f6efbba1460f0e2ee996a25051a
