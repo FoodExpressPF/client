@@ -14,7 +14,11 @@
 
 
 .logo{
+<<<<<<< HEAD
     max-height: 120px;
+=======
+    max-height: 200px;
+>>>>>>> 45534930a4f68f6efbba1460f0e2ee996a25051a
 }
 
 .navButton{

@@ -22,6 +22,7 @@ export default function Detail() {
                     <button class="btn btn-primary h-25">Back</button>
                 </Link>
 
+<<<<<<< HEAD
                 {
                     !!details ?
                         <div class="card" className={style.sub_container}>
@@ -46,6 +47,42 @@ export default function Detail() {
 
                         </div>
                 }
+=======
+        {!!details ? (
+          <div className={style.sub_container}>
+            <div className={style.container_elements}>
+              <div className={style.image_container} class="text text-center">
+              <br/>
+                <img
+                  className={style.the_image}
+                  src={details.image}
+                  width="360px"
+                  heigth="450px"
+                  alt="Loading"
+                />
+                <br/><br/>
+
+              </div>
+              <div className={style.text_container}>
+                <h2 className="h1 font-weight-bold mb-4 text-white card-title">
+                  {details.name}
+                </h2>
+                <p className="card-text text-white">Price: ${details.price}</p>
+                <p className="card-text text-white">Type: {details.type}</p>
+                <p className="card-text text-white">
+                  {" "}
+                  Rating: {details.rating}⭐
+                </p>
+                <p className="card-text text-white">
+                  Reviews:{" "}
+                  {details.reviews ? details.reviews.join(" - ") : "Loading"}
+                </p>
+                <p className="card-text text-white">
+                  Description: {details.description}
+                </p>
+                <p></p>
+              </div>
+>>>>>>> 45534930a4f68f6efbba1460f0e2ee996a25051a
             </div>
         </div>
     )

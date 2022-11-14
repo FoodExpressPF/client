@@ -2,9 +2,15 @@ import React from 'react';
 import '../Paginated/Paginated.css'
 
 
+<<<<<<< HEAD
 export default function Paginated({ platesPerPage, allPlate, setCurrentPage, currentPage, paginated }) {
     const pageNumbers = []
     let numberPage = Math.ceil(allPlate / platesPerPage);
+=======
+  for (let i = 1; i <= Math.ceil(allPlate / platesPerPage); i++) {
+    pageNumbers.push(i);
+  }
+>>>>>>> 45534930a4f68f6efbba1460f0e2ee996a25051a
 
     for (let i = 1; i < Math.ceil(allPlate / platesPerPage); i++) {
         pageNumbers.push(i)

@@ -20,6 +20,7 @@ export default function Filtros({ menu }){
     e.preventDefault();
     dispatch(getByFilters(filterQueryParser(filters)));
   }
+  console.log(filters.asc,filters.type)
 
   return (
     <form className={`menu-container ${menu && "open"}`} onSubmit={onSubmitHandler}>
@@ -66,7 +67,6 @@ export default function Filtros({ menu }){
       <button
       className='button1'
         name="sortby"
-        type="button"
         onClick={onSwitchHandler}
       >
         {/* cambiar por ícono */}
@@ -87,7 +87,7 @@ export default function Filtros({ menu }){
         
       <button
         type="submit"
-        className="btn btn-primary h-25"
+        className="btn btn-primary h-50"
         onClick={onSubmitHandler}
       >
         <i className="fas fa-search">Go</i>
@@ -95,7 +95,7 @@ export default function Filtros({ menu }){
 
       <button
         type="button"
-        className="btn btn-primary h-25"
+        className="btn btn-primary h-50"
         onClick={onResetHandler}
       >
         {/* cambiar por ícono */}
