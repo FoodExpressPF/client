@@ -23,9 +23,10 @@ export default function Detail() {
         </Link>
 
         {!!details ? (
-          <div class="card" className={style.sub_container}>
+          <div className={style.sub_container}>
             <div className={style.container_elements}>
-              <div className={style.image_container} class="text-center">
+              <div className={style.image_container} class="text text-center">
+              <br/>
                 <img
                   className={style.the_image}
                   src={details.image}
@@ -33,6 +34,8 @@ export default function Detail() {
                   heigth="450px"
                   alt="Loading"
                 />
+                <br/><br/>
+
               </div>
               <div className={style.text_container}>
                 <h2 className="h1 font-weight-bold mb-4 text-white card-title">
