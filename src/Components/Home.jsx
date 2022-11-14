@@ -1,6 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getFoods } from "../Actions/actions";
+import {
+  addToCart,
+  clearCart,
+  delFromCart,
+  getFoods,
+} from "../Actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
 import Paginated from "./Paginated/Paginated";
@@ -9,6 +14,7 @@ import { Link } from "react-router-dom";
 import "../CSS/Card.css";
 import "../CSS/Home.css";
 import Filtros from "./Filtros";
+import CartItem from "./CartItem";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -20,6 +26,11 @@ export default function Home() {
   const indexFirstPlate = indexLastPlate - platesPerPage;
   const currentPlates = allPlate.slice(indexFirstPlate, indexLastPlate);
   const [menu, setMenu] = useState(false);
+
+  const state = useSelector((state) => state);
+
+  const plates = useSelector((state) => state.plates);
+  const cart = useSelector((state) => state.cart);
 
   const paginated = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -89,16 +100,16 @@ export default function Home() {
               return (
                 <div className="col">
                   <div className="card" key={c.id}>
-                    <Link className="textLink" to={"/foods/" + c.id}>
-                      <Card
-                        key={c.id}
-                        id={c.id}
-                        name={c.name}
-                        rating={c.rating}
-                        price={c.price}
-                        image={c.image}
-                      />
-                    </Link>
+                    <Link className="textLink" to={"/foods/" + c.id}></Link>
+                    <Card
+                      key={c.id}
+                      id={c.id}
+                      name={c.name}
+                      rating={c.rating}
+                      price={c.price}
+                      image={c.image}
+                      addToCart={() => dispatch(addToCart(c.id))}
+                    />
                   </div>
                 </div>
               );
@@ -106,6 +117,18 @@ export default function Home() {
           </div>
         </>
       )}
+      <h3>Carrito</h3>
+      <article className="box">
+        <button onClick={() => dispatch(clearCart())}>Limpiar Carrito</button>
+        {cart.map((item, index) => (
+          <CartItem
+            key={index}
+            data={item}
+            delOneFromCart={() => dispatch(delFromCart(item.id))}
+            delAllFromCart={() => dispatch(delFromCart(item.id, true))}
+          />
+        ))}
+      </article>
     </div>
   );
 }

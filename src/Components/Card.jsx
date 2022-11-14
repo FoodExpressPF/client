@@ -1,7 +1,8 @@
 import React from "react";
+
 import "../CSS/Card.css";
 
-export default function Card({ name, price, rating, image }) {
+export default function Card({ addToCart, name, price, rating, image, id }) {
   return (
     <div className="container">
       <div>
@@ -29,6 +30,7 @@ export default function Card({ name, price, rating, image }) {
           </strong>
         </p>
       </div>
+      <button onClick={() => addToCart(id)}>Agregar</button>
     </div>
   );
 }
