@@ -8,7 +8,7 @@ import LogoutButton from "./login/Logout";
 const NavBar = () => {
   const { isAuthenticated } = useAuth0();
   return (
-    <nav className="navbar navbar-expand-lg py-0 bg-light">
+    <nav className="navbar navbar-expand-lg py-0 bg-dark">
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -24,22 +24,22 @@ const NavBar = () => {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 w-75">
-            <li className="nav-item">
-              <Link to="/home" className="nav-link active fs-5">
+            <li>
+              <Link to="/home" className="nav-link active fs-5 border-dark text-light">
                 Home
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link active fs-5" to="/createProduct">
-                Create New Product
+              <Link className="nav-link active fs-5 text-light" to="/createProduct">
+                New Product
               </Link>
             </li>
 
-            {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+            {isAuthenticated ? <LogoutButton/> : <LoginButton />}
 
             <li className="nav-item">
-              <Link className="nav-link active" to="/">
+              <Link className="nav-link active text-light" to="/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0(); //loginWithRedirect redirecciona al usuario al formulario de Auth0 para iniciar o crear una cuenta
   return (
+
     <li className="nav-item">
       <Link
         onClick={() => loginWithRedirect()}
-        className="nav-link active fs-5"
+        className="nav-link active fs-5 bg-dark text-light"
       >
         login
       </Link>
