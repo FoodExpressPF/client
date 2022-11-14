@@ -5,8 +5,8 @@ const LogoutButton = () => {
   const { logout } = useAuth0(); //logout es una funcion que permite cerrar la cuenta, su returnTo recibe la url a la que es redirigido el cliente luego de cerrar su cuenta(cambiarla a la deseada por ustedes)
 
   return (
-    <li className="nav-item">
-      <button onClick={() => logout()} className="nav-link active fs-5">
+    <li className="nav-item pt-1">
+      <button onClick={() => logout()} className="btn btn-outline-light">
         logout
       </button>
     </li>

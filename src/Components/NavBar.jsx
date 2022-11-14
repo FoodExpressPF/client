@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "./login/login";
 import LogoutButton from "./login/Logout";
+import useCheckRoles from "../utils/checkRoles";
 
 const NavBar = () => {
   const { isAuthenticated } = useAuth0();
+  
+  const isAdmin= useCheckRoles('admin')
+
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  useEffect(()=>{
+    setIsAuthorized(isAdmin)
+  },[isAdmin])
+
   return (
-    <nav className="navbar navbar-expand-lg py-0 bg-light">
+    <nav className="navbar navbar-expand-lg py-0 fixed-top navbar-dark"  style={{"background-color": "#00000070"}}>
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -30,13 +39,14 @@ const NavBar = () => {
               </Link>
             </li>
 
-            <li className="nav-item">
-              <Link className="nav-link active fs-5" to="/createProduct">
-                Create New Product
-              </Link>
-            </li>
+            {isAuthorized
+            &&
+              <li className="nav-item">
+                <Link className="nav-link active fs-5" to="/createProduct">
+                  Create New Product
+                </Link>
+              </li>}
 
-            {isAuthenticated ? <LogoutButton /> : <LoginButton />}
 
             <li className="nav-item">
               <Link className="nav-link active">
@@ -52,6 +62,7 @@ const NavBar = () => {
                 </svg>
               </Link>
             </li>
+            {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           </ul>
         </div>
       </div>

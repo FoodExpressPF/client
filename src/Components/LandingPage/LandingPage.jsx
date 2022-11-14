@@ -10,12 +10,11 @@ import LogoutButton from "../login/Logout";
 import ModalAuth from './ModalAuth'
 
 
-
 export default function LandingPage() {
-    const { isAuthenticated } = useAuth0();
-    const history = useHistory();
-    console.log(useAuth0)
+  
 
+  const history = useHistory();
+  const { isAuthenticated } = useAuth0();
     
     return (
 
