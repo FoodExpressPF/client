@@ -3,7 +3,7 @@
 
 export const INITIAL_FILTERS = {
   name: '',
-  type: '',
+  type: 'All',
   sortby: 'name',
   offer: 'all',
   asc: false,
