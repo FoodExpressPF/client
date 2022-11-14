@@ -17,14 +17,16 @@
 }
 
 .slct {
-    color: rgb(255, 255, 255);
-    background-color: orange;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 226, 173);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border-radius: 10px;
     border-radius: 1rem;
     cursor: pointer;
     padding: 4px;
-    font-size: 20px;
-    border-color: orange;
+    font-size: 17px;
+    text-align: center;
+    border-color: rgba(250, 204, 118, 0.411);
 }
 
 .slct:hover {
@@ -36,16 +38,17 @@
 
 .button1 {
     color: rgb(255, 255, 255);
-    background-color: orange;
+    background-color: rgb(255, 206, 116);
     border-radius: 10px;
     cursor: pointer;
     font-size: 20px;
     border-color: orange;
+    
 }
 
 
 .button1 :hover {
-    background-color: rgb(255, 192, 75);
+    background-color: rgb(255, 170, 148);
     scale: 1.1;
     transition: 0.8s;
 }
