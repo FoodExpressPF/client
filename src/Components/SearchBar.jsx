@@ -25,7 +25,7 @@ export default function SearchBar({ setCurrentPage }) {
     <div className="input-group justify-content-center">
       <div className="form-outline w-75">
         <input
-          // typeName="search"
+          typeName="search"
           name="search"
           id="form1"
           className="form-control"

@@ -6,7 +6,7 @@ const LogoutButton = () => {
 
   return (
     <li className="nav-item">
-      <button onClick={() => logout()} className="nav-link active fs-5">
+      <button onClick={() => logout()} className="nav-link active fs-5 text-light">
         logout
       </button>
     </li>

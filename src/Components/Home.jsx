@@ -35,12 +35,20 @@ export default function Home() {
   return (
     <div className="back">
       <div>
-        <h1 className="titleHome">Food-Express</h1>
+        <h1 className="titleHome">
+          <br/>
+
+          <img
+            src="https://res.cloudinary.com/dowhfu3fj/image/upload/v1668061068/recipes/Dise%C3%B1o_sin_t%C3%ADtulo_7_ia4jsg.png"
+            alt="logo"
+            align="left"
+            className="logo"/>
+            </h1>
       </div>
       <nav className="navbar">
         <div>
           <div className="btn-group">
-            <button className="buttonFiltros" onClick={() => handleOnClick()}>
+            <button className="buttonFiltros bg-dark" onClick={() => handleOnClick()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -58,13 +66,12 @@ export default function Home() {
             </button>
           </div>
         </div>
-
-        <div>
-          <SearchBar setCurrentPage={setCurrentPage} />
-        </div>
       </nav>
 
-      <Filtros menu={menu} />
+      <Filtros 
+        menu={menu} 
+        setCurrentPage={setCurrentPage}
+      />
 
       {loading ? (
         <div className="text-center">
@@ -74,15 +81,7 @@ export default function Home() {
         </div>
       ) : (
         <>
-          <div>
-            <Paginated
-              platesPerPage={platesPerPage}
-              setCurrentPage={setCurrentPage}
-              allPlate={allPlate.length}
-              paginated={paginated}
-              currentPage={currentPage}
-            />
-          </div>
+          
 
           <div className="row row-cols-1 row-cols-md-3 g-4">
             {currentPlates?.map((c) => {
@@ -103,6 +102,15 @@ export default function Home() {
                 </div>
               );
             })}
+          </div>
+          <div>
+            <Paginated
+              platesPerPage={platesPerPage}
+              setCurrentPage={setCurrentPage}
+              allPlate={allPlate.length}
+              paginated={paginated}
+              currentPage={currentPage}
+            />
           </div>
         </>
       )}

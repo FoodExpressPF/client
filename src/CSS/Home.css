@@ -1,11 +1,21 @@
-.back {
+/* .back {
     background: #DBE6F6;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, rgb(252, 223, 169), #DBE6F6);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, rgb(255, 223, 163), #DBE6F6);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+    background: -webkit-linear-gradient(to right, rgb(252, 223, 169), #DBE6F6);
+
+    background: linear-gradient(to right, rgb(255, 223, 163), #DBE6F6);
+
+
+} */
+
+.back{
+    background-image: url(../images/WhatsApp\ Image\ 2022-11-13\ at\ 15.48.36.jpeg);
+    display: grid;
+    justify-content: center;
+    background-size: cover;
+    align-items: center;
+    align-content: center;
+    background-attachment: fixed;
 }
 
 .buttonFiltros {
@@ -29,4 +39,9 @@
     color: orange;
     align-content: center;
     size: 40px;
+}
+
+.logo{
+    width: 250px;
+    height: 260px;
 }

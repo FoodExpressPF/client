@@ -11,7 +11,7 @@ export default function Filtros({ menu }){
   const [ filters, setFilters ] = useState(INITIAL_FILTERS);
 
   const onChangeHandler = (e) => setFilters({...filters, [e.target.name]: e.target.value});
-  const onToggleHandler = (e) => setFilters({...filters, [e.target.name]: !filters[e.target.name]});
+  // const onToggleHandler = (e) => setFilters({...filters, [e.target.name]: !filters[e.target.name]});
   const onSwitchHandler = (e) => setFilters({...filters, [e.target.name]: SWITCH_HANDLER[filters[e.target.name]]});
   
   const onResetHandler = () => setFilters(INITIAL_FILTERS);
@@ -20,6 +20,7 @@ export default function Filtros({ menu }){
     e.preventDefault();
     dispatch(getByFilters(filterQueryParser(filters)));
   }
+  console.log(filters.asc,filters.type)
 
   return (
     <form className={`menu-container ${menu && "open"}`} onSubmit={onSubmitHandler}>
@@ -53,20 +54,19 @@ export default function Filtros({ menu }){
         )}
       </select>
 
-      <button
-      className='button1'
+      <select
+      className="slct"
         name="asc"
-        type="button"
-        onClick={onToggleHandler}
+        value={filters.asc ? 'asc' : 'desc'}
       >
-        {/* cambiar por ícono */}
-        {filters.asc ? 'asc' : 'desc'}
-      </button>
+        <option value={null} onClick={e => onChangeHandler(e)} disabled>Alphabetic</option>
+        <option onClick={e => onChangeHandler(e)}value="asc">Asc</option>
+        <option onClick={e => onChangeHandler(e)}value="desc">Desc</option>
+      </select>
 
       <button
       className='button1'
         name="sortby"
-        type="button"
         onClick={onSwitchHandler}
       >
         {/* cambiar por ícono */}
