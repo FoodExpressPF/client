@@ -8,7 +8,11 @@ const LoginButton = () => {
     <li className="nav-item bg-dark">
       <button
         onClick={() => loginWithRedirect()}
+<<<<<<< HEAD
+        className="btn btn-outline-light me-2"
+=======
         className="nav-link active fs-5 bg-dark text-light"
+>>>>>>> 45534930a4f68f6efbba1460f0e2ee996a25051a
       >
         login
       </button>

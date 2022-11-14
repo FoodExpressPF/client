@@ -1,24 +1,23 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import "../CSS/SearchBar.css";
+import "../CSS/SearchBar.css"
 
-export default function SearchBar({ setCurrentPage }) {
-  const dispatch = useDispatch();
-  const [name, setname] = useState("");
+export default function SearchBar({setCurrentPage}){
+    const dispatch = useDispatch();
+    const [name , setname] = useState("");
 
-  function handleInput(e) {
-    e.preventDefault(e);
-    setname(e.target.value);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault(e);
-    if (name !== "" && isNaN(name)) {
-      setname("");
-      setCurrentPage(1);
-    } else {
-      alert("Please make sure to fill the input correctly");
+    function handleInput(e){
+        e.preventDefault(e);
+        setname(e.target.value);
     }
+    function handleSubmit(e){
+      e.preventDefault(e)
+      if(name !== '' && isNaN(name)){
+          setname("");
+          setCurrentPage(1)
+      }else{
+          alert("Please make sure to fill the input correctly");
+      }
   }
 
   return (

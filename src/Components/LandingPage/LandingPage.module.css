@@ -1,7 +1,7 @@
 .container{
     position: relative;
     width: 100%;
-    height: 90vh;
+    height: 100vh;
 }
 
 .containerNav{
@@ -14,7 +14,11 @@
 
 
 .logo{
+<<<<<<< HEAD
+    max-height: 120px;
+=======
     max-height: 200px;
+>>>>>>> 45534930a4f68f6efbba1460f0e2ee996a25051a
 }
 
 .navButton{
@@ -36,7 +40,7 @@
 .containerImageHero{
     position:absolute;
     width: 100vw;
-    min-height: 100vh;
+    height: 100%;
     object-fit: cover;
     object-position: center;
     top: 0;
@@ -46,19 +50,19 @@
 
 .heroButton{
     position: absolute;
-    bottom: 8vh;
+    bottom: 15vh;
     left: 20vw;
 
     width: fit-content;
     height: fit-content;
     border-radius: 15px;
     border-width: 0;
-    padding: 10px 30px;
+    padding: 10px 50px;
 
     background-color: orange;
     box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.555);
     
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: white;
     text-decoration: none;
