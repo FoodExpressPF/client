@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "./login/login";
 import LogoutButton from "./login/Logout";
+import useCheckRoles from "../utils/checkRoles";
 
 const NavBar = () => {
   const { isAuthenticated } = useAuth0();
+  
+  const isAdmin= useCheckRoles('admin')
+
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  useEffect(()=>{
+    setIsAuthorized(isAdmin)
+  },[isAdmin])
+
   return (
+<<<<<<< HEAD
+    <nav className="navbar navbar-expand-lg py-0 fixed-top navbar-dark"  style={{"background-color": "#00000070"}}>
+=======
     <nav className="navbar navbar-expand-lg py-0 bg-dark">
+>>>>>>> 45534930a4f68f6efbba1460f0e2ee996a25051a
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -30,6 +43,19 @@ const NavBar = () => {
               </Link>
             </li>
 
+<<<<<<< HEAD
+            {isAuthorized
+            &&
+              <li className="nav-item">
+                <Link className="nav-link active fs-5" to="/createProduct">
+                  Create New Product
+                </Link>
+              </li>}
+
+
+            <li className="nav-item">
+              <Link className="nav-link active">
+=======
             <li className="nav-item">
               <Link className="nav-link active fs-5 text-light" to="/createProduct">
                 New Product
@@ -40,6 +66,7 @@ const NavBar = () => {
 
             <li className="nav-item">
               <Link className="nav-link active text-light" to="/">
+>>>>>>> 45534930a4f68f6efbba1460f0e2ee996a25051a
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -52,6 +79,7 @@ const NavBar = () => {
                 </svg>
               </Link>
             </li>
+            {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           </ul>
         </div>
       </div>

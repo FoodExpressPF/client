@@ -42,56 +42,51 @@ const ProductsForm = () => {
         setResponse(response.data.message);
         setLoading(false);
       })
-      .catch((error) => {
-        setResponse(error.response.data);
-        setLoading(false);
-      });
-  };
-  console.log("response", response);
+     .then(response => {
+      setResponse(response.data.message)
+      setLoading(false)
+     })
+     .catch(error=>{
+      setResponse(error.response.data)
+      setLoading(false)
+     });
+     formik.resetForm()
+  }
+  console.log('response',response)
 
-  const formik = useFormik({ initialValues, validationSchema, onSubmit });
-  const { handleSubmit, handleChange, handleBlur, errors, touched, values } =
-    formik;
+  const formik =useFormik({initialValues,validationSchema,onSubmit})
+  const {handleSubmit, handleChange, handleBlur, errors, touched,values} = formik
 
-  return (
-    <div>
-      <h2 className="mt-3 text-center">Create New Product</h2>
+  return (  
+      <div>
+        <h2 className='mt-3 text-center'>Create New Product</h2>
 
-      <div
-        className="modal fade"
-        id="exampleModal"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              {loading ? (
-                <div className="d-flex justify-content-center">
-                  <div className="spinner-border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  <h5 className="modal-title">{response}</h5>
-                </div>
-              )}
-            </div>
+        
+        <div class="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                 {loading? 
+                   <div class="d-flex justify-content-center">
+                   <div class="spinner-border" role="status">
+                     <span class="visually-hidden">Loading...</span>
+                   </div>
+                 </div>
+                   :<div>
+                      <h5 className="modal-title">{response}</h5>
+                    </div>    
+                  }
+               </div>
 
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+                 <div className="modal-footer">
+                   <button 
+                   type="button" 
+                   className="btn btn-secondary" 
+                   data-bs-dismiss="modal">Close</button>
+                 </div>
+               </div>
+           </div>
+         </div>
 
       <form className="mx-auto w-50 my-5" onSubmit={handleSubmit}>
         {/* IMAGE */}
