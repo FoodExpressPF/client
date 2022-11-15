@@ -90,15 +90,15 @@ export default function Home() {
                   <div className="card">
                     <Link className="textLink" to={"/foods/" + c.id}>
                       {" "}
+                      <Card
+                        id={c.id}
+                        name={c.name}
+                        rating={c.rating}
+                        price={c.price}
+                        image={c.image}
+                        Cart={Cart}
+                      />
                     </Link>
-                    <Card
-                      id={c.id}
-                      name={c.name}
-                      rating={c.rating}
-                      price={c.price}
-                      image={c.image}
-                      Cart={Cart}
-                    />
                   </div>
                 </div>
               );
