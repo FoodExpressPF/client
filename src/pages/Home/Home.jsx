@@ -133,7 +133,7 @@ export default function Home() {
                   <div className="card">
                     <Link className="textLink" to={"/foods/" + c.id}>
                       {" "}
-                    </Link>
+                    
                     <Card
                       id={c.id}
                       name={c.name}
@@ -142,6 +142,7 @@ export default function Home() {
                       image={c.image}
                       agregar={() => agregar(c)}
                     />
+                    </Link>
                   </div>
                 </div>
               );
