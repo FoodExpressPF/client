@@ -29,16 +29,16 @@ export const getByFilters = ( filters ) =>
       .catch(error => console.log(error))
 ;
 
-export const getDetail = ( id ) => {
+export const getDetail = ( id ) => 
   dispatch => 
-    axios.get(`${API_PATH}/foods/${id}`)
+    axios(`${API_PATH}/foods/${id}`)
       .then(response => response.data)
       .then(data => dispatch({
         type: GET_DETAIL,
         payload: data,
       }))
       .catch(error => console.log(error))
-}
+;
 
 export const clearDetail = () => {
   return { type: CLEAR_DETAIL }
