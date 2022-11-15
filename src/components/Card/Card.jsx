@@ -1,17 +1,29 @@
 import React from "react";
+import { useState } from "react";
 
 import "./Card.css";
 
-function Card({ addToCart, name, price, rating, image, id }) {
+function Card({ agregar, name, price, rating, image, id }) {
+  const [cantidad, setCantidad] = useState(1);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const carritoDeCompras = {
+      id,
+      name,
+      price,
+      cantidad: cantidad,
+    };
+    agregar(carritoDeCompras);
+    //console.log(carritoDeCompras);
+  };
+
   return (
     <div className="container">
       <div>
         <img className="cardImage" src={image} alt="..." />
       </div>
       <div className="card-body">
-        <h5 className="card-title font-weight-bold text-center">
-          {name}
-        </h5>
+        <h5 className="card-title font-weight-bold text-center">{name}</h5>
         <p className="mb-3">Price: ${price}</p>
         <hr className="my-4" />
         <p className="lead">
@@ -30,7 +42,9 @@ function Card({ addToCart, name, price, rating, image, id }) {
           </strong>
         </p>
       </div>
-      <button onClick={() => addToCart(id)}>Agregar</button>
+      <form onSubmit={handleSubmit}>
+        <input type="submit" value="agregar al carrito" />
+      </form>
     </div>
   );
 }
