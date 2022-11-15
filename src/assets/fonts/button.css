@@ -1,0 +1,13 @@
+#buttonOrange {
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 206, 116);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#buttonOrange :hover {
+    background-color: rgb(255, 170, 148);
+    scale: 1.1;
+    transition: 0.8s;
+}

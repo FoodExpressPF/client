@@ -7,7 +7,7 @@ export const GET_DETAIL = 'GET_DETAIL';
 export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 
 
-export const getPlates = () => 
+export const getPlates = () =>
   dispatch =>
     axios(`${API_PATH}/foods`)
       .then(response => response.data)
@@ -16,9 +16,9 @@ export const getPlates = () =>
         payload: data,
       }))
       .catch(error => console.log(error))
-;
+  ;
 
-export const getByFilters = ( filters ) => 
+export const getByFilters = (filters) =>
   dispatch =>
     axios(`${API_PATH}/foods?${filters}`)
       .then(response => response.data)
@@ -26,11 +26,11 @@ export const getByFilters = ( filters ) =>
         type: GET_PLATES_BY_FILTERS,
         payload: data,
       }))
-      .catch(error => console.log(error))
-;
+      .catch(alert(`name ${filters} not found`))
+  ;
 
-export const getDetail = ( id ) => 
-  dispatch => 
+export const getDetail = (id) =>
+  dispatch =>
     axios(`${API_PATH}/foods/${id}`)
       .then(response => response.data)
       .then(data => dispatch({
@@ -38,7 +38,7 @@ export const getDetail = ( id ) =>
         payload: data,
       }))
       .catch(error => console.log(error))
-;
+  ;
 
 export const clearDetail = () => {
   return { type: CLEAR_DETAIL }

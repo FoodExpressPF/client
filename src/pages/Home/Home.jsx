@@ -51,8 +51,8 @@ export default function Home() {
       </div>
       <nav className="navbar">
         <div>
-          <div className="btn-group">
-            <button className="buttonFiltros bg-dark" onClick={() => handleOnClick()}>
+          <div>
+            <button className="button1" onClick={() => handleOnClick()}>
               <svg
                 className="bi bi-sliders"
                 xmlns="http://www.w3.org/2000/svg"
