@@ -195,7 +195,7 @@ export default function Home() {
         <h4>total:</h4>
         {total > 0 ? (
           <>
-            <p>${total}</p>
+            <p>{total}</p>
           </>
         ) : (
           <p>carrito vacio</p>
