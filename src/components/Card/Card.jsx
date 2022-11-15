@@ -3,19 +3,10 @@ import { useState } from "react";
 
 import "./Card.css";
 
-function Card({ agregar, name, price, rating, image, id }) {
-  const [cantidad, setCantidad] = useState(1);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const carritoDeCompras = {
-      id,
-      name,
-      price,
-      cantidad: cantidad,
-    };
-    agregar(carritoDeCompras);
-    //console.log(carritoDeCompras);
-  };
+function Card({ id, name, price, rating, image, Cart }) {
+  //const [cantidad, setCantidad] = useState(1);
+
+  const addCartHandler = () => Cart.add({id, name, price});
 
   return (
     <div className="container">
@@ -42,9 +33,13 @@ function Card({ agregar, name, price, rating, image, id }) {
           </strong>
         </p>
       </div>
-      <form onSubmit={handleSubmit}>
-        <input type="submit" value="agregar al carrito" />
-      </form>
+      <button
+        className=""
+        type="button"
+        onClick={addCartHandler}
+      >
+        Agregar al carrito
+      </button>
     </div>
   );
 }
