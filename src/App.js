@@ -1,30 +1,46 @@
-import "./App.css";
-import { Route } from "react-router-dom";
+// Libraries
+import { Route, Redirect, Switch } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
-import LandingPage from "./Components/LandingPage/LandingPage";
-import Home from "./Components/Home";
-import ProductsForm from "./Components/ProductsForm";
-import Detail from "./Components/Detail/Detail";
-import NavBar from "./Components/NavBar";
+// Pages & Components
+import Landing from "./pages/Landing/Landing.jsx";
+import Home from "./pages/Home/Home.jsx";
+import ProductsForm from "./pages/ProductsForm/ProductsForm.jsx";
+import Detail from "./pages/Detail/Detail.jsx";
+import NavBar from "./components/NavBar/NavBar.jsx";
+
+// Styles
+import "./assets/styles/globalStyles.css";
+import "./assets/fonts/fonts.css";
+
 
 function App() {
-  return (
-    <>
-      <Route exact path="/" component={LandingPage} />
-      <Route path="/home">
-        <NavBar />
-        <Home />
-      </Route>
-      <Route path="/createProduct">
-        <NavBar />
-        <ProductsForm />
-      </Route>
-      <Route path="/foods/:id">
-        <NavBar />
-        <Detail />
-      </Route>
-    </>
-  );
+  const { isAuthenticated } = useAuth0();
+
+  const RequireAuth = ({ children }) => {
+    if(!isAuthenticated) return <Redirect to="/"/>
+    return children;
+  }
+
+  return <>
+    <Switch>
+      <Route exact path="/" component={Landing} />
+      <RequireAuth>
+        <Route path="/home">
+          <NavBar />
+          <Home />
+        </Route>
+        <Route path="/createProduct">
+          <NavBar />
+          <ProductsForm />
+        </Route>
+        <Route path="/foods/:id">
+          <NavBar />
+          <Detail />
+        </Route>
+      </RequireAuth>
+    </Switch>
+  </>
 }
 
 export default App;

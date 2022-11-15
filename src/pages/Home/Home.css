@@ -1,0 +1,52 @@
+/* .back {
+  background: #DBE6F6;
+
+  background: -webkit-linear-gradient(to right, rgb(252, 223, 169), #DBE6F6);
+
+  background: linear-gradient(to right, rgb(255, 223, 163), #DBE6F6);
+
+  background-image: url(../../assets/imgs/Image\ 2022-11-13\ at\ 15.48.36.jpeg);
+
+} */
+
+.back {
+  display: grid;
+  justify-content: center;
+  background-size: cover;
+  align-content: center;
+  background-attachment: fixed;
+  padding: 10px;
+  margin: 10px;
+}
+
+.div-container {
+  display: flex;
+}
+
+.buttonFiltros {
+  color: orange;
+  background-color: #e0e0e000;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 20px;
+  margin: 30px;
+  border-color: orange;
+}
+
+.buttonFiltros :hover {
+  transform: scale(1.1);
+
+}
+
+.titleHome {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: orange;
+  align-content: center;
+  size: 40px;
+}
+
+.logo {
+  width: 250px;
+  height: 260px;
+}

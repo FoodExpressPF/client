@@ -1,0 +1,125 @@
+.back {
+  display: grid;
+  justify-content: center;
+  background-size: cover;
+  align-content: center;
+  background-attachment: fixed;
+  padding: 10px;
+  margin: 10px;
+}
+
+
+
+.offert {
+  font-size: larger;
+  color: rgb(255, 102, 0);
+}
+
+.menu-container {
+  display: none;
+}
+
+.menu-container.open {
+  display: block;
+  justify-content: space-around;
+  max-width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  margin: 5px;
+}
+
+.container {
+  background-color: rgb(255, 233, 193);
+  border-radius: 10px;
+  justify-content: center;
+  padding: 15px;
+  margin: 6px;
+}
+
+.containerGO {
+  justify-content: center;
+  background-size: cover;
+  align-content: center;
+  background-attachment: fixed;
+  padding: 4px;
+  margin: 2px;
+}
+
+.slct {
+  color: rgb(0, 0, 0);
+  background-color: rgb(252, 216, 150);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  border-radius: 10px;
+  border-radius: 1rem;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 17px;
+  text-align: center;
+  border-color: rgba(250, 204, 118, 0.411);
+}
+
+.slct:hover {
+  background-color: rgb(255, 192, 75);
+  scale: 1.1;
+  transition: 0.8s;
+}
+
+
+.button1 {
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 206, 116);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border-color: orange;
+}
+
+
+.button1:hover {
+  background-color: rgb(255, 183, 49);
+  scale: 1.1;
+  transition: 0.8s;
+}
+
+
+.button2 {
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 186, 58);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border-color: orange;
+}
+
+
+.button2:hover {
+  background-color: rgb(206, 135, 5);
+  scale: 1.1;
+  transition: 0.8s;
+}
+
+
+
+
+
+.btn-primary {
+  background-color: orange;
+  border-color: rgba(233, 171, 0, 0.623);
+}
+
+.btn-primary:hover {
+  background-color: rgb(255, 192, 75);
+  border-color: rgba(0, 0, 0, 0.185);
+}
+
+.form-control {
+  border-radius: 10px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form-control:hover {
+  border-color: orange;
+}
