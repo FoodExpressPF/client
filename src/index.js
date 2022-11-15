@@ -4,12 +4,11 @@ import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./Store/index";
+import store from "./redux/store.js";
 
 import { Auth0Provider } from "@auth0/auth0-react";
 
-import App from "./App";
-import "./index.css";
+import App from "./App.js";
 
 ReactDOM.render(
   <Provider store={store}>

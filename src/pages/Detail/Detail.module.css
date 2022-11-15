@@ -1,0 +1,55 @@
+.main_container{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-image: url('https://res.cloudinary.com/dowhfu3fj/image/upload/v1668132218/recipes/WhatsApp_Image_2022-11-10_at_7.59.33_PM_bfxzkn.jpg');
+  height: 100vh;
+  background-size: 203vh;
+}
+
+.sub_container{
+  background: rgba(0, 0, 0, 0.26);
+  border-radius: 2em;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  background-clip: padding-box;
+  box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+  width: 900px;
+  height: 700px;
+}
+
+
+
+.image_container{
+  width: 900px;
+  height: 1500px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.the_image{
+  height: 350px;
+  width: 400px;
+  object-fit: cover;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.text_container{
+  padding-left: 5%;
+  font-size: large;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.text_container h2{
+  margin: 0;
+  text-decoration: underline;
+  font-style: italic;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.text_container p{
+  margin: 0.6rem;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
