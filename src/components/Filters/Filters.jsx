@@ -39,7 +39,7 @@ function Filters({ menu }) {
           <label htmlFor="name"></label>
         </div>    
         <div className='container'>
-      <label>
+      <label className='offert'>
         Type:
       </label>
       <select
@@ -58,7 +58,7 @@ function Filters({ menu }) {
         </div> 
 
       <div className='container'>
-      <h4>order</h4>
+      <h4 className='offert'>order  </h4>
       <button
       className='button1'
         name="asc"
@@ -68,7 +68,7 @@ function Filters({ menu }) {
         {/* cambiar por ícono */}
         {filters.asc ? 'asc' : 'desc'}
       </button>
-      <h4>by</h4>
+      <h4 className='offert'>by  </h4>
 
       <button
       className='button1'
