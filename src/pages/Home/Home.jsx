@@ -90,15 +90,16 @@ export default function Home() {
               return (
                 <div className="col" key={c.id}>
                   <div className="card">
-                    <Link className="textLink" to={"/foods/" + c.id}></Link>
-                    <Card
-                      id={c.id}
-                      name={c.name}
-                      rating={c.rating}
-                      price={c.price}
-                      image={c.image}
-                      addToCart={() => dispatch(addToCart(c.id))}
-                    />
+                    <Link className="textLink" to={"/foods/" + c.id}>
+                      <Card
+                        id={c.id}
+                        name={c.name}
+                        rating={c.rating}
+                        price={c.price}
+                        image={c.image}
+                        addToCart={() => dispatch(addToCart(c.id))}
+                      />
+                    </Link>
                   </div>
                 </div>
               );
