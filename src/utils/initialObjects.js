@@ -4,7 +4,7 @@
 export const INITIAL_GLOBAL_STATE = {
   plates: [],
   allPlates: [],
-  detail: [],
+  detail: {},
 };
 
 export const INITIAL_FILTERS = {
