@@ -19,7 +19,7 @@ function NavBar() {
   },[isAdmin])
 
   return (
-    <nav className="navbar navbar-expand-lg py-0 fixed-top navbar-dark"  style={{backgroundColor: "#00000070"}}>
+    <nav className="navbar navbar-expand-lg py-2 fixed-top navbar-dark bg-dark">
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -41,13 +41,14 @@ function NavBar() {
               </Link>
             </li>
 
-            <li className="nav-item">
-              <Link className="nav-link active fs-5 text-light" to="/createProduct">
-                New Product
-              </Link>
-            </li>
-
-            {isAuthenticated ? <LogoutButton/> : <LoginButton />}
+            {isAuthorized
+            &&
+              <li className="nav-item">
+                <Link className="nav-link active fs-5" to="/createProduct">
+                  Create New Product
+                </Link>
+              </li>
+            }
 
             <li className="nav-item">
               <Link className="nav-link active text-light" to="/">
