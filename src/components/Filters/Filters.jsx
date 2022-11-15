@@ -27,7 +27,7 @@ function Filters({ menu }) {
     <div className='bacKfilters'>
 
     <form className={`menu-container ${menu && "open"}`} onSubmit={onSubmitHandler}>      
-        <div className='containerGO'>
+        <div className='container'>
           <input
             type="search"
             name="name"
@@ -37,7 +37,8 @@ function Filters({ menu }) {
             value={filters.name}
             />
           <label htmlFor="name"></label>
-        </div>     
+        </div>    
+        <div className='container'>
       <label>
         Type:
       </label>
@@ -54,6 +55,7 @@ function Filters({ menu }) {
         )}
       </select>
 
+        </div> 
 
       <div className='container'>
       <h4>order</h4>
@@ -77,7 +79,7 @@ function Filters({ menu }) {
         {filters.sortby}
       </button>
       </div>
-      <div className='offertContainer'>
+      <div className='container'>
 
             <label className="offert" htmlFor="offer">
         OFFERT!!
