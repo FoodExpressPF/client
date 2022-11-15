@@ -24,9 +24,10 @@ function Filters({ menu }) {
   }
 
   return (
-    <form className={`menu-container ${menu && "open"}`} onSubmit={onSubmitHandler}>
-      <div className="input-group justify-content-center">
-        <div className="form-outline w-50">
+    <div className='back'>
+
+    <form className={`menu-container ${menu && "open"}`} onSubmit={onSubmitHandler}>      
+        <div className='containerGO'>
           <input
             type="search"
             name="name"
@@ -34,19 +35,18 @@ function Filters({ menu }) {
             onChange={onChangeHandler}
             placeholder="Search for a plate..."
             value={filters.name}
-          />
-          <label className="form-label" htmlFor="name"></label>
-        </div>
-      </div>
-      <label htmlFor="type">
-        Type
+            />
+          <label htmlFor="name"></label>
+        </div>     
+      <label>
+        Type:
       </label>
       <select
         name="type"
         className="slct"
         onChange={onChangeHandler}
         value={filters.type}
-      >
+        >
         {TYPES_FOODS.map((type, i) =>
           <option value={type} key={i}>
             {type}
@@ -54,54 +54,68 @@ function Filters({ menu }) {
         )}
       </select>
 
+
+      <div className='container'>
+      <h4>order</h4>
       <button
       className='button1'
         name="asc"
         type="button"
         onClick={onToggleHandler}
-      >
+        >
         {/* cambiar por ícono */}
         {filters.asc ? 'asc' : 'desc'}
       </button>
+      <h4>by</h4>
 
       <button
       className='button1'
         name="sortby"
         onClick={onSwitchHandler}
-      >
+        >
         {/* cambiar por ícono */}
         {filters.sortby}
       </button>
+      </div>
+      <div className='offertContainer'>
 
-      <label className="form-check-label" htmlFor="offer">
+            <label className="offert" htmlFor="offer">
         OFFERT!!
       </label>
       <button
-        name="offer"
-        type="button"
-        onClick={onSwitchHandler}
+      className='button1'
+      name="offer"
+      type="button"
+      onClick={onSwitchHandler}
       >
         {/* cambiar por ícono */}
         {filters.offer}
-      </button>
         
+      </button>
+      </div>
+              <div
+              className='containerGO'>
+
       <button
-        type="submit"
-        className="btn btn-primary h-50"
-        onClick={onSubmitHandler}
+      className='button2'
+      type="submit"
+      
+      onClick={onSubmitHandler}
       >
         <i className="fas fa-search">Go</i>
       </button>
 
       <button
-        type="button"
-        className="btn btn-primary h-50"
-        onClick={onResetHandler}
+      className='button2'
+      type="button"       
+      onClick={onResetHandler}
       >
         {/* cambiar por ícono */}
         Reset
       </button>
+          </div>
     </form>
+        </div>
   )
 }
 

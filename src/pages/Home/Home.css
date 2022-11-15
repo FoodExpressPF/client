@@ -9,16 +9,18 @@
 
 } */
 
-.back{
+.back {
   display: grid;
   justify-content: center;
   background-size: cover;
   align-content: center;
   background-attachment: fixed;
-  
+  padding: 2px;
+  margin: 2px;
+
 }
 
-.div-container{
+.div-container {
   display: flex;
 }
 
@@ -45,7 +47,7 @@
   size: 40px;
 }
 
-.logo{
+.logo {
   width: 250px;
   height: 260px;
 }
