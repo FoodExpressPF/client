@@ -1,11 +1,10 @@
-.back {
+.bacKfilters {
+  background-color: rgba(255, 207, 153, 0.788);
   display: grid;
   justify-content: center;
   background-size: cover;
   align-content: center;
   background-attachment: fixed;
-  padding: 10px;
-  margin: 10px;
 }
 
 
@@ -49,7 +48,7 @@
 }
 
 .slct {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 102, 0);
   background-color: rgb(252, 216, 150);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   border-radius: 10px;
