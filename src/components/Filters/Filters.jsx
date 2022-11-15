@@ -24,7 +24,7 @@ function Filters({ menu }) {
   }
 
   return (
-    <div className='back'>
+    <div className='bacKfilters'>
 
     <form className={`menu-container ${menu && "open"}`} onSubmit={onSubmitHandler}>      
         <div className='containerGO'>

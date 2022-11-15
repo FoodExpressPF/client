@@ -15,9 +15,8 @@
   background-size: cover;
   align-content: center;
   background-attachment: fixed;
-  padding: 2px;
-  margin: 2px;
-
+  padding: 10px;
+  margin: 10px;
 }
 
 .div-container {
