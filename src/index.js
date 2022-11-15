@@ -4,12 +4,11 @@ import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./Store/index";
+import store from "./redux/store.js";
 
 import { Auth0Provider } from "@auth0/auth0-react";
 
-import App from "./App";
-import "./index.css";
+import App from "./App.js";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -19,6 +18,8 @@ ReactDOM.render(
           domain="dev-v48hxvnnc5llys6d.us.auth0.com"
           clientId="fD8Ho74aY8A7yHD5kmCMeB9wIiUD7NyH"
           redirectUri={window.location.origin}
+          useRefreshTokens
+          cacheLocation="localstorage"
         >
           <App />
         </Auth0Provider>
