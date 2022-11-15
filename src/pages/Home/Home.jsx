@@ -84,7 +84,7 @@ export default function Home() {
           <br />
           <img
             className="logo"
-            src="https://res.cloudinary.com/dowhfu3fj/image/upload/v1668061068/recipes/Dise%C3%B1o_sin_t%C3%ADtulo_7_ia4jsg.png"
+            src="https://res.cloudinary.com/dwbxodfqn/image/upload/v1668367314/express%20food/logo_naranja_png_yokalc.png"
             alt="logo"
             align="left"
           />
