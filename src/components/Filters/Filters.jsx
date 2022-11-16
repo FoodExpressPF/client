@@ -47,16 +47,10 @@ function Filters({ menu }) {
         className="slct"
         onChange={onChangeHandler}
         value={filters.type}
-<<<<<<< HEAD
-<<<<<<< HEAD:src/Components/Filtros.jsx
+
         defaultValue={TYPES_FOODS[0]}>
           <option value="">All</option>
-=======
-      >
->>>>>>> e7ea61c06476e8868ee25809a61fdf795ac7a69a:src/components/Filters/Filters.jsx
-=======
-        >
->>>>>>> ee679cb3ed0fc2b058feb8f981ae98606bce042b
+          
         {TYPES_FOODS.map((type, i) =>
           <option value={type} key={i}>
             {type}
