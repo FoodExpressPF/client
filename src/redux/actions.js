@@ -15,7 +15,7 @@ export const getPlates = () =>
         type: GET_PLATES,
         payload: data,
       }))
-      .catch(error => console.log(error))
+      .catch(error => alert(`not found, error: ${error}`))
   ;
 
 export const getByFilters = (filters) =>
@@ -26,7 +26,7 @@ export const getByFilters = (filters) =>
         type: GET_PLATES_BY_FILTERS,
         payload: data,
       }))
-      .catch(alert(`name ${filters} not found`))
+      .catch(error => alert(`not found, error: ${error}`))
   ;
 
 export const getDetail = (id) =>
@@ -37,7 +37,7 @@ export const getDetail = (id) =>
         type: GET_DETAIL,
         payload: data,
       }))
-      .catch(error => console.log(error))
+      .catch(error => alert(`not found, error: ${error}`))
   ;
 
 export const clearDetail = () => {
