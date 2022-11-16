@@ -1,20 +1,21 @@
-.divP {
-  background-color: rgba(255, 218, 149, 0);
-  border-radius: 4px;
-  margin: 12px;
-  text-decoration: none;
-  overflow: hidden;
-  justify-content: center;
-}
-
 .paginadoContainer {
-  background-color: #0000004a;
+  background-color: rgba(255, 207, 153, 0.788);
   border-radius: 99px;
   display: flex;
   align-items: center;
   align-content: center;
-  padding-left: 10px;
   justify-content: center;
+
+}
+
+.containerwe {
+  background-color: rgba(255, 207, 153, 0.788);
+  width: 1300px;
+  border-radius: 99px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+
 }
 
 .li {
@@ -33,21 +34,18 @@
 }
 
 .a {
-  border: none;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  border-radius: 30px;
-  background-color: rgb(255, 163, 34);
-  transition: all 0.25s;
-  color: #000000;
-  font-size: 1.2rem;
-  padding-right: 8px;
-  padding-top: 2px;
-  height: 30px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 206, 116);
+  border-radius: 15px;
+  cursor: pointer;
+  border-color: orange;
 }
+
 
 .a:focus,
 .a:hover,
 .a:active {
-  background-color: rgb(255, 192, 75);
-  transform: scale(1.1);
+  background-color: rgb(255, 191, 73);
+  scale: 1.1;
+  transition: 0.8s;
 }
