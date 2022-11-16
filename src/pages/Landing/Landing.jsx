@@ -38,8 +38,12 @@ function Landing() {
         data-bs-target="#exampleModal"
         onClick={()=>history.push("/home")}
       >
-        Home
+        Go!
       </button>
+      <div className={style.text}>
+      <h3>We Are Preparing Delicious Food For You...</h3>
+      <h3 className={style.textTwo}>Book Or Place Your Order Now!</h3>
+      </div>
     </div>
   </>
 }
