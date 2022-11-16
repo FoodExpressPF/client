@@ -21,7 +21,7 @@ function Detail() {
         <button className="btn btn-primary h-25">Back</button>
       </Link>
 
-      { !!details ?
+      { details ?
         <div className={`card-detail ${style.sub_container}`}>
           <div className={style.container_elements}>
             
@@ -38,6 +38,7 @@ function Detail() {
               <br></br><br></br>
               <span className={style.shop_buttons}>
                 <button className={style.remove_button}>-</button>
+                <p className="card-text text-white"></p>
                 <button className={style.add_button}>+</button>
               </span>
               <div className={style.shop_end}><button>Add to cart</button></div>
