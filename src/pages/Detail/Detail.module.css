@@ -1,36 +1,41 @@
 .main_container{
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: center;
+  display: grid;
   align-content: center;
-  background-image: url('https://res.cloudinary.com/dowhfu3fj/image/upload/v1668132218/recipes/WhatsApp_Image_2022-11-10_at_7.59.33_PM_bfxzkn.jpg');
+  justify-content: center;
+  background-image: url('https://res.cloudinary.com/dbepwtmru/image/upload/v1668552203/Swirly_pattern_wallpaper_lktlvs.jpg');
   height: 100vh;
-  background-size: 203vh;
+  background-size: 215vh;
 }
 
 .sub_container{
-  background: rgba(0, 0, 0, 0.26);
+  background: rgb(28, 27, 27);
   border-radius: 2em;
   backdrop-filter: blur(15px);
   border: 2px solid rgba(255, 255, 255, 0.05);
   background-clip: padding-box;
   box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
-  width: 900px;
-  height: 700px;
 }
 
-
+.container_elements{
+  display:flex;
+  flex-direction: row;
+  text-align: left;
+  padding: 1rem;
+  max-width: 1100px;
+  max-height: 1000px;
+}
 
 .image_container{
-  width: 900px;
-  height: 1500px;
   border-radius: 5px;
   object-fit: cover;
 }
 
 .the_image{
-  height: 350px;
-  width: 400px;
+  max-height: 500px;
+  max-width: 500px;
   object-fit: cover;
   padding: 10px;
   border-radius: 20px;
@@ -52,4 +57,52 @@
 .text_container p{
   margin: 0.6rem;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.shop_buttons{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add_button{
+  color: rgb(255, 255, 255);
+  background-color: rgb(31, 149, 31);
+  border-radius: 10px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  border-color: rgb(58, 117, 32);
+}
+
+.add_button:hover{
+  color: black;
+  background-color: rgb(176, 254, 146);
+  scale: 1.1;
+  transition: 0.3s;
+}
+
+.remove_button{
+  color: rgb(255, 255, 255);
+  background-color: rgb(200, 26, 26);
+  border-radius: 10px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  border-color: rgb(67, 9, 9);
+}
+
+.remove_button:hover{
+  color: black;
+  background-color: rgb(255, 171, 171);
+  scale: 1.1;
+  transition: 0.3s;
+}
+
+.shop_end{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

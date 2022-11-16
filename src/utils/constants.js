@@ -2,6 +2,8 @@
 
 export const API_PATH = 'http://localhost:3001';
 
+export const PLATES_PER_PAGE = 3;
+
 export const TYPES_FOODS = ["All", "Gluten Free", "Vegetarian", "Vegan", "Protein", "Others"];
 
 export const SWITCH_HANDLER = {

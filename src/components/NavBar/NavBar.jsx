@@ -19,7 +19,10 @@ function NavBar() {
   },[isAdmin])
 
   return (
-    <nav className="navbar navbar-expand-lg py-2 fixed-top navbar-dark bg-dark">
+    <nav 
+      className="navbar navbar-expand-lg py-2 fixed-top navbar-light"
+      style={{'backgroundColor':'#fc3a22'}}
+    >
       <div className="container-fluid">
         <button
           className="navbar-toggler"
