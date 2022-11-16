@@ -1,0 +1,32 @@
+.categoryNav{
+  vertical-align: auto;
+  position: sticky;
+  top: 55px;
+  height: 60px;
+  background-color: #ffffff80;
+}
+
+.categoryNavContent{
+  display: flex;
+  justify-content: space-between;
+
+  list-style: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 10px;
+}
+
+.buttonFiltros {
+  color: blac;
+  background-color: #e0e0e000;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 20px;
+  border-color: orange;
+}
+
+.buttonFiltros :hover {
+  transform: scale(1.1);
+
+}

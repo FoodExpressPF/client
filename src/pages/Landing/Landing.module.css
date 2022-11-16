@@ -14,7 +14,7 @@
 
 
 .logo{
-  max-height: 120px;
+  max-height: 150px;
 }
 
 .navButton{
@@ -70,4 +70,15 @@
   cursor: pointer;
   transform: scale(1.1);
   color: white;
+}
+
+.text{
+  font-family:cursive;
+  color: white;
+  margin-top: 330px;
+  margin-left: 90px;
+}
+
+.textTwo{
+  margin-left: 70px;
 }
