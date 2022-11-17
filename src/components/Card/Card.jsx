@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 import "./Card.css";
 
-function Card({ id, name, price, rating, image, Cart }) {
+function Card({ id, name, price, rating, image, Cart, addHandler }) {
   //const [cantidad, setCantidad] = useState(1);
 
-  const addCartHandler = () => Cart.add({id, name, price});
+  console.log(Cart.items)
 
   return (
     <div className="container">
@@ -16,11 +16,11 @@ function Card({ id, name, price, rating, image, Cart }) {
         </Link>
       </div>
       <div className="card-body">
-        <h5 className="card-title font-weight-bold text-center">{name}</h5>
-        <p className="mb-3">  Price: ${price}</p>
+        <h5 className="title-text card-title font-weight-bold text-center">{name}</h5>
+        <p className="card-text mb-3">  Price: ${price}</p>
         <hr className="my-4" />
-        <p className="lead">
-          <strong>
+        <p className="card-text lead">
+          <strong className="d-flex align-items-baseline">
             {rating}/5
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@ function Card({ id, name, price, rating, image, Cart }) {
       <button
         className=""
         type="button"
-        onClick={addCartHandler}
+        onClick={()=>addHandler(id,name,price)}
       >
         Agregar al carrito
       </button>

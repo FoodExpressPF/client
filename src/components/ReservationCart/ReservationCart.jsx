@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { buy } from "../../redux/actions";
 import "./ReservationCart.css";
 
 function ReservationCart({ Cart }) {
   const dispatch = useDispatch();
+
+  
 
   const total = () => {
     let total = Cart.items.reduce((acum, act) => {
@@ -14,7 +16,7 @@ function ReservationCart({ Cart }) {
     dispatch(buy({ total })).then((url) => (window.location.href = `${url}`));
   };
   return (
-    <>
+    <div className="cartContainer sticky-top">
       <h3>Carrito</h3>
       <span>
         cantidad carrito: {Cart.items?.length} {/*Hacer lo de la bolita*/}
@@ -81,7 +83,7 @@ function ReservationCart({ Cart }) {
           <button onClick={() => total()}>Buy</button>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
