@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store.js";
 
 import { Auth0Provider } from "@auth0/auth0-react";
-
+import axios from 'axios'
 import App from "./App.js";
 import dotenv from 'dotenv'
 dotenv.config();
