@@ -5,6 +5,7 @@ export const INITIAL_GLOBAL_STATE = {
   plates: [],
   allPlates: [],
   detail: {},
+  user:{}
 };
 
 export const INITIAL_FILTERS = {
