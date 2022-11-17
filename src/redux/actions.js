@@ -16,7 +16,7 @@ export const getPlates = () =>
         type: GET_PLATES,
         payload: data,
       }))
-      .catch(error => alert(`not found, error: ${error}`))
+      .catch(error => console.log(`not found, error: ${error}`))
   ;
 
 export const getByFilters = (filters) =>
