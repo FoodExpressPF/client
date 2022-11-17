@@ -20,6 +20,7 @@ function Contact(){
                         <img src="https://res.cloudinary.com/dowhfu3fj/image/upload/v1668061068/recipes/Dise%C3%B1o_sin_t%C3%ADtulo_7_ia4jsg.png" alt="logo"/>
                     </a>
                     </figure>
+                    <p className="dir">Calle Uriarte 1423, Buenos Aires C1414DAM Argentina</p>
                 </div>
                 <div className="box">
                     <h2>Location</h2>
