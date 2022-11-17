@@ -24,8 +24,8 @@ function NavBar() {
 
   return (
     <nav 
-      className="navbar navbar-expand-lg py-2 fixed-top navbar-light"
-      style={{'backgroundColor':'#fc3a22'}}
+      className="navbar navbar-expand-lg py-2 fixed-top navbar-light shadow-lg p-3 mb-5"
+      style={{'backgroundColor':'#321313'}}
     >
       <div className="container-fluid">
         <button
@@ -41,6 +41,13 @@ function NavBar() {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <img
+            className="logo"
+            src="https://res.cloudinary.com/dbepwtmru/image/upload/v1668614395/Food-express-logo_j8wbz5.png"
+            alt="logo"
+            width="47"
+            height="47"
+          />
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 w-75">
             <li>
               <Link to="/home" className="nav-link active fs-5 border-dark text-light">
