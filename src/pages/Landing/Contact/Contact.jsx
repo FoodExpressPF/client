@@ -22,10 +22,10 @@ function Contact(){
                     </figure>
                 </div>
                 <div className="box">
-                    <h2>location</h2>
+                    <h2>Location</h2>
                     
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105073.26483394414!2d-58.5033388083258!3d-34.61580373591106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos%20Aires%2C%20CABA%2C%20Argentina!5e0!3m2!1ses!2smx!4v1668660399978!5m2!1ses!2smx" 
-                    width="400" height="300"   loading="lazy" >
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105073.26483379626!2d-58.503338603933564!3d-34.61580373602787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos%20Aires%2C%20CABA%2C%20Argentina!5e0!3m2!1ses!2smx!4v1668669402973!5m2!1ses!2smx"
+                     width="550" height="350"  loading="lazy" >
 
                     </iframe>
                     

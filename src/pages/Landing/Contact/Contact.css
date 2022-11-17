@@ -21,8 +21,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 50px;
-    padding: 45px 0px;
-
+    padding: 25px 0px;
+    margin-left: 100px;
 }
 
 .pie-pagina .grupo-1 .box figure{
@@ -70,13 +70,14 @@
 .pie-pagina .grupo-2{
     background-color: black;
     padding: 15px 10px;
-    text-align: center;
+    text-align:center;
     color: white;
 
 }
 
 .pie-pagina .grupo-2 small{
     font-size: 15px;
+    margin-left: 0px;
 }
 @media screen and (max-width:800px){
     .pie-pagina .grupo-1{
