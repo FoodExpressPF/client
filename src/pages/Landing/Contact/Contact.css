@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    
 }
 
 .phone{
@@ -23,6 +23,7 @@
     grid-gap: 50px;
     padding: 25px 0px;
     margin-left: 100px;
+    text-decoration: none;
 }
 
 .pie-pagina .grupo-1 .box figure{
@@ -31,11 +32,13 @@
     display: flex;
     justify-content:left;
     align-items:flex-start;
-  
+    text-decoration: none;
+    padding-bottom: 3px;
 }
 
 .pie-pagina .grupo-1 .box figure img{
     width: 250px;
+    text-decoration: none;
     
 }
 
@@ -82,7 +85,8 @@
 
 .dir{
     align-items: center;
-    margin-bottom: 20px;
+   text-decoration: none;
+   
 }
 @media screen and (max-width:800px){
     .pie-pagina .grupo-1{
@@ -93,4 +97,23 @@
         padding: 35px 0px;
     
     }
+}
+
+.phone1{
+    color: aliceblue;
+    width: 15px;
+    height: 15px;
+}
+
+.im{
+    color: red;
+    text-decoration: none;
+}
+
+.direccion{
+    align-items: center;
+    padding: 1px;
+    text-decoration: none;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
