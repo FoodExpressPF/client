@@ -11,7 +11,9 @@ import s from './categorySection.module.css'
 
 const CategorySection = ({name}) => {
   const allPlate = useSelector((state) => state.plates);
+  const filterPlates = allPlate.filter(plate=>plate.category === name)
   const Cart = useLocalStorage("CART", "");
+  console.log(allPlate)
  
   const nameId =name.replace(/ /g, "")
 
@@ -19,7 +21,7 @@ const CategorySection = ({name}) => {
     <section id={`${nameId}`}>
       <h3>{name}</h3>
       <div className={s.cardContainer}>
-        {allPlate?.map((c) => {
+        {filterPlates?.map((c) => {
           return (
             <div key={c.id}>
               <Link className="textLink" to={"/foods/" + c.id}>

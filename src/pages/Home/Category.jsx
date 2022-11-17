@@ -15,19 +15,19 @@ const Category = () => {
   <nav className={s.categoryNav}>
     <ul className={s.categoryNavContent}>
         <li>
-          <a className="nav-link" aria-current="page" href="#MainCourses">Main Courses</a>
+          <a className="nav-link" aria-current="page" href="#MainCourse">Main Courses</a>
         </li>
         <li>
-          <a className="nav-link" aria-current="page" href="#Appetizer">Appetizer</a>
+          <a className="nav-link" aria-current="page" href="#Appetizer">Appetizers</a>
         </li>
         <li>
-          <a className="nav-link" aria-current="page" href="#Salads">Salads</a>
+          <a className="nav-link" aria-current="page" href="#Salad">Salads</a>
         </li>
         <li>
-          <a className="nav-link" aria-current="page" href="#Desserts">Desserts</a>
+          <a className="nav-link" aria-current="page" href="#Dessert">Desserts</a>
         </li>
         <li>
-          <a className="nav-link" aria-current="page" href="#Beverages">Beverages</a>
+          <a className="nav-link" aria-current="page" href="#Beverage">Beverages</a>
         </li>
         <li>
             <div>

@@ -75,11 +75,11 @@ export default function Home() {
       :
        <div className={s.categoriesBox}>
           <Category />
-          <CategorySection name='Main Courses' />
+          <CategorySection name='Main Course' />
           <CategorySection name='Appetizer' />
-          <CategorySection name='Salads' />
-          <CategorySection name='Desserts' />
-          <CategorySection name='Beverages' />
+          <CategorySection name='Salad' />
+          <CategorySection name='Dessert' />
+          <CategorySection name='Beverage' />
        </div>
       }
       
