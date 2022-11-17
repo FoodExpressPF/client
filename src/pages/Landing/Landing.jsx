@@ -7,16 +7,19 @@ import LogoutButton from "../../components/Auth/Logout.jsx";
 import ModalAuth from "../../modals/Auth/Auth.jsx";
 
 import style from "./Landing.module.css";
+
 import imageHero from "../../assets/imgs/landing.png";
+import Testimonials from './Testimonials/Testimonials.jsx';
+import Contact from './Contact/Contact.jsx';
 import Prueba from "../../emails/prueba.jsx";
+
 function Landing() {
   const history = useHistory();
   const { isAuthenticated } = useAuth0();
-
+    
   return (
-    <>
+    <div className={style.contenedor}>
       <div className={style.container}>
-        <Prueba />
         <div className={style.containerNav}>
           <img
             className={style.logo}
@@ -25,21 +28,20 @@ function Landing() {
           />
           <section id="sec1">
             <div>
-              <a href="#sec1" className={style.links}>
-                Landing
-              </a>
-              <a href="#sec2" className={style.links}>
-                About
-              </a>
-              <a href="#sec3" className={style.links}>
-                Testimonials
-              </a>
+              <a href="#sec1" className={style.links}>Landing</a>
+              <a href="#sec2" className={style.links}>About</a>
+              <a href="#sec3" className={style.links}>Testimonials</a>
+              <a href="#sec4" className={style.links}>Contact</a>
             </div>
           </section>
           {isAuthenticated ? <LogoutButton /> : <LoginButton />}
         </div>
-        <img src={imageHero} className={style.containerImageHero} alt="..." />
-
+        <img
+          src={imageHero}
+          className={style.containerImageHero}
+          alt="..."
+        />
+        
         <ModalAuth />
 
         <button
@@ -133,8 +135,15 @@ function Landing() {
           </div>
         </div>
       </section>
-    </>
-  );
+      <section id="sec4">
+        <div className={style.contacto} id="Contacto">
+          
+          <Contact/>
+          
+        </div>
+      </section>
+    </div>
+  )
 }
 
 export default Landing;

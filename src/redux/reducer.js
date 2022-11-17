@@ -5,7 +5,8 @@ import {
   GET_PLATES_BY_FILTERS,
   GET_DETAIL,
   CLEAR_DETAIL,
-} from "./actions.js";
+  GET_USER
+} from './actions.js';
 
 function rootReducer(state = INITIAL_GLOBAL_STATE, action) {
   switch (action.type) {
@@ -30,9 +31,12 @@ function rootReducer(state = INITIAL_GLOBAL_STATE, action) {
         ...state,
         detail: [],
       };
-
-    default:
-      return { ...state };
+    case GET_USER:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    default: return { ...state };
   }
 }
 

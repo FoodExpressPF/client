@@ -5,6 +5,7 @@ export const GET_PLATES_BY_FILTERS = "GET_PLATES_BY_FILTERS";
 export const GET_DETAIL = "GET_DETAIL";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 
+
 export const getPlates = () => (dispatch) =>
   axios(`/foods`)
     .then((response) => response.data)
@@ -54,3 +55,10 @@ export const sendEmail = (payload) => {
     const post = await axios.post("http://localhost:3001/send-email", payload);
   };
 };
+
+export const getUser = (user) =>
+   ({
+      type: GET_USER,
+      payload: user,
+    })
+  ;
