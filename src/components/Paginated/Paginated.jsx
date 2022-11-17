@@ -11,6 +11,8 @@ function Paginated({ platesPerPage, allPlate, setCurrentPage, currentPage, pagin
 
   return (
     <div className='divP'>
+
+    <div className='containerwe'>
       <ul className="paginadoContainer" >
         <button
           className="a"
@@ -18,7 +20,7 @@ function Paginated({ platesPerPage, allPlate, setCurrentPage, currentPage, pagin
           onClick={() => {
           setCurrentPage(
             (currentPage === 1)
-              ? currentPage 
+            ? currentPage 
               : currentPage - 1
           )}}
         >
@@ -29,7 +31,7 @@ function Paginated({ platesPerPage, allPlate, setCurrentPage, currentPage, pagin
             height="16"
             fill="currentColor"
             viewBox="0 0 16 16"
-          >
+            >
             <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
           </svg>
         </button>
@@ -40,7 +42,7 @@ function Paginated({ platesPerPage, allPlate, setCurrentPage, currentPage, pagin
                 className="a"
                 disabled={currentPage === number}
                 onClick={() => paginated(number)}
-              >
+                >
                 {number}
               </button>
           </li>
@@ -68,6 +70,7 @@ function Paginated({ platesPerPage, allPlate, setCurrentPage, currentPage, pagin
         </button>
       </ul>
     </div>
+            </div>
   )
 }
 

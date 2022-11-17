@@ -8,10 +8,12 @@ import Home from "./pages/Home/index.jsx";
 import ProductsForm from "./pages/ProductsForm/ProductsForm.jsx";
 import Detail from "./pages/Detail/Detail.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
+import AdminDashboard from "./pages/AdminDashboard/index.jsx";
 
 // Styles
 import "./assets/styles/globalStyles.css";
 import "./assets/fonts/fonts.css";
+
 
 
 
@@ -38,6 +40,10 @@ function App() {
         <Route path="/foods/:id">
           <NavBar />
           <Detail />
+        </Route>
+        <Route path="/admin">
+          <NavBar />
+          <AdminDashboard />
         </Route>
       </RequireAuth>
     </Switch>

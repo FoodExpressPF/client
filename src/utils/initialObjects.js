@@ -22,6 +22,7 @@ export const INITIAL_PRODUCT_FORM = {
   type: [],
   rating: 0,
   image: '',
+  category:'',
   type_user: 'admin',
   offer: 'false',
 };

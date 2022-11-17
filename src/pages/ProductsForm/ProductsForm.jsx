@@ -39,10 +39,6 @@ const ProductsForm = () => {
       url: "http://localhost:3001/foods/create",
       data: values,
     })
-      .then((response) => {
-        setResponse(response.data.message);
-        setLoading(false);
-      })
      .then(response => {
       setResponse(response.data.message)
       setLoading(false)
@@ -62,14 +58,14 @@ const ProductsForm = () => {
         <h2 className='mt-3 text-center'>Create New Product</h2>
 
         
-        <div class="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
                  {loading? 
-                   <div class="d-flex justify-content-center">
-                   <div class="spinner-border" role="status">
-                     <span class="visually-hidden">Loading...</span>
+                   <div className="d-flex justify-content-center">
+                   <div className="spinner-border" role="status">
+                     <span className="visually-hidden">Loading...</span>
                    </div>
                  </div>
                    :<div>
@@ -213,6 +209,28 @@ const ProductsForm = () => {
                 <option value="Vegan">Vegan</option>
                 <option value="Protein">Protein</option>
                 <option value="Others">Others</option>
+              </select>
+            </label>
+          </div>
+
+          {/* CATEGORY */}
+
+          <div>
+            <label className="w-100">
+              <select
+                className="form-select"
+                aria-label="Default select example"
+                type="select"
+                name="category"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              >
+                <option>Select a Category</option>
+                <option value="Main Course">Main Course</option>
+                <option value="Appetizer">Appetizer</option>
+                <option value="Salad">Salad</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Beverage">Beverage</option>
               </select>
             </label>
           </div>
