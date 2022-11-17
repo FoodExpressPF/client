@@ -20,8 +20,8 @@ function NavBar() {
 
   return (
     <nav 
-      className="navbar navbar-expand-lg py-2 fixed-top navbar-light"
-      style={{'backgroundColor':'#fc3a22'}}
+      className="navbar navbar-expand-lg py-2 fixed-top navbar-light shadow-lg p-3 mb-5"
+      style={{'backgroundColor':'#321313'}}
     >
       <div className="container-fluid">
         <button
@@ -69,6 +69,13 @@ function NavBar() {
             </li>
             {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           </ul>
+          <img
+            className="logo"
+            src="https://res.cloudinary.com/dbepwtmru/image/upload/v1668614395/Food-express-logo_j8wbz5.png"
+            alt="logo"
+            width="47"
+            height="47"
+          />
         </div>
       </div>
     </nav>

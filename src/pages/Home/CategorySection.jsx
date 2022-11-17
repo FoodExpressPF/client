@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Card from '../../components/Card/Card';
 
 //Hooks 
@@ -17,15 +16,11 @@ const CategorySection = ({name}) => {
 
   return (
     <section id={`${nameId}`}>
-      <h3>{name}</h3>
       <div className={s.cardContainer}>
         {allPlate?.map((c) => {
           return (
-            <div key={c.id}>
-              <Link className="textLink" to={"/foods/" + c.id}>
-                {" "}
-              </Link>
               <Card
+                key={c.id}
                 id={c.id}
                 name={c.name}
                 rating={c.rating}
@@ -34,7 +29,6 @@ const CategorySection = ({name}) => {
                 agregar={() => agregar(c)}
                 Cart={Cart}
               />
-            </div>
           )
         })}
      </div> 
