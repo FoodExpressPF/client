@@ -4,6 +4,7 @@ export const GET_PLATES = "GET_PLATES";
 export const GET_PLATES_BY_FILTERS = "GET_PLATES_BY_FILTERS";
 export const GET_DETAIL = "GET_DETAIL";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
+export const GET_USER = "GET_USER";
 
 
 export const getPlates = () => (dispatch) =>
