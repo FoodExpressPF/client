@@ -1,21 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import { store } from './Store/index';
+import React from "react";
+import ReactDOM from "react-dom";
+import reportWebVitals from "./reportWebVitals";
+
+import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./redux/store.js";
+
+import { Auth0Provider } from "@auth0/auth0-react";
+
+import App from "./App.js";
+import dotenv from 'dotenv'
+dotenv.config();
+
+axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
 ReactDOM.render(
   <Provider store={store}>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <Router>
+      <React.StrictMode>
+        <Auth0Provider
+          domain="dev-v48hxvnnc5llys6d.us.auth0.com"
+          clientId="fD8Ho74aY8A7yHD5kmCMeB9wIiUD7NyH"
+          redirectUri={window.location.origin}
+          useRefreshTokens
+          cacheLocation="localstorage"
+        >
+          <App />
+        </Auth0Provider>
+      </React.StrictMode>
+    </Router>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+//   redirectUri={window.location.origin} es la linea que decide a donde redireccionar al usuario una vez termine el login o logout
