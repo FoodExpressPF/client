@@ -13,53 +13,24 @@ import s from "./home.module.css";
 import useLocalStorage from "../../hooks/useLocalStorage.js";
 
 //Actions
-import { getPlates } from "../../redux/actions.js";
+import { getPlates, getUser } from "../../redux/actions.js";
 
 //Libraries
 import { useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 export default function Home() {
   const Cart = useLocalStorage("CART", "");
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch()
+  const { isAuthenticated,user } = useAuth0();
 
   useEffect(() => {
     dispatch(getPlates()).then(() => setLoading(false));
+    if(isAuthenticated) dispatch(getUser(user))
   }, [dispatch]);
 
-  // const agregar = (product) => {
-  //   if (cart.some((artic) => artic.id === product.id)) {
-  //     const cartUpadte = cart.map((artic) => {
-  //       if (artic.id == product.id) {
-  //         artic.cantidad = product.cantidad;
-  //       }
-  //       return artic;
-  //     });
-  //     setCart(cartUpadte);
-  //   } else {
-  //     setCart([...cart, product]);
-  //   }
-
-  //   console.log(cart);
-  // };
-  // const updateCant = (product) => {
-  //   const cartUpadte = cart.map((artic) => {
-  //     if (artic.id == product.id) {
-  //       artic.cantidad = product.cantidad;
-  //     }
-  //     return artic;
-  //   });
-  //   setCart(cartUpadte);
-  // };
-
-  // const deleteCart = (id) => {
-  //   const cartUpdate = cart.filter((artic) => artic.id !== id);
-  //   setCart(cartUpdate);
-  // };
-  // useEffect(() => {
-  //   dispatch(getPlates()).then(() => setLoading(false));
-  // }, [dispatch]);
 
   return (
     <>

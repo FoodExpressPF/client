@@ -6,11 +6,15 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "../Auth/Login.jsx";
 import LogoutButton from "../Auth/Logout.jsx";
 import useCheckRoles from "../../utils/checkRoles.js";
+import { useSelector } from "react-redux";
+
 
 function NavBar() {
   const { isAuthenticated } = useAuth0();
-  
   const isAdmin= useCheckRoles('admin')
+
+  const user = useSelector((state) => state.user);
+  const profile = 'https://res.cloudinary.com/dpnrbius0/image/upload/v1668650768/Profile_sa6jnn.png'
 
   const [isAuthorized, setIsAuthorized] = useState(false);
   
@@ -47,8 +51,8 @@ function NavBar() {
             {isAuthorized
             &&
               <li className="nav-item">
-                <Link className="nav-link active fs-5" to="/createProduct">
-                  Create New Product
+                <Link className="nav-link active fs-5 border-dark text-light" to="/admin">
+                  Admin Dashboard
                 </Link>
               </li>
             }
@@ -69,6 +73,20 @@ function NavBar() {
             </li>
             {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           </ul>
+          <div>
+            <Link to='/' >
+             <img 
+               className="rounded-circle"
+               style={{
+                  'maxHeight':'50px',
+                  'maxWidth':'50px',
+                  'boxShadow':'0px 0px 2px 2px #00000020',
+               }}
+               src={user?user.picture:profile} 
+               alt={user.name} 
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </nav>
