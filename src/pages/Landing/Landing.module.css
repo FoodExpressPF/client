@@ -171,6 +171,7 @@ section:nth-child(3){
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  
 }
 
 .about .col-2 p:first-of-type {
@@ -178,14 +179,36 @@ section:nth-child(3){
 }
 
 .about .col-2 p:nth-child(4) {
-  font-size: 1.8rem;
-  font-style: italic;
+  font-size: 2rem;
+  font-style:italic;
   font-weight: 600;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.about button1 {
-  margin-top: 1rem;
-}
+.button1 {
+    margin-top: 6rem;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 15px;
+    border-width: 0;
+    padding: 10px 50px;
+  
+    background-color: orange;
+    box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.555);
+    
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.5s;
+  }
+  
+  .heroButton:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    color: white;
+   }
 
 @media screen and (max-width:940px) {
   .about .container1 {
@@ -210,3 +233,38 @@ section:nth-child(3){
   }
 }
 
+
+.test{
+  color: white;
+  font-size: 50px;
+  margin-left: 40px;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.button2 {
+  margin-top: 3rem;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 15px;
+  border-width: 0;
+  padding: 10px 50px;
+  margin-top: 20px;
+  margin-left: 1200px;
+  background-color: orange;
+  box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.555);
+  
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: 0.5s;
+}
+
+.heroButton:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  color: white;
+ }

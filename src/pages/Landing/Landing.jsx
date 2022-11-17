@@ -25,7 +25,7 @@ function Landing() {
           alt="logo" />
         <section id="sec1">
           <div>
-            <a href="#sec1" className={style.links}>Landing</a>
+            <a href="#sec1" className={style.links}>Home</a>
             <a href="#sec2" className={style.links}>About</a>
             <a href="#sec3" className={style.links}>Testimonials</a>
             <a href="#sec4" className={style.links}>Contact</a>
@@ -69,11 +69,13 @@ function Landing() {
       </section><section id="sec3">
         <div id='testimonials'>
           <div>
-            <h2>Testimonials</h2>
-            <a href='#sec4'>
-              <button className={style.button1}>Contacto</button>
+          <a href='#sec4'>
+              <button className={style.button2}>Contact</button>
             </a>
+            <h2 className={style.test}>Reviews</h2>
             <Testimonials />
+            
+           
            
           </div>
         </div>

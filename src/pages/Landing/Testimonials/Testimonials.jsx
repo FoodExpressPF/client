@@ -10,8 +10,9 @@ function Testimonials(){
         <span className='line'></span>
         <div className='content'id="testimonial">
          <div className='card'>
-         <img src='' alt='user1'/>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit tempore, harum ullam eligendi ea voluptate laboriosam, vitae ducimus doloremque necessitatibus, ipsum et quas ipsam! Aspernatur dolorem consectetur alias similique delectus.</p>
+         <img src='https://res.cloudinary.com/dowhfu3fj/image/upload/v1668709774/recipes/Dise%C3%B1o_sin_t%C3%ADtulo_12_xmq3ec.png' alt='user1' className="img1"/>
+            <p>Great Flavors. 
+              The service and food was great! I was visiting on my own as a side trip, and dishes in Argentina, especially meat dishes, tend to be very large. I ordered the tenderloin and they were able to fit a half order for me. It was delicious and the perfect amount. The fresh bread at the start was also great.</p>
             <p><span>"Nahuel Guzman"</span></p>
              <p>User</p>
             </div>
