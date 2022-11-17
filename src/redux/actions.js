@@ -5,6 +5,7 @@ export const GET_PLATES = 'GET_PLATES';
 export const GET_PLATES_BY_FILTERS = 'GET_PLATES_BY_FILTERS';
 export const GET_DETAIL = 'GET_DETAIL';
 export const CLEAR_DETAIL = 'CLEAR_DETAIL';
+export const GET_USER = 'GET_USER';
 
 
 export const getPlates = () =>
@@ -43,3 +44,11 @@ export const getDetail = (id) =>
 export const clearDetail = () => {
   return { type: CLEAR_DETAIL }
 };
+
+export const getUser = (user) =>
+   ({
+      type: GET_USER,
+      payload: user,
+    })
+  ;
+ 
