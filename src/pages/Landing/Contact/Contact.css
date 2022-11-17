@@ -79,6 +79,11 @@
     font-size: 15px;
     margin-left: 0px;
 }
+
+.dir{
+    align-items: center;
+    margin-bottom: 20px;
+}
 @media screen and (max-width:800px){
     .pie-pagina .grupo-1{
         width: 90%;

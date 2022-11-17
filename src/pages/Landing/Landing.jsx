@@ -81,60 +81,19 @@ function Landing() {
           </div>
         </div>
       </section>
-
+      
       <section id="sec3">
-        <div className={style.testimonials} id="testimonials">
-          <div className={style.container3}>
-            <h2>Testimonials</h2>
-            <span className="line"></span>
-            <div className={style.content}>
-              <div className={style.card}>
-                <img src="" alt="user1" />
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Reprehenderit tempore, harum ullam eligendi ea voluptate
-                  laboriosam, vitae ducimus doloremque necessitatibus, ipsum et
-                  quas ipsam! Aspernatur dolorem consectetur alias similique
-                  delectus.
-                </p>
-                <p>
-                  <span>"Nahuel Guzman"</span>
-                </p>
-                <p>User</p>
-              </div>
-              <div className={style.card}>
-                <img src="" alt="user2" />
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit,
-                  perferendis maxime facere inventore mollitia reiciendis
-                  quibusdam dignissimos vitae iste voluptatem aliquid in
-                  molestias nobis incidunt, culpa libero aut non delectus!
-                </p>
-                <p>
-                  <span>Carol Harper</span>
-                </p>
-                <p></p>
-              </div>
-              <div className={style.card}>
-                <img src="" alt="user3" />
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Cumque quo officia maiores distinctio quas veniam debitis
-                  saepe vitae iure voluptas nam hic dolor, doloremque inventore!
-                  Soluta laboriosam asperiores nobis veniam.
-                </p>
-                <p>
-                  <span>Snow.J.R.</span>
-                </p>
-                <p></p>
-              </div>
-              <a href="#sec1">
-                <button className={style.button1}>Contacto</button>
-              </a>
-            </div>
+        <div id='testimonials'>
+          <div>
+          <a href='#sec4'>
+              <button className={style.button2}>Contact</button>
+            </a>
+            <h2 className={style.test}>Reviews</h2>
+            <Testimonials />
           </div>
         </div>
       </section>
+      
       <section id="sec4">
         <div className={style.contacto} id="Contacto">
           
