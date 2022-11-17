@@ -8,7 +8,7 @@ import './index.css';
 export default function ClientDashboard(){
 
     const userInfo = useSelector(state => state.user);
-    
+    console.log(userInfo);
     return(
         <>
             <div className='userDashConteiner'>
