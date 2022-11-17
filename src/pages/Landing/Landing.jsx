@@ -7,11 +7,13 @@ import LogoutButton from "../../components/Auth/Logout.jsx";
 import ModalAuth from "../../modals/Auth/Auth.jsx";
 
 import style from "./Landing.module.css";
+import {FaQuoteLeft, FaQuoteRight} from "react-icons/fa";
 
 import imageHero from "../../assets/imgs/landing.png";
 import Testimonials from './Testimonials/Testimonials.jsx';
 import Contact from './Contact/Contact.jsx';
 import Prueba from "../../emails/prueba.jsx";
+
 
 function Landing() {
   const history = useHistory();
@@ -65,13 +67,13 @@ function Landing() {
             />
             <div className={style.col - 2}>
               <h2>About</h2>
-              <span className={style.line}></span>
-              <p>
-                "The restaurant that takes the best of international gastronomy,
+              {/* <span className={style.line}></span> */}
+              <p className={style.aboutR}><FaQuoteLeft className={style.quote}/>
+                 The restaurant that takes the best of international gastronomy,
                 the fusion of these flavors, techniques, ingredients and
                 experiences allow us to offer the best dishes to our customers,
                 was founded in 2018 and continues to be the best option to taste
-                any recipe international"
+                any recipe international <FaQuoteRight className={style.quote}/>
               </p>
               <p></p>
               <a href="#sec3">
