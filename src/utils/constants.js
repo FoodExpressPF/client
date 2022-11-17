@@ -1,6 +1,6 @@
 // These are all constants we use in app
 
-export const API_PATH = 'http://localhost:3001';
+
 
 export const PLATES_PER_PAGE = 3;
 

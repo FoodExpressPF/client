@@ -5,6 +5,7 @@ import {
   GET_PLATES_BY_FILTERS,
   GET_DETAIL,
   CLEAR_DETAIL,
+  GET_USER
 } from './actions.js';
 
 function rootReducer(state = INITIAL_GLOBAL_STATE, action) {
@@ -29,6 +30,11 @@ function rootReducer(state = INITIAL_GLOBAL_STATE, action) {
       return {
         ...state,
         detail: [],
+      };
+    case GET_USER:
+      return {
+        ...state,
+        user: action.payload,
       };
     default: return { ...state };
   }

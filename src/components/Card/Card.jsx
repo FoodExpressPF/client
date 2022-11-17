@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 import "./Card.css";
 
@@ -11,11 +11,13 @@ function Card({ id, name, price, rating, image, Cart }) {
   return (
     <div className="container">
       <div>
-        <img className="cardImage" src={image} alt="..." />
+        <Link to={`/foods/${id}`}>
+          <img className="cardImage border border-warning" src={image} alt="..." />
+        </Link>
       </div>
       <div className="card-body">
         <h5 className="card-title font-weight-bold text-center">{name}</h5>
-        <p className="mb-3">Price: ${price}</p>
+        <p className="mb-3">  Price: ${price}</p>
         <hr className="my-4" />
         <p className="lead">
           <strong>

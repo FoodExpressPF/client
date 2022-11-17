@@ -1,26 +1,27 @@
 import axios from 'axios';
-import { API_PATH } from '../utils/constants.js';
+
 
 export const GET_PLATES = 'GET_PLATES';
 export const GET_PLATES_BY_FILTERS = 'GET_PLATES_BY_FILTERS';
 export const GET_DETAIL = 'GET_DETAIL';
 export const CLEAR_DETAIL = 'CLEAR_DETAIL';
+export const GET_USER = 'GET_USER';
 
 
 export const getPlates = () =>
   dispatch =>
-    axios(`${API_PATH}/foods`)
+    axios(`/foods`)
       .then(response => response.data)
       .then(data => dispatch({
         type: GET_PLATES,
         payload: data,
       }))
-      .catch(error => alert(`not found, error: ${error}`))
+      .catch(error => console.log(`not found, error: ${error}`))
   ;
 
 export const getByFilters = (filters) =>
   dispatch =>
-    axios(`${API_PATH}/foods?${filters}`)
+    axios(`/foods?${filters}`)
       .then(response => response.data)
       .then(data => dispatch({
         type: GET_PLATES_BY_FILTERS,
@@ -31,7 +32,7 @@ export const getByFilters = (filters) =>
 
 export const getDetail = (id) =>
   dispatch =>
-    axios(`${API_PATH}/foods/${id}`)
+    axios(`/foods/${id}`)
       .then(response => response.data)
       .then(data => dispatch({
         type: GET_DETAIL,
@@ -43,3 +44,11 @@ export const getDetail = (id) =>
 export const clearDetail = () => {
   return { type: CLEAR_DETAIL }
 };
+
+export const getUser = (user) =>
+   ({
+      type: GET_USER,
+      payload: user,
+    })
+  ;
+ 
