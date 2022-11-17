@@ -1,17 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
-import axios from "axios";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
 
 import { Auth0Provider } from "@auth0/auth0-react";
-
+import axios from 'axios'
 import App from "./App.js";
-import dotenv from 'dotenv'
-dotenv.config();
 
+import axios from "axios";
+import dotenv from 'dotenv';
+dotenv.config();
+console.log("URL:",process.env.REACT_APP_API, "  ");
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
 ReactDOM.render(
