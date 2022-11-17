@@ -1,10 +1,18 @@
 import React from "react";
 import "./Contact.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faFacebook, faInstagram, faGoogle, faTwitter } from "@fortawesome/free-brands-svg-icons"
 
 function Contact(){
-
+    const f = <FontAwesomeIcon icon={faFacebook} />
+    const i = <FontAwesomeIcon icon={faInstagram} />
+    const g = <FontAwesomeIcon icon={faGoogle} />
+    const t = <FontAwesomeIcon icon={faTwitter} />
+   
     return(
+        
         <footer className="pie-pagina">
+            
             <div className="grupo-1">
                 <div className="box">
                     <figure>
@@ -14,7 +22,7 @@ function Contact(){
                     </figure>
                 </div>
                 <div className="box">
-                    <h2>Ubicacion</h2>
+                    <h2>location</h2>
                     
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105073.26483394414!2d-58.5033388083258!3d-34.61580373591106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos%20Aires%2C%20CABA%2C%20Argentina!5e0!3m2!1ses!2smx!4v1668660399978!5m2!1ses!2smx" 
                     width="400" height="300"   loading="lazy" >
@@ -23,13 +31,18 @@ function Contact(){
                     
                 </div>
                 <div className="box">
-                    <h2>Siguenos</h2>
+                    <h2>Follow</h2>
                     <div className="red-social">
-                        <a href="#" className="fa fa-facebook"></a>
-                        <a href="#" className="fa fa-instagram"></a>
-                        <a href="#" className="fa fa-google"></a>
-                        <a href="#" className="fa fa-twitter"></a>
+                        <a href="#" className="fa fa-facebook">{f}</a>
+                        <a href="#" className="fa fa-instagram">{i}</a>
+                        <a href="#" className="fa fa-google">{g}</a>
+                        <a href="#" className="fa fa-twitter">{t}</a>
+                        
                     </div>
+                    <br></br>
+                    <h2 >Phone Numbers</h2>
+                    <h5 className="phone">+54 9 11 5678-0894</h5>
+                    <h5 className="phone">+54 9 11 5678-0895</h5>
                 </div>
             </div>
             <div className="grupo-2">

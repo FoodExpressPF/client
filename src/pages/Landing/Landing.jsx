@@ -70,11 +70,11 @@ function Landing() {
         <div id='testimonials'>
           <div>
             <h2>Testimonials</h2>
-
-            <Testimonials />
-            <a href='#sec1'>
+            <a href='#sec4'>
               <button className={style.button1}>Contacto</button>
             </a>
+            <Testimonials />
+           
           </div>
         </div>
       </section>
