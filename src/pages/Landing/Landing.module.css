@@ -111,7 +111,7 @@
   
 }
 
-section:nth-child(3){
+.sec3{
   background-image: linear-gradient(to top, #136282 0%, #394760 100%, #0a5390 100%, #3d9ae7 100%);
   height: 650px;
   position:relative;

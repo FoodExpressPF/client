@@ -84,7 +84,7 @@ function Landing() {
         </div>
       </section>
       
-      <section id="sec3">
+      <section id="sec3" className={style.sec3}>
         <div id='testimonials'>
           <div>
           <a href='#sec4'>
