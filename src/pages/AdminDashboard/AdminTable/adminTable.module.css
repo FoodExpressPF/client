@@ -1,0 +1,40 @@
+.tableContainer{
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid black;
+  border-radius: 20px;
+  max-height: 60vh;
+  overflow: scroll;
+}
+
+.tableHead{
+  display: flex;
+  justify-content: space-between;
+}
+
+.dataImage{
+  height: 20vh;
+  width: 15vw;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.modalForm{
+  position: absolute;
+  top:15vh;
+  left: 5vw;
+  width: 90vw;
+  margin: auto;
+  border-radius: 20px;
+
+  background-color: #ffaf47f9;
+}
+
+.buttonContainer{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+

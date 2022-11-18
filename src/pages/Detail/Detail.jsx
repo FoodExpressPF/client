@@ -22,7 +22,7 @@ function Detail() {
         <button className="btn btn-primary h-25">Back</button>
       </Link>
 
-      { details.length >0 ?
+      { details.length > 0 ?
       <div className={`card-detail ${style.sub_container}`}>
           <div className={style.container_elements}>
             
