@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail, clearDetail } from '../../redux/actions.js';
+import Loading from '../../components/Loading/Loading'
 
 import style from "./Detail.module.css";
 
@@ -21,8 +22,8 @@ function Detail() {
         <button className="btn btn-primary h-25">Back</button>
       </Link>
 
-      { details ?
-        <div className={`card-detail ${style.sub_container}`}>
+      { details.length >0 ?
+        (<div className={`card-detail ${style.sub_container}`}>
           <div className={style.container_elements}>
             
             <div className={`${style.image_container}`}>
@@ -44,9 +45,9 @@ function Detail() {
               <div className={style.shop_end}><button>Add to cart</button></div>
             </div>
           </div>
-        </div>
+        </div>)
 
-        : <div><span>Loading...</span></div>
+        : (<div><Loading/></div>)
       }
     </div>
   </>
