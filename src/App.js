@@ -9,7 +9,7 @@ import ProductsForm from "./pages/ProductsForm/ProductsForm.jsx";
 import Detail from "./pages/Detail/Detail.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import AdminDashboard from "./pages/AdminDashboard/index.jsx";
-
+import ClientDashboard from "./pages/ClientDashboard/index.jsx";
 // Styles
 import "./assets/styles/globalStyles.css";
 import "./assets/fonts/fonts.css";
@@ -44,6 +44,10 @@ function App() {
         <Route path="/admin">
           <NavBar />
           <AdminDashboard />
+        </Route>
+        <Route path='/client'>
+          <NavBar/>
+          <ClientDashboard/>
         </Route>
       </RequireAuth>
     </Switch>
