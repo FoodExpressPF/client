@@ -23,7 +23,7 @@ function Detail() {
       </Link>
 
       { details.length >0 ?
-        (<div className={`card-detail ${style.sub_container}`}>
+      <div className={`card-detail ${style.sub_container}`}>
           <div className={style.container_elements}>
             
             <div className={`${style.image_container}`}>
@@ -45,9 +45,9 @@ function Detail() {
               <div className={style.shop_end}><button>Add to cart</button></div>
             </div>
           </div>
-        </div>)
+        </div>
 
-        : (<div><Loading/></div>)
+        : <div><Loading/></div>
       }
     </div>
   </>
