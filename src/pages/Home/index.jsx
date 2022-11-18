@@ -26,6 +26,10 @@ export default function Home() {
   const dispatch = useDispatch()
   const { isAuthenticated,user } = useAuth0();
 
+  const addCartHandler  = (id,name,price) =>{
+    Cart.add({id, name, price})
+  }
+
   useEffect(() => {
     dispatch(getPlates()).then(() => setLoading(false));
     if(isAuthenticated) dispatch(getUser(user))
@@ -35,8 +39,8 @@ export default function Home() {
   return (
     <>
     <CarrouselBanners />
-    <div className={s.homeContainer}>
-      {loading
+    <div>
+    {loading
       ?
        <div className="text-center">
           <div className="spinner-border" role="status">
@@ -44,17 +48,31 @@ export default function Home() {
           </div>
         </div>
       :
+      <div className={s.homeContainer}>
        <div className={s.categoriesBox}>
           <Category />
-          <CategorySection name='Main Course' />
-          <CategorySection name='Appetizer' />
-          <CategorySection name='Salad' />
-          <CategorySection name='Dessert' />
-          <CategorySection name='Beverage' />
+          <CategorySection name='Main Course'
+          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+           />
+          <CategorySection name='Appetizer' 
+          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+          />
+          <CategorySection name='Salad' 
+          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+          />
+          <CategorySection name='Dessert'
+          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+           />
+          <CategorySection name='Beverage'
+          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+           />
        </div>
+      <ReservationCart 
+      Cart={Cart}
+      />
+      </div>
       }
       
-      <ReservationCart Cart={Cart} />
     </div>
     </>
   );

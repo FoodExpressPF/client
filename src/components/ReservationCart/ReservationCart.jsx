@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { buy } from "../../redux/actions";
 import "./ReservationCart.css";
 
 function ReservationCart({ Cart }) {
   const dispatch = useDispatch();
+
+  
 
   const total = () => {
     let total = Cart.items.reduce((acum, act) => {
@@ -14,10 +16,10 @@ function ReservationCart({ Cart }) {
     dispatch(buy({ total })).then((url) => (window.location.href = `${url}`));
   };
   return (
-    <>
-      <h3>Carrito</h3>
+    <div className="cartContainer sticky-top">
+      <h3 class="fs-1 d-flex justify-content-center">My cart</h3>
       <span>
-        cantidad carrito: {Cart.items?.length} {/*Hacer lo de la bolita*/}
+        {/*cantidad carrito: {Cart.items?.length} Hacer lo de la bolita*/}
       </span>
       <article>
         {Cart.items &&
@@ -25,22 +27,35 @@ function ReservationCart({ Cart }) {
             return (
               <div key={item.id}>
                 <hr />
-                <span>Name: {item.name}</span>
-                <br />
-                <span>Price: ${item.price}</span>
-                <br />
-                <div>
-                  <span>Cantidad: {item.count}u </span>
+                <span>
+                  <h5 class="fw-bold">
+                    {item.name}
+                  </h5>
+                <span className="d-flex justify-content-end">
+                <button
+                  className="remove_button"
+                  type="button"
+                  onClick={() => Cart.remove(item)}
+                >
+                  {" "}
+                  X{" "}
+                </button>
+                </span>
+                
+                </span>
+                <div class="d-flex justify-content-center">
+                  
                   <button
-                    className=""
+                    className="amount_button"
                     type="button"
                     onClick={() => Cart.discount(item)}
                   >
                     {" "}
                     -{" "}
                   </button>
+                  <span> {item.count}u </span>
                   <button
-                    className=""
+                    className="amount_button"
                     type="button"
                     onClick={() => Cart.add(item)}
                   >
@@ -48,16 +63,8 @@ function ReservationCart({ Cart }) {
                     +{" "}
                   </button>
                   <br />
-                  <span>Subtotal: ${item.price * item.count}</span>
                 </div>
-                <button
-                  className=""
-                  type="button"
-                  onClick={() => Cart.remove(item)}
-                >
-                  {" "}
-                  X{" "}
-                </button>
+                <span>Subtotal: ${item.price * item.count}</span>
               </div>
             );
           })}
@@ -72,16 +79,23 @@ function ReservationCart({ Cart }) {
                 return acum + act.price * act.count;
               }, 0)}
           </h5>
-          {Cart.items && (
-            <button className="" type="button" onClick={() => Cart.reset()}>
+          
+          <button className="toPayment_button" onClick={() => total()}>
+            Proceed to payment $
+            {Cart.items &&
+              Cart.items.reduce((acum, act) => {
+                return acum + act.price * act.count;
+              }, 0)}
+          </button>
+          {/* {Cart.items && (
+            <button className="end_buttons" type="button" onClick={() => Cart.reset()}>
               {" "}
               Reset{" "}
             </button>
-          )}
-          <button onClick={() => total()}>Buy</button>
+          )} */}
         </div>
       )}
-    </>
+    </div>
   );
 }
 
