@@ -1,6 +1,6 @@
-import { useAuth0 } from "@auth0/auth0-react";
+/*import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
-import { emailPrueba } from "./emailsDefault";
+import { PaymentConfirmed } from "./emailsDefault";
 import { sendEmail } from "../redux/actions";
 
 export default function Prueba() {
@@ -12,3 +12,4 @@ export default function Prueba() {
   };
   return <button onClick={() => prueba()}>PRUEBA</button>;
 }
+*/

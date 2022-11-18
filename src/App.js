@@ -13,22 +13,23 @@ import ClientDashboard from "./pages/ClientDashboard/index.jsx";
 // Styles
 import "./assets/styles/globalStyles.css";
 import "./assets/fonts/fonts.css";
-
-
-
+import Passed from "./pages/postBuy/passed.jsx";
+import Denegated from "./pages/postBuy/denegated.jsx";
 
 
 function App() {
   const { isAuthenticated } = useAuth0();
 
   const RequireAuth = ({ children }) => {
-    if(!isAuthenticated) return <Redirect to="/"/>
+    if (!isAuthenticated) return <Redirect to="/" />;
     return children;
   }
 
   return <>
     <Switch>
       <Route exact path="/" component={Landing} />
+          <Route exact path="/passed" component={Passed} />
+        <Route exact path="/denegated" component={Denegated} />
       <RequireAuth>
         <Route path="/home">
           <NavBar />
@@ -53,6 +54,7 @@ function App() {
       </RequireAuth>
     </Switch>
   </>
+
 }
 
 export default App;
