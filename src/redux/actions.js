@@ -58,7 +58,6 @@ export const sendEmail = (payload) => {
 };
 
 export const getUser = (user) =>
-<<<<<<< HEAD
   dispatch => 
     axios({
       method: "post",
@@ -74,10 +73,3 @@ export const getUser = (user) =>
       }))
       .catch(error =>console.log(error));
  
-=======
-   ({
-      type: GET_USER,
-      payload: user,
-    })
-  ;
->>>>>>> 6e2df7994eb59504ac573c5f503ac3e48c8b2867

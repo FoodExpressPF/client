@@ -8,11 +8,12 @@ import Home from "./pages/Home/index.jsx";
 import ProductsForm from "./pages/ProductsForm/ProductsForm.jsx";
 import Detail from "./pages/Detail/Detail.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
-import AdminDashboard from "./pages/AdminDashboard/index.jsx";
+import AdminRoutes from "./pages/AdminDashboard/AdminRoutes.js";
 import ClientDashboard from "./pages/ClientDashboard/index.jsx";
 // Styles
 import "./assets/styles/globalStyles.css";
 import "./assets/fonts/fonts.css";
+
 
 
 
@@ -43,7 +44,7 @@ function App() {
         </Route>
         <Route path="/admin">
           <NavBar />
-          <AdminDashboard />
+          <AdminRoutes />
         </Route>
         <Route path='/client'>
           <NavBar/>
