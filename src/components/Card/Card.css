@@ -1,8 +1,8 @@
 .container {
   display: flex;
   align-items: center;
-  width: 1000px;
-  background-color: #F2EAD3;
+  width: 800px;
+  background-color: #F9F5F0;
   min-width: 50%;
   
 }
@@ -31,14 +31,14 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  width: 300px;
-  height: 300px;
-  border-radius: 12px;
+  width: 250px;
+  height: 250px;
+  border-color: #F4991A;
+  border-style: outset;
 }
 
 .cardImage:hover{
-  scale:1.05;
+  transform: scale(1.04) rotate(2deg);
 }
 
 .titleHome {
@@ -56,7 +56,7 @@
   justify-content: center;
   background-color: #fead3a;
   color: #F9F5F0;
-  width: 200px;
+  width: 150px;
   font-weight: 600;
   text-transform: uppercase;
   box-sizing: border-box;
@@ -72,4 +72,13 @@
 .add_to_cart:hover{
   background-color: #F4991A;
   color: #262626;
+}
+
+.add_to_cartContainer{
+  padding-top: 20px;
+}
+
+.fancy-border {
+  border: 25px solid #B88846;
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75'%3E%3Cg fill='none' stroke='%23B88846' stroke-width='2'%3E%3Cpath d='M1 1h73v73H1z'/%3E%3Cpath d='M8 8h59v59H8z'/%3E%3Cpath d='M8 8h16v16H8zM51 8h16v16H51zM51 51h16v16H51zM8 51h16v16H8z'/%3E%3C/g%3E%3Cg fill='%23B88846'%3E%3Ccircle cx='16' cy='16' r='2'/%3E%3Ccircle cx='59' cy='16' r='2'/%3E%3Ccircle cx='59' cy='59' r='2'/%3E%3Ccircle cx='16' cy='59' r='2'/%3E%3C/g%3E%3C/svg%3E") 25;
 }
