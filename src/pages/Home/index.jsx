@@ -13,59 +13,34 @@ import s from "./home.module.css";
 import useLocalStorage from "../../hooks/useLocalStorage.js";
 
 //Actions
-import { getPlates } from "../../redux/actions.js";
+import { getPlates, getUser } from "../../redux/actions.js";
 
 //Libraries
 import { useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 export default function Home() {
   const Cart = useLocalStorage("CART", "");
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch()
+  const { isAuthenticated,user } = useAuth0();
+
+  const addCartHandler  = (id,name,price) =>{
+    Cart.add({id, name, price})
+  }
 
   useEffect(() => {
     dispatch(getPlates()).then(() => setLoading(false));
+    if(isAuthenticated) dispatch(getUser(user))
   }, [dispatch]);
 
-  // const agregar = (product) => {
-  //   if (cart.some((artic) => artic.id === product.id)) {
-  //     const cartUpadte = cart.map((artic) => {
-  //       if (artic.id == product.id) {
-  //         artic.cantidad = product.cantidad;
-  //       }
-  //       return artic;
-  //     });
-  //     setCart(cartUpadte);
-  //   } else {
-  //     setCart([...cart, product]);
-  //   }
-
-  //   console.log(cart);
-  // };
-  // const updateCant = (product) => {
-  //   const cartUpadte = cart.map((artic) => {
-  //     if (artic.id == product.id) {
-  //       artic.cantidad = product.cantidad;
-  //     }
-  //     return artic;
-  //   });
-  //   setCart(cartUpadte);
-  // };
-
-  // const deleteCart = (id) => {
-  //   const cartUpdate = cart.filter((artic) => artic.id !== id);
-  //   setCart(cartUpdate);
-  // };
-  // useEffect(() => {
-  //   dispatch(getPlates()).then(() => setLoading(false));
-  // }, [dispatch]);
 
   return (
     <>
     <CarrouselBanners />
-    <div className={s.homeContainer}>
-      {loading
+    <div>
+    {loading
       ?
        <div className="text-center">
           <div className="spinner-border" role="status">
@@ -73,17 +48,31 @@ export default function Home() {
           </div>
         </div>
       :
+      <div className={s.homeContainer}>
        <div className={s.categoriesBox}>
           <Category />
-          <CategorySection name='Main Courses' />
-          <CategorySection name='Appetizer' />
-          <CategorySection name='Salads' />
-          <CategorySection name='Desserts' />
-          <CategorySection name='Beverages' />
+          <CategorySection name='Main Course'
+          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+           />
+          <CategorySection name='Appetizer' 
+          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+          />
+          <CategorySection name='Salad' 
+          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+          />
+          <CategorySection name='Dessert'
+          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+           />
+          <CategorySection name='Beverage'
+          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+           />
        </div>
+      <ReservationCart 
+      Cart={Cart}
+      />
+      </div>
       }
       
-      <ReservationCart Cart={Cart} />
     </div>
     </>
   );

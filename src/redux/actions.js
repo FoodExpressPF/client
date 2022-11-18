@@ -4,6 +4,7 @@ export const GET_PLATES = "GET_PLATES";
 export const GET_PLATES_BY_FILTERS = "GET_PLATES_BY_FILTERS";
 export const GET_DETAIL = "GET_DETAIL";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
+export const GET_USER = "GET_USER";
 
 export const getPlates = () => (dispatch) =>
   axios(`/foods`)
@@ -54,3 +55,14 @@ export const sendEmail = (payload) => {
     const post = await axios.post("http://localhost:3001/send-email", payload);
   };
 };
+export const buyPaypal = (payload) => {
+  return async function (dispatch) {
+    const post = await axios.post("http://localhost:3001/paypal", payload);
+    return post.data.data.links[1].href;
+  };
+};
+
+export const getUser = (user) => ({
+  type: GET_USER,
+  payload: user,
+});

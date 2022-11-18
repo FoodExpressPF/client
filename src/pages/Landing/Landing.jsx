@@ -7,16 +7,21 @@ import LogoutButton from "../../components/Auth/Logout.jsx";
 import ModalAuth from "../../modals/Auth/Auth.jsx";
 
 import style from "./Landing.module.css";
+import {FaQuoteLeft, FaQuoteRight} from "react-icons/fa";
+
 import imageHero from "../../assets/imgs/landing.png";
+import Testimonials from './Testimonials/Testimonials.jsx';
+import Contact from './Contact/Contact.jsx';
 import Prueba from "../../emails/prueba.jsx";
+
+
 function Landing() {
   const history = useHistory();
   const { isAuthenticated } = useAuth0();
-
+    
   return (
-    <>
+    <div className={style.contenedor}>
       <div className={style.container}>
-        <Prueba />
         <div className={style.containerNav}>
           <img
             className={style.logo}
@@ -25,21 +30,20 @@ function Landing() {
           />
           <section id="sec1">
             <div>
-              <a href="#sec1" className={style.links}>
-                Landing
-              </a>
-              <a href="#sec2" className={style.links}>
-                About
-              </a>
-              <a href="#sec3" className={style.links}>
-                Testimonials
-              </a>
+              <a href="#sec1" className={style.links}>Home</a>
+              <a href="#sec2" className={style.links}>About</a>
+              <a href="#sec3" className={style.links}>Reviews</a>
+              <a href="#sec4" className={style.links}>Contact</a>
             </div>
           </section>
           {isAuthenticated ? <LogoutButton /> : <LoginButton />}
         </div>
-        <img src={imageHero} className={style.containerImageHero} alt="..." />
-
+        <img
+          src={imageHero}
+          className={style.containerImageHero}
+          alt="..."
+        />
+        
         <ModalAuth />
 
         <button
@@ -63,13 +67,13 @@ function Landing() {
             />
             <div className={style.col - 2}>
               <h2>About</h2>
-              <span className={style.line}></span>
-              <p>
-                "The restaurant that takes the best of international gastronomy,
+              {/* <span className={style.line}></span> */}
+              <p className={style.aboutR}><FaQuoteLeft className={style.quote}/>
+                 The restaurant that takes the best of international gastronomy,
                 the fusion of these flavors, techniques, ingredients and
                 experiences allow us to offer the best dishes to our customers,
                 was founded in 2018 and continues to be the best option to taste
-                any recipe international"
+                any recipe international <FaQuoteRight className={style.quote}/>
               </p>
               <p></p>
               <a href="#sec3">
@@ -79,62 +83,28 @@ function Landing() {
           </div>
         </div>
       </section>
-
-      <section id="sec3">
-        <div className={style.testimonials} id="testimonials">
-          <div className={style.container3}>
-            <h2>Testimonials</h2>
-            <span className="line"></span>
-            <div className={style.content}>
-              <div className={style.card}>
-                <img src="" alt="user1" />
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Reprehenderit tempore, harum ullam eligendi ea voluptate
-                  laboriosam, vitae ducimus doloremque necessitatibus, ipsum et
-                  quas ipsam! Aspernatur dolorem consectetur alias similique
-                  delectus.
-                </p>
-                <p>
-                  <span>"Nahuel Guzman"</span>
-                </p>
-                <p>User</p>
-              </div>
-              <div className={style.card}>
-                <img src="" alt="user2" />
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit,
-                  perferendis maxime facere inventore mollitia reiciendis
-                  quibusdam dignissimos vitae iste voluptatem aliquid in
-                  molestias nobis incidunt, culpa libero aut non delectus!
-                </p>
-                <p>
-                  <span>Carol Harper</span>
-                </p>
-                <p></p>
-              </div>
-              <div className={style.card}>
-                <img src="" alt="user3" />
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Cumque quo officia maiores distinctio quas veniam debitis
-                  saepe vitae iure voluptas nam hic dolor, doloremque inventore!
-                  Soluta laboriosam asperiores nobis veniam.
-                </p>
-                <p>
-                  <span>Snow.J.R.</span>
-                </p>
-                <p></p>
-              </div>
-              <a href="#sec1">
-                <button className={style.button1}>Contacto</button>
-              </a>
-            </div>
+      
+      <section id="sec3" className={style.sec3}>
+        <div id='testimonials'>
+          <div>
+          <a href='#sec4'>
+              <button className={style.button2}>Contact</button>
+            </a>
+            <h2 className={style.test}>Reviews</h2>
+            <Testimonials />
           </div>
         </div>
       </section>
-    </>
-  );
+      
+      <section id="sec4">
+        <div className={style.contacto} id="Contacto">
+          
+          <Contact/>
+          
+        </div>
+      </section>
+    </div>
+  )
 }
 
 export default Landing;

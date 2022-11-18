@@ -21,6 +21,9 @@ const validationSchema = Yup.object().shape({
 
   type: Yup.string()
     .required(REQUIRED_ERROR),
+
+  category: Yup.string()
+    .required(REQUIRED_ERROR),
 });
 
 export default validationSchema;

@@ -13,41 +13,44 @@ import AdminDashboard from "./pages/AdminDashboard/index.jsx";
 // Styles
 import "./assets/styles/globalStyles.css";
 import "./assets/fonts/fonts.css";
-
-
-
+import Passed from "./pages/postBuy/passed.jsx";
+import Denegated from "./pages/postBuy/denegated.jsx";
 
 function App() {
   const { isAuthenticated } = useAuth0();
 
   const RequireAuth = ({ children }) => {
-    if(!isAuthenticated) return <Redirect to="/"/>
+    if (!isAuthenticated) return <Redirect to="/" />;
     return children;
-  }
+  };
 
-  return <>
-    <Switch>
-      <Route exact path="/" component={Landing} />
-      <RequireAuth>
-        <Route path="/home">
-          <NavBar />
-          <Home />
-        </Route>
-        <Route path="/createProduct">
-          <NavBar />
-          <ProductsForm />
-        </Route>
-        <Route path="/foods/:id">
-          <NavBar />
-          <Detail />
-        </Route>
-        <Route path="/admin">
-          <NavBar />
-          <AdminDashboard />
-        </Route>
-      </RequireAuth>
-    </Switch>
-  </>
+  return (
+    <>
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/passed" component={Passed} />
+        <Route exact path="/denegated" component={Denegated} />
+        <RequireAuth>
+          <Route path="/home">
+            <NavBar />
+            <Home />
+          </Route>
+          <Route path="/createProduct">
+            <NavBar />
+            <ProductsForm />
+          </Route>
+          <Route path="/foods/:id">
+            <NavBar />
+            <Detail />
+          </Route>
+          <Route path="/admin">
+            <NavBar />
+            <AdminDashboard />
+          </Route>
+        </RequireAuth>
+      </Switch>
+    </>
+  );
 }
 
 export default App;
