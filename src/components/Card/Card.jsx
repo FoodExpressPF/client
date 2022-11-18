@@ -36,11 +36,11 @@ function Card({ id, name, price, rating, image, Cart, addHandler }) {
         </p>
       </div>
       <button
-        className=""
+        className="add_to_cart"
         type="button"
         onClick={()=>addHandler(id,name,price)}
       >
-        Agregar al carrito
+        + ADD TO CART
       </button>
     </div>
   );
