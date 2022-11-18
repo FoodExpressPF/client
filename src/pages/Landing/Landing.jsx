@@ -30,9 +30,9 @@ function Landing() {
           />
           <section id="sec1">
             <div>
-              <a href="#sec1" className={style.links}>Landing</a>
+              <a href="#sec1" className={style.links}>Home</a>
               <a href="#sec2" className={style.links}>About</a>
-              <a href="#sec3" className={style.links}>Testimonials</a>
+              <a href="#sec3" className={style.links}>Reviews</a>
               <a href="#sec4" className={style.links}>Contact</a>
             </div>
           </section>
