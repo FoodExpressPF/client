@@ -47,7 +47,10 @@ function Filters({ menu }) {
         className="slct"
         onChange={onChangeHandler}
         value={filters.type}
-        >
+
+        defaultValue={TYPES_FOODS[0]}>
+          <option value="">All</option>
+          
         {TYPES_FOODS.map((type, i) =>
           <option value={type} key={i}>
             {type}

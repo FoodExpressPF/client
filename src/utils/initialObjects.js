@@ -27,3 +27,12 @@ export const INITIAL_PRODUCT_FORM = {
   type_user: 'admin',
   offer: 'false',
 };
+
+export const INITIAL_USER_FORM = {
+  name: '',
+  email: '',
+  direction: '',
+  number_phone: '',
+  visible: true,
+  type_user: '',
+};
