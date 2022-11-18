@@ -1,10 +1,12 @@
 .testimonials {
   width: 100%;
+  height: auto;
+  padding-bottom: 0px;
 }
 
 .testimonials .container {
-  width: 1240px;
-  margin: 4rem auto;
+  width: 1000px;
+  margin: 0rem auto;
   padding: 4rem 0rem;
   background-color: transparent;
 }
