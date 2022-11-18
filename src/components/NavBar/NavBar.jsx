@@ -81,7 +81,7 @@ function NavBar() {
             {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           </ul>
           <div>
-            <Link to='/' >
+            <Link to='/client' >
              <img 
                className="rounded-circle"
                style={{

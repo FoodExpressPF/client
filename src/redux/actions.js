@@ -58,8 +58,26 @@ export const sendEmail = (payload) => {
 };
 
 export const getUser = (user) =>
+<<<<<<< HEAD
+  dispatch => 
+    axios({
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:3001/user/create",
+      data: {name: user.name, email: user.email}})
+      .then(response => response.data)
+      .then(data => dispatch({
+        type: GET_USER,
+        payload: {...data.user, picture: user.picture}
+      }))
+      .catch(error =>console.log(error));
+ 
+=======
    ({
       type: GET_USER,
       payload: user,
     })
   ;
+>>>>>>> 6e2df7994eb59504ac573c5f503ac3e48c8b2867
