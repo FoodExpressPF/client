@@ -10,6 +10,7 @@ function Detail() {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.detail);
   const { id } = useParams();
+  console.log(details)
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -22,7 +23,7 @@ function Detail() {
         <button className="btn btn-primary h-25">Back</button>
       </Link>
 
-      { details.length > 0 ?
+      { details.name ?
       <div className={`card-detail ${style.sub_container}`}>
           <div className={style.container_elements}>
             
