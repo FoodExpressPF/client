@@ -8,22 +8,14 @@ const validationSchema = Yup.object().shape({
     .max(50,'Name must be between 4 and 50 characters')
     .required(REQUIRED_ERROR),
 
-  description: Yup.string()
-    .min(20,'Description must have a minimum of 20 characteres')
+  number_phone: Yup.string()
     .required(REQUIRED_ERROR),
 
-  price: Yup.number()
-    .min(0.5,'Price must be greater than 0')
+  type_user: Yup.string()
     .required(REQUIRED_ERROR),
-
-  image: Yup.string()
-    .required(REQUIRED_ERROR),
-
-  type: Yup.string()
-    .required(REQUIRED_ERROR),
-
-  category: Yup.string()
-    .required(REQUIRED_ERROR),
+  
+  email:Yup.string().email()
+  .required(REQUIRED_ERROR)
 });
 
 export default validationSchema;

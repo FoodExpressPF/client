@@ -1,21 +1,37 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import NewUser from '../../../components/Forms/NewUser';
 import AdminTable from '../AdminTable';
 
 const Users = () => {
-   const allUsers = useSelector((state) => state.Users);
-   console.log(allUsers)
+  const [allUsers, setAllUsers] = useState([])
+  console.log(allUsers)
 
-  // useEffect(()=>{
-  //   if(allUsers.length==0) dispatch(getUs())
-  // },[])
+  const getUsers = ()=>{
+    axios.get('/user')
+    .then(response=> setAllUsers(response.data))
+  }
 
-  const cols = ['Id', 'Name' ,'Email', 'Direction', 'Number Phone', 'Role']
+  useEffect(()=>{
+    getUsers()
+  },[])
+
+  const cols = ['id', 'name' ,'email', 'direction', 'number_phone', 'role']
+
+  const deleteUser = (id)=>{
+    axios.delete(`/user/delete?id=${id}`)
+    .then(response=> {console.log(response.data); getUsers()})
+    .catch(error=>console.log(error))
+  }
   return (
     <div>
-      Soy Users
-      <AdminTable form={<NewUser/>} name='User' cols={cols} />      
+      <AdminTable 
+        data={allUsers} 
+        form={<NewUser/>} 
+        name='User' 
+        cols={cols}
+        funDelete={deleteUser} />      
     </div>
   );
 };

@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 
 import s from './adminTable.module.css'
 
-const AdminTable = ({ form,name, data, cols }) => {
+const AdminTable = ({ form,name, data, cols, funDelete }) => {
   let counter = 1
   const sum = () => {counter++}
   const [activeNewProduct, setActiveNewProduct] = useState(false)
   const handleNewProduct = ()=> setActiveNewProduct(!activeNewProduct)
 
-  const handleDelete = (e,id) => {
-    console.log(e,id)
+  const handleDelete = (id) => {
+    funDelete(id)
   }
 
   const handleEdit = () => console.log('edit')
