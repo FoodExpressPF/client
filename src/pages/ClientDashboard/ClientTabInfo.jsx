@@ -21,8 +21,20 @@ export default function ClientTabInfo(){
         setUser({...user, [e.target.id]: e.target.value});
     };
 
-    function onSubmit(){
-        
+    async function onSubmit(){
+        alert('nuevos datos enviados');
+        await axios({
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            url: "http://localhost:3001/user/update/changefields",
+            data: {name: user.name, phone_number: user.phone_number, direction: user.direction, id: user.id} 
+        })
+        .then(response => response.data)
+        .then(data => alert(JSON.stringify(data)))
+        .catch(err => alert(JSON.stringify(err)));
+
     };
 
     console.log(user);
