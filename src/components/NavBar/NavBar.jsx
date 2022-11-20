@@ -10,10 +10,10 @@ import { useSelector } from "react-redux";
 
 
 function NavBar() {
-  const { isAuthenticated } = useAuth0();
+  const { user,isAuthenticated } = useAuth0();
   const isAdmin= useCheckRoles('admin')
+  console.log(user)
 
-  const user = useSelector((state) => state.user);
   const profile = 'https://res.cloudinary.com/dpnrbius0/image/upload/v1668650768/Profile_sa6jnn.png'
 
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -80,20 +80,20 @@ function NavBar() {
             </li>
             {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           </ul>
-          <div>
-            <Link to='/client' >
-             <img 
-               className="rounded-circle"
-               style={{
-                  'maxHeight':'50px',
-                  'maxWidth':'50px',
-                  'boxShadow':'0px 0px 2px 2px #00000020',
-               }}
-               src={user?user.picture:profile} 
-               alt={user.name} 
-              />
-            </Link>
-          </div>
+          
+          <Link to='/client' >
+            <img 
+              className="rounded-circle"
+              style={{
+                'height':'50px',
+                'width':'50px',
+                'boxShadow':'0px 0px 2px 2px #00000020',
+              }}
+              src={user?user.picture:profile} 
+              alt={user.name} 
+            />
+          </Link>
+          
         </div>
       </div>
     </nav>

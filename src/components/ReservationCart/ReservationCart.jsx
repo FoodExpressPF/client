@@ -1,19 +1,24 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { buy } from "../../redux/actions";
+import { buy, buyPaypal } from "../../redux/actions";
 import "./ReservationCart.css";
 
 function ReservationCart({ Cart }) {
   const dispatch = useDispatch();
 
-  
-
-  const total = () => {
+  const mp = () => {
     let total = Cart.items.reduce((acum, act) => {
       return acum + act.price * act.count;
     }, 0);
 
-    dispatch(buy({ total })).then((url) => (window.location.href = `${url}`));
+    dispatch(buy({ total })).then((url) => window.open(url, `${url}`));
+  };
+  const paypal = () => {
+    let price = Cart.items.reduce((acum, act) => {
+      return acum + act.price * act.count;
+    }, 0);
+
+    dispatch(buyPaypal({ price })).then((url) => window.open(url, `${url}`));
   };
 
   if(!Cart.items.length){
@@ -45,22 +50,20 @@ function ReservationCart({ Cart }) {
             return (
               <div key={item.id}>
                 <hr />
-                <span className="d-flex justify-content-between mb-3">
-                  <h5 class="fw-bold">
-                    {item.name}
-                  </h5>
-                <button
-                  className="remove_button"
-                  type="button"
-                  onClick={() => Cart.remove(item)}
-                >
-                  {" "}
-                  X{" "}
-                </button>
-                
+                <span>
+                  <h5 class="fw-bold">{item.name}</h5>
+                  <span className="d-flex justify-content-end">
+                    <button
+                      className="remove_button"
+                      type="button"
+                      onClick={() => Cart.remove(item)}
+                    >
+                      {" "}
+                      X{" "}
+                    </button>
+                  </span>
                 </span>
                 <div class="d-flex justify-content-center">
-                  
                   <button
                     className="amount_button d-flex justify-content-center"
                     type="button"
@@ -95,15 +98,15 @@ function ReservationCart({ Cart }) {
                 return acum + act.price * act.count;
               }, 0)}
           </h5>
-          <span className="d-flex justify-content-center pb-3">
-          <button className="toPayment_button" onClick={() => total()}>
+
+          <button className="toPayment_button" onClick={() => mp()}>
             Proceed to payment $
             {Cart.items &&
               Cart.items.reduce((acum, act) => {
                 return acum + act.price * act.count;
               }, 0)}
           </button>
-          </span>
+          <button onClick={() => paypal()}>buy PayPal</button>
           {/* {Cart.items && (
             <button className="end_buttons" type="button" onClick={() => Cart.reset()}>
               {" "}
