@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import Card from '../../components/Card/Card';
 
 //Hooks 
 import useLocalStorage from "../../hooks/useLocalStorage.js";
 
-//Styles
-import s from './categorySection.module.css'
 
-const CategorySection = ({name}) => {
+const CategorySection = ({name, addHandler}) => {
   const allPlate = useSelector((state) => state.plates);
+  const filterPlates = allPlate.filter(plate=>plate.category === name)
   const Cart = useLocalStorage("CART", "");
+  console.log(allPlate,filterPlates)
  
   const nameId =name.replace(/ /g, "")
 
   return (
     <section id={`${nameId}`}>
-      <div className={s.cardContainer}>
+      <div>
         {allPlate?.map((c) => {
           return (
               <Card
@@ -27,7 +27,7 @@ const CategorySection = ({name}) => {
                 price={c.price}
                 image={c.image}
                 agregar={() => agregar(c)}
-                Cart={Cart}
+                addHandler={(id,name,price)=>addHandler(id,name,price)}
               />
           )
         })}

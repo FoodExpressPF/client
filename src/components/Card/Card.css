@@ -1,12 +1,13 @@
 .container {
   display: flex;
   align-items: center;
-  max-width: 1840px;
-  background-color: #F2EAD3;
+  width: 800px;
+  background-color: #F9F5F0;
+  min-width: 50%;
+  
 }
 
-
-h5 {
+.title-text {
   color: #262626;
   text-decoration: none;
   font-size: 22px;
@@ -15,9 +16,11 @@ h5 {
   margin-bottom: 4px;
 }
 
-p {
+.card-text {
   padding-left: 15px;
   font-size: 17px;
+  display: flex;
+  align-items: center;
   font-weight: 400;
   line-height: 20px;
   color: #080808;
@@ -28,11 +31,14 @@ p {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  width: 300px;
-  height: 300px;
-  border-radius: 12px;
+  width: 250px;
+  height: 250px;
   border-color: #F4991A;
+  border-style: outset;
+}
+
+.cardImage:hover{
+  transform: scale(1.04) rotate(2deg);
 }
 
 .titleHome {
@@ -41,4 +47,38 @@ p {
   align-content: center;
   color: rgb(87, 87, 87);
   size: 40px;
+}
+
+.add_to_cart{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #fead3a;
+  color: #F9F5F0;
+  width: 150px;
+  font-weight: 600;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 44px;
+  padding: 1rem;
+}
+
+.add_to_cart:hover{
+  background-color: #F4991A;
+  color: #262626;
+}
+
+.add_to_cartContainer{
+  padding-top: 20px;
+}
+
+.fancy-border {
+  border: 10px solid transparent;
+  border-image: url(https://www.w3schools.com/Css/border.png) 30 stretch;
 }

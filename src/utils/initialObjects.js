@@ -4,7 +4,8 @@
 export const INITIAL_GLOBAL_STATE = {
   plates: [],
   allPlates: [],
-  detail: {},
+  detail: [],
+  user: {}
 };
 
 export const INITIAL_FILTERS = {
@@ -22,7 +23,16 @@ export const INITIAL_PRODUCT_FORM = {
   type: [],
   rating: 0,
   image: '',
-  category:'',
+  category: '',
   type_user: 'admin',
   offer: 'false',
+};
+
+export const INITIAL_USER_FORM = {
+  name: '',
+  email: '',
+  direction: '',
+  number_phone: '',
+  visible: true,
+  type_user: '',
 };

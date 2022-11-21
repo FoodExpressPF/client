@@ -3,24 +3,25 @@ import { Link } from 'react-router-dom';
 
 import "./Card.css";
 
-function Card({ id, name, price, rating, image, Cart }) {
+function Card({ id, name, price, rating, image, addHandler }) {
   //const [cantidad, setCantidad] = useState(1);
 
-  const addCartHandler = () => Cart.add({id, name, price});
 
   return (
     <div className="container">
       <div>
         <Link to={`/foods/${id}`}>
-          <img className="cardImage border border-warning" src={image} alt="..." />
+        <div class="fancy-border">
+          <img className="cardImage" src={image} alt="..." />
+        </div>
         </Link>
       </div>
       <div className="card-body">
-        <h5 className="card-title font-weight-bold text-center">{name}</h5>
-        <p className="mb-3">  Price: ${price}</p>
+        <h5 className="title-text card-title font-weight-bold text-center">{name}</h5>
+        <p className="card-text mb-3">  Price: ${price}</p>
         <hr className="my-4" />
-        <p className="lead">
-          <strong>
+        <p className="card-text lead">
+          <strong className="d-flex align-items-baseline">
             {rating}/5
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -35,13 +36,15 @@ function Card({ id, name, price, rating, image, Cart }) {
           </strong>
         </p>
       </div>
-      <button
-        className=""
-        type="button"
-        onClick={addCartHandler}
-      >
-        Agregar al carrito
-      </button>
+      <div className="add_to_cartContainer">
+        <button
+          className="add_to_cart"
+          type="button"
+          onClick={()=>addHandler(id,name,price)}
+        >
+          + ADD TO CART
+        </button>
+      </div>
     </div>
   );
 }
