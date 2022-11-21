@@ -1,8 +1,8 @@
 .container {
   display: flex;
   align-items: center;
-  width: 1000px;
-  background-color: #F2EAD3;
+  width: 800px;
+  background-color: #F9F5F0;
   min-width: 50%;
   
 }
@@ -31,14 +31,14 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  width: 300px;
-  height: 300px;
-  border-radius: 12px;
+  width: 250px;
+  height: 250px;
+  border-color: #F4991A;
+  border-style: outset;
 }
 
 .cardImage:hover{
-  scale:1.05;
+  transform: scale(1.04) rotate(2deg);
 }
 
 .titleHome {
@@ -56,7 +56,7 @@
   justify-content: center;
   background-color: #fead3a;
   color: #F9F5F0;
-  width: 200px;
+  width: 150px;
   font-weight: 600;
   text-transform: uppercase;
   box-sizing: border-box;
@@ -72,4 +72,13 @@
 .add_to_cart:hover{
   background-color: #F4991A;
   color: #262626;
+}
+
+.add_to_cartContainer{
+  padding-top: 20px;
+}
+
+.fancy-border {
+  border: 10px solid transparent;
+  border-image: url(https://www.w3schools.com/Css/border.png) 30 stretch;
 }

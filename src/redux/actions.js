@@ -63,18 +63,19 @@ export const buyPaypal = (payload) => {
 };
 
 export const getUser = (user) =>
-  dispatch => 
+  dispatch =>
     axios({
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       url: "http://localhost:3001/user/create",
-      data: {name: user.name, email: user.email}})
+      data: { name: user.name, email: user.email }
+    })
       .then(response => response.data)
       .then(data => dispatch({
         type: GET_USER,
-        payload: {...data.user, picture: user.picture}
+        payload: { ...data.user, picture: user.picture }
       }))
-      .catch(error =>console.log(error));
- 
+      .catch(error => console.log(error));
+
