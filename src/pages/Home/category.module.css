@@ -5,6 +5,7 @@
   height: 60px;
   background-color: #ffffff80;
   pointer-events: none;
+  z-index: 100;
 }
 
 .categoryNavContent{

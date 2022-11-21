@@ -20,8 +20,26 @@ function ReservationCart({ Cart }) {
 
     dispatch(buyPaypal({ price })).then((url) => window.open(url, `${url}`));
   };
+
+  if(!Cart.items.length){
+    return(
+      
+      <div className="cartContainer sticky-top">
+      <img src="https://i.ibb.co/JRTK9z4/horizontally-centered-vertical-decoration.png"
+      className="decoration_image"
+      />
+      <h3 class="fs-1 d-flex justify-content-center">My cart</h3>
+      <img className="cart_image"
+        src="https://res.cloudinary.com/dbepwtmru/image/upload/v1668744345/foods_sketch_fkwkau.png"
+      />
+      </div>
+    )
+  }
   return (
     <div className="cartContainer sticky-top">
+      <img src="https://i.ibb.co/JRTK9z4/horizontally-centered-vertical-decoration.png"
+      className="decoration_image"
+      />
       <h3 class="fs-1 d-flex justify-content-center">My cart</h3>
       <span>
         {/*cantidad carrito: {Cart.items?.length} Hacer lo de la bolita*/}
@@ -47,14 +65,14 @@ function ReservationCart({ Cart }) {
                 </span>
                 <div class="d-flex justify-content-center">
                   <button
-                    className="amount_button"
+                    className="amount_button d-flex justify-content-center"
                     type="button"
                     onClick={() => Cart.discount(item)}
                   >
                     {" "}
                     -{" "}
                   </button>
-                  <span> {item.count}u </span>
+                  <span> <h5>{item.count}u </h5></span>
                   <button
                     className="amount_button"
                     type="button"
@@ -88,7 +106,8 @@ function ReservationCart({ Cart }) {
                 return acum + act.price * act.count;
               }, 0)}
           </button>
-          <button onClick={() => paypal()}>buy PayPal</button>
+          <br/>
+          <button className="toPayment_button" onClick={() => paypal()}>buy PayPal</button>
           {/* {Cart.items && (
             <button className="end_buttons" type="button" onClick={() => Cart.reset()}>
               {" "}
