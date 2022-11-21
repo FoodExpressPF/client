@@ -1,24 +1,49 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { INITIAL_PRODUCT_FORM as initialValues } from '../../utils/initialObjects'
 
 //Libraries
 import { useFormik } from "formik";
 import validationSchema from "./formValidations.js";
+import { useDispatch } from 'react-redux';
+import { getUser } from '../../redux/actions';
 // import axios from "axios";
 
 
 const NewUser = () => {
 
   const [loading, setLoading] = useState(false);
+  const[response, setResponse] = useState('');
+  const dispatch = useDispatch()
 
   ///////////////////////////////////////////////ONSUBMIT
   const onSubmit = (e) => {
-    setLoading(true)
+    setLoading(true);
+
+    axios({
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: "user/create",
+      data: values,
+    })   
+     .then(response => {
+      setResponse(response.data.message)
+      setLoading(false)    
+      dispatch(getUser())
+     })
+     .catch(error=>{
+      setResponse(error.response.data)
+      setLoading(false)
+     });
+     formik.resetForm()
   }
 
 
     const formik = useFormik({ initialValues, validationSchema, onSubmit })
   const {handleSubmit, handleChange, handleBlur, errors, touched,values} = formik
+  console.log(errors)
   return (  
     <div>
       <h2 className='mt-3 text-center'>Create New User</h2>
@@ -111,8 +136,7 @@ const NewUser = () => {
         {/* DIRECTION */}
 
         <div>
-          <div className="input-group mb-3">
-            <span className="input-group-text">$</span>
+          <div className="form-floating mb-3">
             <input
               className={
                 errors.direction && touched.direction
@@ -121,13 +145,12 @@ const NewUser = () => {
               }
               aria-label="Amount (to the nearest dollar)"
               name="direction"
-              type="number"
-              placeholder="direction"
+              type="text"
+              placeholder="Direction"
               value={values.direction}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <span className="input-group-text">.00</span>
           </div>
 
           {errors.direction && (
@@ -149,7 +172,7 @@ const NewUser = () => {
                   ? "form-control is-invalid"
                   : "form-control"
               }
-              type="number"
+              type="tel"
               name="number_phone"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -157,7 +180,7 @@ const NewUser = () => {
           </label>
         </div>
 
-        {/* CATEGORY */}
+        {/* TYPE USER */}
 
         <div>
           <label className="w-100">
@@ -165,46 +188,17 @@ const NewUser = () => {
               className="form-select"
               aria-label="Default select example"
               type="select"
-              name="category"
+              name="type_user"
               onChange={handleChange}
               onBlur={handleBlur}
             >
-              <option>Select a Category</option>
-              <option value="Main Course">Main Course</option>
-              <option value="Appetizer">Appetizer</option>
-              <option value="Salad">Salad</option>
-              <option value="Dessert">Dessert</option>
-              <option value="Beverage">Beverage</option>
+              <option>Select a User Rol</option>
+              <option value="Client">Client</option>
+              <option value="Admin">Admin</option>
             </select>
           </label>
         </div>
 
-        {/* Rating */}
-
-        {/* <div>
-                  <label className= "w-100">
-                   <strong>Rating:</strong> <br />
-
-                   <input 
-                       className="form-range" 
-                       min="0" 
-                       max="5"
-                       step="1"
-                       name="rating" 
-                       type="range"
-                       value={values.rating} 
-                       onChange={handleChange}
-                       onBlur={handleBlur}
-                      />         
-                  </label> 
-                  <div>{values.rating}</div>
-
-                  {errors.rating && touched.rating && (
-                    <p 
-                      // className=
-                    >{errors.rating}</p>
-                  )}  
-              </div>    */}
       </fieldset>
 
       <div className="text-center mt-4">

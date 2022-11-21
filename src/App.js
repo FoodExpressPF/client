@@ -35,10 +35,7 @@ function App() {
           <NavBar />
           <Home />
         </Route>
-        <Route path="/createProduct">
-          <NavBar />
-          <ProductsForm />
-        </Route>
+
         <Route path="/foods/:id">
           <NavBar />
           <Detail />

@@ -7,6 +7,7 @@ import { INITIAL_PRODUCT_FORM as initialValues } from "../../utils/initialObject
 //Libraries
 import { useFormik } from "formik";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 const ProductsForm = () => {
   const [previewImage, setPreviewImage] = useState(
@@ -14,6 +15,7 @@ const ProductsForm = () => {
   );
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch()
 
   ///////////////////////////////////////////////ONCHANGE IMAGE INPUT
   
@@ -43,7 +45,8 @@ const ProductsForm = () => {
     })   
      .then(response => {
       setResponse(response.data.message)
-      setLoading(false)     
+      setLoading(false)    
+      dispatch(getPlates())
      })
      .catch(error=>{
       setResponse(error.response.data)
