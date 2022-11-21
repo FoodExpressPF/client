@@ -1,3 +1,22 @@
 .userDashConteiner{
     margin-top: 10%;
 }
+
+.infoTable{
+    width: 80%;
+}
+
+.infoTable table button{
+    border-style: none;
+    background-color: initial;
+    text-decoration: underline;
+}
+
+.infoTable td{
+    min-width: 70%;
+}
+
+.infoTable input{
+    max-height: 30px;
+    margin-top: 3px;
+};
