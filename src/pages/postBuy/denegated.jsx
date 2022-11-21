@@ -24,8 +24,8 @@ function Denegated() {
   };
   return (
     <>
-    <div>
-      <div>
+    <div className={s.background}>
+      <div className={s.recipt_container}>
         <img src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669043972/Pngtree_wrong_and_cancle_symbol_8742801_h75suz.png"
         className={s.error_image}
         />      

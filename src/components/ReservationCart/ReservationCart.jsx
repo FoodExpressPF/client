@@ -106,7 +106,8 @@ function ReservationCart({ Cart }) {
                 return acum + act.price * act.count;
               }, 0)}
           </button>
-          <button onClick={() => paypal()}>buy PayPal</button>
+          <br/>
+          <button className="toPayment_button" onClick={() => paypal()}>buy PayPal</button>
           {/* {Cart.items && (
             <button className="end_buttons" type="button" onClick={() => Cart.reset()}>
               {" "}
