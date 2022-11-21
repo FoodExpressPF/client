@@ -62,20 +62,28 @@ export const buyPaypal = (payload) => {
   };
 };
 
-export const getUser = (user) =>
-  dispatch =>
-    axios({
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      url: "http://localhost:3001/user/create",
-      data: { name: user.name, email: user.email }
-    })
-      .then(response => response.data)
-      .then(data => dispatch({
+export const getUser = (user) => (dispatch) =>
+  axios({
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    url: "http://localhost:3001/user/create",
+    data: { name: user.name, email: user.email },
+  })
+    .then((response) => response.data)
+    .then((data) =>
+      dispatch({
         type: GET_USER,
-        payload: { ...data.user, picture: user.picture }
-      }))
-      .catch(error => console.log(error));
+        payload: { ...data.user, picture: user.picture },
+      })
+    )
+    .catch((error) => console.log(error));
 
+export const postOrder = (payload) => {
+  return async function (dispatch) {
+    const post = await axios.post("/orders/create", payload);
+
+    return post;
+  };
+};
