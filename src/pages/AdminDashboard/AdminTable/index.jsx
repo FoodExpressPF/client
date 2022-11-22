@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import Loading from '../../../components/Loading/Loading'
 
 import s from './adminTable.module.css'
 
@@ -30,6 +30,7 @@ const AdminTable = ({ form,name, data, cols, funDelete }) => {
         {form}
       </div>
     }
+
     <div 
       className={s.tableContainer}  
     >
@@ -44,7 +45,9 @@ const AdminTable = ({ form,name, data, cols, funDelete }) => {
         </button>
       </div>
 
-      <table className="table table-striped table-hover">
+      {data.length === 0? <Loading />
+      :
+       <table className="table table-striped table-hover">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -87,7 +90,7 @@ const AdminTable = ({ form,name, data, cols, funDelete }) => {
             
       
         </tbody>
-      </table>
+      </table>}
       
     </div>
     </>

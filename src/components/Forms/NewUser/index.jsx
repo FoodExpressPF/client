@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { INITIAL_PRODUCT_FORM as initialValues } from '../../utils/initialObjects'
+import { INITIAL_USER_FORM as initialValues } from '../../../utils/initialObjects'
 
 //Libraries
 import { useFormik } from "formik";
 import validationSchema from "./formValidations.js";
 import { useDispatch } from 'react-redux';
-import { getUser } from '../../redux/actions';
+import { getUser } from '../../../redux/actions';
 // import axios from "axios";
 
 
-const NewUser = () => {
+const index = () => {
 
   const [loading, setLoading] = useState(false);
   const[response, setResponse] = useState('');
@@ -29,12 +29,13 @@ const NewUser = () => {
       data: values,
     })   
      .then(response => {
-      setResponse(response.data.message)
+      setResponse(`${response.data.created} /n ${response.data.user.email}`)
+      console.log('response',response)
       setLoading(false)    
-      dispatch(getUser())
      })
      .catch(error=>{
-      setResponse(error.response.data)
+      console.log('error',error)
+      // setResponse(error.response.data)
       setLoading(false)
      });
      formik.resetForm()
@@ -60,7 +61,7 @@ const NewUser = () => {
                  </div>
                </div>
                  :<div>
-                    {/* <h5 className="modal-title">{response}</h5> */}
+                    <h5 className="modal-title">{response}</h5>
                   </div>    
                 }
              </div>
@@ -221,4 +222,4 @@ const NewUser = () => {
 );
 };
 
-export default NewUser;
+export default index;

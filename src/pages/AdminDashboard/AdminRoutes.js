@@ -11,10 +11,7 @@ import Orders from "./Orders";
 const AdminRoutes = () => {
   return (
     <>
-    <Tabs />
-    <Route exact path="/admin">
-        <AdminDashboard />
-      </Route>
+    <AdminDashboard />
 
       <Route path="/admin/users" component={Users} />
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import NewUser from '../../../components/Forms/NewUser';
+import NewUser from '../../../components/Forms/NewUser/index.jsx';
 import AdminTable from '../AdminTable';
 
 const Users = () => {
