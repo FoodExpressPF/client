@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { postOrder, sendEmail } from "../../redux/actions";
@@ -12,7 +12,7 @@ function Passed() {
   const { user, isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const idUser = useSelector((state) => state.user);
   const email = () => {
     let price = Cart.items.reduce((acum, act) => {
       return acum + act.price * act.count;
@@ -26,11 +26,12 @@ function Passed() {
         coments: "colocar input",
         address: "colocar input ",
         total: price,
+        userId: idUser.id,
       })
     );
     history.push("/");
   };
-
+  console.log(idUser.name);
   return (
     <>
       <div className={s.background}>
