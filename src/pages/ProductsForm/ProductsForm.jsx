@@ -49,7 +49,7 @@ const ProductsForm = () => {
       dispatch(getPlates())
      })
      .catch(error=>{
-      setResponse(error.response.data)
+      setResponse(error?.response.data)
       setLoading(false)
      });
      formik.resetForm()
@@ -90,7 +90,7 @@ const ProductsForm = () => {
          </div>
          <div className="back">
 
-      <form className="mx-auto w-50 my-5" onSubmit={handleSubmit}>
+      <form className="w-50 my-5" onSubmit={handleSubmit}>
         {/* IMAGE */}
 
                <div className="input-group mb-3">
