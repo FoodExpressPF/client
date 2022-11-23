@@ -45,19 +45,20 @@ export const clearDetail = () => {
 
 export const buy = (payload) => {
   return async function (dispatch) {
-    const post = await axios.post("http://localhost:3001/payment", payload);
+    console.log(axios.defaults.baseURL);
+    const post = await axios.post("payments/mercado", payload);
     return post.data.init_point;
   };
 };
 
 export const sendEmail = (payload) => {
   return async function (dispatch) {
-    const post = await axios.post("http://localhost:3001/send-email", payload);
+    const post = await axios.post("/send-email", payload);
   };
 };
 export const buyPaypal = (payload) => {
   return async function (dispatch) {
-    const post = await axios.post("http://localhost:3001/paypal", payload);
+    const post = await axios.post("payments/paypal", payload);
     return post.data.data.links[1].href;
   };
 };
@@ -69,7 +70,7 @@ export const getUser = (user) =>
       headers: {
         "Content-Type": "application/json",
       },
-      url: "http://localhost:3001/user/create",
+      url: "/user/create",
       data: { name: user.name, email: user.email }
     })
       .then(response => response.data)
