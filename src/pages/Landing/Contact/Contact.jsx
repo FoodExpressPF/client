@@ -3,7 +3,7 @@ import "./Contact.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFacebook, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons"
 import { FaMapMarkerAlt} from "react-icons/fa";
-import {SiGmail} from "react-icons/si";
+import { AiOutlineMail} from "react-icons/ai";
 
 
 function Contact(){
@@ -45,7 +45,7 @@ function Contact(){
                     <div className="red-social">
                         <a href="https://www.facebook.com/profile.php?id=100087952037421" className="fa fa-facebook">{f}</a>
                         <a href="https://www.instagram.com/henry.foodexpress/" className="fa fa-instagram">{i}</a>
-                        <a href="mailto:henry.foodexpress@gmail.com?Subject=Info%20,Comments%20or%20Suggestions" className="fa fa-google"><SiGmail/></a>
+                        <a href="mailto:henry.foodexpress@gmail.com?Subject=Info%20,Comments%20or%20Suggestions" className="fa fa-google"><AiOutlineMail/></a>
                         <a href="https://twitter.com/FoodExp35194109" className="fa fa-twitter">{t}</a>
                         
                     </div>
@@ -56,7 +56,7 @@ function Contact(){
                 </div>
             </div>
             <div className="grupo-2">
-                <small>&copy; 2018 <b>Food-Express Company - Todos Los Derechos Reservados.</b></small>
+                <small>&copy; 2018 <b>Food-Express Company - All rights reserved.</b></small>
             </div>
         </footer>
     )
