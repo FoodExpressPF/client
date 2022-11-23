@@ -76,7 +76,15 @@ export const getUser = (user) =>
       .then(response => response.data)
       .then(data => dispatch({
         type: GET_USER,
-        payload: { ...data.user, picture: user.picture }
-      }))
-      .catch(error => console.log(error));
+        payload: { ...data.user, picture: user.picture },
+      })
+    )
+    .catch((error) => console.log(error));
 
+export const postOrder = (payload) => {
+  return async function (dispatch) {
+    const post = await axios.post("/orders/create", payload);
+
+    return post;
+  };
+};
