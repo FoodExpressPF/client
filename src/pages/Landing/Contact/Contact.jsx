@@ -42,7 +42,7 @@ function Contact(){
                 <div className="box">
                     <h2>Follow</h2>
                     <div className="red-social">
-                        <a href="#" className="fa fa-facebook">{f}</a>
+                        <a href="https://www.facebook.com/profile.php?id=100087952037421" className="fa fa-facebook">{f}</a>
                         <a href="#" className="fa fa-instagram">{i}</a>
                         <a href="#" className="fa fa-google">{g}</a>
                         <a href="#" className="fa fa-twitter">{t}</a>
@@ -55,7 +55,7 @@ function Contact(){
                 </div>
             </div>
             <div className="grupo-2">
-                <small>&copy; 2022 <b>Food-Express Company - Todos Los Derechos Reservados.</b></small>
+                <small>&copy; 2018 <b>Food-Express Company - Todos Los Derechos Reservados.</b></small>
             </div>
         </footer>
     )
