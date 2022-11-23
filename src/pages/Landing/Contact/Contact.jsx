@@ -1,7 +1,7 @@
 import React from "react";
 import "./Contact.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faFacebook, faInstagram, faGoogle, faTwitter} from "@fortawesome/free-brands-svg-icons"
+import { faFacebook, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons"
 import { FaMapMarkerAlt} from "react-icons/fa";
 import {SiGmail} from "react-icons/si";
 
@@ -9,7 +9,7 @@ import {SiGmail} from "react-icons/si";
 function Contact(){
     const f = <FontAwesomeIcon icon={faFacebook} />
     const i = <FontAwesomeIcon icon={faInstagram} />
-    const g = <FontAwesomeIcon icon={faGoogle} />
+    // const g = <FontAwesomeIcon icon={faGoogle} />
     const t = <FontAwesomeIcon icon={faTwitter} />
    
    
