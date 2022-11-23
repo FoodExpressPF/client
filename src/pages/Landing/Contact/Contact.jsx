@@ -3,6 +3,7 @@ import "./Contact.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFacebook, faInstagram, faGoogle, faTwitter} from "@fortawesome/free-brands-svg-icons"
 import { FaMapMarkerAlt} from "react-icons/fa";
+import {SiGmail} from "react-icons/si";
 
 
 function Contact(){
@@ -44,7 +45,7 @@ function Contact(){
                     <div className="red-social">
                         <a href="https://www.facebook.com/profile.php?id=100087952037421" className="fa fa-facebook">{f}</a>
                         <a href="https://www.instagram.com/henry.foodexpress/" className="fa fa-instagram">{i}</a>
-                        <a href="#" className="fa fa-google">{g}</a>
+                        <a href="mailto:henry.foodexpress@gmail.com?Subject=Info%20,Comments%20or%20Suggestions" className="fa fa-google"><SiGmail/></a>
                         <a href="https://twitter.com/FoodExp35194109" className="fa fa-twitter">{t}</a>
                         
                     </div>
