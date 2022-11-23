@@ -43,7 +43,7 @@ function Contact(){
                     <h2>Follow</h2>
                     <div className="red-social">
                         <a href="https://www.facebook.com/profile.php?id=100087952037421" className="fa fa-facebook">{f}</a>
-                        <a href="#" className="fa fa-instagram">{i}</a>
+                        <a href="https://www.instagram.com/henry.foodexpress/" className="fa fa-instagram">{i}</a>
                         <a href="#" className="fa fa-google">{g}</a>
                         <a href="#" className="fa fa-twitter">{t}</a>
                         
