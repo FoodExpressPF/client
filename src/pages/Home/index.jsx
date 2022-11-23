@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../../components/Loading/Loading.jsx";
 
 //Components
 import Category from "./Category.jsx";
@@ -42,10 +43,8 @@ export default function Home() {
     <div>
     {loading
       ?
-       <div className="text-center">
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
+       <div className="text-center">          
+            <Loading/>         
         </div>
       :
       <div className={s.homeContainer}>

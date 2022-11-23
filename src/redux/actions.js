@@ -6,7 +6,6 @@ export const GET_DETAIL = "GET_DETAIL";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_USER = "GET_USER";
 
-
 export const getPlates = () => (dispatch) =>
   axios(`/foods`)
     .then((response) => response.data)
@@ -56,7 +55,14 @@ export const sendEmail = (payload) => {
     const post = await axios.post("http://localhost:3001/send-email", payload);
   };
 };
+export const buyPaypal = (payload) => {
+  return async function (dispatch) {
+    const post = await axios.post("http://localhost:3001/paypal", payload);
+    return post.data.data.links[1].href;
+  };
+};
 
+<<<<<<< HEAD
 export const getUser = (user) =>
  
   dispatch => 
@@ -76,3 +82,30 @@ export const getUser = (user) =>
  
 
   
+=======
+export const getUser = (user) => (dispatch) =>
+  axios({
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    url: "http://localhost:3001/user/create",
+    data: { name: user.name, email: user.email },
+  })
+    .then((response) => response.data)
+    .then((data) =>
+      dispatch({
+        type: GET_USER,
+        payload: { ...data.user, picture: user.picture },
+      })
+    )
+    .catch((error) => console.log(error));
+
+export const postOrder = (payload) => {
+  return async function (dispatch) {
+    const post = await axios.post("/orders/create", payload);
+
+    return post;
+  };
+};
+>>>>>>> b0c559995961d3931f0525928115e8c2f6257af2

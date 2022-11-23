@@ -1,18 +1,19 @@
 import React from "react";
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import "./Card.css";
 
-function Card({ id, name, price, rating, image, Cart, addHandler }) {
+function Card({ id, name, price, rating, image, addHandler }) {
   //const [cantidad, setCantidad] = useState(1);
 
-  console.log(Cart.items)
 
   return (
     <div className="container">
       <div>
         <Link to={`/foods/${id}`}>
-          <img className="cardImage border border-warning" src={image} alt="..." />
+        <div class="fancy-border">
+          <img className="cardImage" src={image} alt="..." />
+        </div>
         </Link>
       </div>
       <div className="card-body">
@@ -35,13 +36,15 @@ function Card({ id, name, price, rating, image, Cart, addHandler }) {
           </strong>
         </p>
       </div>
-      <button
-        className="add_to_cart"
-        type="button"
-        onClick={()=>addHandler(id,name,price)}
-      >
-        + ADD TO CART
-      </button>
+      <div className="add_to_cartContainer">
+        <button
+          className="add_to_cart"
+          type="button"
+          onClick={()=>addHandler(id,name,price)}
+        >
+          + ADD TO CART
+        </button>
+      </div>
     </div>
   );
 }
