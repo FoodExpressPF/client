@@ -11,6 +11,7 @@ function Detail() {
   const details = useSelector((state) => state.detail);
   const { id } = useParams();
   console.log(details)
+ 
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -31,12 +32,18 @@ function Detail() {
               <img className={style.the_image} src={details.image} alt="Loading"/>
             </div>
             <div className={style.text_container}>
+             
+              {
+              details.onStock === true ? 
+              <h3 className={style.activado}>In stock</h3> :
+              <h4 className={style.desactiviado}>Not in stock</h4>
+            }
               <h2 className="h1 font-weight-bold mb-4 text-white card-title">{details.name}</h2>
               <p className="card-text text-white">Price: ${details.price}</p>
               <p className="card-text text-white">Type: {details.type}</p>
               <p className="card-text text-white">Rating: {details.rating}⭐</p>
               <p className="card-text text-white">Description: {details.description}</p>
-              <p className="card-text text-white">Reviews: {details.reviews? details.reviews.join(" - "): "No reviews yet"}</p>
+              <p className="card-text text-white">Reviews: {details.reviews? details.reviews.join(" - "): "No reviews yet"}</p>        
               <br></br><br></br>
               <span className={style.shop_buttons}>
                 <button className={style.remove_button}>-</button>
