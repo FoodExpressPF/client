@@ -45,7 +45,7 @@ export const clearDetail = () => {
 
 export const buy = (payload) => {
   return async function (dispatch) {
-    console.log(axios.defaults.baseURL);
+    
     const post = await axios.post("payments/mercado", payload);
     return post.data.init_point;
   };
@@ -65,7 +65,8 @@ export const buyPaypal = (payload) => {
 
 export const getUser = (user) =>
   dispatch =>
-    axios({
+    {
+      axios({
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -78,8 +79,7 @@ export const getUser = (user) =>
         type: GET_USER,
         payload: { ...data.user, picture: user.picture },
       })
-    )
-    .catch((error) => console.log(error));
+    ).catch((error) => console.log(error))};
 
 export const postOrder = (payload) => {
   return async function (dispatch) {
