@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import { postOrder, sendEmail } from "../../redux/actions";
+import { getAllUser, getUser, postOrder, sendEmail } from "../../redux/actions";
 import { PaymentConfirmed } from "../../emails/emailsDefault.jsx";
 import s from "../postBuy/passed.module.css";
 
@@ -13,24 +13,36 @@ function Passed() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const email = () => {
+  const [coments, setComents] = useState("");
+  const [address, setAddress] = useState("");
+
+  const emailUser = isAuthenticated ? { email: user.email } : "";
+
+  const email = async () => {
     let price = Cart.items.reduce((acum, act) => {
       return acum + act.price * act.count;
     }, 0);
+
     let email = PaymentConfirmed(price);
-    email.user = user.email;
+    email.user = emailUser.email;
+
+    await dispatch(getUser(emailUser)).then((data) => {
+      dispatch(
+        postOrder({
+          coments: coments,
+          address: address,
+          total: price,
+          userId: data.payload.id,
+        })
+      );
+    });
     dispatch(sendEmail(email));
     Cart.reset();
-    dispatch(
-      postOrder({
-        coments: "colocar input",
-        address: "colocar input ",
-        total: price,
-      })
-    );
     history.push("/");
   };
 
+  const onChangeHandlerComents = (e) => setComents(e.target.value);
+  const onChangeHandlerAddress = (e) => setAddress(e.target.value);
   return (
     <>
       <div className={s.background}>
@@ -79,7 +91,20 @@ function Passed() {
                 <p>89578937413098{/*{id?}*/}</p>
               </div>
             </div>
-
+            <input
+              type="text"
+              name="coments"
+              onChange={onChangeHandlerComents}
+              placeholder="Additional comment"
+              value={coments}
+            />
+            <input
+              type="text"
+              name="name"
+              onChange={onChangeHandlerAddress}
+              placeholder="Shipping Address"
+              value={address}
+            />
             <button className={s.home_button} onClick={() => email()}>
               Back to home
             </button>

@@ -45,12 +45,12 @@ function Detail() {
               <p className="card-text text-white">Description: {details.description}</p>
               <p className="card-text text-white">Reviews: {details.reviews? details.reviews.join(" - "): "No reviews yet"}</p>        
               <br></br><br></br>
-              <span className={style.shop_buttons}>
+              {/* <span className={style.shop_buttons}>
                 <button className={style.remove_button}>-</button>
                 <p className="card-text text-white"></p>
                 <button className={style.add_button}>+</button>
               </span>
-              <div className={style.shop_end}><button>Add to cart</button></div>
+              <div className={style.shop_end}><button>Add to cart</button></div> */}
             </div>
           </div>
         </div>

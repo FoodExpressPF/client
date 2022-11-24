@@ -4,6 +4,7 @@ import './index.css';
 
 //components
 import ClientTabInfo from './ClientTabInfo';
+import ClientOrdersTab from './ClientOrdersTab';
 
 export default function ClientDashboard(){
 
@@ -30,8 +31,12 @@ export default function ClientDashboard(){
                     <div class="tab-pane fade show active infoTable" id="user-info-tab-pane" role="tabpanel" aria-labelledby="user-info-tab" tabindex="0">
                         <ClientTabInfo/>
                     </div>
-                    <div class="tab-pane fade" id="orders-tab-pane" role="tabpanel" aria-labelledby="orders-tab" tabindex="0">pedidos</div>
-                    <div class="tab-pane fade" id="booking-tab-pane" role="tabpanel" aria-labelledby="booking-tab" tabindex="0">reservas</div>
+                    <div class="tab-pane fade" id="orders-tab-pane" role="tabpanel" aria-labelledby="orders-tab" tabindex="0">
+                        <ClientOrdersTab/>
+                    </div>
+                    <div class="tab-pane fade" id="booking-tab-pane" role="tabpanel" aria-labelledby="booking-tab" tabindex="0">
+                        reservas
+                    </div>
                 </div>
         </>
     );
