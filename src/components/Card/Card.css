@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   background-color: #F9F5F0;
+  min-width: 50%;
   width: 749px;
   margin: 10px
-  
 }
 
 .title-text {
@@ -37,7 +37,7 @@
   border-style: outset;
 }
 
-.cardImage:hover{
+.cardImage:hover {
   transform: scale(1.04) rotate(2deg);
 }
 
@@ -49,7 +49,7 @@
   size: 40px;
 }
 
-.add_to_cart{
+.add_to_cart {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -69,16 +69,35 @@
   padding: 1rem;
 }
 
-.add_to_cart:hover{
+.add_to_cart:hover {
   background-color: #F4991A;
   color: #262626;
 }
 
-.add_to_cartContainer{
+.add_to_cartContainer {
   padding-top: 20px;
 }
 
 .fancy-border {
   border: 10px solid transparent;
   border-image: url(https://www.w3schools.com/Css/border.png) 30 stretch;
+}
+
+
+.desactivado {
+  color: rgb(194, 0, 0);
+  background-color: rgb(255, 166, 166);
+  border-radius: 10px;
+  width: 120px;
+  margin: 40px;
+  margin: 40px;
+}
+
+.activado {
+  color: rgb(78, 194, 0);
+  background-color: rgb(187, 255, 166);
+  border-radius: 10px;
+  width: 80px;
+  margin: 30px;
+  margin: 40px;
 }

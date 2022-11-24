@@ -11,7 +11,7 @@ import NavBar from "./components/NavBar/NavBar.jsx";
 import AdminRoutes from "./pages/AdminDashboard/AdminRoutes.js";
 import ClientDashboard from "./pages/ClientDashboard/index.jsx";
 import Checkout from "./pages/Checkout/Checkout.jsx";
-import useLocalStorage from "./hooks/useLocalStorage"
+import useLocalStorage from "./hooks/useLocalStorage.js";
 
 // Styles
 import "./assets/styles/globalStyles.css";
@@ -37,16 +37,15 @@ function App() {
         <Route exact path="/a" component={foodTypes} />
         <Route exact path="/b" component={userOrder} />
         <Route exact path="/denegated" component={Denegated} />
-
         <RequireAuth>
           <Route path="/home">
             <NavBar Cart={Cart}/>
             <Home />
           </Route>
-        <Route path="/checkout">
-          <Checkout/>
-          <NavBar Cart={Cart}/>
-        </Route>
+          <Route path="/checkout">
+            <Checkout/>
+            <NavBar Cart={Cart}/>
+          </Route>
           <Route path="/foods/:id">
             <NavBar Cart={Cart}/>
             <Detail />
@@ -55,13 +54,13 @@ function App() {
             <NavBar Cart={Cart}/>
             <AdminRoutes />
           </Route>
-          <Route path="/client">
-            <NavBar Cart={Cart} />
-            <ClientDashboard />
+          <Route path='/client'>
+            <NavBar Cart={Cart}/>
+            <ClientDashboard/>
           </Route>
         </RequireAuth>
       </Switch>
-    </>
+    </>    
   );
 }
 
