@@ -79,9 +79,13 @@
 }
 
 .cart_image{
-    margin-top: 40px;
+    margin-top: 20px;
     width: 300px;
     height: 280px;
     object-fit: contain;
     opacity: 0.2;
+}
+
+.linkTo{
+    text-decoration: none;
 }

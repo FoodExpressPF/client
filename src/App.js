@@ -10,6 +10,8 @@ import Detail from "./pages/Detail/Detail.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import AdminRoutes from "./pages/AdminDashboard/AdminRoutes.js";
 import ClientDashboard from "./pages/ClientDashboard/index.jsx";
+import Checkout from "./pages/Checkout/Checkout.jsx";
+import useLocalStorage from "./hooks/useLocalStorage"
 // Styles
 import "./assets/styles/globalStyles.css";
 import "./assets/fonts/fonts.css";
@@ -19,7 +21,7 @@ import Denegated from "./pages/postBuy/denegated.jsx";
 
 function App() {
   const { isAuthenticated } = useAuth0();
-
+  const Cart = useLocalStorage("CART", "");
   const RequireAuth = ({ children }) => {
     if (!isAuthenticated) return <Redirect to="/" />;
     return children;
@@ -32,20 +34,24 @@ function App() {
         <Route exact path="/denegated" component={Denegated} />
       <RequireAuth>
         <Route path="/home">
-          <NavBar />
+          <NavBar Cart={Cart}/>
           <Home />
+        </Route>
+        <Route path="/checkout">
+          <Checkout/>
+          <NavBar Cart={Cart}/>
         </Route>
 
         <Route path="/foods/:id">
-          <NavBar />
+          <NavBar Cart={Cart}/>
           <Detail />
         </Route>
         <Route path="/admin">
-          <NavBar />
+          <NavBar Cart={Cart}/>
           <AdminRoutes />
         </Route>
         <Route path='/client'>
-          <NavBar/>
+          <NavBar Cart={Cart}/>
           <ClientDashboard/>
         </Route>
       </RequireAuth>
