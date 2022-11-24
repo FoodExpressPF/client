@@ -8,7 +8,7 @@ function Card({ id, name, price, rating, image, addHandler }) {
 
 
   return (
-    <div className="container">
+    <div className="card_container">
       <div>
         <Link to={`/foods/${id}`}>
         <div class="fancy-border">
@@ -40,7 +40,7 @@ function Card({ id, name, price, rating, image, addHandler }) {
         <button
           className="add_to_cart"
           type="button"
-          onClick={()=>addHandler(id,name,price)}
+          onClick={()=>addHandler(id,name,price,image)}
         >
           + ADD TO CART
         </button>

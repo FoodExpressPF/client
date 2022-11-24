@@ -10,7 +10,6 @@
 .categoryNavContent{
   display: flex;
   justify-content: space-between;
-  
   list-style: none;
   font-weight: bold;
   font-size: 1.1rem;
@@ -29,5 +28,4 @@
 
 .buttonFiltros :hover {
   transform: scale(1.1);
-
 }

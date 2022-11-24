@@ -1,9 +1,9 @@
-.container {
+.card_container {
   display: flex;
   align-items: center;
-  width: 800px;
   background-color: #F9F5F0;
-  min-width: 50%;
+  width: 749px;
+  margin: 10px
   
 }
 

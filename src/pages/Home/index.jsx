@@ -27,8 +27,8 @@ export default function Home() {
   const dispatch = useDispatch()
   const { isAuthenticated,user } = useAuth0();
 
-  const addCartHandler  = (id,name,price) =>{
-    Cart.add({id, name, price})
+  const addCartHandler  = (id, name, price, image) =>{
+    Cart.add({id, name, price, image})
   }
 
   useEffect(() => {
@@ -51,19 +51,19 @@ export default function Home() {
        <div className={s.categoriesBox}>
           <Category />
           <CategorySection name='Main Course'
-          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+          addHandler={(id, name, price, image)=>addCartHandler(id, name, price, image)}
            />
           <CategorySection name='Appetizer' 
-          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+          addHandler={(id, name, price, image)=>addCartHandler(id, name, price, image)}
           />
           <CategorySection name='Salad' 
-          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+          addHandler={(id, name, price, image)=>addCartHandler(id, name, price, image)}
           />
           <CategorySection name='Dessert'
-          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+          addHandler={(id, name, price, image)=>addCartHandler(id, name, price, image)}
            />
           <CategorySection name='Beverage'
-          addHandler={(id,name,price)=>addCartHandler(id,name,price)}
+          addHandler={(id, name, price, image)=>addCartHandler(id, name, price, image)}
            />
        </div>
       <ReservationCart 
