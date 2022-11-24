@@ -5,6 +5,8 @@ export const GET_PLATES_BY_FILTERS = "GET_PLATES_BY_FILTERS";
 export const GET_DETAIL = "GET_DETAIL";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_USER = "GET_USER";
+export const GET_ORDERS = "GET_ORDERS";
+export const GET_ALL_USER = "GET_ALLUSER";
 
 export const getPlates = () => (dispatch) =>
   axios(`/foods`)
@@ -45,7 +47,6 @@ export const clearDetail = () => {
 
 export const buy = (payload) => {
   return async function (dispatch) {
-    
     const post = await axios.post("payments/mercado", payload);
     return post.data.init_point;
   };
@@ -88,3 +89,25 @@ export const postOrder = (payload) => {
     return post;
   };
 };
+
+export const getOrder = () => (dispatch) =>
+  axios(`/orders`)
+    .then((response) => response.data)
+    .then((data) =>
+      dispatch({
+        type: GET_ORDERS,
+        payload: data,
+      })
+    )
+    .catch((error) => alert(`not found, error: ${error}`));
+
+export const getAllUser = () => (dispatch) =>
+  axios(`/user`)
+    .then((response) => response.data)
+    .then((data) =>
+      dispatch({
+        type: GET_ALL_USER,
+        payload: data,
+      })
+    )
+    .catch((error) => alert(`not found, error: ${error}`));
