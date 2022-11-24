@@ -14,17 +14,17 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 1.25em;
 }
 
 
 .logo{
-  max-height: 150px;
+  max-height: 9.375em;
 }
 
 .navButton{
-  border-radius: 8px;
-  padding: 10px 15px;
+  border-radius: 0.5em;
+  padding: 0.625em 0.9375em;
 
   
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -56,14 +56,14 @@
 
   width: fit-content;
   height: fit-content;
-  border-radius: 15px;
+  border-radius: 0.9375em;
   border-width: 0;
-  padding: 10px 50px;
+  padding: 0.625em 3.125em;
 
   background-color: orange;
-  box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.555);
+  box-shadow: 0.625em 0.625em 0.9375em 0.3125em rgba(0, 0, 0, 0.555);
   
-  font-size: 1.5rem;
+  font-size: 1.5em;
   font-weight: bold;
   color: white;
   text-decoration: none;
@@ -80,12 +80,12 @@
 .text{
   font-family:cursive;
   color: white;
-  margin-top: 330px;
-  margin-left: 90px;
+  margin-top: 20.625em;
+  margin-left: 5.625em;
 }
 
 .textTwo{
-  margin-left: 170px;
+  margin-left: 10.625em;
   color:white;
 }
 
@@ -107,14 +107,14 @@
 }
 
 .contenedor::-webkit-scrollbar{
-  width: 7px;
+  width: 0.4375em;
   
 }
 
 
 .sec3{
   background-image: linear-gradient(to top, #136282 0%, #394760 100%, #0a5390 100%, #3d9ae7 100%);
-  height: 650px;
+  height: 40.625em;
   position:relative;
   width: 100vw;
   height: 100%;
@@ -143,10 +143,10 @@
 
 .links{
   color: white;
-  padding: 5px;
-  border-radius: 8px;
-  padding: 10px 15px;
-  padding-top: 0px;
+  padding: 0.3125em;
+  border-radius: 0.5em;
+  padding: 0.625em 0.9375em;
+  padding-top: 0em;
   
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-decoration: none;
@@ -161,17 +161,17 @@
 }
 
 .image1{
-  height: 550px;
-  width: 450px;
+  height: 34.375em;
+  width: 28.125em;
   
-  margin-bottom: 60px;
+  margin-bottom: 3.75em;
 }
 
 .about {
   background-color: #f8f8f8;
   background-size: cover;
   margin: auto;
-  padding: 5rem 0rem 0 0rem;
+  padding: 5em 0em 0 0em;
   position:relative;
   width: 100vw;
   height: 100%;
@@ -183,7 +183,7 @@
 }
 
 .about .container1 {
-  width: 1340px;
+  width: 83.75em;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -191,7 +191,7 @@
 
 .about h2 {
   font-size: 3rem;
-  padding-left: 2px;
+  padding-left: 0.125em;
 }
 
 /* .about .col-2 {
@@ -215,17 +215,17 @@
 } */
 
 .button1 {
-    margin-top: 6rem;
+    margin-top: 6em;
     width: fit-content;
     height: fit-content;
-    border-radius: 15px;
+    border-radius: 0.9375em;
     border-width: 0;
-    padding: 10px 50px;
+    padding: 0.625em 3.125em;
   
     background-color: orange;
-    box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.555);
+    box-shadow: 0.625em 0.625em 0.9375em 0.3125em rgba(0, 0, 0, 0.555);
     
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: bold;
     color: white;
     text-decoration: none;
@@ -265,26 +265,26 @@
 
 .test{
   color: white;
-  font-size: 50px;
-  margin-left: 40px;
-  margin-top: 0px;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  font-size: 3.125em;
+  margin-left: 2.5em;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
 }
 
 .button2 {
-  margin-top: 3rem;
+  margin-top: 3em;
   width: fit-content;
   height: fit-content;
-  border-radius: 15px;
+  border-radius: 0.9375em;
   border-width: 0;
-  padding: 10px 50px;
-  margin-top: 20px;
-  margin-left: 1200px;
+  padding: 0.625em 3.125em;
+  margin-top: 1.25em;
+  margin-left: 75em;
   background-color: orange;
-  box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.555);
+  box-shadow: 0.625em 0.625em 0.9375em 0.3125em rgba(0, 0, 0, 0.555);
   
-  font-size: 1.5rem;
+  font-size: 1.5em;
   font-weight: bold;
   color: white;
   text-decoration: none;
@@ -300,13 +300,32 @@
 
  .quote{
  color: orange;
- margin: 5px 5px;
+ margin: 0.3125em 0.3125em;
  }
 
  .aboutR{
-  font-size: 30px;
+  font-size: 1.875em;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   line-height: normal;
-  padding-top: 20px;
-  padding-bottom: 2px;
+  padding-top: 1.25em;
+  padding-bottom: 0.125em;
  }
+
+ /* extra large decives */
+@media (max-width: 1200px) {
+  .container{
+    font-size: 14px;
+  }
+}
+
+/* large decives */
+@media (max-width: 992px) {
+}
+
+/* medium decives */
+@media (max-width: 768px) {
+}
+
+/*small decives (cel) */
+@media (max-width: 576px) {
+}
