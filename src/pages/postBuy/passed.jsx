@@ -17,7 +17,10 @@ function Passed() {
   const [address, setAddress] = useState("");
 
   const emailUser = isAuthenticated ? { email: user.email } : "";
-
+  const foodsCartId = [];
+  for (let i = 0; i < Cart.items.length; i++) {
+    foodsCartId.push(Cart.items[i].id);
+  }
   const email = async () => {
     let price = Cart.items.reduce((acum, act) => {
       return acum + act.price * act.count;
@@ -25,7 +28,7 @@ function Passed() {
 
     let email = PaymentConfirmed(price);
     email.user = emailUser.email;
-
+    console.log(email);
     await dispatch(getUser(emailUser)).then((data) => {
       dispatch(
         postOrder({
@@ -33,6 +36,7 @@ function Passed() {
           address: address,
           total: price,
           userId: data.payload.id,
+          FoodsToOrder: foodsCartId,
         })
       );
     });
