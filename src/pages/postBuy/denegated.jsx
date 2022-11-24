@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { sendEmail } from "../../redux/actions";
-import { PaymentDeclined } from "../../emails/emailsDefault.jsx";
+ import { PaymentDeclined } from "../../emails/emailsDefault.jsx";
 import s from "../postBuy/passed.module.css"
 
 function Denegated() {
