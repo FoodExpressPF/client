@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPlates } from '../../../redux/actions';
-import ProductsForm from '../../ProductsForm/ProductsForm';
+import ProductsForm from '../../../components/Forms/Product/NewProduct' ;
 import AdminTable from '../AdminTable';
 
 const Products = () => {

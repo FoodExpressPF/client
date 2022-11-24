@@ -10,7 +10,7 @@ import { getUser } from '../../../redux/actions';
 // import axios from "axios";
 
 
-const index = () => {
+const NewUser = () => {
 
   const [loading, setLoading] = useState(false);
   const[response, setResponse] = useState('');
@@ -29,13 +29,15 @@ const index = () => {
       data: values,
     })   
      .then(response => {
-      setResponse(`${response.data.created} /n ${response.data.user.email}`)
+      setResponse(
+       `${response.data.created}
+       ${response.data.user.email}`
+      )
       console.log('response',response)
       setLoading(false)    
      })
      .catch(error=>{
-      console.log('error',error)
-      // setResponse(error.response.data)
+      setResponse(error.message)
       setLoading(false)
      });
      formik.resetForm()
@@ -222,4 +224,4 @@ const index = () => {
 );
 };
 
-export default index;
+export default NewUser;

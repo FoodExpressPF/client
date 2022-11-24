@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+
 import AdminTable from '../AdminTable';
+import NewOrder from '../../../components/Forms/Orders/NewOrder.jsx'
+import EditOrder from '../../../components/Forms/Orders/EditOrder'
 
 const Orders = () => {
   const cols = ['state', 'total' , 'createdAt','coments', 'address']
@@ -30,8 +33,11 @@ const Orders = () => {
       <AdminTable 
         name='Order'
         data={allOrders}
+        form={<NewOrder />}
+        formEdit={<EditOrder />}
         cols={cols}
         funDelete={deleteOrder}
+        get={getOrders}
 
       />
     </div>
