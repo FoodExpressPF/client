@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import NewUser from '../../../components/Forms/User/NewUser.jsx';
+import EditUser from '../../../components/Forms/User/EditUser.jsx';
 import AdminTable from '../AdminTable';
 
 const Users = () => {
@@ -30,6 +31,7 @@ const Users = () => {
       <AdminTable 
         data={allUsers} 
         form={<NewUser/>} 
+        formEdit={<EditUser/>}
         name='User' 
         cols={cols}
         funDelete={deleteUser} />      
