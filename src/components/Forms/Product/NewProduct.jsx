@@ -2,14 +2,14 @@ import { useState } from "react";
 import './ProductsForm.css'
 
 import validationSchema from "./formValidations.js";
-import { INITIAL_PRODUCT_FORM as initialValues } from "../../utils/initialObjects.js";
+import { INITIAL_PRODUCT_FORM as initialValues } from "../../../utils/initialObjects.js";
 
 //Libraries
 import { useFormik } from "formik";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
-const ProductsForm = () => {
+const NewProduct = () => {
   const [previewImage, setPreviewImage] = useState(
     "https://res.cloudinary.com/dpnrbius0/image/upload/v1668109807/foodExpressRecipes/placeholder_xtwile.png"
   );
@@ -306,4 +306,4 @@ const ProductsForm = () => {
   );
 };
 
-export default ProductsForm;
+export default NewProduct;
