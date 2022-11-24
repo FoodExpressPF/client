@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 function NavBar() {
   const { user,isAuthenticated } = useAuth0();
   const isAdmin= useCheckRoles('admin')
-  console.log(user)
+  
 
   const profile = 'https://res.cloudinary.com/dpnrbius0/image/upload/v1668650768/Profile_sa6jnn.png'
 
@@ -90,7 +90,7 @@ function NavBar() {
                 'boxShadow':'0px 0px 2px 2px #00000020',
               }}
               src={user?user.picture:profile} 
-              alt={user.name} 
+              alt={user?.name} 
             />
           </Link>
           

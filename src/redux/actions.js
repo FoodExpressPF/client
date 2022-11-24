@@ -47,46 +47,40 @@ export const clearDetail = () => {
 
 export const buy = (payload) => {
   return async function (dispatch) {
-    const post = await axios.post(
-      "http://localhost:3001/payment/mercado",
-      payload
-    );
+    const post = await axios.post("payments/mercado", payload);
     return post.data.init_point;
   };
 };
 
 export const sendEmail = (payload) => {
   return async function (dispatch) {
-    const post = await axios.post("http://localhost:3001/send-email", payload);
+    const post = await axios.post("/send-email", payload);
   };
 };
+
 export const buyPaypal = (payload) => {
   return async function (dispatch) {
-    const post = await axios.post(
-      "http://localhost:3001/payment/paypal",
-      payload
-    );
+    const post = await axios.post("payments/paypal", payload);
     return post.data.data.links[1].href;
   };
 };
 
-export const getUser = (user) => (dispatch) =>
-  axios({
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    url: "http://localhost:3001/user/create",
-    data: { name: user.name, email: user.email },
-  })
-    .then((response) => response.data)
-    .then((data) =>
-      dispatch({
+export const getUser = (user) =>
+  dispatch => 
+    axios({
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: "/user/create",
+      data: { name: user.name, email: user.email }
+    })
+      .then(response => response.data)
+      .then(data => dispatch({
         type: GET_USER,
         payload: { ...data.user, picture: user.picture },
       })
-    )
-    .catch((error) => console.log(error));
+    ).catch((error) => console.log(error))};
 
 export const postOrder = (payload) => {
   return async function (dispatch) {
@@ -95,6 +89,7 @@ export const postOrder = (payload) => {
     return post;
   };
 };
+
 export const getOrder = () => (dispatch) =>
   axios(`/orders`)
     .then((response) => response.data)
