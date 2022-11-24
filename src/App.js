@@ -10,6 +10,7 @@ import Detail from "./pages/Detail/Detail.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import AdminRoutes from "./pages/AdminDashboard/AdminRoutes.js";
 import ClientDashboard from "./pages/ClientDashboard/index.jsx";
+
 // Styles
 import "./assets/styles/globalStyles.css";
 import "./assets/fonts/fonts.css";
@@ -21,7 +22,7 @@ function App() {
   const { isAuthenticated } = useAuth0();
 
   const RequireAuth = ({ children }) => {
-    if (!isAuthenticated) return <Redirect to="/" />;
+    // if (!isAuthenticated) return <Redirect to="/" />;
     return children;
   }
 

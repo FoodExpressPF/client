@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import s from './tabs.module.css'
+import s from './tabs.module.css';
 
 const Tabs = () => {
   const location = useLocation()
@@ -14,18 +14,12 @@ const Tabs = () => {
 
   return (
     <div className={s.tabsContainer}>
-      <ul className="nav nav-tabs">
-      <li className="nav-item">
-        <Link 
-          className={url==='/admin'? 'nav-link active': 'nav-link'} 
-          to="/admin"
-        >
-          Stats
-        </Link>
-      </li>
+      <ul className="nav nav-tabs" >
+      
       <li className="nav-item">
         <Link 
           className={url==='/admin/users'? 'nav-link active': 'nav-link'} 
+          style={url==='/admin/users'?{'backgroundColor':'orange'}:{'':''}}
           to="/admin/users"
         >
         Users
@@ -34,6 +28,7 @@ const Tabs = () => {
       <li className="nav-item">
         <Link 
           className={url==='/admin/products'? 'nav-link active': 'nav-link'} 
+          style={url==='/admin/products'?{'backgroundColor':'orange'}:{'':''}}
           to="/admin/products"
         >
           Products
@@ -41,7 +36,8 @@ const Tabs = () => {
       </li>
       <li className="nav-item">
         <Link 
-          className={url==='/admin/orders'? 'nav-link active': 'nav-link'}  
+          className={url==='/admin/orders'? 'nav-link active': 'nav-link'}
+          style={url==='/admin/orders'?{'backgroundColor':'orange'}:{'':''}}  
           to="/admin/orders"
         >
           Orders

@@ -56,6 +56,7 @@ export const sendEmail = (payload) => {
     const post = await axios.post("/send-email", payload);
   };
 };
+
 export const buyPaypal = (payload) => {
   return async function (dispatch) {
     const post = await axios.post("payments/paypal", payload);
@@ -64,9 +65,8 @@ export const buyPaypal = (payload) => {
 };
 
 export const getUser = (user) =>
-  dispatch =>
-    {
-      axios({
+  dispatch => 
+    axios({
       method: "post",
       headers: {
         "Content-Type": "application/json",
