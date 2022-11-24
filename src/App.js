@@ -23,7 +23,7 @@ function App() {
   const { isAuthenticated } = useAuth0();
   const Cart = useLocalStorage("CART", "");
   const RequireAuth = ({ children }) => {
-    if (!isAuthenticated) return <Redirect to="/" />;
+    // if (!isAuthenticated) return <Redirect to="/" />;
     return children;
   }
 

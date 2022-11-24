@@ -90,7 +90,7 @@ function NavBar({Cart}) {
                 'boxShadow':'0px 0px 2px 2px #00000020',
               }}
               src={user?user.picture:profile} 
-              alt={user.name} 
+              alt={user?.name} 
             />
           </Link>
           
