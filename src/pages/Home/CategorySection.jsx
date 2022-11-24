@@ -26,7 +26,6 @@ const CategorySection = ({name, addHandler}) => {
                 price={c.price}
                 image={c.image}
                 onStock={c.onStock}
-                agregar={() => agregar(c)}
                 addHandler={(id, name, price, image)=>addHandler(id, name, price, image)}
               />
           )

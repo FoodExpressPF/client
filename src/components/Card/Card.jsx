@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import "./Card.css";
 
-function Card({ id, name, price, rating, image, addHandler,  }) {
+function Card({ id, name, price, rating, image, addHandler, onStock  }) {
   //const [cantidad, setCantidad] = useState(1);
 
 
