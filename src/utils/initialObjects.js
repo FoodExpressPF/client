@@ -35,6 +35,13 @@ export const INITIAL_USER_FORM = {
   email: "",
   direction: "",
   number_phone: "",
-  visible: true,
+  banned: false,
   type_user: "",
+};
+
+export const INITIAL_ORDER_FORM = {
+  state:'',
+  coments:'',
+  total:0,
+  address:''
 };
