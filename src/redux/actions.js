@@ -62,6 +62,27 @@ export const buyPaypal = (payload) => {
   };
 };
 
+<<<<<<< HEAD
+export const getUser = (user) =>
+ 
+  dispatch => 
+    axios({
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:3001/user/create",
+      data: {name: user.name, email: user.email}})
+      .then(response => response.data)
+      .then(data => dispatch({
+        type: GET_USER,
+        payload: {...data.user, picture: user.picture}
+      }))
+      .catch(error =>console.log(error));
+ 
+
+  
+=======
 export const getUser = (user) => (dispatch) =>
   axios({
     method: "post",
@@ -87,3 +108,4 @@ export const postOrder = (payload) => {
     return post;
   };
 };
+>>>>>>> b0c559995961d3931f0525928115e8c2f6257af2
