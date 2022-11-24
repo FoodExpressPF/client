@@ -1,35 +1,64 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import Loading from '../../../components/Loading/Loading'
 
 import s from './adminTable.module.css'
 
-const AdminTable = ({ form,name, data, cols, funDelete }) => {
+const AdminTable = ({ form,formEdit,name, data, cols, funDelete,get }) => {
   let counter = 1
   const sum = () => {counter++}
-  const [activeNewProduct, setActiveNewProduct] = useState(false)
-  const handleNewProduct = ()=> setActiveNewProduct(!activeNewProduct)
+  const [activeNew, setActiveNew] = useState(false)
+  const [activeEdit, setActiveEdit] = useState(false)
+  const [editForm, setEditForm] = useState({...formEdit})
+  const handleNewProduct = ()=> {setActiveNew(!activeNew)}
+  
+  // useEffect(()=>{
+  //   s
+
+  // })
+  console.log('form',editForm)
+  
 
   const handleDelete = (id) => {
     funDelete(id)
   }
 
-  const handleEdit = () => console.log('edit')
+  const handleEdit = (item) => {
+  console.log('edit',item)
+  setActiveEdit(!activeEdit)
+  setEditForm({...editForm, props:{item,get}})
+  
+  }
  
   return (
     <>
     {
-      activeNewProduct && 
+      activeNew && 
       <div className={s.modalForm} >
         <div className={s.buttonContainer}>
           <button
             className="btn-close" aria-label="Close"
-            onClick={handleNewProduct}
+            onClick={()=>{setActiveNew(false); setActiveEdit(false)}}
           >
           </button>
         </div>
         {form}
       </div>
     }
+
+   {
+      activeEdit && 
+      <div className={s.modalForm} >
+        <div className={s.buttonContainer}>
+          <button
+            className="btn-close" aria-label="Close"
+            onClick={()=>{setActiveNew(false); setActiveEdit(false)}}
+          >
+          </button>
+        </div>
+        {editForm}
+      </div>
+    }
+
     <div 
       className={s.tableContainer}  
     >
@@ -44,7 +73,9 @@ const AdminTable = ({ form,name, data, cols, funDelete }) => {
         </button>
       </div>
 
-      <table className="table table-striped table-hover">
+      {data.length === 0? <Loading />
+      :
+       <table className="table table-striped table-hover">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -75,7 +106,7 @@ const AdminTable = ({ form,name, data, cols, funDelete }) => {
                   </button>
                   <button
                     className='btn btn-outline-primary'
-                    onClick={handleEdit}
+                    onClick={()=>handleEdit(row)}
                   >
                     Edit
                   </button>
@@ -87,7 +118,7 @@ const AdminTable = ({ form,name, data, cols, funDelete }) => {
             
       
         </tbody>
-      </table>
+      </table>}
       
     </div>
     </>

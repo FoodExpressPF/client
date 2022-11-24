@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import swal from 'sweetalert';
+import { getUser } from '../../redux/actions';
+
 
 export default function ClientTabInfo(){
 
+    const dispatch = useDispatch();
     const userInfo = useSelector(state => state.user);
     const [user, setUser] = useState({...userInfo});
     const [canEdit, setCanEdit] = useState({
@@ -22,22 +26,34 @@ export default function ClientTabInfo(){
     };
 
     async function onSubmit(){
-        alert('nuevos datos enviados');
+        await swal({
+            text: 'Saving Data',
+            timer: 2000,
+            buttons: false
+        });
         await axios({
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json"
             },
-            url: "http://localhost:3001/user/update/changefields",
-            data: {name: user.name, phone_number: user.phone_number, direction: user.direction, id: user.id} 
+            url: "/user/update/changefields",
+            data: {name: user.name, number_phone: user.number_phone, direction: user.direction, id: user.id} 
         })
         .then(response => response.data)
-        .then(data => alert(JSON.stringify(data)))
-        .catch(err => alert(JSON.stringify(err)));
-
+        .then(async(data) => {
+            swal({
+                icon: "success",
+                text: JSON.stringify(data.message),
+                timer: 2000,
+                buttons: false});
+            dispatch(getUser(user));
+            })
+        .catch(err => swal({
+            icon: "error",
+            text: JSON.stringify(err.message)}));
     };
 
-    console.log(user);
+    
     return(
         <>
             <table class='table table-striped'>
@@ -49,23 +65,23 @@ export default function ClientTabInfo(){
                     <tr>
                         <th scope='row'>Name</th>
                         {canEdit.name ? 
-                            <input id='name' onChange={e=> handleChange(e)}></input> : 
+                            <td><input id='name' onChange={e=> handleChange(e)}></input></td> : 
                             <td id='nameTd'>{user.name}</td>}
-                        <td><button className='editInfobtn' id='name' onClick={e =>handleClick(e)}>{canEdit.name ? 'insert' : 'edit'}</button></td>
+                        <td id='tdBtn'><button className='editInfobtn' id='name' onClick={e =>handleClick(e)}>{canEdit.name ? 'insert' : 'edit'}</button></td>
                     </tr>
                     <tr>
-                        <th scope='row'>Address</th>
+                        <th scope='colspan 1'>Address</th>
                         {canEdit.direction ? 
-                            <input id='direction' onChange={e=> handleChange(e)}></input> : 
+                            <td><input id='direction' onChange={e=> handleChange(e)}></input></td> : 
                             <td id='directionTd'>{user.direction}</td>}
-                        <td><button className='editInfobtn' id='direction' onClick={e =>handleClick(e)}>{canEdit.direction ? 'insert' : 'edit'}</button></td>
+                        <td id='tdBtn'><button className='editInfobtn' id='direction' onClick={e =>handleClick(e)}>{canEdit.direction ? 'insert' : 'edit'}</button></td>
                     </tr>
                     <tr>
                         <th scope='row'>Contact</th>
                         {canEdit.contact ? 
-                            <input id='number_phone' onChange={e=> handleChange(e)}></input> : 
+                            <td><input id='number_phone' onChange={e=> handleChange(e)}></input></td> : 
                             <td id='contactTd'>{user.number_phone}</td>}
-                        <td><button className='editInfobtn' id='contact' onClick={e =>handleClick(e)}>{canEdit.contact ? 'insert' : 'edit'}</button></td>
+                        <td id='tdBtn'><button className='editInfobtn' id='contact' onClick={e =>handleClick(e)}>{canEdit.contact ? 'insert' : 'edit'}</button></td>
                     </tr>
                     <tr>
                         <th scope='row'>Type User</th>
@@ -73,7 +89,7 @@ export default function ClientTabInfo(){
                     </tr>
                 </tbody>
             </table>
-            <button class="btn btn-outline-dark" onClick={e=>onSubmit()}>Modificar Data</button>
+            <button class="btn btn-outline-dark" onClick={e=>onSubmit()}>Save New Data</button>
         </>
     );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { buy, buyPaypal } from "../../redux/actions";
+import { Link } from "react-router-dom";
 import "./ReservationCart.css";
 
 function ReservationCart({ Cart }) {
@@ -98,16 +99,17 @@ function ReservationCart({ Cart }) {
                 return acum + act.price * act.count;
               }, 0)}
           </h5>
-
-          <button className="toPayment_button" onClick={() => mp()}>
+          <Link className="linkTo" to="/checkout">
+          <button className="toPayment_button mx-auto" onClick={() => mp()}>
             Proceed to payment $
             {Cart.items &&
               Cart.items.reduce((acum, act) => {
                 return acum + act.price * act.count;
               }, 0)}
           </button>
-          <br/>
-          <button className="toPayment_button" onClick={() => paypal()}>buy PayPal</button>
+          </Link>
+          {/* <br/>
+          <button className="toPayment_button" onClick={() => paypal()}>buy PayPal</button> */}
           {/* {Cart.items && (
             <button className="end_buttons" type="button" onClick={() => Cart.reset()}>
               {" "}

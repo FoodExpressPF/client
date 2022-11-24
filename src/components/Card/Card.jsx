@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 import "./Card.css";
 
-function Card({ id, name, price, rating, image, addHandler }) {
+function Card({ id, name, price, rating, image, addHandler,  }) {
   //const [cantidad, setCantidad] = useState(1);
 
 
   return (
-    <div className="container">
+    <div className="card_container">
       <div>
         <Link to={`/foods/${id}`}>
         <div class="fancy-border">
@@ -34,13 +34,18 @@ function Card({ id, name, price, rating, image, addHandler }) {
               <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
             </svg>
           </strong>
+              {
+                      onStock === true ? 
+                      <h5 className='activado'>In stock</h5> :
+                      <h5 className='desactivado'>Not in stock</h5>
+                    }
         </p>
       </div>
       <div className="add_to_cartContainer">
         <button
           className="add_to_cart"
           type="button"
-          onClick={()=>addHandler(id,name,price)}
+          onClick={()=>addHandler(id,name,price,image)}
         >
           + ADD TO CART
         </button>

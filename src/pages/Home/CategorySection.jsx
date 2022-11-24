@@ -10,7 +10,6 @@ const CategorySection = ({name, addHandler}) => {
   const allPlate = useSelector((state) => state.plates);
   const filterPlates = allPlate.filter(plate=>plate.category === name)
   const Cart = useLocalStorage("CART", "");
-  console.log(allPlate,filterPlates)
  
   const nameId =name.replace(/ /g, "")
 
@@ -26,8 +25,9 @@ const CategorySection = ({name, addHandler}) => {
                 rating={c.rating}
                 price={c.price}
                 image={c.image}
+                onStock={c.onStock}
                 agregar={() => agregar(c)}
-                addHandler={(id,name,price)=>addHandler(id,name,price)}
+                addHandler={(id, name, price, image)=>addHandler(id, name, price, image)}
               />
           )
         })}

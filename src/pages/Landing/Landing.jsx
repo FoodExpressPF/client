@@ -21,7 +21,7 @@ function Landing() {
     
   return (
     <div className={style.contenedor}>
-      <div className={style.container}>
+      <div className={style.landing_container}>
         <div className={style.containerNav}>
           <img
             className={style.logo}
