@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import './ClientOrdersTab.css';
 
 export default function ClientOrdersTab(){
     
@@ -18,7 +19,15 @@ export default function ClientOrdersTab(){
             .catch(err => console.log(err));
     },[]);
 
-   
+   function printFoodCards(){
+
+    return (<div class="card" className='foodCard'>
+                <img src="..." class="card-img-top" alt="..."/>
+                <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>);
+   };
 
     return(
     <>
@@ -35,14 +44,17 @@ export default function ClientOrdersTab(){
                         <div class="accordion-body">
                             <p><strong>Coments:</strong> {order.coments}</p>
                             <p><strong>State:</strong> {order.state}</p>
-                           <p><strong>Addres:</strong> {order.address}</p>
-                           <p><strong>Total:</strong> ${order.total}</p>
+                            <p><strong>Addres:</strong> {order.address}</p>
+                            <p><strong>Total:</strong> ${order.total}</p>
                         </div>
+
+                        {printFoodCards()}
                     </div>
                 </div>
                 </>}) 
             }
         </div>
+        
     </>
     );
 };
