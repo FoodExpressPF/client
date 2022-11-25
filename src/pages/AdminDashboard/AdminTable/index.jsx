@@ -93,7 +93,7 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete,get }) => {
                 return(
                  col==='image'
                  ?<td key={`${row.img}${col}`}><img className={s.dataImage} src={row.image} alt={row.name}/></td>
-                 :<td key={`${row.id}${col}`}>{row[col]}</td>
+                 :<td key={`${row.id}${col}`}>{row[col].toString()}</td>
                 )
                }
                 )}
