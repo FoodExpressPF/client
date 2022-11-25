@@ -68,7 +68,7 @@ export const buyPaypal = (payload) => {
 
 
 export const getUser = (user) =>
-  dispatch => 
+  dispatch =>
     axios({
       method: "post",
       headers: {
@@ -83,7 +83,7 @@ export const getUser = (user) =>
         type: GET_USER,
         payload: { ...data.user, picture: user.picture },
       })
-    ).catch((error) => console.log(error));
+      ).catch((error) => console.log(error));
 
 export const postOrder = (payload) => {
   return async function (dispatch) {
@@ -116,3 +116,10 @@ export const getAllUser = () => (dispatch) =>
     )
     .catch((error) => alert(`not found, error: ${error}`));
 
+export function postComment(payload) {
+  return async function () {
+    const response = await axios.post('/reviews', payload)
+    console.log(response)
+    return response;
+  }
+}

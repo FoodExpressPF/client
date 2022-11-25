@@ -3,14 +3,14 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail, clearDetail } from '../../redux/actions.js';
 import Loading from '../../components/Loading/Loading'
-
 import style from "./Detail.module.css";
+import FormComent from '../../components/Comment/FormComent.jsx';
 
 function Detail() {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.detail);
   const { id } = useParams();
-  console.log(details)
+  // console.log(details)
  
 
   useEffect(() => {
@@ -19,12 +19,14 @@ function Detail() {
   }, [dispatch, id])
 
   return <>
+
     <div className={`${style.main_container}`}>
       <Link to='/home'>
         <button className="btn btn-primary h-25">Back</button>
       </Link>
 
       { details.name ?
+  <div>
       <div className={`card-detail ${style.sub_container}`}>
           <div className={style.container_elements}>
             
@@ -34,11 +36,11 @@ function Detail() {
             <div className={style.text_container}>
              
               {
-              details.onStock === true ? 
-              <h3 className={style.activado}>In stock</h3> :
-              <h4 className={style.desactiviado}>Not in stock</h4>
-            }
-              <h2 className="h1 font-weight-bold mb-4 text-white card-title">{details.name}</h2>
+                details.onStock === true ? 
+                <h3 className={style.activado}>In stock</h3> :
+                <h4 className={style.desactiviado}>Not in stock</h4>
+              }
+              <h2 className="h1 font-weight-bold mb-4 text-white card-title">{details.name}</h2>         
               <p className="card-text text-white">Price: ${details.price}</p>
               <p className="card-text text-white">Type: {details.type}</p>
               <p className="card-text text-white">Rating: {details.rating}⭐</p>
@@ -54,9 +56,14 @@ function Detail() {
             </div>
           </div>
         </div>
+        <div>
+            <FormComent
+            id={id}/>
+        </div>
 
-        : <div><Loading/></div>
-      }
+            </div>
+: <div><Loading/></div>
+}
     </div>
   </>
 }
