@@ -48,6 +48,11 @@ function rootReducer(state = INITIAL_GLOBAL_STATE, action) {
         ...state,
         allUsers: action.payload,
       };
+    case 'POST_COMMENT':
+      return {
+        ...state,
+      }
+
     default:
       return { ...state };
   }

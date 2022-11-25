@@ -116,6 +116,7 @@ export const getAllUser = () => (dispatch) =>
     )
     .catch((error) => alert(`not found, error: ${error}`));
 
+
 export function postComment(payload) {
   return async function () {
     const response = await axios.post('/reviews', payload)
