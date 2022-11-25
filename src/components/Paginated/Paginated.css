@@ -1,17 +1,5 @@
 .paginadoContainer {
-  background-color: rgba(255, 207, 153, 0.788);
-  border-radius: 99px;
   display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-
-}
-
-.containerwe {
-  background-color: rgba(255, 207, 153, 0.788);
-  width: 1300px;
-  border-radius: 99px;
   align-items: center;
   align-content: center;
   justify-content: center;

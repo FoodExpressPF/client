@@ -21,13 +21,15 @@
 }
 
 .modalForm{
-  position: absolute;
+  position:fixed;
   top:15vh;
   left: 5vw;
   width: 90vw;
+  height: 80vh;
   margin: auto;
   border-radius: 20px;
   padding: 20px;
+  overflow-y: scroll;
 
   background-color: #ffaf47f9;
 }
