@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import './ClientOrdersTab.css';
 
 export default function ClientOrdersTab(){
     
@@ -18,8 +19,7 @@ export default function ClientOrdersTab(){
             .catch(err => console.log(err));
     },[]);
 
-   
-
+  
     return(
     <>
         <div class="accordion accordion-flush">
@@ -35,14 +35,34 @@ export default function ClientOrdersTab(){
                         <div class="accordion-body">
                             <p><strong>Coments:</strong> {order.coments}</p>
                             <p><strong>State:</strong> {order.state}</p>
-                           <p><strong>Addres:</strong> {order.address}</p>
-                           <p><strong>Total:</strong> ${order.total}</p>
+                            <p><strong>Addres:</strong> {order.address}</p>
+                            <p><strong>Total:</strong> ${order.total}</p>
                         </div>
+                        {order.state == 'done' ? <div  class="alert alert-primary w-auto  m-auto" role="alert" >
+                            <h4 class="alert-heading">Gracias por comprar en Food-expres!</h4>
+                            <hr />
+                            Para nosotros la calidad de nuestro platos es muy importante. 
+                              Accede al Link del plato y dejanos tu opinion
+                        </div> 
+                        : <></>}
+                        {order.state == 'done' ? <div class='d-flex'>
+                            {order.foods.map((food, index)=>{
+                                return <>
+                                    <div class="card" className='foodCard'>
+                                        <img src={food.image} class="card-img-top" alt="..."/>
+                                        <div class="card-body">
+                                        <p class="card-text">texto</p>
+                                        </div>
+                                    </div>
+                                </>})}
+                        </div> 
+                        : <></>}
                     </div>
                 </div>
                 </>}) 
             }
         </div>
+        
     </>
     );
 };

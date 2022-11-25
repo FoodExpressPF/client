@@ -1,17 +1,24 @@
+
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail, clearDetail } from "../../redux/actions.js";
 import Loading from "../../components/Loading/Loading";
-
-import style from "./Detail.module.css";
 import useLocalStorage from "../../hooks/useLocalStorage.js";
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDetail, clearDetail } from '../../redux/actions.js';
+import Loading from '../../components/Loading/Loading'
+import style from "./Detail.module.css";
+import FormComent from '../../components/Comment/FormComent.jsx';
+import Commment from '../../components/Comment/Comment.jsx';
 
 function Detail() {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.detail);
   const { id } = useParams();
-  console.log(details);
+
   const Cart = useLocalStorage("CART", "");
 
   useEffect(() => {
@@ -70,7 +77,8 @@ function Detail() {
                 </p>
                 <br></br>
                 <br></br>
-                {/* <span className={style.shop_buttons}>
+              {/* <span className={style.shop_buttons}>
+
                 <button className={style.remove_button}>-</button>
                 <p className="card-text text-white"></p>
                 <button className={style.add_button}>+</button>
@@ -78,15 +86,18 @@ function Detail() {
               <div className={style.shop_end}><button>Add to cart</button></div> */}
               </div>
             </div>
+        <div>
+          <Commment
+          id={id}/>
+            <FormComent
+            id={id}/>
+        </div>
           </div>
-        ) : (
-          <div>
-            <Loading />
-          </div>
-        )}
-      </div>
-    </>
-  );
+: <div><Loading/></div>
+}
+    </div>
+  </>
+)
 }
 
 export default Detail;

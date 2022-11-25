@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPlates } from '../../../redux/actions';
 import ProductsForm from '../../../components/Forms/Product/NewProduct' ;
 import AdminTable from '../AdminTable';
+import EditProduct from '../../../components/Forms/Product/EditProduct';
 
 const Products = () => {
   const statePlates = useSelector((state) => state.plates);
@@ -22,11 +23,12 @@ const Products = () => {
     setAllPlates(statePlates)
   },[statePlates])
 
-  const cols = ['image', 'name' ,'description', 'type', 'price', 'rating']
+  const cols = ['image', 'name' ,'description', 'type', 'price', 'rating','onStock']
   return (
     <div>
       <AdminTable 
         form={<ProductsForm/>} 
+        formEdit={<EditProduct />}
         name='Product' 
         data={allPlates} 
         cols={cols}

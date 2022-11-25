@@ -7,6 +7,7 @@ export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_USER = "GET_USER";
 export const GET_ORDERS = "GET_ORDERS";
 export const GET_ALL_USER = "GET_ALLUSER";
+export const GET_COMMENT = 'GET_COMMENT'
 
 export const getPlates = () => (dispatch) =>
   axios(`/foods`)
@@ -68,7 +69,7 @@ export const buyPaypal = (payload) => {
 
 
 export const getUser = (user) =>
-  dispatch => 
+  dispatch =>
     axios({
       method: "post",
       headers: {
@@ -83,7 +84,7 @@ export const getUser = (user) =>
         type: GET_USER,
         payload: { ...data.user, picture: user.picture },
       })
-    ).catch((error) => console.log(error));
+      ).catch((error) => console.log(error));
 
 export const postOrder = (payload) => {
   return async function (dispatch) {
@@ -116,3 +117,34 @@ export const getAllUser = () => (dispatch) =>
     )
     .catch((error) => alert(`not found, error: ${error}`));
 
+
+export function postComment(payload) {
+  return async function () {
+    const response = await axios.post('/reviews', payload)
+    console.log(response)
+    return response;
+  }
+}
+
+export const getComment = (id) => (dispatch) =>
+
+  axios({
+    method: 'get',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    url: '/reviews/byfood',
+    data: {
+      foodId: id
+    }
+  })
+    .then((response) => response.data)
+    .then((data) => {
+      console.log(data)
+      dispatch({
+        type: GET_COMMENT,
+        payload: data,
+      })
+    }
+    )
+    .catch((error) => alert(`not found, error: ${error}`));
