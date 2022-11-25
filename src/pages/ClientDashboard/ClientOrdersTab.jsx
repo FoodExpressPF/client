@@ -19,16 +19,7 @@ export default function ClientOrdersTab(){
             .catch(err => console.log(err));
     },[]);
 
-   function printFoodCards(){
-
-    return (<div class="card" className='foodCard'>
-                <img src="..." class="card-img-top" alt="..."/>
-                <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>);
-   };
-
+  
     return(
     <>
         <div class="accordion accordion-flush">
@@ -47,8 +38,25 @@ export default function ClientOrdersTab(){
                             <p><strong>Addres:</strong> {order.address}</p>
                             <p><strong>Total:</strong> ${order.total}</p>
                         </div>
-
-                        {printFoodCards()}
+                        {order.state == 'done' ? <div  class="alert alert-primary w-auto  m-auto" role="alert" >
+                            <h4 class="alert-heading">Gracias por comprar en Food-expres!</h4>
+                            <hr />
+                            Para nosotros la calidad de nuestro platos es muy importante. 
+                              Accede al Link del plato y dejanos tu opinion
+                        </div> 
+                        : <></>}
+                        {order.state == 'done' ? <div class='d-flex'>
+                            {order.foods.map((food, index)=>{
+                                return <>
+                                    <div class="card" className='foodCard'>
+                                        <img src={food.image} class="card-img-top" alt="..."/>
+                                        <div class="card-body">
+                                        <p class="card-text">texto</p>
+                                        </div>
+                                    </div>
+                                </>})}
+                        </div> 
+                        : <></>}
                     </div>
                 </div>
                 </>}) 
