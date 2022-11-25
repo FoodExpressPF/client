@@ -1,0 +1,9 @@
+.foodCard{
+    width: 20%;
+    margin: 10px;
+}
+
+.cardsConteiner{
+    display: flex;
+}
+
