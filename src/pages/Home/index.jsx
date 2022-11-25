@@ -39,7 +39,9 @@ export default function Home() {
 
   return (
     <>
-    <CarrouselBanners />
+    <div className="Carrusel">
+      {/* <CarrouselBanners /> */}
+    </div>
     <div>
     {loading
       ?
@@ -67,8 +69,8 @@ export default function Home() {
            />
        </div>
       <ReservationCart 
-      Cart={Cart}
-      />
+      Cart={Cart} />
+      
       </div>
       }
       

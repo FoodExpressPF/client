@@ -40,13 +40,18 @@ function Card({ id, name, price, rating, image, addHandler, onStock }) {
           }
         </p>
       </div>
+        {
+          onStock === true ?
       <div className="add_to_cartContainer">
         <button
           className="add_to_cart"
           type="button"
-          onClick={() => addHandler(id, name, price, image)}
+          onClick={()=>addHandler(id,name,price,image)}
         />
-      </div>
+      </div> : 
+      <div> </div>
+
+        }
     </div>
   );
 }

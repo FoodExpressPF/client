@@ -102,7 +102,7 @@ function Filters({ menu }) {
               className='containerGO'>
 
       <button
-      className='button2'
+      className='button23'
       type="submit"
       
       onClick={onSubmitHandler}
@@ -113,7 +113,7 @@ function Filters({ menu }) {
       </button>
 
       <button
-      className='button2'
+      className='button23'
       type="button"       
       onClick={onResetHandler}
       >

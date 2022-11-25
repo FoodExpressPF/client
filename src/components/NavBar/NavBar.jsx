@@ -23,7 +23,7 @@ function NavBar({Cart}) {
 
   return (
     <nav 
-      className="navbar navbar-expand-lg py-2 fixed-top navbar-light shadow-lg p-3 mb-5"
+      className="navbar navbar-expand-lg py-2 navbar-light shadow-lg p-3"
       style={{'backgroundColor':'#321313'}}
     >
       <div className="container-fluid">

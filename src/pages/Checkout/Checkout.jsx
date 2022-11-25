@@ -1,16 +1,32 @@
 import React from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { buy, buyPaypal } from "../../redux/actions"
 import { Link } from "react-router-dom";
 import "./Checkout.css"
 
 function Carting(){
   const Cart = useLocalStorage("CART", "");
-  console.log(Cart.items,Cart.items.image)
+
+  const mp = () => {
+    let total = Cart.items.reduce((acum, act) => {
+      return acum + act.price * act.count;
+    }, 0);
+    dispatch(buy({ total })).then((url) => window.open(url, `${url}`));
+  };
+
+  const paypal = () => {
+    let price = Cart.items.reduce((acum, act) => {
+      return acum + act.price * act.count;
+    }, 0);
+
+    dispatch(buyPaypal({ price })).then((url) => window.open(url, `${url}`));
+  };
+
+    
 
   if(!Cart.items.length){
     return(
       <>
-      <br/><br/><br/>
       <div>
         <h1 class="text mx-auto text-center">Shopping Cart checkout</h1>
         <div class="checkout_container mx-auto">
@@ -28,24 +44,19 @@ function Carting(){
 
 return(
     <>
-        <br/>
-        <br/>
-        <br/>
         <div>
-
       <h1 class="text mx-auto text-center">Shopping Cart checkout</h1>
-
     <div class="checkout_container mx-auto">
-      <table>
-        <thead>
+      <div>
+        <div>
           <tr>
             <th class="first">Photo</th>
             <th class="second">Qty</th>
             <th class="third">Product</th>
             <th class="fourth">Price</th>
           </tr>
-        </thead>
-        <tbody>
+        </div>
+        <div>
         
         {Cart.items &&
           Cart.items.map((item) => {
@@ -95,8 +106,8 @@ return(
           <tr class="totalprice">
             <hr/>
             <td class="light">Total:</td>
-            <td colspan="2">&nbsp;</td>
-            <td colspan="2"><span class="thick">$
+            <td colSpan="2">&nbsp;</td>
+            <td colSpan="2"><span class="thick">$
             {Cart.items &&
               Cart.items.reduce((acum, act) => {
                 return acum + act.price * act.count;
@@ -107,21 +118,21 @@ return(
           Choose payment method
           <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="PayPal"/>
-            <label class="form-check-label" for="PayPal">
+            <label class="form-check-label" value="PayPal">
               <img src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669221456/4202081logopaymentpaypalsocialsocialmedia-115606_115695_bkggmq.png" width="30" height="30"/>PayPal
             </label>
           </div>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="MercadoPago"/>
-            <label class="form-check-label" for="MercadoPago">
+            <label class="form-check-label" value="MercadoPago">
               <img src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669221456/unnamed_hbfgk7.png" width="30" height="30"/>Mercado Pago
             </label>
           </div>
           <tr class="checkoutrow">
-            <td colspan="5" class="checkout"><div class="text-center"><button class="btn btn-primary text m-3">Checkout Now!</button></div></td>
+            <td colSpan="5" class="checkout"><div class="text-center"><button class="btn btn-primary text m-3" onClick={() => paypal()}>Checkout!</button></div></td>
           </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   </div>
     </>

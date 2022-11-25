@@ -43,8 +43,8 @@ function App() {
             <Home />
           </Route>
           <Route path="/checkout">
-            <Checkout/>
             <NavBar Cart={Cart}/>
+            <Checkout/>
           </Route>
           <Route path="/foods/:id">
             <NavBar Cart={Cart}/>

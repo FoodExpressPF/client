@@ -57,7 +57,7 @@ export default function ClientTabInfo(){
     return(
         <>
             <table class='table table-striped'>
-                <tbody>
+                <div>
                     <tr>
                         <th scope='row'>User</th>
                         <td colspan='2'>{user.email}</td>
@@ -87,7 +87,7 @@ export default function ClientTabInfo(){
                         <th scope='row'>Type User</th>
                         <td colspan='2'>{user.type_user}</td>
                     </tr>
-                </tbody>
+                </div>
             </table>
             <button class="btn btn-outline-dark" onClick={e=>onSubmit()}>Save New Data</button>
         </>
