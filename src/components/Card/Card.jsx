@@ -41,6 +41,8 @@ function Card({ id, name, price, rating, image, addHandler, onStock  }) {
                     }
         </p>
       </div>
+        {
+          onStock === true ?
       <div className="add_to_cartContainer">
         <button
           className="add_to_cart"
@@ -49,7 +51,10 @@ function Card({ id, name, price, rating, image, addHandler, onStock  }) {
         >
           + ADD TO CART
         </button>
-      </div>
+      </div> : 
+      <div> </div>
+
+        }
     </div>
   );
 }
