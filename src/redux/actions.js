@@ -7,6 +7,7 @@ export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_USER = "GET_USER";
 export const GET_ORDERS = "GET_ORDERS";
 export const GET_ALL_USER = "GET_ALLUSER";
+export const GET_COMMENT = 'GET_COMMENT'
 
 export const getPlates = () => (dispatch) =>
   axios(`/foods`)
@@ -124,3 +125,14 @@ export function postComment(payload) {
     return response;
   }
 }
+
+export const getComment = () => (dispatch) =>
+  axios(`/reviews`)
+    .then((response) => response.data)
+    .then((data) =>
+      dispatch({
+        type: GET_COMMENT,
+        payload: data,
+      })
+    )
+    .catch((error) => alert(`not found, error: ${error}`));

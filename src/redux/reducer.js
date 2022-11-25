@@ -8,6 +8,7 @@ import {
   GET_USER,
   GET_ORDERS,
   GET_ALL_USER,
+  GET_COMMENT
 } from "./actions.js";
 
 function rootReducer(state = INITIAL_GLOBAL_STATE, action) {
@@ -51,6 +52,11 @@ function rootReducer(state = INITIAL_GLOBAL_STATE, action) {
     case 'POST_COMMENT':
       return {
         ...state,
+      }
+    case GET_COMMENT:
+      return {
+        ...state,
+        allComents: action.payload,
       }
 
     default:

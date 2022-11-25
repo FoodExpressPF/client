@@ -1,25 +1,31 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
-import { getUser } from "../../redux/actions";
+import { getComment } from "../../redux/actions";
+import './Comment.css'
 
 export default function Commment() {
-
     const dispatch = useDispatch()
+
+
     useEffect(() => { 
-        dispatch(getUser()); //
+        dispatch(getComment()); //
       }, [dispatch]);
 
-    console.log("de comment", detail)
-    const {users} = useSelector((state)=>state);
-    // console.log("user", users)
+   
+    const comentarios = useSelector((state)=>state.allComents);   
+    // console.log('com2', comentarios.reviews[0].rating)
 
+    let comment = [];
+    let stars = []   
     
-
-
-    let comment = []
-
-    let stars = []
+    comentarios.reviews?.map(a => {
+        comment.push([a.comment, a.rating])
+        stars.push(a.rating)
+    })
+    // console.log(comment, 'comentrarios')
+    // console.log(stars, 'star')
+    
     let suma = 0;
 
 for(let i=0; i<stars.length; i++) {
@@ -32,16 +38,20 @@ if(suma===0) {
 }
 else{
     num = (suma/stars.length)
-    console.log(num)
+    // console.log(num)
 }
 let prom = Math.round(suma/stars.length)
 
-    
+    // console.log(prom, 'PROMEDIO')
 
 return (
-<div>
+<div>    
 <h5>rating: {prom}</h5>
-<h1>{num}</h1>
+<div className="comments">
+{/* <h3>{comment.map(b => (<ul>{b[1]}</ul>))}</h3> */}
+<h6>{comment.map(a => (<ul>{'" ' + a[0] + ' "'}</ul>))}</h6>
+</div>
+
 </div>
 )
 }

@@ -5,6 +5,7 @@ import { getDetail, clearDetail } from '../../redux/actions.js';
 import Loading from '../../components/Loading/Loading'
 import style from "./Detail.module.css";
 import FormComent from '../../components/Comment/FormComent.jsx';
+import Commment from '../../components/Comment/Comment.jsx';
 
 function Detail() {
   const dispatch = useDispatch();
@@ -57,6 +58,7 @@ function Detail() {
           </div>
         </div>
         <div>
+          <Commment/>
             <FormComent
             id={id}/>
         </div>
