@@ -5,6 +5,7 @@ import { getDetail, clearDetail } from '../../redux/actions.js';
 import Loading from '../../components/Loading/Loading'
 import style from "./Detail.module.css";
 import FormComent from '../../components/Comment/FormComent.jsx';
+import Commment from '../../components/Comment/Comment.jsx';
 
 function Detail() {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ function Detail() {
       </Link>
 
       { details.name ?
-  <div>
+  <div >
       <div className={`card-detail ${style.sub_container}`}>
           <div className={style.container_elements}>
             
@@ -54,13 +55,14 @@ function Detail() {
               </span>
               <div className={style.shop_end}><button>Add to cart</button></div> */}
             </div>
-          </div>
-        </div>
         <div>
+          <Commment
+          id={id}/>
             <FormComent
             id={id}/>
         </div>
-
+          </div>
+        </div>
             </div>
 : <div><Loading/></div>
 }

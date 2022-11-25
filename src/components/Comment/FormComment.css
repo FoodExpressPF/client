@@ -34,3 +34,11 @@
     color: orange;
     margin: 10px;
 }
+
+.number {
+    background-color: aliceblue;
+    color: orange;
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+}

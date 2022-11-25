@@ -8,6 +8,7 @@ export const INITIAL_GLOBAL_STATE = {
   allUsers: [],
   allOrders: [],
   user: {},
+  allComents: [],
 };
 
 export const INITIAL_FILTERS = {
@@ -40,8 +41,8 @@ export const INITIAL_USER_FORM = {
 };
 
 export const INITIAL_ORDER_FORM = {
-  state:'',
-  coments:'',
-  total:0,
-  address:''
+  state: '',
+  coments: '',
+  total: 0,
+  address: ''
 };
