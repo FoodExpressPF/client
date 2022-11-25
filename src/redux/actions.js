@@ -126,13 +126,25 @@ export function postComment(payload) {
   }
 }
 
-export const getComment = () => (dispatch) =>
-  axios(`/reviews`)
+export const getComment = (id) => (dispatch) =>
+
+  axios({
+    method: 'get',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    url: '/reviews/byfood',
+    data: {
+      foodId: id
+    }
+  })
     .then((response) => response.data)
-    .then((data) =>
+    .then((data) => {
+      console.log(data)
       dispatch({
         type: GET_COMMENT,
         payload: data,
       })
+    }
     )
     .catch((error) => alert(`not found, error: ${error}`));

@@ -4,16 +4,17 @@ import { useEffect } from "react";
 import { getComment } from "../../redux/actions";
 import './Comment.css'
 
-export default function Commment() {
+export default function Commment({id}) {
     const dispatch = useDispatch()
 
-
+console.log(id, 'id comment')
     useEffect(() => { 
-        dispatch(getComment()); //
+        dispatch(getComment(id)); //
       }, [dispatch]);
 
    
     const comentarios = useSelector((state)=>state.allComents);   
+    console.log(comentarios)
     // console.log('com2', comentarios.reviews[0].rating)
 
     let comment = [];

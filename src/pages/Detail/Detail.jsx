@@ -27,7 +27,7 @@ function Detail() {
       </Link>
 
       { details.name ?
-  <div>
+  <div >
       <div className={`card-detail ${style.sub_container}`}>
           <div className={style.container_elements}>
             
@@ -55,14 +55,14 @@ function Detail() {
               </span>
               <div className={style.shop_end}><button>Add to cart</button></div> */}
             </div>
-          </div>
-        </div>
         <div>
-          <Commment/>
+          <Commment
+          id={id}/>
             <FormComent
             id={id}/>
         </div>
-
+          </div>
+        </div>
             </div>
 : <div><Loading/></div>
 }
