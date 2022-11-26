@@ -4,7 +4,7 @@ import { Chart } from "react-google-charts";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUser, getOrder } from "../../redux/actions";
 
-export function userOrder() {
+export function UserOrder() {
   const stateOrders = useSelector((state) => state.allOrders);
   const [allOrders, setallOrders] = useState([]);
   const dispatch = useDispatch();

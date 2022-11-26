@@ -240,6 +240,26 @@ const NewProduct = () => {
             </label>
           </div>
 
+          {/* ONSTOCK */}
+
+          <div>
+            <label className="w-100">
+              <select
+                className="form-select"
+                aria-label="Default select example"
+                type="select"
+                name="category"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              >
+                <option>Do we have this product in stock?</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </label>
+          </div>
+
+
           {/* Rating */}
 
           {/* <div>
