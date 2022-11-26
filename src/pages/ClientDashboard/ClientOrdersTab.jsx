@@ -48,7 +48,7 @@ export default function ClientOrdersTab(){
                         </div> 
                         : <></>}
                         {order.state == 'done' ? <div class='d-flex'>
-                            {order.foods.map((food, index)=>{
+                            {order.foods.map((food)=>{
                                 return <>
                                     <div class="card" className='foodCard'>
                                         <img src={food.image} class="card-img-top" alt="..."/>
@@ -57,7 +57,8 @@ export default function ClientOrdersTab(){
                                         <ReviewModal 
                                             foodName={food.name}
                                             foodId={food.id}
-                                            userId={userInfo.id}></ReviewModal>
+                                            userId={userInfo.id}
+                                            ></ReviewModal>
                                         </div>
                                     </div>
                                 </>})}

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 
-export default function ReviewModal({foodName, userId, foodId}){
+export default function ReviewModal({foodName, userId, foodId, key}){
 
     const [fieldsData, setData] = useState({
         comments: '',
@@ -44,11 +44,12 @@ export default function ReviewModal({foodName, userId, foodId}){
         }
     };
     
+    console.log(foodName.substr(0,5));
     return(<>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#foodModal">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#foodModal${foodId}`}>
             New Review
         </button>
-        <div class="modal fade modal-lg " id="foodModal" tabindex="-1" aria-labelledby="foodModalLabel" aria-hidden="true">
+        <div class="modal fade modal-lg " id={`foodModal${foodId}`} tabindex="-1" aria-labelledby="foodModalLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
