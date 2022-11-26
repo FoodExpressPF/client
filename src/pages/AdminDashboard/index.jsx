@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Tabs from './Tabs'
 import { useAuth0 } from '@auth0/auth0-react';
+
+import Tabs from './Tabs'
 
 import s from './admin.module.css'
 import { useDispatch, useSelector } from 'react-redux';

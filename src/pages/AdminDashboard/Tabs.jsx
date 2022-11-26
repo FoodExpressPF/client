@@ -15,6 +15,16 @@ const Tabs = () => {
   return (
     <div className={s.tabsContainer}>
       <ul className="nav nav-tabs" >
+
+      <li className="nav-item">
+        <Link 
+          className={url==='/admin/stats'? 'nav-link active': 'nav-link'} 
+          style={url==='/admin/stats'?{'backgroundColor':'orange'}:{'':''}}
+          to="/admin/stats"
+        >
+        Stats
+        </Link>
+      </li>
       
       <li className="nav-item">
         <Link 

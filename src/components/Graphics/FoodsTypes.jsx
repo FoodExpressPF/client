@@ -3,7 +3,7 @@ import { Chart } from "react-google-charts";
 import { useDispatch, useSelector } from "react-redux";
 import { getPlates } from "../../redux/actions";
 
-export function foodTypes() {
+export function FoodTypes() {
   const statePlates = useSelector((state) => state.plates);
   const [allPlates, setAllPlates] = useState([]);
   const dispatch = useDispatch();
