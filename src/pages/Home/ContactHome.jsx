@@ -14,9 +14,9 @@ function Contact() {
 
   return (
 
-    <footer className="pie-pagina">
+    <footer className="contactContainer">
 
-      <div className="grupo-1">
+      <div className="contactData">
         <div className="box">
           <figure>
 
@@ -44,7 +44,7 @@ function Contact() {
           <h5 className="phone">+54 9 11 5678-0895</h5>
         </div>
       </div>
-      <div className="grupo-2">
+      <div className="company_rights">
         <small>&copy; 2018 <b>Food-Express Company - All rights reserved.</b></small>
       </div>
     </footer>

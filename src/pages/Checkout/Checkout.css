@@ -7,35 +7,11 @@
     width: 100%;
 }
 
-.sape{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .checkoutImage{
     object-fit: cover;
     object-position: center;
     width:170px;
     height: 100px;
-    margin-top: 1rem;
-}
-
-
-hr.solid {
-    border-top: 3px solid #bbb;
-    width: 200%;
-}
-
-.amount_button2{
-    background-color: #F4991A;
-    border: 1px solid #F4991A;
-    border-radius: 50%;
-    color: #F9F5F0;
-    height: 20px;
-    line-height: 17px;
-    transition: box-shadow .29s cubic-bezier(.79,.01,.375,.995);
-    width: 20px;
 }
 
 .productitm{
