@@ -1,5 +1,5 @@
 import React from "react";
-import {style} from "./Testimonials.css";
+import "./Testimonials.css";
 
 
 function Testimonials(){
@@ -7,6 +7,10 @@ function Testimonials(){
     return(
         <div className='testimonials' id='testimonials'>
             <div className='container'>
+            <h2 className='test'>Reviews</h2>
+          <a href='#sec4'>
+              <button className='buttonReviews'>Contact</button>
+            </a>
                 {/* <span className='line'></span> */}
                 <div className='content' id="testimonial">
                     <div className='card'>
