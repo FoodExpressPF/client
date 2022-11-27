@@ -7,10 +7,15 @@ import Users from "./Users";
 import Products from "./Products/Products";
 import Orders from "./Orders";
 import Stats from "./Stats";
+import NavBar from "../../components/NavBar/NavBar";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const AdminRoutes = () => {
+  const Cart = useLocalStorage("CART", "");
+
   return (
     <>
+    <NavBar Cart={Cart}/>
     <AdminDashboard />
 
       <Route path="/admin/stats" component={Stats} />

@@ -20,6 +20,7 @@ import { getPlates, getUser } from "../../redux/actions.js";
 //Libraries
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
+import NavBar from "../../components/NavBar/NavBar.jsx";
 
 
 export default function Home() {
@@ -48,7 +49,10 @@ export default function Home() {
             <Loading/>         
         </div>
       :
+      
       <div>
+      <NavBar Cart={Cart}
+      addHandler={(id, name, price, image)=>addCartHandler(id, name, price, image)}/>
       <div className="Carrusel">
         <CarrouselBanners />
       </div>
@@ -75,11 +79,12 @@ export default function Home() {
       <ReservationCart 
       Cart={Cart} />
       </div>
+      <Contact/>
       </div>
       }
       
     </div>
-    <Contact/>
+    
     </>
   );
 }

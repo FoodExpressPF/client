@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetail, clearDetail } from "../../redux/actions.js";
 import Loading from "../../components/Loading/Loading";
 import useLocalStorage from "../../hooks/useLocalStorage.js";
+import NavBar from '../../components/NavBar/NavBar.jsx';
 
 import style from "./Detail.module.css";
 import FormComent from '../../components/Comment/FormComent.jsx';
@@ -31,6 +32,7 @@ function Detail() {
   };
   return (
     <>
+    <NavBar Cart={Cart}/>
       <div className={`${style.main_container}`}>
         <Link to="/home">
           <button className="btn btn-primary h-25">Back</button>
