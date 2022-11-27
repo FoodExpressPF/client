@@ -16,7 +16,7 @@ export default function ClientDashboard(){
         <>
         <NavBar Cart={Cart}/>
             <div className='userDashConteiner'>
-                <h2>Client dashboard</h2>
+                <h2>Welcome!</h2>
             </div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">                                                 
                 <li class="nav-item" role="presentation">

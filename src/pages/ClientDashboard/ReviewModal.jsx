@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 
-export default function ReviewModal({foodName, userId, foodId, key}){
+export default function ReviewModal({foodName, userId, foodId}){
 
+    let modalId = foodId;
     const [fieldsData, setData] = useState({
         comments: '',
         rating: null
@@ -23,7 +25,6 @@ export default function ReviewModal({foodName, userId, foodId, key}){
 
     function handleSubmit(){
         if(errors.commentErr == '' && errors.ratingErr == ''){
-            console.log(axios.defaults.baseURL);
             axios({
                 method: 'post',
                 headers: {
@@ -37,19 +38,26 @@ export default function ReviewModal({foodName, userId, foodId, key}){
                     rating: fieldsData.rating}
             })
             .then(response => response.data)
-            .then(data => alert(JSON.stringify(data)))
+            .then(data => {
+                swal({
+                    icon: 'success',
+                    text: 'Thanks for your comment!',
+                    timer: 1500,
+                    buttons: false
+                });
+            })
             .catch(error => console.log(error.message));
         }else{
             sweetAlert('fijate los campos que onda');
         }
     };
     
-    console.log(foodName.substr(0,5));
+    
     return(<>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#foodModal${foodId}`}>
             New Review
         </button>
-        <div class="modal fade modal-lg " id={`foodModal${foodId}`} tabindex="-1" aria-labelledby="foodModalLabel" aria-hidden="true">
+        <div class="modal fade modal-lg " id={`foodModal${foodId}`} tabindex="-1" aria-labelledby="foodModalLabel" aria-hidden="true" className='modal'>
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -64,7 +72,7 @@ export default function ReviewModal({foodName, userId, foodId, key}){
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onClick={e=>handleSubmit(e)}>Save changes</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={e=>handleSubmit(e)}>Send review</button>
                 </div>
             </div>
             </div>

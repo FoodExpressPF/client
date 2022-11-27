@@ -89,7 +89,7 @@ export default function ClientTabInfo(){
                     </tr>
                 </div>
             </table>
-            <button class="btn btn-outline-dark" onClick={e=>onSubmit()}>Save New Data</button>
+            <button class="btn btn-outline-dark" onClick={e=>onSubmit()}>Save Changes</button>
         </>
     );
 };
