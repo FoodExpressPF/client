@@ -14,14 +14,14 @@ console.log(id, 'id comment')
 
    
     const comentarios = useSelector((state)=>state.allComents);   
-    console.log(comentarios)
-    // console.log('com2', comentarios.reviews[0].rating)
+    console.log(comentarios, 'COMENTATIOS')
+    // console.log('user', comentarios[2].user.name)
 
-    let comment = [];
+   
     let stars = []   
+  
     
-    comentarios.reviews?.map(a => {
-        comment.push([a.comment, a.rating])
+    comentarios?.map(a => {       
         stars.push(a.rating)
     })
     // console.log(comment, 'comentrarios')
@@ -47,11 +47,18 @@ let prom = Math.round(suma/stars.length)
 
 return (
 <div>    
-<h5>rating: {prom}</h5>
+<h4 className="text">Rating: {prom}  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+</svg></h4>
 <div className="comments">
-{/* <h3>{comment.map(b => (<ul>{b[1]}</ul>))}</h3> */}
-<h6>{comment.map(a => (<ul>{'" ' + a[0] + ' "'}</ul>))}</h6>
-</div>
+        <ul>
+            {comentarios.map(coment =>{
+                return <>
+                <li className="text">{coment.comment}, {!coment.user ? <></>: coment.user.name}</li>
+                </>
+            })}
+        </ul>
+    </div>
 
 </div>
 )

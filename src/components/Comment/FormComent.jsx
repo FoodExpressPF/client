@@ -52,9 +52,8 @@ export default function FormComent(id){
  
 
     return (
-        <div className="container">
-         
-              <div>
+        <div className="container">        
+              
                 <form onSubmit={(e) => handleSubmit(e)}>  
                 <div>
                   <input
@@ -85,7 +84,7 @@ export default function FormComent(id){
                   </div>                
                   
                 </form>
-              </div>            
+                       
         </div>
     )
 }
