@@ -133,10 +133,8 @@ export const getComment = (id) => (dispatch) =>
     headers: {
       "Content-Type": "application/json"
     },
-    url: '/reviews',
-    params: {
-      foodId: id
-    }
+    url: `/reviews/${id}`,
+    
   })
     .then((response) => response.data)
     .then((data) => {
