@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   margin: 0px;
+  list-style:none;
   transition: all 0.3s ease-out;
 }
 
