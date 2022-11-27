@@ -1,8 +1,21 @@
-img.carouselImg {
-  display: block;
+.carousel-inner{
+  height: 60vh;
+  object-fit: cover;
+  object-position: center;
+}
+.copa_copa{
+  object-fit: cover;
+  object-position: center;
+}
 
-  width: 100%;
-  height: 300px;
 
-  object-fit: contain;
+@media (max-width: 840px){
+  .copa_copa{
+    height: 700px;
+    object-position: top;
+    padding-bottom: 500px;
+  }
+  .carousel-inner{
+    height: 175px;
+  }
 }

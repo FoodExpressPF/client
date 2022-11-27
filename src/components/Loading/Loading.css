@@ -95,7 +95,6 @@
 .loadingio_spinner_spinner_407vn9fqvic {
     width: 400px;
     height: 400px;
-    display: inline-block;
     overflow: hidden;
 }
 
@@ -111,4 +110,10 @@
 
 .ldio_p4u3wgqmuk div {
     box-sizing: content-box;
+}
+
+.loading_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

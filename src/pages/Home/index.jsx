@@ -6,6 +6,7 @@ import Category from "./Category.jsx";
 import CategorySection from "./CategorySection.jsx";
 import CarrouselBanners from "./CarrouselBanners.jsx";
 import ReservationCart from "../../components/ReservationCart/ReservationCart";
+import Contact from "./ContactHome.jsx";
 
 //Styles
 import s from "./home.module.css";
@@ -39,17 +40,20 @@ export default function Home() {
 
   return (
     <>
-    <div className="Carrusel">
-      {/* <CarrouselBanners /> */}
-    </div>
+    
     <div>
     {loading
       ?
-       <div className="text-center">          
+       <div className={s.loadingfix}>          
             <Loading/>         
         </div>
       :
+      <div>
+      <div className="Carrusel">
+        <CarrouselBanners />
+      </div>
       <div className={s.homeContainer}>
+      
        <div className={s.categoriesBox}>
           <Category />
           <CategorySection name='Main Course'
@@ -70,11 +74,12 @@ export default function Home() {
        </div>
       <ReservationCart 
       Cart={Cart} />
-      
+      </div>
       </div>
       }
       
     </div>
+    <Contact/>
     </>
   );
 }

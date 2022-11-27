@@ -9,9 +9,9 @@
 
 .title-text {
   text-align: center;
-  padding-left: 50px;
+  padding-left: 30px;
   color: #262626;
-  font-size: 1.1rem;
+  font-size: 20px;
   line-height: 24px;
   font-weight:bold;
 }
@@ -90,7 +90,7 @@
   color: rgb(194, 0, 0);
   background-color: rgb(255, 166, 166);
   border-radius: 10px;
-  width: 100%;
+  width: 120px;
   margin: 30px;
 }
 
@@ -117,7 +117,7 @@
     height: 125px;
   }
   .title-text{
-    font-size: 10px;
+    font-size: 18px;
   }
   .card-text{
     align-items: flex-start;
@@ -132,12 +132,12 @@
     content: '+';
   }
   .desactivado{
-    margin: 20px;
+    margin: 20px 65px 20px 20px;
     font-size: 12px;
     width: 80px;
   }
   .activado{
-    margin: 20px;
+    margin: 18px;
     font-size: 12px;
     width: 80px;
   }

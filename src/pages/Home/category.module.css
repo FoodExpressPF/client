@@ -3,7 +3,7 @@
   position: sticky;
   top: 0px;
   height: 60px;
-  background-color: #ffffff80;
+  background-color: #ffffffcf;
   z-index: 100;
 }
 
@@ -21,8 +21,8 @@
   background-color: #e0e0e000;
   border-radius: 4px;
   cursor: pointer;
-  padding: 4px;
-  font-size: 20px;
+  padding: 2px;
+  font-size: 17px;
   border-color: orange;
 }
 
@@ -39,5 +39,14 @@
   }
   .buttonFiltros{
     font-size: 0.8rem;
+  }
+}
+
+@media (max-width:420px){
+  .categoryNavContent{
+    font-size: 0.7rem;
+  }
+  .buttonFiltros{
+    font-size: 0.7rem;
   }
 }

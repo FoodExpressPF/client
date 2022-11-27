@@ -49,60 +49,46 @@ return(
     <div class="checkout_container mx-auto">
       <div>
         <div>
-          <tr>
-            <th class="first">Photo</th>
-            <th class="second">Qty</th>
-            <th class="third">Product</th>
-            <th class="fourth">Price</th>
-          </tr>
-        </div>
-        <div>
-        
-        {Cart.items &&
-          Cart.items.map((item) => {
+          <table border="1" className="table table-striped table-hover">
+            <tr class="productitm">
+              <th class="text-center">Photo</th>
+              <th class="text-center">Qty</th>
+              <th class="text-center">Product</th>
+              <th class="text-center">Price</th>
+            </tr>
+            {Cart.items &&
+            Cart.items.map((item) => {
             return (
             <tr class="productitm">
-              <td>
-              <hr/>
-                  <img src={item.image} alt="" class="thumb" width="240" height="120"></img>
+              <td align="center">
+                  <img src={item.image} alt="" class="checkoutImage"/>
               </td>
-              <td>
-                
-                <div class="d-flex justify-content-center">
+              <td class="btn-group d-flex justify-content-center" role="group" aria-label="Basic mixed styles example">
                   <button
-                    className="amount_button"
+                    class="btn btn-warning"
                     type="button"
                     onClick={() => Cart.discount(item)}
                   >
                     {" "}
                     -{" "}
                   </button>
-                  <span><h5> {item.count} </h5></span>
+                  <button class="btn btn-warning bg-white"> {item.count} </button>
                   <button
-                    className="amount_button"
+                    class="btn btn-warning"
                     type="button"
                     onClick={() => Cart.add(item)}
                   >
                     {" "}
                     +{" "}
                   </button>
-                  </div>
               </td>
-              <td>{item.name}</td>
-              <td>${item.price * item.count}</td>
+              <td class="pe-5">{item.name}</td>
+              <td class="pe-5">${item.price * item.count}</td>
               <td><button class="remove bg-transparent border-0"><img src="https://i.imgur.com/h1ldGRr.png" alt="X" onClick={() => Cart.remove(item)}/></button></td>
               </tr>
+              
             );
           })}
-          
-
-          {/* <tr class="productitm">
-            <td><img src="https://i.imgur.com/tEdRnz4.png" class="thumb"/></td>
-            <td><input type="number" value="1" min="0" max="99" class="qtyinput"/></td>
-            <td>JavaScript &amp; </td>
-            <td>$27.50</td>
-            <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"/></span></td>
-          </tr> */}
           <tr class="totalprice">
             <hr/>
             <td class="light">Total:</td>
@@ -115,6 +101,7 @@ return(
               </span></td>
           </tr>
           <br/>
+          </table>
           Choose payment method
           <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="PayPal"/>

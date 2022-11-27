@@ -1,21 +1,26 @@
 .checkout_container{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     background-color: #F9F5F0;
-    height: 100vhpx;
-    width: 1000px;
+    height: auto;
+    width: 100%;
 }
 
-.first{
-    padding-right: 230px;
-    text-align: center;
+.sape{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.second{
-    padding-right: 130px;
+
+.checkoutImage{
+    object-fit: cover;
+    object-position: center;
+    width:170px;
+    height: 100px;
+    margin-top: 1rem;
 }
-.third{
-    padding-right: 200px;
-}
+
 
 hr.solid {
     border-top: 3px solid #bbb;
@@ -31,4 +36,10 @@ hr.solid {
     line-height: 17px;
     transition: box-shadow .29s cubic-bezier(.79,.01,.375,.995);
     width: 20px;
+}
+
+.productitm{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
