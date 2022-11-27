@@ -1,13 +1,30 @@
-import React, { useEffect } from 'react';
-import Tabs from './Tabs'
+import React, { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
+import Tabs from './Tabs'
+
 import s from './admin.module.css'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getAllUser, getOrder } from '../../redux/actions';
 
 const AdminDashboard = () => {
-
   const {user} = useAuth0();
+
+  const stateOrders = useSelector((state) => state.allOrders);
+  const stateUsers = useSelector((state) => state.allUsers);
+
+  const [allOrders, setAllOrders] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (allOrders.length === 0) dispatch(getOrder());
+    setAllOrders(stateOrders);
+
+    if (allUsers.length === 0) dispatch(getAllUser());
+    setAllUsers(stateUsers);
+  }, [stateOrders]);
 
   return (
     <div className={s.adminContainer}>
@@ -16,19 +33,19 @@ const AdminDashboard = () => {
         :<h2>Welcome to the Admin Dashboard</h2>
      }
      <section className={s.firstPanel}>
-        <div>
-          <h4>Total Users</h4>
-          <h4>54</h4>
+        <div className={s.stats}>
+          <h5>Total Users</h5>
+          <h4>{allUsers.length}</h4>
         </div>
 
-        <div>
-          <h4>Total Orders</h4>
-          <h4>56</h4>
+        <div className={s.stats}>
+          <h5>Total Orders</h5>
+          <h4>{allOrders.length}</h4>
         </div>
 
-        <div>
-          <h4>Total billed</h4>
-          <span>$</span><h4>123456</h4>
+        <div className={s.stats}>
+          <h5>Total billed</h5>
+          <h4>${allOrders.length>0?allOrders.reduce((acumulator, current) => acumulator + current.total,0):0}</h4>
         </div>
      </section>
      <section>

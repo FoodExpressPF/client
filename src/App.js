@@ -18,8 +18,6 @@ import "./assets/styles/globalStyles.css";
 import "./assets/fonts/fonts.css";
 import Passed from "./pages/postBuy/passed.jsx";
 import Denegated from "./pages/postBuy/denegated.jsx";
-import { foodTypes } from "./components/Graphics/FoodsTypes.jsx";
-import { userOrder } from "./components/Graphics/User-Order.jsx";
 
 function App() {
   const { isAuthenticated } = useAuth0();
@@ -34,8 +32,6 @@ function App() {
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/passed" component={Passed} />
-        <Route exact path="/a" component={foodTypes} />
-        <Route exact path="/b" component={userOrder} />
         <Route exact path="/denegated" component={Denegated} />
         <RequireAuth>
           <Route path="/home">

@@ -1,13 +1,13 @@
 .main_container {
-  display: flex;
   justify-content: center;
   align-items: center;
-  display: grid;
+  display: inline-flex;
   align-content: center;
   justify-content: center;
   background-image: url('https://res.cloudinary.com/dbepwtmru/image/upload/v1668552203/Swirly_pattern_wallpaper_lktlvs.jpg');
+  background-size: cover;
   height: 100vh;
-  background-size: 215vh;
+  background-size: 400vh;
 }
 
 .sub_container {
@@ -120,7 +120,8 @@
   color: rgb(78, 194, 0);
   background-color: rgb(187, 255, 166);
   border-radius: 10px;
-  width: 150px;
-  margin: 6px;
+  border-color: rgb(78, 194, 0);
+  width: 120px;
+  padding: 4px;
   margin: 7px;
 }

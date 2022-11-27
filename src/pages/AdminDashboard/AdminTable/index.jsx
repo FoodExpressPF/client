@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Loading from '../../../components/Loading/Loading'
 
+import Paginated from '../../../components/Paginated/Paginated'
+
 import s from './adminTable.module.css'
 
 const AdminTable = ({ form,formEdit,name, data, cols, funDelete,get }) => {
@@ -9,13 +11,13 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete,get }) => {
   const [activeNew, setActiveNew] = useState(false)
   const [activeEdit, setActiveEdit] = useState(false)
   const [editForm, setEditForm] = useState({...formEdit})
+  const [currentPage, setCurrentPage] = useState(1)
   const handleNewProduct = ()=> {setActiveNew(!activeNew)}
   
   // useEffect(()=>{
   //   s
 
   // })
-  console.log('form',editForm)
   
 
   const handleDelete = (id) => {
@@ -28,6 +30,14 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete,get }) => {
   setEditForm({...editForm, props:{item,get}})
   
   }
+
+  const itemsPerPage = 5
+    let dataToRender = data.slice(((currentPage*itemsPerPage)-itemsPerPage),(currentPage*itemsPerPage))
+    console.log(dataToRender)
+
+    const paginated = (number) =>{
+      setCurrentPage(number)
+    }
  
   return (
     <>
@@ -86,14 +96,14 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete,get }) => {
           </tr>
         </thead>
         <tbody>
-          {data?.map(row=>
+          {dataToRender?.map(row=>
              <tr key={row.id}>
-               <th scope="row">{counter}</th>
+               <th scope="row">{data.indexOf(row)+1}</th>
                {cols?.map(col=>{
                 return(
                  col==='image'
                  ?<td key={`${row.img}${col}`}><img className={s.dataImage} src={row.image} alt={row.name}/></td>
-                 :<td key={`${row.id}${col}`}>{row[col]}</td>
+                 :<td key={`${row.id}${col}`}>{row[col].toString()}</td>
                 )
                }
                 )}
@@ -121,6 +131,15 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete,get }) => {
       </table>}
       
     </div>
+
+    <Paginated 
+      itemsPerPage={5} 
+      dataLength={data.length} 
+      currentPage={currentPage} 
+      setCurrentPage={setCurrentPage} 
+      paginated={paginated} 
+    />
+
     </>
   );
 };
