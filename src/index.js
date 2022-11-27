@@ -11,7 +11,6 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import App from "./App.js";
 
 import dotenv from "dotenv";
-import { FaTruckMonster } from "react-icons/fa";
 dotenv.config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001"
 

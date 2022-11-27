@@ -16,13 +16,25 @@ import "./assets/styles/globalStyles.css";
 import "./assets/fonts/fonts.css";
 import Passed from "./pages/postBuy/passed.jsx";
 import Denegated from "./pages/postBuy/denegated.jsx";
+import Loading from "./components/Loading/Loading.jsx";
 
 function App() {
-  const { isAuthenticated } = useAuth0();
-  const RequireAuth = ({ children }) => {
-    // if (!isAuthenticated) return <Redirect to="/" />;
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
+  const RequireAuth = ({ allowedRole, children }) => {
+    if (!isAuthenticated) return <Redirect to="/" />;
+    else if(allowedRole){
+      useCheckRoles(user.email)
+      .then(response=>
+      {if(!response) return <Redirect to="/home" />}
+      )
+    }
     return children;
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <>

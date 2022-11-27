@@ -12,6 +12,8 @@
     border-radius: 10px;
     height: 200px;
     box-shadow: 10px 10px 10px rgb(76, 81, 90);
+    width: 100%;
+    object-fit: cover;
 }
 
 .previs {
@@ -33,4 +35,9 @@
     border-radius: 10px;
     align-items: center;
     justify-content: center;
+}
+
+.formContainer{
+    display: flex;
+    justify-content: space-between;
 }
