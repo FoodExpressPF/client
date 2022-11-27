@@ -10,7 +10,7 @@ import "./NavBar.css"
 
 function NavBar({Cart}) {
   const { user,isAuthenticated } = useAuth0();
-  const isAdmin= useCheckRoles('admin')
+  let isAdmin= user?useCheckRoles(user?.email):false 
   
 
   const profile = 'https://res.cloudinary.com/dpnrbius0/image/upload/v1668650768/Profile_sa6jnn.png'
@@ -19,7 +19,7 @@ function NavBar({Cart}) {
   
   useEffect(() => {
     setIsAuthorized(isAdmin)
-  },[isAdmin])
+  },[user])
 
   return (
     <nav 
