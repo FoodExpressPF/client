@@ -8,6 +8,8 @@ import { INITIAL_PRODUCT_FORM as initialValues } from "../../../utils/initialObj
 import { useFormik } from "formik";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import Modal from "../Modal";
+
 
 const NewProduct = () => {
   const [previewImage, setPreviewImage] = useState(
@@ -15,6 +17,7 @@ const NewProduct = () => {
   );
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(true);
+  const [activeModal, setActiveModal] = useState(false)
   const dispatch = useDispatch()
 
   ///////////////////////////////////////////////ONCHANGE IMAGE INPUT
@@ -45,51 +48,40 @@ const NewProduct = () => {
     })   
      .then(response => {
       setResponse(response.data.message)
-      setLoading(false)    
+      setLoading(false)   
       dispatch(getPlates())
      })
      .catch(error=>{
+      console.log(error)
       setResponse(error?.response.data)
       setLoading(false)
      });
+
      formik.resetForm()
   }
 
   const formik = useFormik({ initialValues, validationSchema, onSubmit })
   const {handleSubmit, handleChange, handleBlur, errors, touched,values} = formik
 
+  const handleClick = () =>{
+    setActiveModal(true)
+  }
+
   return (  
-      <div>
+      <>
+      
+        { activeModal
+         && 
+         <Modal 
+           setActiveModal={setActiveModal} 
+           loading={loading} 
+           response={response} 
+          /> 
+        }
 
-        <h2>Create New Product</h2>
-        
-        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                 {loading? 
-                   <div className="d-flex justify-content-center">
-                   <div className="spinner-border" role="status">
-                     <span className="visually-hidden">Loading...</span>
-                   </div>
-                 </div>
-                   :<div>
-                      <h5 className="modal-title">{response}</h5>
-                    </div>    
-                  }
-               </div>
-
-                 <div className="modal-footer">
-                   <button 
-                   type="button" 
-                   className="btn btn-secondary" 
-                   data-bs-dismiss="modal">Close</button>
-                 </div>
-               </div>
-           </div>
-         </div>
-         <div className="back">
-
+      <h2>Create New Product</h2>
+       
+    <div className="formContainer">
       <form className="w-50 my-5" onSubmit={handleSubmit}>
         {/* IMAGE */}
 
@@ -98,7 +90,7 @@ const NewProduct = () => {
             <strong>Image:</strong> <br />
             <input
               className={
-                errors.image ? "form-control is-invalid" : "form-control"
+                errors.image ? "form-control is-invalid w-100" : "form-control w-100"
               }
               type="file"
               name="image"
@@ -111,12 +103,12 @@ const NewProduct = () => {
 
         <fieldset>
           <div>
-            <div className="form-floating mb-3">
+            <div className="form-floating mb-3 w-100">
               <input
                 className={
                   errors.name && touched.name
-                  ? "form-control is-invalid"
-                  : "form-control"
+                  ? "form-control is-invalid w-100"
+                  : "form-control w-100"
                 }
                 id="floatingInput"
                 placeholder="name@example.com"
@@ -135,12 +127,12 @@ const NewProduct = () => {
           {/* DESCRIPTION */}
 
           <div>
-            <div className="form-floating mb-3">
+            <div className="form-floating mb-3 w-100">
               <textarea
                 className={
                   errors.description && touched.description
-                  ? "form-control is-invalid"
-                    : "form-control"
+                  ? "form-control is-invalid w-100"
+                    : "form-control w-100"
                 }
                 id="floatingTextarea"
                 name="description"
@@ -199,7 +191,7 @@ const NewProduct = () => {
           {/* TYPE */}
 
           <div>
-            <label className="w-100">
+            <label className="w-100 mb-3">
               <select
                 className="form-select"
                 aria-label="Default select example"
@@ -221,7 +213,7 @@ const NewProduct = () => {
           {/* CATEGORY */}
 
           <div>
-            <label className="w-100">
+            <label className="w-100 mb-3">
               <select
                 className="form-select"
                 aria-label="Default select example"
@@ -258,34 +250,6 @@ const NewProduct = () => {
               </select>
             </label>
           </div>
-
-
-          {/* Rating */}
-
-          {/* <div>
-                    <label className= "w-100">
-                    <strong>Rating:</strong> <br />
-                    
-                    <input 
-                    className="form-range" 
-                    min="0" 
-                    max="5"
-                    step="1"
-                    name="rating" 
-                    type="range"
-                    value={values.rating} 
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    />         
-                    </label> 
-                    <div>{values.rating}</div>
-                    
-                    {errors.rating && touched.rating && (
-                      <p 
-                      // className=
-                      >{errors.rating}</p>
-                      )}  
-                    </div>    */}
         </fieldset>
 
         <div className="text-center mt-4">
@@ -297,22 +261,24 @@ const NewProduct = () => {
               ? "btn btn-danger btn-lg mx-auto"
               : "btn btn-light btn-sm"
             }
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            onClick={handleClick}
             >
             Create
           </button>
         </div>
       </form>
+
+
       <div className="previs">
         <div className="nameimgage">
           <h1>Preview</h1>
-        <h2 className="titleback">Title:  {values.name}</h2>
-      <img className="imag" src={values.image} height='200px'/>
+          <h2 className="titleback">Title:  {values.name}</h2>
+          <img className="imag" src={previewImage} height='200px'/>
         </div>
+
         <p>Description:   {values.description}</p>
         <h5> $ {values.price}</h5>
-        <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
   <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
 </svg>{values.rating}</h5>
 <div>
@@ -321,8 +287,9 @@ const NewProduct = () => {
         <h4>Category:  {values.category}</h4>
 </div>
       </div>
-    </div>
-            </div>
+
+      </div>
+    </>
   );
 };
 

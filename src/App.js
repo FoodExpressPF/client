@@ -16,6 +16,7 @@ import "./assets/styles/globalStyles.css";
 import "./assets/fonts/fonts.css";
 import Passed from "./pages/postBuy/passed.jsx";
 import Denegated from "./pages/postBuy/denegated.jsx";
+import Loading from "./components/Loading/Loading.jsx";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
