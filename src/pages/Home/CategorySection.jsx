@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 import Card from '../../components/Card/Card';
 
 //Hooks 
-import useLocalStorage from "../../hooks/useLocalStorage.js";
+// import useLocalStorage from "../../hooks/useLocalStorage.js";
 
 
 const CategorySection = ({name, addHandler}) => {
   const allPlate = useSelector((state) => state.plates);
-  const filterPlates = allPlate.filter(plate=>plate.category === name)
-  const Cart = useLocalStorage("CART", "");
+  // const filterPlates = allPlate.filter(plate=>plate.category === name)
+  // const Cart = useLocalStorage("CART", "");
  
   const nameId =name.replace(/ /g, "")
 

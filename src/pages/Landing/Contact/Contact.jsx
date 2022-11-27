@@ -1,9 +1,9 @@
 import React from "react";
 import "./Contact.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faFacebook, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons"
-import { FaMapMarkerAlt} from "react-icons/fa";
-import { AiOutlineMail} from "react-icons/ai";
+import { faFacebook, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons"
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { AiOutlineMail } from "react-icons/ai";
 
 
 function Contact(){

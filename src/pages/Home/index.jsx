@@ -6,6 +6,7 @@ import Category from "./Category.jsx";
 import CategorySection from "./CategorySection.jsx";
 import CarrouselBanners from "./CarrouselBanners.jsx";
 import ReservationCart from "../../components/ReservationCart/ReservationCart";
+import Contact from "./ContactHome.jsx";
 
 //Styles
 import s from "./home.module.css";
@@ -19,6 +20,7 @@ import { getPlates, getUser } from "../../redux/actions.js";
 //Libraries
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
+import NavBar from "../../components/NavBar/NavBar.jsx";
 
 
 export default function Home() {
@@ -39,15 +41,23 @@ export default function Home() {
 
   return (
     <>
-    <CarrouselBanners />
+    
     <div>
     {loading
       ?
-       <div className="text-center">          
+       <div className={s.loadingfix}>          
             <Loading/>         
         </div>
       :
+      
+      <div>
+      <NavBar Cart={Cart}
+      addHandler={(id, name, price, image)=>addCartHandler(id, name, price, image)}/>
+      <div className="Carrusel">
+        <CarrouselBanners />
+      </div>
       <div className={s.homeContainer}>
+      
        <div className={s.categoriesBox}>
           <Category />
           <CategorySection name='Main Course'
@@ -67,12 +77,14 @@ export default function Home() {
            />
        </div>
       <ReservationCart 
-      Cart={Cart}
-      />
+      Cart={Cart} />
+      </div>
+      <Contact/>
       </div>
       }
       
     </div>
+    
     </>
   );
 }

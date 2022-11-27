@@ -14,22 +14,27 @@
 
 .menu-container.open {
   display: flex;
-  flex-direction: row;
-  width:754px;
+  flex-direction: column;
+  width:600px;
 }
 
-.container {
+.filter-container {
   background-color: rgb(255, 233, 193);
   border-radius: 10px;
-  margin: 3px
+  margin: 5px;
+  height: 35px;
+  display: flex;
+  justify-content:center;
 }
 
 .containerGO {
-  justify-content: center;
+  display: flex;
+  justify-content: space-around;
   background-size: cover;
   align-content: center;
   background-attachment: fixed;
   margin: 1px;
+  padding: 1px
 }
 
 .slct {
@@ -70,7 +75,7 @@
 }
 
 
-.button2 {
+.button23 {
   color: rgb(255, 255, 255);
   background-color: rgb(255, 186, 58);
   border-radius: 10px;
@@ -80,15 +85,15 @@
 }
 
 
-.button2:hover {
+.button23:hover {
   background-color: rgb(206, 135, 5);
   scale: 1.1;
   transition: 0.8s;
 }
 
-
-
-
+.form-control{
+  width: 600px;
+}
 
 .btn-primary {
   background-color: orange;

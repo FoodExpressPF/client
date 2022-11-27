@@ -4,15 +4,17 @@ import './index.css';
 
 //components
 import ClientTabInfo from './ClientTabInfo';
+import useLocalStorage from '../../hooks/useLocalStorage';
 import ClientOrdersTab from './ClientOrdersTab';
+import NavBar from '../../components/NavBar/NavBar';
 import ClientBookingTab from './ClientBookingTab';
 
 export default function ClientDashboard(){
+    const Cart = useLocalStorage("CART", "");
 
-    
-    
     return(
-        <>  
+        <>
+        <NavBar Cart={Cart}/>
             <div className='userDashConteiner'>
                 <h2>Client dashboard</h2>
             </div>
