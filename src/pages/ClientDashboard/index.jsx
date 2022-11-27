@@ -7,6 +7,7 @@ import ClientTabInfo from './ClientTabInfo';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import ClientOrdersTab from './ClientOrdersTab';
 import NavBar from '../../components/NavBar/NavBar';
+import ClientBookingTab from './ClientBookingTab';
 
 export default function ClientDashboard(){
     const Cart = useLocalStorage("CART", "");
@@ -37,9 +38,10 @@ export default function ClientDashboard(){
                         <ClientOrdersTab/>
                     </div>
                     <div class="tab-pane fade" id="booking-tab-pane" role="tabpanel" aria-labelledby="booking-tab" tabindex="0">
-                        reservas
+                        <ClientBookingTab/>
                     </div>
                 </div>
+                
         </>
     );
 };
