@@ -133,14 +133,13 @@ export const getComment = (id) => (dispatch) =>
     headers: {
       "Content-Type": "application/json"
     },
-    url: '/reviews/byfood',
-    data: {
+    url: '/reviews',
+    params: {
       foodId: id
     }
   })
     .then((response) => response.data)
     .then((data) => {
-      console.log(data)
       dispatch({
         type: GET_COMMENT,
         payload: data,
