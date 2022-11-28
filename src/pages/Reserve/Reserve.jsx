@@ -3,7 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import { getAllTables, getUser, postReserve } from "../../redux/actions";
+import {
+  buy,
+  buyPaypal,
+  getAllTables,
+  getUser,
+  postReserve,
+} from "../../redux/actions";
 
 function Reserve() {
   const dispatch = useDispatch();
@@ -14,12 +20,21 @@ function Reserve() {
   const [capacity, setCapacity] = useState("not specified");
   const [Time, setTime] = useState("not specified");
   const { user, isAuthenticated } = useAuth0();
+  const [buySelect, setBuySelect] = useState(1);
   const history = useHistory();
   const emailUser = isAuthenticated ? { email: user.email } : "";
   const foodsCartId = [];
   for (let i = 0; i < Cart.items.length; i++) {
     foodsCartId.push(Cart.items[i].id);
   }
+  const paypal = () => {
+    let price = Cart.items.reduce((acum, act) => {
+      return acum + act.price * act.count;
+    }, 0);
+    buySelect == 1
+      ? dispatch(buyPaypal({ price })).then((url) => window.open(url, `${url}`))
+      : dispatch(buy({ price })).then((url) => window.open(url, `${url}`));
+  };
   let available = [];
 
   useEffect(() => {
@@ -51,8 +66,8 @@ function Reserve() {
             })
           )
         );
+        paypal();
         alert("orden creada");
-        history.push("/home");
       }
     }
   };
@@ -61,7 +76,9 @@ function Reserve() {
 
   const onChangeHandlerChair = (e) => setCapacity(e.target.value);
   const onChangeHandlerTime = (e) => setTime(e.target.value);
-
+  const select = (e) => {
+    setBuySelect(e.target.value);
+  };
   return (
     <>
       <h1>Reservar</h1>
@@ -82,7 +99,44 @@ function Reserve() {
         <option value="5">5</option>
         <option value="6">6</option>
       </select>
-
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="flexRadioDefault"
+          id="PayPal"
+          value="1"
+          checked={buySelect == "1" ? true : false}
+          onChange={select}
+        />
+        <label class="form-check-label" value="PayPal">
+          <img
+            src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669221456/4202081logopaymentpaypalsocialsocialmedia-115606_115695_bkggmq.png"
+            width="30"
+            height="30"
+          />
+          PayPal
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="flexRadioDefault"
+          id="MercadoPago"
+          value="2"
+          checked={buySelect == "2" ? true : false}
+          onChange={select}
+        />
+        <label class="form-check-label" value="MercadoPago">
+          <img
+            src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669221456/unnamed_hbfgk7.png"
+            width="30"
+            height="30"
+          />
+          Mercado Pago
+        </label>
+      </div>
       <button onClick={() => tables()}>prueba</button>
     </>
   );
