@@ -21,7 +21,6 @@
 .buttonChat:hover {
     background-color: rgb(255, 230, 148);
     color: rgb(255, 145, 0);
-
     transition: 1s;
 
 }
