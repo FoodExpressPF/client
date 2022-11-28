@@ -24,6 +24,8 @@ function Reserve() {
 
   useEffect(() => {
     if (table.length === 0) dispatch(getAllTables());
+    available = table.filter((obj) => obj.reservation_data === date);
+    if (available.length >= 2) alert("available");
   });
 
   const tables = async () => {
@@ -56,6 +58,7 @@ function Reserve() {
   };
 
   const onChangeHandlerDate = (e) => setDate(e.target.value);
+
   const onChangeHandlerChair = (e) => setCapacity(e.target.value);
   const onChangeHandlerTime = (e) => setTime(e.target.value);
 
