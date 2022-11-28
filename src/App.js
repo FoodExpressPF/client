@@ -52,29 +52,17 @@ function App() {
         <Route path="/reserve" component={Reserve} />
         <Route path="/passed" component={Passed} />
         <Route path="/denegated" component={Denegated} />
+
         <RequireAuth>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/checkout">
-            <Checkout />
-          </Route>
-          <Route path="/foods/:id">
-            <Detail />
-          </Route>
-        
-          <Route path="/client">
-            <ClientDashboard />
-          </Route>
+          <Route path="/home" component={Home}/>
+          <Route path="/checkout" component={Checkout}/>
+          <Route path="/foods/:id" component={Detail}/>
+          <Route path="/client" component={ClientDashboard}/>
 
           <RequireAdmin>
-           <Route path="/admin">
-              <AdminRoutes />
-           </Route>
+            <Route path="/admin" component={AdminRoutes}/>
           </RequireAdmin>
         </RequireAuth>
-
-        
       </Switch>
 
       
