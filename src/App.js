@@ -17,17 +17,17 @@ import "./assets/fonts/fonts.css";
 import Passed from "./pages/postBuy/passed.jsx";
 import Denegated from "./pages/postBuy/denegated.jsx";
 import Loading from "./components/Loading/Loading.jsx";
+import Reserve from "./pages/Reserve/Reserve.jsx";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   const RequireAuth = ({ allowedRole, children }) => {
     if (!isAuthenticated) return <Redirect to="/" />;
-    else if(allowedRole){
-      useCheckRoles(user.email)
-      .then(response=>
-      {if(!response) return <Redirect to="/home" />}
-      )
+    else if (allowedRole) {
+      useCheckRoles(user.email).then((response) => {
+        if (!response) return <Redirect to="/home" />;
+      });
     }
     return children;
   };
@@ -40,6 +40,7 @@ function App() {
     <>
       <Switch>
         <Route exact path="/" component={Landing} />
+        <Route exact path="/reserve" component={Reserve} />
         <Route exact path="/passed" component={Passed} />
         <Route exact path="/denegated" component={Denegated} />
         <RequireAuth>
@@ -47,7 +48,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/checkout">
-            <Checkout/>
+            <Checkout />
           </Route>
           <Route path="/foods/:id">
             <Detail />
@@ -55,12 +56,12 @@ function App() {
           <Route path="/admin">
             <AdminRoutes />
           </Route>
-          <Route path='/client'>
-            <ClientDashboard/>
+          <Route path="/client">
+            <ClientDashboard />
           </Route>
         </RequireAuth>
       </Switch>
-    </>    
+    </>
   );
 }
 
