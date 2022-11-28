@@ -9,6 +9,9 @@ import NavBar from '../../components/NavBar/NavBar.jsx';
 import style from "./Detail.module.css";
 import FormComent from '../../components/Comment/FormComent.jsx';
 import Commment from '../../components/Comment/Comment.jsx';
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import {Toaster, toast} from "react-hot-toast";
+
 
 function Detail() {
   const dispatch = useDispatch();
@@ -34,14 +37,15 @@ function Detail() {
     <>
     <NavBar Cart={Cart}/>
       <div className={`${style.main_container}`}>
-        <Link to="/home">
-          <button className="btn btn-primary h-25">Back</button>
-        </Link>
+        
 
         {details.name ? 
          (
            <div className={`card-detail ${style.sub_container}`}>
-             <button onClick={() => add()}>Add to cart</button>
+<Link to="/home">
+          <button className={style.back}>Back</button>
+        </Link>
+             
              <div className={style.container_elements}>
                 <div className={`${style.image_container}`}>
                   <img
@@ -62,8 +66,9 @@ function Detail() {
                   <p className="card-text text-white">Price: ${details.price}</p>
                   <p className="card-text text-white">Type: {details.type}</p>
                   <p className="card-text text-white">
-                    Rating: {details.rating}⭐
+                    Rating: {details.rating} ⭐
                   </p>
+                  
                   <p className="card-text text-white">
                     Description: {details.description}
                   </p>
@@ -73,8 +78,10 @@ function Detail() {
                       ? details.reviews.join(" - ")
                       : "No reviews yet"}
                   </p>
+                  
                   <br></br>
                   <br></br>
+                  
                 {/* <span className={style.shop_buttons}>
 
                   <button className={style.remove_button}>-</button>
@@ -83,14 +90,20 @@ function Detail() {
                 </span>
                 <div className={style.shop_end}><button>Add to cart</button></div> */}
               </div>
+              
             </div>
+            <button className={style.Add} onClick={() => add()}>Add    <AiOutlineShoppingCart onClick={()=>toast.success('successfully added')}/></button>
+            <Commment
+               id={id}
+              />
            <div>
-             <Commment
+             <Toaster
+             position='top-center'
+             reverseOrder={false}
+             />
+             {/* <FormComent
                id={id}
-              />
-             <FormComent
-               id={id}
-              />
+              /> */}
         </div>
           </div>)
 : <div><Loading/></div>
