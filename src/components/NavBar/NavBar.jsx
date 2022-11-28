@@ -7,10 +7,12 @@ import LoginButton from "../Auth/Login.jsx";
 import LogoutButton from "../Auth/Logout.jsx";
 import useCheckRoles from "../../utils/checkRoles.js";
 import "./NavBar.css"
+import ChatB from "../ChatBot/ChatBot.jsx";
 
 function NavBar({Cart}) {
   const { user,isAuthenticated } = useAuth0();
   const isAdmin= useCheckRoles('admin')
+  const [isOpen, setIsOpen] = useState(false)
   
 
   const profile = 'https://res.cloudinary.com/dpnrbius0/image/upload/v1668650768/Profile_sa6jnn.png'
@@ -20,6 +22,11 @@ function NavBar({Cart}) {
   useEffect(() => {
     setIsAuthorized(isAdmin)
   },[isAdmin])
+
+  function handleClick(e) {
+    e.preventDefault()
+    setIsOpen(!isOpen)
+}
 
   return (
     <nav 
@@ -62,6 +69,10 @@ function NavBar({Cart}) {
                 </Link>
               </li>
             }
+                    
+         
+
+            
             
 
             {Cart.items.length
@@ -96,9 +107,22 @@ function NavBar({Cart}) {
                 </svg>
               </span>
             </li>
+            
             }
             {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+            <li>
+            <button className="buttonChat" id="button" onClick={(e) => handleClick(e)}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
+  <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
+</svg></button>
+            
+            <div className="containerChat">
+                {isOpen === true &&
+                    <ChatB className='Chat'/>
+                }
+            </div>
+            </li>
           </ul>
+ 
           
           <Link to='/client' >
             <img 
