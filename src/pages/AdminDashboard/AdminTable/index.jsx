@@ -4,10 +4,10 @@ import Loading from '../../../components/Loading/Loading'
 import Paginated from '../../../components/Paginated/Paginated'
 
 import s from './adminTable.module.css'
+import Table from './Table';
 
 const AdminTable = ({ form,formEdit,name, data, cols, funDelete,get }) => {
-  let counter = 1
-  const sum = () => {counter++}
+
   const [activeNew, setActiveNew] = useState(false)
   const [activeEdit, setActiveEdit] = useState(false)
   const [editForm, setEditForm] = useState({...formEdit})
@@ -84,51 +84,13 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete,get }) => {
       </div>
 
       {data.length === 0? <Loading />
-      :
-       <table className="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            {cols?.map(col=>
-              <th scope="col" key={col}>{col}</th>
-              )
-            }
-          </tr>
-        </thead>
-        <tbody>
-          {dataToRender?.map(row=>
-             <tr key={row.id}>
-               <th scope="row">{data.indexOf(row)+1}</th>
-               {cols?.map(col=>{
-                return(
-                 col==='image'
-                 ?<td key={`${row.img}${col}`}><img className={s.dataImage} src={row.image} alt={row.name}/></td>
-                 :<td key={`${row.id}${col}`}>{row[col].toString()}</td>
-                )
-               }
-                )}
-                <td>
-                  <button
-                    className='btn btn-outline-danger mb-1'
-                    onClick={()=>handleDelete(row.id)}
-                  >
-                    Delete
-                  </button>
-                  <button
-                    className='btn btn-outline-primary'
-                    onClick={()=>handleEdit(row)}
-                  >
-                    Edit
-                  </button>
-                </td>
-                {sum()}
-             </tr>
-         
-          )}
-            
-      
-        </tbody>
-      </table>}
+      :<Table 
+         cols={cols}
+         dataToRender={dataToRender}
+         handleEdit={handleEdit}
+         handleDelete={handleDelete}
+        />
+      }
       
     </div>
 

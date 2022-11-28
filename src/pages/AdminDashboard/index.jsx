@@ -24,7 +24,7 @@ const AdminDashboard = () => {
 
     if (allUsers.length === 0) dispatch(getAllUser());
     setAllUsers(stateUsers);
-  }, [stateOrders]);
+  }, []);
 
   return (
     <div className={s.adminContainer}>

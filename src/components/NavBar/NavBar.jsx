@@ -11,6 +11,7 @@ import ChatB from "../ChatBot/ChatBot.jsx";
 
 function NavBar({Cart}) {
   const { user,isAuthenticated } = useAuth0();
+
   const isAdmin= useCheckRoles('admin')
   const [isOpen, setIsOpen] = useState(false)
   
@@ -21,7 +22,7 @@ function NavBar({Cart}) {
   
   useEffect(() => {
     setIsAuthorized(isAdmin)
-  },[isAdmin])
+  },[user])
 
   function handleClick(e) {
     e.preventDefault()
