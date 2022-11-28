@@ -19,3 +19,13 @@
     justify-content: space-between;
     align-items: center;
 }
+
+@media (max-width: 767px){
+    .checkout_container{
+        width: 100%;
+    }
+    .checkoutImage{
+        width: 95px;
+        height: 55px;
+    }
+}

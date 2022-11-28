@@ -1,5 +1,6 @@
 import React from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { Link } from "react-router-dom";
 import { buy, buyPaypal } from "../../redux/actions"
 import Contact from "../Home/ContactHome";
 import CheckoutTable from "./table";
@@ -20,7 +21,6 @@ function Carting(){
     let price = Cart.items.reduce((acum, act) => {
       return acum + act.price * act.count;
     }, 0);
-
     dispatch(buyPaypal({ price })).then((url) => window.open(url, `${url}`));
   };
 
@@ -33,6 +33,9 @@ return(
           <div>
             <div>
               <CheckoutTable/>
+              {Cart.items.length
+              ?
+              <div>
               Choose payment method
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="PayPal"/>
@@ -58,6 +61,10 @@ return(
                   </div>
                 </div>
               </div>
+              </div>
+              :
+              <hr/>
+              }
             </div>
           </div>
         </div>
