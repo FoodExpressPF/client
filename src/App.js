@@ -1,5 +1,5 @@
 // Libraries
-import { Route, Redirect, Switch } from "react-router-dom";
+import { Route, Redirect, Switch, useHistory } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 // Pages & Components
@@ -18,19 +18,28 @@ import Passed from "./pages/postBuy/passed.jsx";
 import Denegated from "./pages/postBuy/denegated.jsx";
 import Loading from "./components/Loading/Loading.jsx";
 import Reserve from "./pages/Reserve/Reserve.jsx";
+import useCheckRoles from "./utils/checkRoles.js";
+import { useEffect } from "react";
 
 function App() {
+  const history = useHistory()
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-  const RequireAuth = ({ allowedRole, children }) => {
+  const RequireAuth = ({ children }) => {
     if (!isAuthenticated) return <Redirect to="/" />;
-    else if (allowedRole) {
-      useCheckRoles(user.email).then((response) => {
-        if (!response) return <Redirect to="/home" />;
-      });
-    }
     return children;
   };
+
+  const RequireAdmin = ({children}) =>{
+    
+      useCheckRoles(user.email)
+      .then((response) => {
+        console.log('response',response)
+        if (!response) return history.replace('/home')
+        else if (response=='banned') return history.replace('/banned')
+        });
+    return children
+    }
 
   if (isLoading) {
     return <Loading />;
@@ -40,9 +49,9 @@ function App() {
     <>
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route exact path="/reserve" component={Reserve} />
-        <Route exact path="/passed" component={Passed} />
-        <Route exact path="/denegated" component={Denegated} />
+        <Route path="/reserve" component={Reserve} />
+        <Route path="/passed" component={Passed} />
+        <Route path="/denegated" component={Denegated} />
         <RequireAuth>
           <Route path="/home">
             <Home />
@@ -53,14 +62,24 @@ function App() {
           <Route path="/foods/:id">
             <Detail />
           </Route>
-          <Route path="/admin">
-            <AdminRoutes />
-          </Route>
+        
           <Route path="/client">
             <ClientDashboard />
           </Route>
+
+          <RequireAdmin>
+           <Route path="/admin">
+              <AdminRoutes />
+           </Route>
+          </RequireAdmin>
         </RequireAuth>
+
+        
       </Switch>
+
+      
+
+
     </>
   );
 }
