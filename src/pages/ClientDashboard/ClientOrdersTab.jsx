@@ -25,7 +25,11 @@ export default function ClientOrdersTab(){
     return(
     <>
         <div class="accordion accordion-flush">
-            {userOrders.length == 0 ?  <p>No orders yet</p> :userOrders.map((order,index) =>{
+            {userOrders.length == 0 ?  
+                <div class="alert alert-warning" role="alert">
+                You don`t have any orders yet!
+              </div>
+            :userOrders.map((order,index) =>{
                 return <>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id={`flush-heading${index}`}>
@@ -47,10 +51,9 @@ export default function ClientOrdersTab(){
                               Accede al Link del plato y dejanos tu opinion
                         </div> 
                         : <></>}
-                        {order.state == 'done' ? <div class='d-flex'>
+                        {order.state == 'done' ? <div class='d-flex' className='cardsConteiner'>
                             {order.foods.map((food)=>{
-                                return <>
-                                    <div class="card" className='foodCard'>
+                                return <div class="card" className='foodCard'>
                                         <img src={food.image} class="card-img-top" alt="..."/>
                                         <div class="card-body">
                                         <p class="card-text">{food.name}</p>
@@ -61,7 +64,7 @@ export default function ClientOrdersTab(){
                                             ></ReviewModal>
                                         </div>
                                     </div>
-                                </>})}
+                                })}
                         </div> 
                         : <></>}
                     </div>

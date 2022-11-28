@@ -43,7 +43,7 @@ export default function ClientTabInfo(){
         .then(async(data) => {
             swal({
                 icon: "success",
-                text: JSON.stringify(data.message),
+                text: 'Done!',
                 timer: 2000,
                 buttons: false});
             dispatch(getUser(user));

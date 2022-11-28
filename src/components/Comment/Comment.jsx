@@ -47,11 +47,16 @@ let prom = Math.round(suma/stars.length)
 
 return (
 <div>    
-<h5>rating: {prom}</h5>
-<div className="comments">
-{/* <h3>{comment.map(b => (<ul>{b[1]}</ul>))}</h3> */}
-<h6>{comment.map(a => (<ul>{'" ' + a[0] + ' "'}</ul>))}</h6>
-</div>
+    <h5>rating: {prom}</h5>
+    <div className="comments">
+        <ul>
+            {comentarios.map(coment =>{
+                return <>
+                <li>{coment.comment}, {!coment.user ? <></>: coment.user.name}</li>
+                </>
+            })}
+        </ul>
+    </div>
 
 </div>
 )
