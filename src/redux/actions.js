@@ -7,7 +7,8 @@ export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_USER = "GET_USER";
 export const GET_ORDERS = "GET_ORDERS";
 export const GET_ALL_USER = "GET_ALLUSER";
-export const GET_COMMENT = 'GET_COMMENT'
+export const GET_COMMENT = "GET_COMMENT";
+export const GET_ALL_TABLES = "GET_ALL_TABLES";
 
 export const getPlates = () => (dispatch) =>
   axios(`/foods`)
@@ -66,25 +67,23 @@ export const buyPaypal = (payload) => {
   };
 };
 
-
-
-export const getUser = (user) =>
-  dispatch =>
-    axios({
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      url: "/user/create",
-      data: { name: user.name, email: user.email }
-    })
-      .then(response => response.data)
-      .then(data => dispatch({
-
+export const getUser = (user) => (dispatch) =>
+  axios({
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    url: "/user/create",
+    data: { name: user.name, email: user.email },
+  })
+    .then((response) => response.data)
+    .then((data) =>
+      dispatch({
         type: GET_USER,
         payload: { ...data.user, picture: user.picture },
       })
-      ).catch((error) => console.log(error));
+    )
+    .catch((error) => console.log(error));
 
 export const postOrder = (payload) => {
   return async function (dispatch) {
@@ -93,7 +92,6 @@ export const postOrder = (payload) => {
     return post;
   };
 };
-
 
 export const getOrder = () => (dispatch) =>
   axios(`/orders`)
@@ -117,31 +115,44 @@ export const getAllUser = () => (dispatch) =>
     )
     .catch((error) => alert(`not found, error: ${error}`));
 
-
 export function postComment(payload) {
   return async function () {
-    const response = await axios.post('/reviews', payload)
-    console.log(response)
+    const response = await axios.post("/reviews", payload);
+    console.log(response);
     return response;
-  }
+  };
 }
 
 export const getComment = (id) => (dispatch) =>
-
   axios({
-    method: 'get',
+    method: "get",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
     url: `/reviews/${id}`,
-    
   })
     .then((response) => response.data)
     .then((data) => {
       dispatch({
         type: GET_COMMENT,
         payload: data,
+      });
+    })
+    .catch((error) => alert(`not found, error: ${error}`));
+
+export const getAllTables = () => (dispatch) =>
+  axios(`/tables`)
+    .then((response) => response.data)
+    .then((data) =>
+      dispatch({
+        type: GET_ALL_TABLES,
+        payload: data,
       })
-    }
     )
     .catch((error) => alert(`not found, error: ${error}`));
+
+export function postReserve(payload) {
+  return async function () {
+    const response = await axios.post("/tables", payload);
+  };
+}
