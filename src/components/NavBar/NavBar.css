@@ -8,20 +8,5 @@
     font-size: 15px;
     border-color: rgb(67, 9, 9);
     padding-right: 5px;
-}
-
-.containerChat {
-
-    position: fixed;
-    bottom: 60px;
-    height: 450px;
-    right: 1000px;
-}
-
-.buttonChat {
-    background-color: rgb(67, 9, 9);
-    border-radius: 15px;
-    color: wheat;
-    border-color: rgba(255, 235, 205, 0);
-    padding: 5px;
+    padding-bottom: 5px;
 }

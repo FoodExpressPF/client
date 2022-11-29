@@ -7,6 +7,9 @@ import AdminTable from '../AdminTable';
 
 const Users = () => {
   const [allUsers, setAllUsers] = useState([])
+  const [response, setResponse] = useState('')
+  const [loading, setLoading] = useState(false)
+  
   console.log(allUsers)
 
   const getUsers = ()=>{
@@ -22,19 +25,55 @@ const Users = () => {
   const cols = ['id', 'name' ,'email', 'direction', 'number_phone', 'type_user','banned']
 
   const deleteUser = (id)=>{
+    console.log('deleteUserID', id)
     axios.delete(`/user/delete?id=${id}`)
-    .then(response=> {console.log(response.data); getUsers()})
+    .then(response=> {
+      setResponse(response.data.message)
+       console.log('response',response)
+       setLoading(false)   
+       getUsers()
+    })
     .catch(error=>console.log(error))
   }
+
+  const blockUser = (id)=>{
+    setLoading(true)
+    alert('Ostia,que me has bloquiao,id '+id)
+
+    axios({
+    method: "put",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: "user/update/delete",
+      data: {id:id},
+    })   
+     .then(response => {
+      setResponse(response.data.message)
+      console.log('response',response)
+      setLoading(false)  
+      getUsers() 
+     })
+     .catch(error=>{
+      setResponse(error.message)
+      setLoading(false)
+     });
+  }
+
   return (
     <div>
+      
       <AdminTable 
         data={allUsers} 
         form={<NewUser/>} 
         formEdit={<EditUser/>}
         name='User' 
         cols={cols}
-        funDelete={deleteUser} />      
+        funDelete={deleteUser}
+        funBlock={blockUser}
+        loading={loading}
+        response={response}
+        getItems={getUsers} />      
     </div>
   );
 };
