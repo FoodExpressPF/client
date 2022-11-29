@@ -5,11 +5,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 // Pages & Components
 import Landing from "./pages/Landing/Landing.jsx";
 import Home from "./pages/Home/index.jsx";
-import ProductsForm from "./pages/ProductsForm/ProductsForm.jsx";
 import Detail from "./pages/Detail/Detail.jsx";
 import AdminRoutes from "./pages/AdminDashboard/AdminRoutes.js";
 import ClientDashboard from "./pages/ClientDashboard/index.jsx";
 import Checkout from "./pages/Checkout/Checkout.jsx";
+import Banned from "./pages/Banned"
 
 // Styles
 import "./assets/styles/globalStyles.css";
@@ -52,6 +52,7 @@ function App() {
         <Route path="/reserve" component={Reserve} />
         <Route path="/passed" component={Passed} />
         <Route path="/denegated" component={Denegated} />
+        <Route path="/banned" component={Banned} />
 
         <RequireAuth>
           <Route path="/home" component={Home}/>
