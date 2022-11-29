@@ -28,7 +28,7 @@ export default function ClientOrdersTab(){
         setPagination({...pagination, numPages: newNumPages});
     },[userOrders]);
 
-    console.log(pagination);
+    
     return(
     <>
         <nav aria-label="ordersPagination">
