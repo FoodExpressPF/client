@@ -31,6 +31,23 @@ export default function ClientOrdersTab(){
     console.log(pagination);
     return(
     <>
+        <nav aria-label="ordersPagination">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                <a class="page-link"  aria-label="Previous"  id='previus' onClick={e=>setPagination({...pagination, currentPage: 1})}>
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                </li>
+                {new Array(pagination.numPages).fill(0,0).map((e,index) =>{
+                    return <li class='page-item'><a class="page-link" onClick={e => handlePagination(e)} id={index+1}>{index+1}</a></li>
+                })}
+                <li class="page-item">
+                <a class="page-link"  aria-label="Next" id='next' onClick={e=>setPagination({...pagination, currentPage: pagination.numPages})}>
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                </li>
+            </ul>
+        </nav>
         <div class="accordion accordion-flush">
             {userOrders.length == 0 ?  
                 <div class="alert alert-warning" role="alert">
@@ -83,23 +100,7 @@ export default function ClientOrdersTab(){
                 })
             }
         </div>
-        <nav aria-label="ordersPagination">
-            <ul class="pagination">
-                <li class="page-item">
-                <a class="page-link"  aria-label="Previous"  id='previus' onClick={e=>setPagination({...pagination, currentPage: 1})}>
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-                </li>
-                {new Array(pagination.numPages).fill(0,0).map((e,index) =>{
-                    return <li class='page-item'><a class="page-link" onClick={e => handlePagination(e)} id={index+1}>{index+1}</a></li>
-                })}
-                <li class="page-item">
-                <a class="page-link"  aria-label="Next" id='next' onClick={e=>setPagination({...pagination, currentPage: pagination.numPages})}>
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-                </li>
-            </ul>
-        </nav>
+        
     </>
     );
 };
