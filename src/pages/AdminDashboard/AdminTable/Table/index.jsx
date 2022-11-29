@@ -1,8 +1,15 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons"
+
 import s from '../adminTable.module.css'
 
 const Table = ({cols, dataToRender, handleDelete, handleEdit }) => {
+
+  const pen = <FontAwesomeIcon icon={faPen} />
+  const trash = <FontAwesomeIcon icon={faTrash} />
+
   return (
     <table className="table table-striped table-hover">
         <thead>
@@ -26,20 +33,28 @@ const Table = ({cols, dataToRender, handleDelete, handleEdit }) => {
                 )
                }
                 )}
-                <td>
-                  <button
-                    className='btn btn-outline-danger mb-1'
-                    onClick={()=>handleDelete(row.id)}
-                  >
-                    Delete
-                  </button>
-                  <button
-                    className='btn btn-outline-primary'
-                    onClick={()=>handleEdit(row)}
-                  >
-                    Edit
-                  </button>
+                <td >
+                  <div className='d-flex align-items-center gap-1'>
+                    <button
+                      className='btn btn-danger'
+                      onClick={()=>handleDelete(row.id)}
+                    >
+                      {trash}
+                    </button>
+                    
+                    <button
+                      className='btn btn-info '
+                      onClick={()=>handleEdit(row)}
+                    >
+                      {pen}
+                    </button>
+                  </div>
                 </td>
+                {cols.includes('banned') &&
+                 <td>
+                  'Block'
+                 </td>
+                }
              </tr>
          
           )}
