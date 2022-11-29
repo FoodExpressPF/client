@@ -7,8 +7,9 @@ import useLocalStorage from "../../hooks/useLocalStorage.js";
 import NavBar from '../../components/NavBar/NavBar.jsx';
 
 import "./Detail.css"
-import FormComent from '../../components/Comment/FormComent.jsx';
-import Commment from '../../components/Comment/Comment.jsx';
+// import FormComent from '../../components/Comment/FormComent.jsx';
+ import Commment from '../../components/Comment/Comment.jsx';
+
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import {Toaster, toast} from "react-hot-toast";
 
@@ -37,7 +38,7 @@ function Detail() {
 
   return(
     <div >
-      <div className='NavDetail'>
+      <div >
       <NavBar  Cart={Cart} />
       </div>
       <div className='containerDetail'>
@@ -48,7 +49,7 @@ function Detail() {
              {details.name ?
              <div className='containerInfo'>
                         <div className='conteinerImage'>
-                             <img className='foodImage' src={details.image} alt="Loading" />
+                             <img className='foodImage' src={details.image? details.image : details.img} alt="Loading" />
                        </div>
                    <div >
                         {details.onStock === true ? (
@@ -63,16 +64,16 @@ function Detail() {
                        <p className="card-text text-white">Type: {details.type}</p>
                        <p className="card-text text-white">Rating: {details.rating} ⭐ </p>
                        <p className="card-text text-white"> Description: {details.description}</p>
-                       <p className="card-text text-white">
+                       {/* <p className="card-text text-white">
                         Reviews:{" "}
                        {details.reviews
-                        ? details.reviews.join(" - ") : "No reviews yet"} </p>
+                        ? details.reviews.join(" - ") : "No reviews yet"} </p> */}
                         
-                         
-                         
-                       <Commment
-                        id={id}
-                          />
+                          <div className='containerComment'>
+                            <Commment
+                              id={id}
+                                  />
+                          </div>
                         <Toaster
                            position='top-center'
                            reverseOrder={false}
