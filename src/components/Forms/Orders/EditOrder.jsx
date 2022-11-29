@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import validationSchema from "./formValidations";
 import OrderForm from './OrderForm';
 import axios from "axios";
+import Modal from '../Modal';
 
 
 const EditOrder = ({item, get}) => {
