@@ -13,7 +13,7 @@ import Modal from "../Modal";
 
 const NewProduct = () => {
   const [previewImage, setPreviewImage] = useState(
-    "https://res.cloudinary.com/dpnrbius0/image/upload/v1668109807/foodExpressRecipes/placeholder_xtwile.png"
+    "https://res.cloudinary.com/dpnrbius0/image/upload/v1668650818/placeholder_crmhmu.png"
   );
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(true);

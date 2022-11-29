@@ -7,10 +7,13 @@ import LoginButton from "../Auth/Login.jsx";
 import LogoutButton from "../Auth/Logout.jsx";
 import useCheckRoles from "../../utils/checkRoles.js";
 import "./NavBar.css"
+import ChatB from "../ChatBot/ChatBot.jsx";
 
 function NavBar({Cart}) {
   const { user,isAuthenticated } = useAuth0();
-  let isAdmin= user?useCheckRoles(user?.email):false 
+
+  const isAdmin= useCheckRoles('admin')
+  const [isOpen, setIsOpen] = useState(false)
   
 
   const profile = 'https://res.cloudinary.com/dpnrbius0/image/upload/v1668650768/Profile_sa6jnn.png'
@@ -20,6 +23,11 @@ function NavBar({Cart}) {
   useEffect(() => {
     setIsAuthorized(isAdmin)
   },[user])
+
+  function handleClick(e) {
+    e.preventDefault()
+    setIsOpen(!isOpen)
+}
 
   return (
     <nav 
@@ -62,6 +70,10 @@ function NavBar({Cart}) {
                 </Link>
               </li>
             }
+                    
+         
+
+            
             
 
             {Cart.items.length
@@ -96,9 +108,12 @@ function NavBar({Cart}) {
                 </svg>
               </span>
             </li>
+            
             }
             {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+          
           </ul>
+ 
           
           <Link to='/client' >
             <img 
