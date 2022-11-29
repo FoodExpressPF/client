@@ -5,11 +5,8 @@ import { INITIAL_USER_FORM as initialValues } from '../../../utils/initialObject
 //Libraries
 import { useFormik } from "formik";
 import validationSchema from "./formValidations.js";
-import { useDispatch } from 'react-redux';
-import { getUser } from '../../../redux/actions';
 import UserForm from './UserForm';
 import Modal from '../Modal';
-// import axios from "axios";
 
 
 const NewUser = () => {
@@ -36,7 +33,7 @@ const NewUser = () => {
        ${response.data.user.email}`
       )
       console.log('response',response)
-      setLoading(false)    
+      setLoading(false)   
      })
      .catch(error=>{
       setResponse(error.message)

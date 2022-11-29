@@ -14,7 +14,7 @@ const EditProduct = ({item}) => {
   const initialValues = item  
 
   const [previewImage, setPreviewImage] = useState(
-    "https://res.cloudinary.com/dpnrbius0/image/upload/v1668109807/foodExpressRecipes/placeholder_xtwile.png"
+    "https://res.cloudinary.com/dpnrbius0/image/upload/v1668650818/placeholder_crmhmu.png"
   );
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(true);
@@ -288,7 +288,7 @@ const EditProduct = ({item}) => {
           <div className="nameimgage">
             <h1>Preview</h1>
             <h2 className="titleback">Title:  {values.name}</h2>
-            <img className="imag" src={values.image} height='200px'/>
+            <img className="imag" src={previewImage} height='200px'/>
           </div>
           
           <p>Description:   {values.description}</p>
