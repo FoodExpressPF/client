@@ -62,7 +62,7 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock,get, l
     }, [dataToRender]);
  
   return (
-    <>
+    <div className={s.container}>
     { activeModal
         && 
         <Modal 
@@ -143,7 +143,7 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock,get, l
         />
       </>
     }
-    </>
+    </div>
   );
 };
 
