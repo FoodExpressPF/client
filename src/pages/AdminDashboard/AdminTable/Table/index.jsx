@@ -1,14 +1,15 @@
 import React from 'react';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faPen, faTrash, faBan } from "@fortawesome/free-solid-svg-icons"
 
 import s from '../adminTable.module.css'
 
-const Table = ({cols, dataToRender, handleDelete, handleEdit }) => {
+const Table = ({cols, dataToRender, handleDelete, handleEdit, handleBlock }) => {
 
   const pen = <FontAwesomeIcon icon={faPen} />
   const trash = <FontAwesomeIcon icon={faTrash} />
+  const ban = <FontAwesomeIcon icon={faBan} />
 
   return (
     <table className="table table-striped table-hover">
@@ -52,7 +53,12 @@ const Table = ({cols, dataToRender, handleDelete, handleEdit }) => {
                 </td>
                 {cols.includes('banned') &&
                  <td>
-                  'Block'
+                   <button
+                      className='btn btn-dark '
+                      onClick={()=>handleBlock(row.id)}
+                    >
+                      {ban}
+                    </button>
                  </td>
                 }
              </tr>

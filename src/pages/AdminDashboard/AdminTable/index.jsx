@@ -7,9 +7,10 @@ import NotFound from '../../../components/404-NotFound/NotFound'
 import s from './adminTable.module.css'
 import Table from './Table';
 import Alert from './Alert';
+import BlockAlert from './Alert/BlockAlert';
 import Modal from '../../../components/Forms/Modal';
 
-const AdminTable = ({ form,formEdit,name, data, cols, funDelete,get, loading, response, getItems }) => {
+const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock,get, loading, response, getItems }) => {
 
   const [activeNew, setActiveNew] = useState(false)
   const [activeEdit, setActiveEdit] = useState(false)
@@ -27,9 +28,14 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete,get, loading, re
   const handleDelete = (idItem) => {
     setDeleteItem({
       id:idItem, 
-      active:true})
+      activeDelete:true})
   }
-  console.log(deleteItem)
+
+  const handleBlock = (idItem) => {
+    setDeleteItem({
+      id:idItem, 
+      activeBlock:true})
+  }
 
   const handleEdit = (item) => {
   console.log('edit',item)
@@ -66,7 +72,8 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete,get, loading, re
         /> 
       }
 
-    {deleteItem.active && <Alert setActiveModal={setActiveModal} setDeleteItem={setDeleteItem} funDelete={()=>funDelete(deleteItem.id)} />}
+    {deleteItem.activeDelete && <Alert setActiveModal={setActiveModal} setDeleteItem={setDeleteItem} funDelete={()=>funDelete(deleteItem.id)} />}
+    {deleteItem.activeBlock && <BlockAlert setActiveModal={setActiveModal} setDeleteItem={setDeleteItem} funBlock={()=>funBlock(deleteItem.id)} />}
   
     {
       activeNew && 
@@ -121,6 +128,7 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete,get, loading, re
             dataToRender={dataToRender}
             handleEdit={handleEdit}
             handleDelete={handleDelete}
+            handleBlock={handleBlock}
             />
           }
         

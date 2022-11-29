@@ -35,6 +35,31 @@ const Users = () => {
     })
     .catch(error=>console.log(error))
   }
+
+  const blockUser = (id)=>{
+    setLoading(true)
+    alert('Ostia,que me has bloquiao,id '+id)
+
+    axios({
+    method: "put",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: "user/update/delete",
+      data: {id:id},
+    })   
+     .then(response => {
+      setResponse(response.data.message)
+      console.log('response',response)
+      setLoading(false)  
+      getUsers() 
+     })
+     .catch(error=>{
+      setResponse(error.message)
+      setLoading(false)
+     });
+  }
+
   return (
     <div>
       
@@ -45,6 +70,7 @@ const Users = () => {
         name='User' 
         cols={cols}
         funDelete={deleteUser}
+        funBlock={blockUser}
         loading={loading}
         response={response}
         getItems={getUsers} />      

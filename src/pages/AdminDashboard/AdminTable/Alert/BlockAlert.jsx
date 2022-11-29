@@ -3,13 +3,13 @@ import React from 'react';
 // Styles
 import s from './alert.module.css'
 
-const Alert = ({setDeleteItem, funDelete, setActiveModal}) => {
+const Alert = ({setDeleteItem, funBlock, setActiveModal}) => {
 
 
-  const handleDelete = ()=>{
+  const handleBlock = ()=>{
     setActiveModal(true)
-    funDelete()
-    setDeleteItem({id:'', activeDelete:false})
+    funBlock()
+    setDeleteItem({id:'', activeBlock:false})
     
   }
 
@@ -18,18 +18,18 @@ const Alert = ({setDeleteItem, funDelete, setActiveModal}) => {
     <div className = {s.backdropAlert}>
       <div className={s.alertContainer}>
         
-        <h3>Are you sure you want to delete this item?</h3>
+        <h3>Are you sure you want to block this user?</h3>
         <div className={s.buttonsBox}>
           <button
             className='btn btn-primary mx-2'
-            onClick={handleDelete}
+            onClick={handleBlock}
           >
             Yes
           </button>
 
           <button
             className='btn btn-danger mx-2'
-            onClick={()=>setDeleteItem({id:'', activeDelete:false})}
+            onClick={()=>setDeleteItem({id:'', activeBlock:false})}
           >
             No
           </button>
