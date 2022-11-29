@@ -3,15 +3,19 @@ import axios from 'axios'
 import DietTypes from '../../../../components/DietTypes';
 
 import s from './categories.module.css'
+import AlertDeleteCategory from '../../AdminTable/Alert/AlertDeleteCategory';
+import Modal from '../../../../components/Forms/Modal';
 
 const Categories = () => {
 
-  const [managment, setManagment] = useState({
-    new:false,
-    delete:false
-  })
+  const [managment, setManagment] = useState(false)
   const [input, setInput] = useState('')
   const [listOfItems, setList] = useState([])
+  const [active,setActive] = useState([])
+  const [activeAlert, setActiveAlert] = useState(false)
+  const [activeModal, setActiveModal] = useState(false)
+  const [ loading, setLoading] = useState(false)
+  const [response, setResponse] = useState('')
 
   const getCategories = ()=>{
     axios.get("/types")
@@ -27,8 +31,7 @@ const Categories = () => {
 
   const handleClick = (e)=>{
     e.preventDefault()
-    setManagment({...managment,
-    [e.target.name]:!(managment[e.target.name])})
+    setManagment(!managment)
   }
 
   const handleChange = (e) =>{
@@ -42,10 +45,54 @@ const Categories = () => {
       setInput('')
       getCategories()
     })
-   
+  }
+
+  const deleteCategories = ()=>{
+    setLoading(true);
+
+    axios({
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: `/types/delete`,
+      data: active,
+    })   
+     .then(response => {
+      setResponse(response.data.message)
+      console.log('response',response)
+      setLoading(false) 
+      getCategories()   
+     })
+     .catch(error=>{
+      console.log('error',error)
+      setResponse(error.response.data.error)
+      setLoading(false)
+     });
+     
   }
 
   return (
+    <>
+    {
+      activeAlert && 
+      <AlertDeleteCategory 
+        setActive={setActive} 
+        funDelete={deleteCategories}
+        setActiveModal={setActiveModal}
+        setActiveAlert={setActiveAlert}
+      />
+    }
+
+    { activeModal
+        && 
+        <Modal 
+          setActiveModal={setActiveModal} 
+          loading={loading} 
+          response={response} 
+        /> 
+      }
+
     <div className={s.container}>
       <h2>Category Managment</h2>
       <div className={s.buttonBox}>
@@ -59,13 +106,14 @@ const Categories = () => {
 
         <button
           className='btn btn-danger mx-2'
+          onClick={()=>setActiveAlert(true)}
         >
           Delete
         </button>
 
         <div className={s.editBox}>
          {
-          managment.new && 
+          managment && 
           <form className='d-flex'>
             <input 
               type="text"
@@ -84,17 +132,15 @@ const Categories = () => {
             </button>
           </form>
          }
-         {
-          managment.delete && <></>
-         }
         
         </div>
       </div>
       
       <h3>Current Categories</h3>
-      <DietTypes listOfItems={listOfItems} />
+      <DietTypes listOfItems={listOfItems} active={active} setActive={setActive} />
       
     </div>
+    </>
   );
 };
 

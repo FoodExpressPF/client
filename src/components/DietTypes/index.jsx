@@ -7,21 +7,19 @@ import axios from 'axios'
 //STYLES
 import s from './dietTypes.module.css'
 
-const DietTypes = ({ listOfItems}) => {
+const DietTypes = ({ listOfItems, active, setActive}) => {
 
     // const dispatch = useDispatch()
     // const navigate = useNavigate()
     // const {type} = useSelector(state=>state.filters)
-    const [active,setActive] = useState('')
 
     const handleOnClick = (e)=>{
         e.preventDefault()
-        setActive (e.target.name)
+        const name = e.target.name
+        const includes =  active.includes(name)
+        if(!includes) setActive ([...active,name])
+        else setActive([...active].filter(e=>e!=name))
     }
-
-    
-
-    
 
     return (
         <div>
@@ -34,8 +32,8 @@ const DietTypes = ({ listOfItems}) => {
             {listOfItems &&
                 listOfItems.map((e,idx)=>(
                     <button 
-                        className={active===e.name?s.active:s.button} 
-                        name={e.name?e.name:e} 
+                        className={active.includes(e.name)?s.active:s.button} 
+                        name={e.name} 
                         onClick={handleOnClick} 
                         key={idx}>
                         {e.name}

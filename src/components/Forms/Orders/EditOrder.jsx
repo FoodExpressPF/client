@@ -56,7 +56,6 @@ const EditOrder = ({item, get}) => {
   return (  
     <>
       <h2 className='mt-3 text-center'>Edit an Order</h2>
-
       
       { activeModal
         && 
