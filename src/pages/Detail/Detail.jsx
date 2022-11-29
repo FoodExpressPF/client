@@ -6,11 +6,12 @@ import Loading from "../../components/Loading/Loading";
 import useLocalStorage from "../../hooks/useLocalStorage.js";
 import NavBar from '../../components/NavBar/NavBar.jsx';
 
-import style from "./Detail.module.css";
+import "./Detail.css"
 import FormComent from '../../components/Comment/FormComent.jsx';
 import Commment from '../../components/Comment/Comment.jsx';
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import {Toaster, toast} from "react-hot-toast";
+
 
 
 function Detail() {
@@ -33,84 +34,57 @@ function Detail() {
 
     Cart.add({ id, name, price, image });
   };
-  return (
-    <>
-    <NavBar Cart={Cart}/>
-      <div className={`${style.main_container}`}>
-        
 
-        {details.name ? 
-         (
-           <div className={`card-detail ${style.sub_container}`}>
-<Link to="/home">
-          <button className={style.back}>Back</button>
-        </Link>
-             
-             <div className={style.container_elements}>
-                <div className={`${style.image_container}`}>
-                  <img
-                    className={style.the_image}
-                    src={details.image}
-                    alt="Loading"
-                  />
+  return(
+    <div >
+      <div className='NavDetail'>
+      <NavBar  Cart={Cart} />
+      </div>
+      <div className='containerDetail'>
+          <div className='subContainer'>
+             <Link to="/home" className='BackLink'>
+               <button className='back'>Back</button>
+             </Link>
+             {details.name ?
+             <div className='containerInfo'>
+                        <div className='conteinerImage'>
+                             <img className='foodImage' src={details.image} alt="Loading" />
+                       </div>
+                   <div >
+                        {details.onStock === true ? (
+                        <><h3 className='activado'>In stock</h3><button className='Add' onClick={() => add()}>Add    <AiOutlineShoppingCart onClick={() => toast.success('successfully added')} /></button></>
+                        ) 
+                        : (
+                        <h4 className='desactiviado'>No stock</h4>
+                        
+                         )}
+                       <h2 className="h1 font-weight-bold mb-4 text-white card-title">{details.name}</h2>
+                       <p className="card-text text-white">Price: ${details.price}</p>
+                       <p className="card-text text-white">Type: {details.type}</p>
+                       <p className="card-text text-white">Rating: {details.rating} ⭐ </p>
+                       <p className="card-text text-white"> Description: {details.description}</p>
+                       <p className="card-text text-white">
+                        Reviews:{" "}
+                       {details.reviews
+                        ? details.reviews.join(" - ") : "No reviews yet"} </p>
+                        
+                         
+                         
+                       <Commment
+                        id={id}
+                          />
+                        <Toaster
+                           position='top-center'
+                           reverseOrder={false}
+                           />
                   </div>
-                  <div className={style.text_container}>
-                  {details.onStock === true ? (
-                    <h3 className={style.activado}>In stock</h3>
-                  ) : (
-                    <h4 className={style.desactiviado}>Not in stock</h4>
-                  )}
-                  <h2 className="h1 font-weight-bold mb-4 text-white card-title">
-                    {details.name}
-                  </h2>
-                  <p className="card-text text-white">Price: ${details.price}</p>
-                  <p className="card-text text-white">Type: {details.type}</p>
-                  <p className="card-text text-white">
-                    Rating: {details.rating} ⭐
-                  </p>
-                  
-                  <p className="card-text text-white">
-                    Description: {details.description}
-                  </p>
-                  <p className="card-text text-white">
-                    Reviews:{" "}
-                    {details.reviews
-                      ? details.reviews.join(" - ")
-                      : "No reviews yet"}
-                  </p>
-                  
-                  <br></br>
-                  <br></br>
-                  
-                {/* <span className={style.shop_buttons}>
-
-                  <button className={style.remove_button}>-</button>
-                  <p className="card-text text-white"></p>
-                  <button className={style.add_button}>+</button>
-                </span>
-                <div className={style.shop_end}><button>Add to cart</button></div> */}
-              </div>
-              
-            </div>
-            <button className={style.Add} onClick={() => add()}>Add    <AiOutlineShoppingCart onClick={()=>toast.success('successfully added')}/></button>
-            <Commment
-               id={id}
-              />
-           <div>
-             <Toaster
-             position='top-center'
-             reverseOrder={false}
-             />
-             {/* <FormComent
-               id={id}
-              /> */}
-        </div>
-          </div>)
-: <div><Loading/></div>
-}
+             </div>
+             : <div><Loading/></div>}
+         </div>
+      </div>
     </div>
-  </>
-)
+  )
+
 }
 
 export default Detail;
