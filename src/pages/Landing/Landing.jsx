@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -6,104 +6,107 @@ import LoginButton from "../../components/Auth/Login.jsx";
 import LogoutButton from "../../components/Auth/Logout.jsx";
 import ModalAuth from "../../modals/Auth/Auth.jsx";
 
-import style from "./Landing.module.css";
-import {FaQuoteLeft, FaQuoteRight} from "react-icons/fa";
+import "./Landing.css";
+import {FaQuoteLeft, FaQuoteRight,FaBars, FaTimes} from "react-icons/fa";
 
-import imageHero from "../../assets/imgs/landing.png";
+import About from './About/About.jsx';
 import Testimonials from './Testimonials/Testimonials.jsx';
 import Contact from './Contact/Contact.jsx';
-import Prueba from "../../emails/prueba.jsx";
+
 
 
 function Landing() {
   const history = useHistory();
   const { isAuthenticated } = useAuth0();
+
+  const [click, setClick] = useState(false)
+  const handleClick = () => setClick(!click)
+
+  const closeMenu = () => setClick(false)
     
   return (
-    <div className={style.contenedor}>
-      <div className={style.container}>
-        <div className={style.containerNav}>
-          <img
-            className={style.logo}
-            src="https://res.cloudinary.com/dowhfu3fj/image/upload/v1668061068/recipes/Dise%C3%B1o_sin_t%C3%ADtulo_7_ia4jsg.png"
-            alt="logo"
-          />
-          <section id="sec1">
-            <div>
-              <a href="#sec1" className={style.links}>Home</a>
-              <a href="#sec2" className={style.links}>About</a>
-              <a href="#sec3" className={style.links}>Reviews</a>
-              <a href="#sec4" className={style.links}>Contact</a>
-            </div>
-          </section>
-          {isAuthenticated ? <LogoutButton /> : <LoginButton />}
-        </div>
-        <img
-          src={imageHero}
-          className={style.containerImageHero}
-          alt="..."
-        />
-        
-        <ModalAuth />
-
+    <div><div className='landing'>
+      
+      <div className='slogan'>
+        <p>Food to Fill Your Soul</p>
+        <p>We are preparing delicious food for you...</p>
+        <p>Book or place your order now!</p>
+        <section id='sec1'>
         <button
           type="button"
-          className={style.heroButton}
+          className='button'
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
           onClick={() => history.push("/home")}
         >
           Go!
         </button>
+        </section>
       </div>
+    
+    </div>
+      <div className='header'>
+        <nav className='navbar'>
+         <a href='/' className='logo'>
+          <img src="https://res.cloudinary.com/dowhfu3fj/image/upload/v1668061068/recipes/Dise%C3%B1o_sin_t%C3%ADtulo_7_ia4jsg.png" alt='logo' />
+         </a>
+          <div className='hamburger' onClick={handleClick}>
+           {click ? (<FaTimes size={30} style={{ color: '#ffffff' }} />)
+            : (<FaBars size={30} style={{ color: '#ffffff' }} />)}
+         </div>
+           <ul className={click ? "nav-menu active" : "nav-menu"}>
+             <li className='nav-item'>
+              <a href="#sec1" spy={true} smooth={true} offset={50} duration={500} onClick={closeMenu}>Home</a>
+	           </li>
+             <li className='nav-item'>
+              <a href="#sec2" spy={true} smooth={true} offset={50} duration={500} onClick={closeMenu}>About</a>
+	           </li>
+             <li className='nav-item'>
+             <a href="#sec3" spy={true} smooth={true} offset={50} duration={500} onClick={closeMenu}>Reviews</a>
+	           </li>
+             <li className='nav-item'>
+             <a href="#sec4" spy={true} smooth={true} offset={50} duration={500} onClick={closeMenu}>Contact</a>
+	           </li>
+               <li className='nav-item'>
+                 <div className='ButtonLogin' spy={true} smooth={true} offset={50} duration={500} onClick={closeMenu}>{ isAuthenticated ? <LogoutButton  /> : <LoginButton />}</div>
+	             </li>
+     
+            </ul>
+       
+     </nav>
+     
+     <ModalAuth />
+     
+    </div>
+    <scroll-container>
+    <section id='sec2'className='sec2'>
+      <div id='About'>
+        <div>
+    <About/>
+   
+    </div>
+    </div>
+    </section>
 
-      <section id="sec2">
-        <div className={style.about} id="about">
-          <div className={style.container1}>
-            <img
-              src="https://res.cloudinary.com/dowhfu3fj/image/upload/v1668575898/recipes/Dise%C3%B1o_sin_t%C3%ADtulo_8_cifgue.png"
-              alt=""
-              className={style.image1}
-            />
-            <div className={style.col - 2}>
-              <h2>About</h2>
-              {/* <span className={style.line}></span> */}
-              <p className={style.aboutR}><FaQuoteLeft className={style.quote}/>
-                 The restaurant that takes the best of international gastronomy,
-                the fusion of these flavors, techniques, ingredients and
-                experiences allow us to offer the best dishes to our customers,
-                was founded in 2018 and continues to be the best option to taste
-                any recipe international <FaQuoteRight className={style.quote}/>
-              </p>
-              <p></p>
-              <a href="#sec3">
-                <button className={style.button1}>Explore More</button>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <section id="sec3" className={style.sec3}>
-        <div id='testimonials'>
+    <section id='sec3' className='sec3'>
+    <div id='testimonials'>
           <div>
-          <a href='#sec4'>
-              <button className={style.button2}>Contact</button>
-            </a>
-            <h2 className={style.test}>Reviews</h2>
+          
+            
             <Testimonials />
           </div>
         </div>
-      </section>
-      
-      <section id="sec4">
-        <div className={style.contacto} id="Contacto">
+    </section>
+
+    <section id='sec4' >
+    <div className='contacto' id="#sec4">
           
           <Contact/>
           
         </div>
-      </section>
-    </div>
+    </section>
+    </scroll-container>
+  </div>
   )
 }
 

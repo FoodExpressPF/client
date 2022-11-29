@@ -1,16 +1,19 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
 
-function useCheckRoles(role) {
-  const roleClaimType = 'http://expressfood.net/roles'
-  const { user, isAuthenticated } = useAuth0();
-  const roles = isAuthenticated?user[roleClaimType]:[];
-  const isIncluded = roles.includes(role);
+const useCheckRoles = async (email) =>  {
+  const {data} = await axios('user/',{params:{email:email}}) 
+  console.log(data)
 
-  if (isIncluded) {
-    return true;
-  } else {
-    return false;
+  if(data){
+    if(!data.banned){
+      var isAdmin = data.type_user==='Admin'?true:false
+    }else isAdmin ='banned'
   }
+
+  console.log('isadmin',isAdmin)
+  
+  return isAdmin
 }
 
 export default useCheckRoles;

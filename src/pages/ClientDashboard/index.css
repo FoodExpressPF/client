@@ -13,10 +13,20 @@
 }
 
 .infoTable td{
-    min-width: 70%;
+    width: 45%;
+    height: 45px;
+}
+
+.infoTable th{
+   width: 10%;
+}
+
+#tdBtn{
+    width: 10%;
 }
 
 .infoTable input{
     max-height: 30px;
-    margin-top: 3px;
+    background-color: inherit;
 };
+

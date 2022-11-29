@@ -1,0 +1,15 @@
+.comments {
+    background-color: rgba(240, 248, 255, 0.233);
+    border-radius: 15px;
+    height: 100px;
+    width: 300px;
+    border: 3px solid orange;
+    background: #492a0d88;
+    overflow-y: scroll;
+    
+}
+
+.text {
+    padding: 10px;
+    color: orange;
+}

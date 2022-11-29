@@ -1,95 +1,148 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Loading from '../../../components/Loading/Loading'
+
+import Paginated from '../../../components/Paginated/Paginated'
+import NotFound from '../../../components/404-NotFound/NotFound'
 
 import s from './adminTable.module.css'
+import Table from './Table';
+import Alert from './Alert';
+import BlockAlert from './Alert/BlockAlert';
+import Modal from '../../../components/Forms/Modal';
 
-const AdminTable = ({ form,name, data, cols, funDelete }) => {
-  let counter = 1
-  const sum = () => {counter++}
-  const [activeNewProduct, setActiveNewProduct] = useState(false)
-  const handleNewProduct = ()=> setActiveNewProduct(!activeNewProduct)
+const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock,get, loading, response, getItems }) => {
 
-  const handleDelete = (id) => {
-    funDelete(id)
+  const [activeNew, setActiveNew] = useState(false)
+  const [activeEdit, setActiveEdit] = useState(false)
+  const [editForm, setEditForm] = useState({...formEdit})
+  const [currentPage, setCurrentPage] = useState(1)
+  const [notFound, setNotFound] = useState(false)
+  const [activeModal,setActiveModal] = useState(false)
+  const [deleteItem, setDeleteItem] = useState({
+    id:'',
+    active:false
+  })
+  const handleNewProduct = ()=> {setActiveNew(!activeNew)}
+  
+
+  const handleDelete = (idItem) => {
+    setDeleteItem({
+      id:idItem, 
+      activeDelete:true})
   }
 
-  const handleEdit = () => console.log('edit')
+  const handleBlock = (idItem) => {
+    setDeleteItem({
+      id:idItem, 
+      activeBlock:true})
+  }
+
+  const handleEdit = (item) => {
+  console.log('edit',item)
+  setActiveEdit(!activeEdit)
+  setEditForm({...editForm, props:{item,get}})
+  
+  }
+
+  const itemsPerPage = 5
+    let dataToRender = data.slice(((currentPage*itemsPerPage)-itemsPerPage),(currentPage*itemsPerPage))
+    console.log(dataToRender)
+
+    const paginated = (number) =>{
+      setCurrentPage(number)
+    }
+
+    useEffect(() => {
+      if (dataToRender.length>0)setNotFound(false)
+      const timeout = setTimeout(() => {
+        if (dataToRender.length===0) setNotFound(true);
+      }, 5000);
+    
+      return () => clearTimeout(timeout);
+    }, [dataToRender]);
  
   return (
     <>
+    { activeModal
+        && 
+        <Modal 
+          setActiveModal={setActiveModal} 
+          loading={loading} 
+          response={response} 
+        /> 
+      }
+
+    {deleteItem.activeDelete && <Alert setActiveModal={setActiveModal} setDeleteItem={setDeleteItem} funDelete={()=>funDelete(deleteItem.id)} />}
+    {deleteItem.activeBlock && <BlockAlert setActiveModal={setActiveModal} setDeleteItem={setDeleteItem} funBlock={()=>funBlock(deleteItem.id)} />}
+  
     {
-      activeNewProduct && 
+      activeNew && 
       <div className={s.modalForm} >
         <div className={s.buttonContainer}>
           <button
             className="btn-close" aria-label="Close"
-            onClick={handleNewProduct}
+            onClick={()=>{setActiveNew(false); setActiveEdit(false)}}
           >
           </button>
         </div>
         {form}
       </div>
     }
-    <div 
-      className={s.tableContainer}  
-    >
-      <div className ={s.tableHead}>
-        <h2>{name}s</h2>
-        <button 
-          className='btn btn-primary' 
-          type='button'
-          onClick={handleNewProduct}
-        >
-          New {name} 
-        </button>
-      </div>
 
-      <table className="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            {cols?.map(col=>
-              <th scope="col" key={col}>{col}</th>
-              )
-            }
-          </tr>
-        </thead>
-        <tbody>
-          {data?.map(row=>
-             <tr key={row.id}>
-               <th scope="row">{counter}</th>
-               {cols?.map(col=>{
-                return(
-                 col==='image'
-                 ?<td key={`${row.img}${col}`}><img className={s.dataImage} src={row.image} alt={row.name}/></td>
-                 :<td key={`${row.id}${col}`}>{row[col]}</td>
-                )
-               }
-                )}
-                <td>
-                  <button
-                    className='btn btn-outline-danger mb-1'
-                    onClick={()=>handleDelete(row.id)}
-                  >
-                    Delete
-                  </button>
-                  <button
-                    className='btn btn-outline-primary'
-                    onClick={handleEdit}
-                  >
-                    Edit
-                  </button>
-                </td>
-                {sum()}
-             </tr>
-         
-          )}
-            
-      
-        </tbody>
-      </table>
-      
-    </div>
+   {
+      activeEdit && 
+      <div className={s.modalForm} >
+        <div className={s.buttonContainer}>
+          <button
+            className="btn-close" aria-label="Close"
+            onClick={()=>{setActiveNew(false); setActiveEdit(false)}}
+          >
+          </button>
+        </div>
+        {editForm}
+      </div>
+    }
+
+    {
+      notFound
+      ? <NotFound />
+      :
+      <>
+        <div 
+          className={s.tableContainer}  
+        >
+          <div className ={s.tableHead}>
+            <h2>{name}s</h2>
+            <button 
+              className='btn btn-primary' 
+              type='button'
+              onClick={handleNewProduct}
+            >
+              New {name} 
+            </button>
+          </div>
+
+          {data.length === 0? <Loading />
+          :<Table 
+            cols={cols}
+            dataToRender={dataToRender}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+            handleBlock={handleBlock}
+            />
+          }
+        
+        </div>
+
+        <Paginated 
+          itemsPerPage={5} 
+          dataLength={data.length} 
+          currentPage={currentPage} 
+          setCurrentPage={setCurrentPage} 
+          paginated={paginated} 
+        />
+      </>
+    }
     </>
   );
 };

@@ -12,21 +12,23 @@ import App from "./App.js";
 
 import dotenv from "dotenv";
 dotenv.config();
-axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
+axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001"
 
-axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
+const providerConfig={
+  domain:"dev-v48hxvnnc5llys6d.us.auth0.com",
+  clientId:"fD8Ho74aY8A7yHD5kmCMeB9wIiUD7NyH",
+  redirectUri:window.location.origin,
+  useRefreshTokens:true,
+  cacheLocation:"localstorage",
+}
+
+
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <React.StrictMode>
-        <Auth0Provider
-          domain="dev-v48hxvnnc5llys6d.us.auth0.com"
-          clientId="fD8Ho74aY8A7yHD5kmCMeB9wIiUD7NyH"
-          redirectUri={window.location.origin}
-          useRefreshTokens
-          cacheLocation="localstorage"
-        >
+        <Auth0Provider {...providerConfig}>
           <App />
         </Auth0Provider>
       </React.StrictMode>

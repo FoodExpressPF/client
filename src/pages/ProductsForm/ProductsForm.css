@@ -1,9 +1,10 @@
 .back {
-    background-color: rgb(255, 200, 137);
+    /* background-color: rgb(255, 200, 137); */
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-content: center;
     background-attachment: fixed;
+    gap: 20px;
 
 }
 
@@ -14,12 +15,10 @@
 }
 
 .previs {
-    background-color: rgb(253, 175, 86);
+    /* background-color: rgb(253, 175, 86); */
     border: 10px;
-    display: grid;
-    justify-content: center;
     align-content: center;
-    padding: 150px;
+    width: 45%;
 }
 
 .nameimgage {

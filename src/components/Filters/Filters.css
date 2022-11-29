@@ -1,17 +1,11 @@
 .bacKfilters {
   background-color: rgba(255, 207, 153, 0.788);
-  display: grid;
-  justify-content: center;
-  background-size: cover;
-  align-content: center;
-  background-attachment: fixed;
+  display: flex;
 }
 
-
-
 .offert {
-  font-size: larger;
   color: rgb(255, 102, 0);
+  padding-top: 7px;
 }
 
 .menu-container {
@@ -19,32 +13,28 @@
 }
 
 .menu-container.open {
-  display: block;
-  justify-content: space-around;
-  max-width: 100vw;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px;
-  margin: 5px;
+  flex-direction: column;
+  width:600px;
 }
 
-.container {
+.filter-container {
   background-color: rgb(255, 233, 193);
   border-radius: 10px;
-  justify-content: center;
-  padding: 15px;
-  margin: 6px;
+  margin: 5px;
+  height: 35px;
+  display: flex;
+  justify-content:center;
 }
 
 .containerGO {
-  justify-content: center;
+  display: flex;
+  justify-content: space-around;
   background-size: cover;
   align-content: center;
   background-attachment: fixed;
-  padding: 4px;
-  margin: 2px;
+  margin: 1px;
+  padding: 1px
 }
 
 .slct {
@@ -54,9 +44,10 @@
   border-radius: 10px;
   border-radius: 1rem;
   cursor: pointer;
-  padding: 4px;
-  font-size: 17px;
+  padding: 3px;
+  font-size: 14px;
   text-align: center;
+  width: 80px;
   border-color: rgba(250, 204, 118, 0.411);
 }
 
@@ -70,7 +61,7 @@
 .button1 {
   color: rgb(255, 255, 255);
   background-color: rgb(255, 206, 116);
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 20px;
   border-color: orange;
@@ -84,7 +75,7 @@
 }
 
 
-.button2 {
+.button23 {
   color: rgb(255, 255, 255);
   background-color: rgb(255, 186, 58);
   border-radius: 10px;
@@ -94,15 +85,15 @@
 }
 
 
-.button2:hover {
+.button23:hover {
   background-color: rgb(206, 135, 5);
   scale: 1.1;
   transition: 0.8s;
 }
 
-
-
-
+.form-control{
+  width: 600px;
+}
 
 .btn-primary {
   background-color: orange;
@@ -116,6 +107,7 @@
 
 .form-control {
   border-radius: 10px;
+  width: 178px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 

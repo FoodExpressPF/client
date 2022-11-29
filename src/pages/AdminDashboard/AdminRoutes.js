@@ -2,19 +2,23 @@
 import { Route } from "react-router-dom";
 
 import React from 'react';
-import Tabs from "./Tabs";
 import AdminDashboard from ".";
 import Users from "./Users";
 import Products from "./Products/Products";
 import Orders from "./Orders";
+import Stats from "./Stats";
+import NavBar from "../../components/NavBar/NavBar";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const AdminRoutes = () => {
+  const Cart = useLocalStorage("CART", "");
+
   return (
     <>
-    <Tabs />
-    <Route exact path="/admin">
-        <AdminDashboard />
-      </Route>
+    <NavBar Cart={Cart}/>
+    <AdminDashboard />
+
+      <Route path="/admin/stats" component={Stats} />
 
       <Route path="/admin/users" component={Users} />
 

@@ -2,6 +2,9 @@
   width: 100%;
   height: auto;
   padding-bottom: 0px;
+  background-image: url(https://res.cloudinary.com/dowhfu3fj/image/upload/v1668574742/recipes/11111111111111_z1toi6.jpg);
+  background-size: cover;
+  
 }
 
 .testimonials .container {
@@ -48,6 +51,40 @@
   font-size: 1rem;
   font-weight: 700;
 }
+
+.test{
+  color: white;
+  font-size: 3.125em;
+  margin-left: 2.5em;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+}
+
+.buttonReviews {
+  
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0.9375em;
+  border-width: 0;
+  padding: 0.625em 3.125em;
+
+  background-color: orange;
+  box-shadow: 0.625em 0.625em 0.9375em 0.3125em rgba(0, 0, 0, 0.555);
+  
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: 0.5s;
+}
+
+.buttonReviews:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  color: white;
+ }
 
 @media screen and (max-width: 940px) {
   .testimonials .container {

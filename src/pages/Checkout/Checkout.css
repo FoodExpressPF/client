@@ -1,0 +1,21 @@
+.checkout_container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #F9F5F0;
+    height: auto;
+    width: 100%;
+}
+
+.checkoutImage{
+    object-fit: cover;
+    object-position: center;
+    width:170px;
+    height: 100px;
+}
+
+.productitm{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
