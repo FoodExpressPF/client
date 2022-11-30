@@ -26,7 +26,7 @@ const Products = () => {
     setAllPlates(statePlates)
   },[statePlates])
 
-  const cols = ['image', 'name' ,'description', 'type', 'price', 'rating','onStock']
+  const cols = ['image', 'name' ,'description', 'dietTypes', 'price', 'rating','onStock']
   return (
     <div className={s.container}>
       <AdminTable 

@@ -26,11 +26,11 @@ export const getPlates = () => (dispatch) =>
 export const getByFilters = (filters) => (dispatch) =>
   axios(`/foods?${filters}`)
     .then((response) => response.data)
-    .then((data) =>
+    .then((data) =>{console.log(data)
       dispatch({
         type: GET_PLATES_BY_FILTERS,
         payload: data,
-      })
+      })}
     )
     .catch((error) => alert(`not found, error: ${error}`));
 
