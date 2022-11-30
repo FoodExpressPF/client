@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import swal from 'sweetalert';
 import { getUser } from '../../redux/actions';
-
+import "./ClientTabInfo.css";
 
 export default function ClientTabInfo(){
 
@@ -90,7 +90,9 @@ export default function ClientTabInfo(){
                     </tr>
                 </tbody>
             </table>
+            <div className='saveDasch'>
             <button class="btn btn-outline-dark" onClick={e=>onSubmit()}>Save Changes</button>
+            </div>
         </>
     );
 };
