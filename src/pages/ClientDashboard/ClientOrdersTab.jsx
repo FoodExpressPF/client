@@ -25,7 +25,7 @@ export default function ClientOrdersTab(){
     return(
     <>
         <div class="accordion accordion-flush">
-            {userOrders.length == 0 ?  <p>No orders yet</p> :userOrders.map((order,index) =>{
+            {userOrders.length == 0 ?  <p className='Ord1'>No orders yet</p> :userOrders.map((order,index) =>{
                 return <>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id={`flush-heading${index}`}>
