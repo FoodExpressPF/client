@@ -31,14 +31,15 @@ function App() {
   };
 
   const RequireAdmin = ({children}) =>{
-    
+    let access = false
       useCheckRoles(user.email)
       .then((response) => {
         console.log('response',response)
-        if (!response) return history.replace('/home')
-        else if (response=='banned') return history.replace('/banned')
+        if (response===true) return
+        else if (!response) history.replace('/home')
+        else if (response=='banned') history.replace('/banned')
         });
-    return children
+     return  children
     }
 
   if (isLoading) {
@@ -65,10 +66,6 @@ function App() {
           </RequireAdmin>
         </RequireAuth>
       </Switch>
-
-      
-
-
     </>
   );
 }

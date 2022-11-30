@@ -7,18 +7,27 @@ import s from './admin.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getAllUser, getOrder } from '../../redux/actions';
+import Loading from '../../components/Loading/Loading';
+import useCheckRoles from '../../utils/checkRoles';
+import { Redirect } from 'react-router-dom';
 
 const AdminDashboard = () => {
-  const {user} = useAuth0();
+  const {user, isLoading} = useAuth0();
 
   const stateOrders = useSelector((state) => state.allOrders);
   const stateUsers = useSelector((state) => state.allUsers);
 
   const [allOrders, setAllOrders] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
+  const [checkRole, setCheckRole] = useState('');
   const dispatch = useDispatch()
 
   useEffect(() => {
+    useCheckRoles(user.email)
+    .then(response=>
+      setCheckRole(response)
+    )
+
     if (allOrders.length === 0) dispatch(getOrder());
     setAllOrders(stateOrders);
 
@@ -26,7 +35,14 @@ const AdminDashboard = () => {
     setAllUsers(stateUsers);
   }, []);
 
+  if(isLoading) return <Loading />
+
   return (
+    <>
+    {
+      checkRole===false? <Redirect to='/home' />
+      :
+    
     <div className={s.adminContainer}>
      {user
         ? <h2>{`Hi ${user.given_name}! Welcome to the Admin Dashboard`}</h2>
@@ -52,6 +68,8 @@ const AdminDashboard = () => {
       <Tabs></Tabs>
      </section>
     </div>
+    }
+    </>
   );
 };
 
