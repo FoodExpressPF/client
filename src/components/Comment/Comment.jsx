@@ -16,7 +16,7 @@ console.log(id, 'id comment')
 
    
     const comentarios = useSelector((state)=>state.allComents);   
-    console.log(comentarios, 'COMENTATIOS')
+    console.log(comentarios, 'Yop')
     // console.log('user', comentarios[2].user.name)
 
    
@@ -74,14 +74,14 @@ let prom = Math.round(suma/stars.length)
                  <div className="carousel-item active">
                  <FaQuoteRight className="quote"/>
                        {
-                        comentarios.length >0 ?
+                        comentarios.length > 0 ?
                         
                         <div className="containerRev">
                             
-                            <p className="nameRev">{comentarios[0].user.name}</p>
-                            <p className="contenidoRev">{comentarios[0].comment}</p>
+                            <p className="nameRev">{!comentarios[0].comment.user? comentarios[0].user.name:"Error"}</p>
+                            <p className="contenidoRev">{!comentarios[0].comment?"1 no reviews": comentarios[0].comment}</p>
                         </div>
-                       :  <p>"no reviews yet"</p>
+                       :  <p>"1 no reviews yet"</p>
                         }       
                  </div>
            
@@ -90,10 +90,10 @@ let prom = Math.round(suma/stars.length)
                        {
                           comentarios.length >0 ?
                            <div className="containerRev">
-                              <p className="nameRev">{comentarios[1].user.name}</p>
-                              <p className="contenidoRev">{comentarios[1].comment}</p>
+                              <p className="nameRev">{!comentarios[1].comment.user? comentarios[1].user.name:"Error"}</p>
+                              <p className="contenidoRev">{!comentarios[1].comment?"1 no reviews": comentarios[1].comment}</p>
                             </div>
-                             :  <p>"no reviews yet"</p>
+                             :  <p>"2 no reviews yet"</p>
                         } 
                  
                   </div>
@@ -102,10 +102,10 @@ let prom = Math.round(suma/stars.length)
                                  {
                                    comentarios.length >0 ?
                                     <div className="containerRev">
-                                         <p className="nameRev">{comentarios[2].user.name}</p>
-                                          <p className="contenidoRev">{comentarios[2].comment}</p>
+                                         {/* <p className="nameRev">{!comentarios[2].comment.user? comentarios[2].user.name:"Error"}</p> */}
+                                          {/* <p className="contenidoRev">{comentarios[2].comment}</p> */}
                                      </div>
-                                          : <p>"no reviews yet"</p>
+                                          : <p>"3 no reviews yet"</p>
                                       } 
 
                            

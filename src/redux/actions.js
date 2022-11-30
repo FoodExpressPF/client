@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from 'sweetalert';
 
 export const GET_PLATES = "GET_PLATES";
 export const GET_PLATES_BY_FILTERS = "GET_PLATES_BY_FILTERS";
@@ -156,3 +157,31 @@ export function postReserve(payload) {
     const response = await axios.post("/tables", payload);
   };
 }
+
+
+export function postReview(userId, foodId, comments, rating){
+  return function(dispatch){
+    axios({
+      method: 'post',
+      headers: {
+          "Content-Type": "application/json"
+      },
+      url: '/reviews',
+      data: {
+          userId: userId, 
+          foodId: foodId, 
+          comment: comments, 
+          rating: rating}
+  })
+  .then(response => response.data)
+  .then(data => {
+      swal({
+          icon: 'success',
+          text: 'Thanks for your comment!',
+          timer: 1500,
+          buttons: false
+      });
+  })
+  .catch(error => console.log(error.message));
+  }
+};
