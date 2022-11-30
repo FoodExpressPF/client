@@ -10,7 +10,7 @@ import Modal from '../Modal/index.jsx';
 import UserForm from './UserForm.jsx';
 
 
-const EditUser = ({item, get}) => {
+const EditUser = ({item, getItems}) => {
 
   const initialValues = item
 
@@ -34,8 +34,7 @@ const EditUser = ({item, get}) => {
       setResponse(response.data.message)
       console.log('response',response.data.message)
       setLoading(false)  
-      get() 
-      formik.resetForm()
+      getItems() 
      })
      .catch(error=>{
       setResponse(error.message)

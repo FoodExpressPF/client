@@ -25,6 +25,7 @@ export default function ReviewModal({foodName, userId, foodId}){
 
     function handleSubmit(){
         if(errors.commentErr == '' && errors.ratingErr == ''){
+            
             axios({
                 method: 'post',
                 headers: {
@@ -48,7 +49,10 @@ export default function ReviewModal({foodName, userId, foodId}){
             })
             .catch(error => console.log(error.message));
         }else{
-            sweetAlert('fijate los campos que onda');
+            sweetAlert({
+                text: 'Some fields are wrong!',
+                icon: 'error'
+            });
         }
     };
     

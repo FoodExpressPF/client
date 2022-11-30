@@ -29,7 +29,8 @@ export const INITIAL_PRODUCT_FORM = {
   image: "",
   category: "",
   type_user: "admin",
-  offer: "false",
+  offer: false,
+  onStock:true
 };
 
 export const INITIAL_USER_FORM = {
