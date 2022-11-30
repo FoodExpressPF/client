@@ -11,6 +11,7 @@ import ClientBookingTab from './ClientBookingTab';
 
 export default function ClientDashboard(){
     const Cart = useLocalStorage("CART", "");
+    
 
     return(
         <>

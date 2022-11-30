@@ -1,9 +1,14 @@
 .foodCard{
-    width: 20%;
+    width: 10%;
     margin: 10px;
 }
 
 .cardsConteiner{
-    display: flex;
+ display: flex;
+ flex-direction: row;  
+ 
 }
 
+.foodCard img{
+ 
+}
