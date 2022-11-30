@@ -52,7 +52,7 @@ function Reserve() {
       return alert("please complete all required information");
     else {
       available = await table.filter((obj) => obj.reservation_data === date);
-      if (available.length >= 2) return alert("table occupied that date");
+      if (available.length >= tables) return alert("table occupied that date");
       else {
         dispatch(getUser(emailUser)).then((data) =>
           dispatch(

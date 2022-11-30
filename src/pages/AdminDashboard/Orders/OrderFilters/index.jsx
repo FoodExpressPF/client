@@ -1,5 +1,7 @@
 import React from 'react';
 import s from './orderFilters.module.css'
+import AdminTables from '../../Orders/OrderFilters/AdminTable';
+import '../OrderFilters/AdminTable.css'
 
 const OrderFilters =({setListToRender,allOrders}) => {
   console.log('all',allOrders)
@@ -20,6 +22,10 @@ const OrderFilters =({setListToRender,allOrders}) => {
   }
 
   return (
+    <div className='containerFilter'>
+
+<AdminTables/>
+
       <form className={s.filterContainer}>
         <select 
          name="filterStatus"
@@ -38,24 +44,25 @@ const OrderFilters =({setListToRender,allOrders}) => {
 
           <option 
             value="inProcces"
-          >
+            >
             In Process
           </option>
 
           <option 
             value="onTravel"
-          >
+            >
             On Travel
           </option>
 
           <option 
             value="done"
-          >
+            >
             Done
           </option>
 
         </select>
       </form>
+            </div>
   );
 };
 
