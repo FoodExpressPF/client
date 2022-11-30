@@ -17,6 +17,7 @@ function Reserve() {
   const dispatch = useDispatch();
   const Cart = useLocalStorage("CART", "");
   const table = useSelector((state) => state.allTables);
+  const numberTables = useSelector((state) => state.tables.capacity)
 
   const [date, setDate] = useState("not specified");
   const [capacity, setCapacity] = useState("not specified");
@@ -42,7 +43,7 @@ function Reserve() {
   useEffect(() => {
     if (table.length === 0) dispatch(getAllTables());
     available = table.filter((obj) => obj.reservation_data === date);
-    if (available.length >= 2) alert("available");
+    if (available.length >= numberTables) alert("available");
   });
 
   const tables = async () => {
