@@ -11,7 +11,7 @@ function Card({ id, name, price, rating, image, addHandler, onStock,lisOfTypes }
     <div className="card_container">
       <div>
         <Link to={`/foods/${id}`}>
-          <div class="fancy-border">
+          <div className="fancy-border">
             <img className="cardImage" src={image} alt="..." />
           </div>
         </Link>
