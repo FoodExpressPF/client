@@ -105,6 +105,7 @@
 
 .line-hr{
   z-index:auto;
+  border-top: 1px dotted #321313;
 }
 
 /* Momento responsive */

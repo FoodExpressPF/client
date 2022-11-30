@@ -99,6 +99,7 @@ export default function Home() {
       <ReservationCart 
       Cart={Cart} />
       </div>
+      <br/><br/><br/>
       <Contact/>
       </div>
       }
