@@ -3,7 +3,7 @@ import axios from "axios";
 
 const useCheckRoles = async (email) =>  {
   const {data} = await axios('user/',{params:{email:email}}) 
-  console.log(data)
+  
 
   if(data){
     if(!data.banned){
@@ -11,7 +11,7 @@ const useCheckRoles = async (email) =>  {
     }else isAdmin ='banned'
   }
 
-  console.log('isadmin',isAdmin)
+  
   
   return isAdmin
 }
