@@ -10,7 +10,7 @@ import Alert from './Alert';
 import BlockAlert from './Alert/BlockAlert';
 import Modal from '../../../components/Forms/Modal';
 
-const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock,get, loading, response, getItems }) => {
+const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock, loading, response, getItems }) => {
 
   const [activeNew, setActiveNew] = useState(false)
   const [activeEdit, setActiveEdit] = useState(false)
@@ -40,7 +40,7 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock,get, l
   const handleEdit = (item) => {
   console.log('edit',item)
   setActiveEdit(!activeEdit)
-  setEditForm({...editForm, props:{item,get}})
+  setEditForm({...editForm, props:{item,getItems}})
   
   }
 
