@@ -9,7 +9,7 @@
     justify-content: center;
     background-image: url('https://res.cloudinary.com/dbepwtmru/image/upload/v1668552203/Swirly_pattern_wallpaper_lktlvs.jpg');
     background-size: cover;
-    height: 106vh;
+    height: 110vh;
     width: 100%;
     text-decoration: none;
     padding: 1em;
@@ -59,6 +59,8 @@
     border-radius: 5px;
   object-fit: cover;
     width: 80em;
+    padding: 0;
+    align-items: center;
     /* background-color: aqua; */
     
 }
@@ -108,6 +110,8 @@
     text-decoration: underline;
     font-style: italic;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: left;
+    padding: 0;
 }
 
 .containerInfo p {
@@ -147,45 +151,53 @@
    width: 50em;
    position: absolute;
    left: 15em;
-   top: 33em;
+   top: 30em;
+}
+
+.cont{
+    padding: 0;
+    position: relative;
+    right: 20px;
 }
 
 
-@media screen and (max-width: 1200px){
-    .containerDetail{
-        width: 100%;
-        height: 160vh;
-        padding: 2px;
-    }
-    .subContainer{
-        width: 60%;
-        height: 120vh;
-        margin-top: 2px ;
-        padding: 3px 3px 3px;
-    }
-    .conteinerImage{
-        width:20em;
-       height: 100;
-       flex-direction: column;
-    }
 
-    .containerInfo{
-      text-align: center;
-      font-size: 1.6em;
-     flex-direction: column;
-    }
-
-    .Add{
-        align-items: center;
-        display: flex;
-        text-align: center;
-        position: relative;
-        
-    }
-
-    .foodImage{
-        
-        width: 100%;
-       
-    }
+@media screen and (max-width: 940px){
+.subContainer{
+    width: 22rem;
+    height: 150rem;
 }
+
+.containerDetail{
+    height: 160em;
+    width: 100%;
+}
+
+.containerComment{
+    position: relative;
+    left: 0;
+    top: 2em;
+    width: fit-content;
+    
+}
+
+.containerInfo{
+   flex-direction: column;
+  
+}
+
+/* .containerInfo p{
+    margin: 0;
+} */
+
+.conteinerImage{
+    width: 20em;
+}
+
+.Add{
+    align-items: center;
+    position: sticky;
+}
+
+}
+

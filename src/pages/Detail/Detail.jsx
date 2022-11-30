@@ -51,7 +51,7 @@ function Detail() {
                         <div className='conteinerImage'>
                              <img className='foodImage' src={details.image? details.image : details.img} alt="Loading" />
                        </div>
-                   <div >
+                   <div className='Cont'>
                         {details.onStock === true ? (
                         <><h3 className='activado'>In stock</h3><button className='Add' onClick={() => add()}>Add    <AiOutlineShoppingCart onClick={() => toast.success('successfully added')} /></button></>
                         ) 
