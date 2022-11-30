@@ -81,7 +81,7 @@ let prom = Math.round(suma/stars.length)
                             <p className="nameRev">{comentarios[0].user.name}</p>
                             <p className="contenidoRev">{comentarios[0].comment}</p>
                         </div>
-                       :  <p>"loading"</p>
+                       :  <p>"no reviews yet"</p>
                         }       
                  </div>
            
@@ -93,7 +93,7 @@ let prom = Math.round(suma/stars.length)
                               <p className="nameRev">{comentarios[1].user.name}</p>
                               <p className="contenidoRev">{comentarios[1].comment}</p>
                             </div>
-                             :  <p>"loading"</p>
+                             :  <p>"no reviews yet"</p>
                         } 
                  
                   </div>
@@ -105,7 +105,7 @@ let prom = Math.round(suma/stars.length)
                                          <p className="nameRev">{comentarios[2].user.name}</p>
                                           <p className="contenidoRev">{comentarios[2].comment}</p>
                                      </div>
-                                          : <p>"loading"</p>
+                                          : <p>"no reviews yet"</p>
                                       } 
 
                            
