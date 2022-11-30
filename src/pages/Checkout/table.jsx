@@ -33,7 +33,7 @@ const CheckoutTable = ({id}) => {
     return (
       <div class="table-responsive">
         <table class="table table-hover text-center">
-            <thead class="sape">
+            <thead>
               <tr>
                 <th scope="col">Photo</th>
                 <th scope="col">Qty</th>
@@ -50,7 +50,7 @@ const CheckoutTable = ({id}) => {
               <td>
                   <img src={item.image} alt="" class="checkoutImage"/>
               </td>
-              <td class="botones btn-group p-0 p-md-5">
+              <td class="botones btn-group rounded-0 p-4 p-md-5">
                   <button
                     class="btn btn-warning m-0 m-md-1"
                     type="button"
@@ -69,9 +69,9 @@ const CheckoutTable = ({id}) => {
                     +{" "}
                   </button>
               </td>
-              <td class="p-0 p-md-5">{item.name}</td>
-              <td class="p-0 p-md-5">${item.price * item.count}</td>
-              <td><button class="remove bg-transparent border-0 p-0 p-md-5"><img src="https://i.imgur.com/h1ldGRr.png" alt="X" onClick={() => Cart.remove(item)}/></button></td>
+              <td class="pt-4 p-md-5">{item.name}</td>
+              <td class="pt-4 p-md-5">${item.price * item.count}</td>
+              <td><button class="remove bg-transparent border-0 pt-3 p-md-5"><img src="https://i.imgur.com/h1ldGRr.png" alt="X" onClick={() => Cart.remove(item)}/></button></td>
               </tr>
               
             );
