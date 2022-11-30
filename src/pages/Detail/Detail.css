@@ -149,7 +149,7 @@
    color: azure;
    border-radius: 15px;
    width: 50em;
-   position: absolute;
+   /* position: absolute; */
    left: 15em;
    top: 30em;
 }
@@ -180,6 +180,8 @@
     width: fit-content;
     
 }
+
+
 
 .containerInfo{
    flex-direction: column;
