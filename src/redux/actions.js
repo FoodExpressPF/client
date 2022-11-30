@@ -9,6 +9,7 @@ export const GET_ORDERS = "GET_ORDERS";
 export const GET_ALL_USER = "GET_ALLUSER";
 export const GET_COMMENT = "GET_COMMENT";
 export const GET_ALL_TABLES = "GET_ALL_TABLES";
+export const GET_TABLES = 'GET_TABLES'
 
 export const getPlates = () => (dispatch) =>
   axios(`/foods`)
@@ -115,12 +116,32 @@ export const getAllUser = () => (dispatch) =>
     )
     .catch((error) => alert(`not found, error: ${error}`));
 
+
+
 export function postComment(payload) {
   return async function () {
     const response = await axios.post("/reviews", payload);
     console.log(response);
     return response;
   };
+}
+
+export default function getTables() {
+  return async function (dispatch) {
+    var json = await axios.get('/number')
+    return dispatch({
+      type: 'GET_TABLES',
+      payload: json.data[0]
+    })
+  }
+}
+
+export function putTables(payload) {
+  return async function () {
+    const response = await axios.put('number/2', payload);
+    console.log(response)
+    return response
+  }
 }
 
 export const getComment = (id) => (dispatch) =>
@@ -156,3 +177,5 @@ export function postReserve(payload) {
     const response = await axios.post("/tables", payload);
   };
 }
+
+
