@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { buy, buyPaypal } from "../../redux/actions";
-import Contact from "../Home/ContactHome";
 import CheckoutTable from "./table";
 import NavBar from "../../components/NavBar/NavBar";
 import "./Checkout.css";
@@ -17,6 +16,9 @@ function Carting() {
     }, 0);
     dispatch(buy({ total })).then((url) => window.open(url, `${url}`));
   };*/
+  useEffect(() => {
+    
+  },[dispatch]);
 
   const paypal = () => {
     let price = Cart.items.reduce((acum, act) => {
@@ -34,50 +36,50 @@ function Carting() {
     <>
       <NavBar Cart={Cart} />
       <div>
-        <h1 class="text mx-auto text-center">Shopping Cart checkout</h1>
+        <h1 class="text text-center">Shopping Cart checkout</h1>
         <div class="checkout_container">
           <div>
             <div>
               <CheckoutTable />
               Choose payment method
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="PayPal"
-                  value="1"
-                  checked={buySelect == "1" ? true : false}
-                  onChange={select}
-                />
-                <label class="form-check-label" value="PayPal">
-                  <img
-                    src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669221456/4202081logopaymentpaypalsocialsocialmedia-115606_115695_bkggmq.png"
-                    width="30"
-                    height="30"
-                  />
-                  PayPal
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="MercadoPago"
-                  value="2"
-                  checked={buySelect == "2" ? true : false}
-                  onChange={select}
-                />
-                <label class="form-check-label" value="MercadoPago">
-                  <img
-                    src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669221456/unnamed_hbfgk7.png"
-                    width="30"
-                    height="30"
-                  />
-                  Mercado Pago
-                </label>
-              </div>
+              <div className="Pagos">
+        <div className="form-check">
+          <input
+            class="payment_method_inputPP"
+            type="radio"
+            name="flexRadioDefault"
+            id="PayPal"
+            value="1"
+            checked={buySelect == "1" ? true : false}
+            onChange={select}
+          />
+          <label class="form-check-labelPP" for="PayPal" value="PayPal">
+          <img
+            src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669739509/paypalhoover_ojruhq.png"
+            width="100"
+            height="100"
+          />
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="payment_method_inputPP"
+            type="radio"
+            name="flexRadioDefault"
+            id="MercadoPago"
+            value="2"
+            checked={buySelect == "2" ? true : false}
+            onChange={select}
+          />
+          <label class="form-check-labelPP" for="MercadoPago" value="MercadoPago">
+            <img
+              src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669739509/mercadopago_hoover_wx4egf.png"
+              width="100"
+              height="100"
+            />
+          </label>
+        </div>
+        </div>
               <div class="checkoutrow">
                 <div colSpan="5" class="checkout">
                   <div class="d-grid gap-2 col-6 mx-auto p-5">
@@ -91,14 +93,15 @@ function Carting() {
                   </div>
                 </div>
               </div>
+              </div>
+
+              <hr/>
             </div>
           </div>
         </div>
         <br />
         <br />
         <br />
-      </div>
-      <Contact />
     </>
   );
 }

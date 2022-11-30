@@ -61,7 +61,6 @@ function NavBar({Cart}) {
                 Home
               </Link>
             </li>
-
             {isAuthorized
             &&
               <li className="nav-item">
@@ -70,12 +69,7 @@ function NavBar({Cart}) {
                 </Link>
               </li>
             }
-                    
-         
-
             
-            
-
             {Cart.items.length
             ?
             <li className="nav-item">
@@ -110,6 +104,11 @@ function NavBar({Cart}) {
             </li>
             
             }
+            <li>
+              <Link to="/reserve" className="nav-link active fs-5 border-dark text-light">
+                Reserve
+              </Link>
+            </li>
             {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           
           </ul>

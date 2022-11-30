@@ -288,7 +288,7 @@ const EditProduct = ({item}) => {
           <div className="nameimgage">
             <h1>Preview</h1>
             <h2 className="titleback">Title:  {values.name}</h2>
-            <img className="imag" src={previewImage} height='200px'/>
+            <img className="imag" src={values.image} height='200px'/>
           </div>
           
           <p>Description:   {values.description}</p>
