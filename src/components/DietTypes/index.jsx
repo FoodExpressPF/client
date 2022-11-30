@@ -13,9 +13,11 @@ const DietTypes = ({ listOfItems, active, setActive}) => {
     const handleOnClick = (e)=>{
         e.preventDefault()
         const name = e.target.name
+        if(active){
         const includes =  active.includes(name)
         if(!includes) setActive ([...active,name])
         else setActive([...active].filter(e=>e!=name))
+        }
     }
 
     return (
@@ -24,7 +26,7 @@ const DietTypes = ({ listOfItems, active, setActive}) => {
             {listOfItems &&
                 listOfItems.map((e,idx)=>(
                     <button 
-                        className={active.includes(e.name)?s.active:s.button} 
+                        className={active?.includes(e.name)?s.active:s.button} 
                         name={e.name} 
                         onClick={handleOnClick} 
                         key={idx}>
