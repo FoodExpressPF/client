@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Checkout.css";
 
 
-const CheckoutTable = ({id}) => {
+const CheckoutTable = () => {
     const Cart = useLocalStorage("CART", "");
 
       if(!Cart.items.length){
@@ -31,7 +31,7 @@ const CheckoutTable = ({id}) => {
       }
 
     return (
-      <div class="table-responsive">
+      <div class="table-responsive ">
         <table class="table table-hover text-center">
             <thead>
               <tr>
@@ -42,7 +42,7 @@ const CheckoutTable = ({id}) => {
                 <th scope="col">#</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="table-group-divider">
             {Cart.items &&
             Cart.items.map((item) => {
             return (

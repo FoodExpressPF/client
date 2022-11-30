@@ -41,7 +41,7 @@ function Carting() {
           <div>
             <div>
               <CheckoutTable />
-              Choose payment method
+              Choose your payment method
               <div className="Pagos">
         <div className="form-check">
           <input
@@ -94,8 +94,6 @@ function Carting() {
                 </div>
               </div>
               </div>
-
-              <hr/>
             </div>
           </div>
         </div>
