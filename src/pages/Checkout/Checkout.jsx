@@ -16,17 +16,20 @@ function Carting() {
     }, 0);
     dispatch(buy({ total })).then((url) => window.open(url, `${url}`));
   };*/
-  useEffect(() => {
-    
-  },[dispatch]);
+  useEffect(() => {}, [dispatch]);
 
   const paypal = () => {
     let price = Cart.items.reduce((acum, act) => {
       return acum + act.price * act.count;
     }, 0);
+    const redirect = "/passed";
     buySelect == 1
-      ? dispatch(buyPaypal({ price })).then((url) => window.open(url, `${url}`))
-      : dispatch(buy({ price })).then((url) => window.open(url, `${url}`));
+      ? dispatch(buyPaypal({ price, redirect })).then((url) =>
+          window.open(url, `${url}`)
+        )
+      : dispatch(buy({ price, redirect })).then((url) =>
+          window.open(url, `${url}`)
+        );
   };
   const select = (e) => {
     setBuySelect(e.target.value);
@@ -43,43 +46,47 @@ function Carting() {
               <CheckoutTable />
               Choose your payment method
               <div className="Pagos">
-        <div className="form-check">
-          <input
-            class="payment_method_inputPP"
-            type="radio"
-            name="flexRadioDefault"
-            id="PayPal"
-            value="1"
-            checked={buySelect == "1" ? true : false}
-            onChange={select}
-          />
-          <label class="form-check-labelPP" for="PayPal" value="PayPal">
-          <img
-            src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669739509/paypalhoover_ojruhq.png"
-            width="100"
-            height="100"
-          />
-          </label>
-        </div>
-        <div class="form-check">
-          <input
-            class="payment_method_inputPP"
-            type="radio"
-            name="flexRadioDefault"
-            id="MercadoPago"
-            value="2"
-            checked={buySelect == "2" ? true : false}
-            onChange={select}
-          />
-          <label class="form-check-labelPP" for="MercadoPago" value="MercadoPago">
-            <img
-              src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669739509/mercadopago_hoover_wx4egf.png"
-              width="100"
-              height="100"
-            />
-          </label>
-        </div>
-        </div>
+                <div className="form-check">
+                  <input
+                    class="payment_method_inputPP"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="PayPal"
+                    value="1"
+                    checked={buySelect == "1" ? true : false}
+                    onChange={select}
+                  />
+                  <label class="form-check-labelPP" for="PayPal" value="PayPal">
+                    <img
+                      src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669739509/paypalhoover_ojruhq.png"
+                      width="100"
+                      height="100"
+                    />
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="payment_method_inputPP"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="MercadoPago"
+                    value="2"
+                    checked={buySelect == "2" ? true : false}
+                    onChange={select}
+                  />
+                  <label
+                    class="form-check-labelPP"
+                    for="MercadoPago"
+                    value="MercadoPago"
+                  >
+                    <img
+                      src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669739509/mercadopago_hoover_wx4egf.png"
+                      width="100"
+                      height="100"
+                    />
+                  </label>
+                </div>
+              </div>
               <div class="checkoutrow">
                 <div colSpan="5" class="checkout">
                   <div class="d-grid gap-2 col-6 mx-auto p-5">
@@ -93,13 +100,13 @@ function Carting() {
                   </div>
                 </div>
               </div>
-              </div>
             </div>
           </div>
         </div>
-        <br />
-        <br />
-        <br />
+      </div>
+      <br />
+      <br />
+      <br />
     </>
   );
 }
