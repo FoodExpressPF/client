@@ -74,7 +74,7 @@ let prom = Math.round(suma/stars.length)
                  <div className="carousel-item active">
                  <FaQuoteRight className="quote"/>
                        {
-                        comentarios.length >= 0 ?
+                        comentarios.length > 0 ?
                         
                         <div className="containerRev">
                             

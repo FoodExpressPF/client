@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import swal from 'sweetalert';
@@ -54,6 +54,7 @@ export default function ClientTabInfo(){
     };
 
     
+
     return(
         <>
             <table class='table table-striped'>

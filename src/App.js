@@ -34,7 +34,7 @@ function App() {
     let access = false
       useCheckRoles(user.email)
       .then((response) => {
-        console.log('response',response)
+        
         if (response===true) return
         else if (!response) history.replace('/home')
         else if (response=='banned') history.replace('/banned')

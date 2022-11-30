@@ -6,10 +6,11 @@ import ReviewModal from './ReviewModal';
 
 export default function ClientOrdersTab({}){
     
+    const dispatch = useDispatch();
     const [userOrders, setUserOrders] = useState([]);
     const userInfo = useSelector(state => state.user);
     const [pagination, setPagination] = useState({numPages: 1, ordersPerPage: 5, currentPage: 1});
-  
+    const [userReviews, setUserReviews] = useState([]);
 
     function handlePagination(e){
         setPagination({...pagination,currentPage: parseInt(e.target.id)});
@@ -19,6 +20,14 @@ export default function ClientOrdersTab({}){
         axios.get(`/orders/${userInfo.id}`)
             .then((response)=>{
                 setUserOrders(response.data.reverse());
+            })
+            .catch(err => console.log(err));
+    },[]);
+
+    useEffect(()=>{
+        axios.get(`/reviews/user/${userInfo.id}`)
+            .then((response)=>{
+                setUserReviews(response.data);
             })
             .catch(err => console.log(err));
     },[]);
