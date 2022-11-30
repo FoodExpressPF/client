@@ -4,7 +4,7 @@ import axios from 'axios';
 import './ClientOrdersTab.css';
 import ReviewModal from './ReviewModal';
 
-export default function ClientOrdersTab(){
+export default function ClientOrdersTab({}){
     
     const [userOrders, setUserOrders] = useState([]);
     const userInfo = useSelector(state => state.user);
@@ -52,8 +52,8 @@ export default function ClientOrdersTab(){
             {userOrders.length == 0 ?  
                 <div class="alert alert-warning" role="alert">
                 You don`t have any orders yet!
-              </div>
-            :userOrders.map((order,index) =>{
+                </div>
+            : userOrders.map((order,index) =>{
                     if(index < ((pagination.currentPage-1) * 5) || index >= (pagination.currentPage*5)) return;
                     return <>
                     <div class="accordion-item">
