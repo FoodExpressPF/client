@@ -6,10 +6,11 @@ import ReviewModal from './ReviewModal';
 
 export default function ClientOrdersTab({}){
     
+    const dispatch = useDispatch();
     const [userOrders, setUserOrders] = useState([]);
     const userInfo = useSelector(state => state.user);
     const [pagination, setPagination] = useState({numPages: 1, ordersPerPage: 5, currentPage: 1});
-  
+    const [userReviews, setUserReviews] = useState([]);
 
     function handlePagination(e){
         setPagination({...pagination,currentPage: parseInt(e.target.id)});
@@ -19,6 +20,14 @@ export default function ClientOrdersTab({}){
         axios.get(`/orders/${userInfo.id}`)
             .then((response)=>{
                 setUserOrders(response.data.reverse());
+            })
+            .catch(err => console.log(err));
+    },[]);
+
+    useEffect(()=>{
+        axios.get(`/reviews/user/${userInfo.id}`)
+            .then((response)=>{
+                setUserReviews(response.data);
             })
             .catch(err => console.log(err));
     },[]);
@@ -54,7 +63,7 @@ export default function ClientOrdersTab({}){
                 You don`t have any orders yet!
                 </div>
             : userOrders.map((order,index) =>{
-                    if(index < ((pagination.currentPage-1) * 5) || index >= (pagination.currentPage*5)) return;
+                    if(index < ((pagination.currentPage-1) * pagination.ordersPerPage) || index >= (pagination.currentPage * pagination.ordersPerPage)) return;
                     return <>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id={`flush-heading${index}`}>
@@ -83,11 +92,14 @@ export default function ClientOrdersTab({}){
                                             <img src={food.image} class="card-img-top" alt="..."/>
                                             <div class="card-body">
                                             <p class="card-text">{food.name}</p>
-                                            <ReviewModal 
+                                            {!userReviews.find(review => review.foodId == food.id) ?
+                                                <ReviewModal 
                                                 foodName={food.name}
                                                 foodId={food.id}
                                                 userId={userInfo.id}
                                                 ></ReviewModal>
+                                                : <></>}
+                                                
                                             </div>
                                         </div>
                                     })}

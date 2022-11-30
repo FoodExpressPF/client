@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import swal from 'sweetalert';
-
+import { postReview } from '../../redux/actions';
 
 export default function ReviewModal({foodName, userId, foodId}){
 
+    const dispatch = useDispatch();
     let modalId = foodId;
     const [fieldsData, setData] = useState({
         comments: '',
@@ -25,29 +26,7 @@ export default function ReviewModal({foodName, userId, foodId}){
 
     function handleSubmit(){
         if(errors.commentErr == '' && errors.ratingErr == ''){
-            
-            axios({
-                method: 'post',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                url: '/reviews',
-                data: {
-                    userId: userId, 
-                    foodId: foodId, 
-                    comment: fieldsData.comments, 
-                    rating: fieldsData.rating}
-            })
-            .then(response => response.data)
-            .then(data => {
-                swal({
-                    icon: 'success',
-                    text: 'Thanks for your comment!',
-                    timer: 1500,
-                    buttons: false
-                });
-            })
-            .catch(error => console.log(error.message));
+            dispatch(postReview(userId, foodId, fieldsData.comments, fieldsData.rating));
         }else{
             sweetAlert({
                 text: 'Some fields are wrong!',
