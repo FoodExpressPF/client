@@ -1,6 +1,7 @@
 .adminContainer{
   margin: 20px;
-  padding-top: 100px;
+  /* padding-top: 100px; */
+  padding: 100px 0 20px;
 }
 
 .firstPanel{
