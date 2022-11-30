@@ -7,7 +7,7 @@ import { getAllUser, getUser, postOrder, sendEmail } from "../../redux/actions";
 import { PaymentConfirmed } from "../../emails/emailsDefault.jsx";
 import s from "../postBuy/passed.module.css";
 
-function Passed() {
+export default function Passed() {
   const Cart = useLocalStorage("CART", "");
   const { user, isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
@@ -15,12 +15,20 @@ function Passed() {
 
   const [coments, setComents] = useState("");
   const [address, setAddress] = useState("");
-
   const emailUser = isAuthenticated ? { email: user.email } : "";
   const foodsCartId = [];
   for (let i = 0; i < Cart.items.length; i++) {
     foodsCartId.push(Cart.items[i].id);
   }
+  /*
+  const price = Cart.items.reduce((acum, act) => {
+    return acum + act.price * act.count;
+  }, 0);*/
+  let p = 0;
+  for (let i = 0; i < Cart.items.length; i++) {
+    p = p + Cart.items[i].price * Cart.items[i].count;
+  }
+
   const email = async () => {
     let price = Cart.items.reduce((acum, act) => {
       return acum + act.price * act.count;
@@ -77,24 +85,12 @@ function Passed() {
               <div>
                 <p class="fw-bold">Amount paid:</p>
               </div>
+
               <div>
-                <p class="fw-bold">
-                  {isAuthenticated
-                    ? Cart.items.reduce((acum, act) => {
-                        return acum + act.price * act.count;
-                      }, 0)
-                    : ""}
-                </p>
+                <p class="fw-bold"> {p}</p>
               </div>
             </div>
-            <div class="d-flex justify-content-between p-2">
-              <div>
-                <p>Transaction id:</p>
-              </div>
-              <div>
-                <p>89578937413098{/*{id?}*/}</p>
-              </div>
-            </div>
+            <div class="d-flex justify-content-between p-2"></div>
             <input
               type="text"
               name="coments"
@@ -118,5 +114,3 @@ function Passed() {
     </>
   );
 }
-
-export default Passed;

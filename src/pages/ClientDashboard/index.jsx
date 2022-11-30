@@ -11,6 +11,7 @@ import ClientBookingTab from './ClientBookingTab';
 
 export default function ClientDashboard(){
     const Cart = useLocalStorage("CART", "");
+    
 
     return(
         <>
@@ -31,8 +32,10 @@ export default function ClientDashboard(){
                 
             </ul>
                 <div class="tab-content" id="myTabContent">
+                    <div className='ContDash'>
                     <div class="tab-pane fade show active infoTable" id="user-info-tab-pane" role="tabpanel" aria-labelledby="user-info-tab" tabindex="0">
                         <ClientTabInfo/>
+                    </div>
                     </div>
                     <div class="tab-pane fade" id="orders-tab-pane" role="tabpanel" aria-labelledby="orders-tab" tabindex="0">
                         <ClientOrdersTab/>

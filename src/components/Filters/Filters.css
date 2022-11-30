@@ -8,6 +8,10 @@
   padding-top: 7px;
 }
 
+.searchBar_container{
+  background-color: #F9F5F0;
+}
+
 .menu-container {
   display: none;
 }
@@ -22,7 +26,7 @@
   background-color: rgb(255, 233, 193);
   border-radius: 10px;
   margin: 5px;
-  height: 35px;
+  height: 55px;
   display: flex;
   justify-content:center;
 }

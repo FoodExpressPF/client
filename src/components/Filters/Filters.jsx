@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import SearchBar from './Searchbar/SearchBar.jsx';
 import { TYPES_FOODS, SWITCH_HANDLER } from '../../utils/constants.js';
 import { INITIAL_FILTERS } from '../../utils/initialObjects.js';
 import { filterQueryParser } from '../../utils/parsers.js';
 import { getByFilters } from '../../redux/actions.js';
-
 import './Filters.css';
 
 function Filters({ menu }) {
   const dispatch = useDispatch();
   const [ filters, setFilters ] = useState(INITIAL_FILTERS);
+  const [ input, setInput ] = useState("")
+  const [ selectedInput, setSelectedInput ] = useState("");
+  const allPlate = useSelector((state) => state.plates);
 
-  const onChangeHandler = (e) => setFilters({...filters, [e.target.name]: e.target.value});
+  useEffect(() => {
+    console.log(input)
+    onChangeHandler(input);
+  },[input])
+
+  const onChangeHandler = (e) => setFilters({...filters, name: e});
+  const onTypeHandler = (e) => setFilters({...filters, [e.target.name]: e.target.value});
   const onToggleHandler = (e) => setFilters({...filters, [e.target.name]: !filters[e.target.name]});
   const onSwitchHandler = (e) => setFilters({...filters, [e.target.name]: SWITCH_HANDLER[filters[e.target.name]]});
   
@@ -25,19 +33,17 @@ function Filters({ menu }) {
 
   return (
     <div className='bacKfilters'>
-
-    <form className={`menu-container ${menu && "open"}`} onSubmit={onSubmitHandler}>      
+    <form className={`menu-container ${menu && "open"}`} onSubmit={onSubmitHandler}>
         <div className='filter-container'>
-          <input
-            type="search"
-            name="name"
-            className="form-control w-100"
+          <SearchBar
+            data={allPlate}
+            input={input}
+            setInput={setInput}
+            selectedInput={selectedInput}
+            setSelectedInput={setSelectedInput}
             onChange={onChangeHandler}
-            placeholder="Search for a plate..."
-            value={filters.name}
-            />
-          <label htmlFor="name"></label>
-        </div>    
+          />
+        </div>
         <div className='container'>
       <label className='offert'>
         Type:
@@ -45,7 +51,7 @@ function Filters({ menu }) {
       <select
         name="type"
         className="slct"
-        onChange={onChangeHandler}
+        onChange={onTypeHandler}
         value={filters.type}
 
         defaultValue={TYPES_FOODS[0]}>

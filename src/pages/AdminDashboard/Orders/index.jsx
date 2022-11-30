@@ -7,7 +7,7 @@ import EditOrder from '../../../components/Forms/Orders/EditOrder'
 import OrderFilters from './OrderFilters'
 
 const Orders = () => {
-  const cols = ['state', 'total' , 'createdAt','coments', 'address']
+  const cols = ['id','state', 'total' , 'createdAt','coments', 'address']
   const [allOrders, setAllOrders] = useState([])
   const [listToRender, setListToRender] = useState([])
   const [response, setResponse] = useState('')
