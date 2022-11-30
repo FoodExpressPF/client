@@ -26,7 +26,7 @@ function Carting() {
     }, 0);
     buySelect == 1
       ? dispatch(buyPaypal({ price })).then((url) => window.open(url, `${url}`))
-      : dispatch(buy({ price })).then((url) => window.open(url, `${url}`));
+      : dispatch(buy({ price })).then((url) => console.log(url));
   };
   const select = (e) => {
     setBuySelect(e.target.value);
