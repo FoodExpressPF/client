@@ -39,8 +39,8 @@ function Carting() {
     <>
       <NavBar Cart={Cart} />
       <div>
-        <h1 class="text text-center">Shopping Cart checkout</h1>
-        <div class="checkout_container">
+        <h1 className="text text-center">Shopping Cart checkout</h1>
+        <div className="checkout_container">
           <div>
             <div>
               <CheckoutTable />
@@ -48,7 +48,7 @@ function Carting() {
               <div className="Pagos">
                 <div className="form-check">
                   <input
-                    class="payment_method_inputPP"
+                    className="payment_method_inputPP"
                     type="radio"
                     name="flexRadioDefault"
                     id="PayPal"
@@ -56,7 +56,7 @@ function Carting() {
                     checked={buySelect == "1" ? true : false}
                     onChange={select}
                   />
-                  <label class="form-check-labelPP" for="PayPal" value="PayPal">
+                  <label className="form-check-labelPP" for="PayPal" value="PayPal">
                     <img
                       src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669739509/paypalhoover_ojruhq.png"
                       width="100"
@@ -64,9 +64,9 @@ function Carting() {
                     />
                   </label>
                 </div>
-                <div class="form-check">
+                <div className="form-check">
                   <input
-                    class="payment_method_inputPP"
+                    className="payment_method_inputPP"
                     type="radio"
                     name="flexRadioDefault"
                     id="MercadoPago"
@@ -75,7 +75,7 @@ function Carting() {
                     onChange={select}
                   />
                   <label
-                    class="form-check-labelPP"
+                    className="form-check-labelPP"
                     for="MercadoPago"
                     value="MercadoPago"
                   >
@@ -87,11 +87,11 @@ function Carting() {
                   </label>
                 </div>
               </div>
-              <div class="checkoutrow">
-                <div colSpan="5" class="checkout">
-                  <div class="d-grid gap-2 col-6 mx-auto p-5">
+              <div className="checkoutrow">
+                <div colSpan="5" className="checkout">
+                  <div className="d-grid gap-2 col-6 mx-auto p-5">
                     <button
-                      class="btn btn-primary"
+                      className="btn btn-primary"
                       type="button"
                       onClick={() => paypal()}
                     >
