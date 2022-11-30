@@ -34,9 +34,14 @@ function Reserve() {
     let price = Cart.items.reduce((acum, act) => {
       return acum + act.price * act.count;
     }, 0);
+    const redirect = "/reserved";
     buySelect == 1
-      ? dispatch(buyPaypal({ price })).then((url) => window.open(url, `${url}`))
-      : dispatch(buy({ price })).then((url) => window.open(url, `${url}`));
+      ? dispatch(buyPaypal({ price, redirect })).then((url) =>
+          window.open(url, `${url}`)
+        )
+      : dispatch(buy({ price, redirect })).then((url) =>
+          window.open(url, `${url}`)
+        );
   };
   let available = [];
 
@@ -50,7 +55,8 @@ function Reserve() {
     if (
       capacity === "not specified" ||
       Time === "not specified" ||
-      date === "not specified"
+      date === "not specified" ||
+      available.length >= 2
     )
       return alert("please complete all required information");
     else {
