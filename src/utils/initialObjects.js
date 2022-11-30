@@ -14,7 +14,7 @@ export const INITIAL_GLOBAL_STATE = {
 
 export const INITIAL_FILTERS = {
   name: "",
-  type: "All",
+  dietTypes: [],
   sortby: "name",
   offer: "all",
   asc: false,

@@ -9,9 +9,6 @@ import s from './dietTypes.module.css'
 
 const DietTypes = ({ listOfItems, active, setActive}) => {
 
-    // const dispatch = useDispatch()
-    // const navigate = useNavigate()
-    // const {type} = useSelector(state=>state.filters)
 
     const handleOnClick = (e)=>{
         e.preventDefault()
@@ -23,11 +20,6 @@ const DietTypes = ({ listOfItems, active, setActive}) => {
 
     return (
         <div>
-            {/* {all &&<button 
-                className={active==='false'?s.active:s.button} 
-                name= 'false' 
-                onClick={handleOnClick}>Todos
-            </button> } */}
             
             {listOfItems &&
                 listOfItems.map((e,idx)=>(
