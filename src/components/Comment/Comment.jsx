@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import React, { useState } from "react";
+=======
 import React, { useEffect } from "react";
+>>>>>>> 0e3d0c8a7e3272753b8526f50e90518e5262cfea
 import { useDispatch, useSelector } from 'react-redux';
 import {useState } from "react";
 import { getComment } from "../../redux/actions";
