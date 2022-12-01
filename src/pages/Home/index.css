@@ -26,3 +26,15 @@
     transition: 1s;
 
 }
+
+@media only screen and (max-width:880px){
+    .containerChat{
+        display: none;
+    }
+    .buttonChat{
+        display: none;
+    }
+    .containerChat{
+        display: none;
+    }
+}
