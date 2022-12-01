@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { buy, buyPaypal } from "../../redux/actions";
-import Contact from "../Home/ContactHome";
 import CheckoutTable from "./table";
 import NavBar from "../../components/NavBar/NavBar";
 import "./Checkout.css";
@@ -17,14 +16,20 @@ function Carting() {
     }, 0);
     dispatch(buy({ total })).then((url) => window.open(url, `${url}`));
   };*/
+  useEffect(() => {}, [dispatch]);
 
   const paypal = () => {
     let price = Cart.items.reduce((acum, act) => {
       return acum + act.price * act.count;
     }, 0);
+    const redirect = "/passed";
     buySelect == 1
-      ? dispatch(buyPaypal({ price })).then((url) => window.open(url, `${url}`))
-      : dispatch(buy({ price })).then((url) => window.open(url, `${url}`));
+      ? dispatch(buyPaypal({ price, redirect })).then((url) =>
+          window.open(url, `${url}`)
+        )
+      : dispatch(buy({ price, redirect })).then((url) =>
+          window.open(url, `${url}`)
+        );
   };
   const select = (e) => {
     setBuySelect(e.target.value);
@@ -34,55 +39,59 @@ function Carting() {
     <>
       <NavBar Cart={Cart} />
       <div>
-        <h1 class="text mx-auto text-center">Shopping Cart checkout</h1>
-        <div class="checkout_container">
+        <h1 className="text text-center">Shopping Cart checkout</h1>
+        <div className="checkout_container">
           <div>
             <div>
               <CheckoutTable />
-              Choose payment method
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="PayPal"
-                  value="1"
-                  checked={buySelect == "1" ? true : false}
-                  onChange={select}
-                />
-                <label class="form-check-label" value="PayPal">
-                  <img
-                    src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669221456/4202081logopaymentpaypalsocialsocialmedia-115606_115695_bkggmq.png"
-                    width="30"
-                    height="30"
+              <p class="text text-center">Choose your payment method</p>
+              <div className="Pagos">
+                <div className="form-check">
+                  <input
+                    className="payment_method_inputPP"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="PayPal"
+                    value="1"
+                    checked={buySelect == "1" ? true : false}
+                    onChange={select}
                   />
-                  PayPal
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="MercadoPago"
-                  value="2"
-                  checked={buySelect == "2" ? true : false}
-                  onChange={select}
-                />
-                <label class="form-check-label" value="MercadoPago">
-                  <img
-                    src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669221456/unnamed_hbfgk7.png"
-                    width="30"
-                    height="30"
+                  <label className="form-check-labelPP" for="PayPal" value="PayPal">
+                    <img
+                      src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669739509/paypalhoover_ojruhq.png"
+                      width="100"
+                      height="100"
+                    />
+                  </label>
+                </div>
+                <div className="form-check">
+                  <input
+                    className="payment_method_inputPP"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="MercadoPago"
+                    value="2"
+                    checked={buySelect == "2" ? true : false}
+                    onChange={select}
                   />
-                  Mercado Pago
-                </label>
+                  <label
+                    className="form-check-labelPP"
+                    for="MercadoPago"
+                    value="MercadoPago"
+                  >
+                    <img
+                      src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669739509/mercadopago_hoover_wx4egf.png"
+                      width="100"
+                      height="100"
+                    />
+                  </label>
+                </div>
               </div>
-              <div class="checkoutrow">
-                <div colSpan="5" class="checkout">
-                  <div class="d-grid gap-2 col-6 mx-auto p-5">
+              <div className="checkoutrow">
+                <div colSpan="5" className="checkout">
+                  <div className="d-grid gap-2 col-6 mx-auto p-5">
                     <button
-                      class="btn btn-primary"
+                      className="btn btn-primary"
                       type="button"
                       onClick={() => paypal()}
                     >
@@ -94,11 +103,10 @@ function Carting() {
             </div>
           </div>
         </div>
-        <br />
-        <br />
-        <br />
       </div>
-      <Contact />
+      <br />
+      <br />
+      <br />
     </>
   );
 }

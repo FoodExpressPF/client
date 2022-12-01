@@ -4,6 +4,8 @@
     bottom: 60px;
     height: 450px;
     right: 10px;
+    display: flex;
+    align-items: flex-end;
 }
 
 .buttonChat {
@@ -23,4 +25,16 @@
     color: rgb(255, 145, 0);
     transition: 1s;
 
+}
+
+@media only screen and (max-width:880px){
+    .containerChat{
+        display: none;
+    }
+    .buttonChat{
+        display: none;
+    }
+    .containerChat{
+        display: none;
+    }
 }

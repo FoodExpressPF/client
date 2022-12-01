@@ -27,13 +27,11 @@ const Table = ({cols, dataToRender, handleDelete, handleEdit, handleBlock }) => 
              <tr key={row.id}>
                <th scope="row">{dataToRender.indexOf(row)+1}</th>
                {cols?.map(col=>{
-                return(
-                 col==='image'
-                 ?<td key={`${row.img}${col}`}><img className={s.dataImage} src={row.image} alt={row.name}/></td>
-                 :<td key={`${row.id}${col}`}>{row[col].toString()}</td>
-                )
+                 if(col==='image') return <td key={`${row.img}${col}`}><img className={s.dataImage} src={row.image} alt={row.name}/></td>
+                 else if(col==='dietTypes') return <td>{row[col]?.map(type=>type.name+' ')}</td>
+                 else return <td key={`${row.id}${col}`}>{row[col].toString()}</td>
+               })
                }
-                )}
                 <td >
                   <div className='d-flex align-items-center gap-1'>
                     <button
@@ -51,11 +49,11 @@ const Table = ({cols, dataToRender, handleDelete, handleEdit, handleBlock }) => 
                     </button>
                   </div>
                 </td>
-                {cols.includes('banned') &&
+                {cols.includes('banned') && 
                  <td>
                    <button
                       className='btn btn-dark '
-                      onClick={()=>handleBlock(row.id)}
+                      onClick={()=>handleBlock(row.id,row.banned)}
                     >
                       {ban}
                     </button>

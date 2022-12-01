@@ -10,9 +10,9 @@ import "./NavBar.css"
 import ChatB from "../ChatBot/ChatBot.jsx";
 
 function NavBar({Cart}) {
-  const { user,isAuthenticated } = useAuth0();
+  const { user,isAuthenticated, isLoading } = useAuth0();
 
-  const isAdmin= useCheckRoles('admin')
+  
   const [isOpen, setIsOpen] = useState(false)
   
 
@@ -21,8 +21,10 @@ function NavBar({Cart}) {
   const [isAuthorized, setIsAuthorized] = useState(false);
   
   useEffect(() => {
-    setIsAuthorized(isAdmin)
-  },[user])
+    useCheckRoles(user?.email)
+    .then(response=> setIsAuthorized(response))
+    
+  },[isLoading,user])
 
   function handleClick(e) {
     e.preventDefault()
@@ -61,8 +63,7 @@ function NavBar({Cart}) {
                 Home
               </Link>
             </li>
-
-            {isAuthorized
+            {isAuthorized==true
             &&
               <li className="nav-item">
                 <Link className="nav-link active fs-5 border-dark text-light" to="/admin">
@@ -70,12 +71,7 @@ function NavBar({Cart}) {
                 </Link>
               </li>
             }
-                    
-         
-
             
-            
-
             {Cart.items.length
             ?
             <li className="nav-item">
@@ -110,6 +106,11 @@ function NavBar({Cart}) {
             </li>
             
             }
+            <li>
+              <Link to="/reserve" className="nav-link active fs-5 border-dark text-light">
+                Reserve
+              </Link>
+            </li>
             {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           
           </ul>

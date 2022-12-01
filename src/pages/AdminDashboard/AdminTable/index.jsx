@@ -10,7 +10,7 @@ import Alert from './Alert';
 import BlockAlert from './Alert/BlockAlert';
 import Modal from '../../../components/Forms/Modal';
 
-const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock,get, loading, response, getItems }) => {
+const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock, loading, response, getItems }) => {
 
   const [activeNew, setActiveNew] = useState(false)
   const [activeEdit, setActiveEdit] = useState(false)
@@ -31,16 +31,17 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock,get, l
       activeDelete:true})
   }
 
-  const handleBlock = (idItem) => {
+  const handleBlock = (idItem,banned) => {
     setDeleteItem({
       id:idItem, 
-      activeBlock:true})
+      activeBlock:true,
+      banned:banned})
   }
 
   const handleEdit = (item) => {
   console.log('edit',item)
   setActiveEdit(!activeEdit)
-  setEditForm({...editForm, props:{item,get}})
+  setEditForm({...editForm, props:{item,getItems}})
   
   }
 
@@ -62,7 +63,7 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock,get, l
     }, [dataToRender]);
  
   return (
-    <>
+    <div className={s.container}>
     { activeModal
         && 
         <Modal 
@@ -73,7 +74,7 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock,get, l
       }
 
     {deleteItem.activeDelete && <Alert setActiveModal={setActiveModal} setDeleteItem={setDeleteItem} funDelete={()=>funDelete(deleteItem.id)} />}
-    {deleteItem.activeBlock && <BlockAlert setActiveModal={setActiveModal} setDeleteItem={setDeleteItem} funBlock={()=>funBlock(deleteItem.id)} />}
+    {deleteItem.activeBlock && <BlockAlert setActiveModal={setActiveModal} setDeleteItem={setDeleteItem} funBlock={()=>funBlock(deleteItem.id,deleteItem.banned)} />}
   
     {
       activeNew && 
@@ -143,7 +144,7 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock,get, l
         />
       </>
     }
-    </>
+    </div>
   );
 };
 
