@@ -10,6 +10,8 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import Modal from "../Modal";
 
+import s from '../../DietTypes/dietTypes.module.css'
+
 const EditProduct = ({item}) => {
 
   const initialValues = item  
@@ -233,11 +235,11 @@ const EditProduct = ({item}) => {
             {/* DIET TYPES */}
 
           <fieldset>
-            <input type="dietType" value={inputType} onChange={handleChange} />
+            <input type="dietType" value={inputType} onChange={handleChange} className="form-control w-100"/>
           {dietTypes &&
                 dietTypes.map((e,idx)=>(
                     <button 
-                        // className={dietTypes.includes(e.name)?s.button:s.inactive} 
+                        className={s.button} 
                         name={e.name} 
                         onClick={handleClickType} 
                         key={idx}>
