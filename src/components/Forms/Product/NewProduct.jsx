@@ -62,7 +62,7 @@ const NewProduct = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      url: "/foods/create",
+      url: "foods/create",
       data: values,
     })   
      .then(response => {
@@ -72,7 +72,7 @@ const NewProduct = () => {
      })
      .catch(error=>{
       console.log(error)
-      setResponse(error.response.data)
+      setResponse(error.response.data.name || error.response.data || 'Error' )
       setLoading(false)
      });
 
