@@ -29,9 +29,13 @@ function Filters({ menu }) {
 
   useEffect(() => {
     onChangeHandler(input);
-    setFilters({...filters, dietTypes:activeType})
+    
     getDietTypes()
-  },[input, activeType])
+  },[input])
+
+  useEffect(()=>{
+    setFilters({...filters, dietTypes:activeType})
+  },[activeType])
 
   const onChangeHandler = (e) => setFilters({...filters, name: e});
   const onTypeHandler = (e) => setFilters({...filters, [e.target.name]: e.target.value});
@@ -70,11 +74,7 @@ function Filters({ menu }) {
             className="slct"
             onChange={onTypeHandler}
             value={filters.type}
-            defaultValue={TYPES_FOODS[0]}>
-            <option value="">
-              All
-            </option>
-          
+          >
             {TYPES_FOODS.map((type, i) =>
               <option value={type} key={i}>
                 {type}

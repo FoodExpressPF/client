@@ -28,36 +28,36 @@ export default function ClientBookingTab(){
 };
 
     return (<>
-        <nav aria-label="bookingPagination">
-            <ul class="pagination justify-content-center">
-                <li class="page-item">
-                <a class="page-link"  aria-label="Previous"  id='previus' onClick={e=>setPagination({...pagination, currentPage: 1})}>
+        <nav aria-label="bookingPagination" style={{position: "absolute"}}>
+            <ul className="pagination justify-content-center">
+                <li className="page-item">
+                <a className="page-link"  aria-label="Previous"  id='previus' onClick={e=>setPagination({...pagination, currentPage: 1})}>
                     <span aria-hidden="true">&laquo;</span>
                 </a>
                 </li>
                 {new Array(pagination.numPages).fill(0,0).map((e,index) =>{
                     return <li class='page-item'><a class="page-link" onClick={e => handlePagination(e)} id={index+1}>{index+1}</a></li>
                 })}
-                <li class="page-item">
-                <a class="page-link"  aria-label="Next" id='next' onClick={e=>setPagination({...pagination, currentPage: pagination.numPages})}>
+                <li className="page-item">
+                <a className="page-link"  aria-label="Next" id='next' onClick={e=>setPagination({...pagination, currentPage: pagination.numPages})}>
                     <span aria-hidden="true">&raquo;</span>
                 </a>
                 </li>
             </ul>
         </nav>
 
-        <div class="accordion accordion-flush">
+        <div className="accordion accordion-flush">
           {bookings.map((booking, index) => {
             if(index < ((pagination.currentPage-1) * pagination.bookingsPerPage) || index >= (pagination.currentPage * pagination.bookingsPerPage)) return;
             return <>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${index}`} aria-expanded="false" aria-controls="collapseTwo">
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="headingTwo">
+                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${index}`} aria-expanded="false" aria-controls="collapseTwo">
                   Booking for {booking.reservation_data}
                 </button>
               </h2>
-              <div id={`collapse${index}`} class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                <div class="accordion-body" className='acordionBody'>
+              <div id={`collapse${index}`} className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div className='acordionBody accordion-body'>
                   <p>Reserved at {booking.hour}hs</p>
                   <div>
                     <p>Foods:</p>

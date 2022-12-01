@@ -2,6 +2,7 @@ import axios from "axios";
 import swal from 'sweetalert';
 
 export const GET_PLATES = "GET_PLATES";
+export const CLEAR_PLATES = "CLEAR_PLATES"
 export const GET_PLATES_BY_FILTERS = "GET_PLATES_BY_FILTERS";
 export const GET_DETAIL = "GET_DETAIL";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
@@ -21,7 +22,10 @@ export const getPlates = () => (dispatch) =>
         payload: data,
       })
     )
-    .catch((error) => alert(`not found, error: ${error}`));
+    .catch((error) => alert(
+      `Sorry, an unespected error has ocurred,
+      please reset the page. Error: ${error}`
+    ));
 
 export const getByFilters = (filters) => (dispatch) =>
   axios(`/foods?${filters}`)
@@ -32,7 +36,7 @@ export const getByFilters = (filters) => (dispatch) =>
         payload: data,
       })}
     )
-    .catch((error) => alert(`not found, error: ${error}`));
+    .catch(() => dispatch({ type: CLEAR_PLATES }));
 
 export const getDetail = (id) => (dispatch) =>
   axios(`/foods/${id}`)
@@ -43,7 +47,10 @@ export const getDetail = (id) => (dispatch) =>
         payload: data,
       })
     )
-    .catch((error) => alert(`not found, error: ${error}`));
+    .catch((error) => alert(
+      `Sorry, an unespected error has ocurred,
+      please reset the page. Error: ${error}`
+    ));
 
 export const clearDetail = () => {
   return { type: CLEAR_DETAIL };
