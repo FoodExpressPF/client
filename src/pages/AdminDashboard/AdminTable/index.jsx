@@ -31,10 +31,11 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock, loadi
       activeDelete:true})
   }
 
-  const handleBlock = (idItem) => {
+  const handleBlock = (idItem,banned) => {
     setDeleteItem({
       id:idItem, 
-      activeBlock:true})
+      activeBlock:true,
+      banned:banned})
   }
 
   const handleEdit = (item) => {
@@ -73,7 +74,7 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock, loadi
       }
 
     {deleteItem.activeDelete && <Alert setActiveModal={setActiveModal} setDeleteItem={setDeleteItem} funDelete={()=>funDelete(deleteItem.id)} />}
-    {deleteItem.activeBlock && <BlockAlert setActiveModal={setActiveModal} setDeleteItem={setDeleteItem} funBlock={()=>funBlock(deleteItem.id)} />}
+    {deleteItem.activeBlock && <BlockAlert setActiveModal={setActiveModal} setDeleteItem={setDeleteItem} funBlock={()=>funBlock(deleteItem.id,deleteItem.banned)} />}
   
     {
       activeNew && 

@@ -36,16 +36,15 @@ const Users = () => {
     .catch(error=>console.log(error))
   }
 
-  const blockUser = (id)=>{
+  const blockUser = (id,banned)=>{
     setLoading(true)
-    alert('Ostia,que me has bloquiao,id '+id)
 
     axios({
     method: "put",
       headers: {
         "Content-Type": "application/json",
       },
-      url: "user/update/delete",
+      url: `user/update/${banned?'activate':'delete'}`,
       data: {id:id},
     })   
      .then(response => {
