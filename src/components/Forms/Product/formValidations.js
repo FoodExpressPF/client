@@ -19,9 +19,6 @@ const validationSchema = Yup.object().shape({
   image: Yup.string()
     .required(REQUIRED_ERROR),
 
-  type: Yup.string()
-    .required(REQUIRED_ERROR),
-
   category: Yup.string()
     .required(REQUIRED_ERROR),
 });

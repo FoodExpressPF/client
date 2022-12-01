@@ -2,6 +2,7 @@
   align-items: center;
   text-align: center;
   height: 8em;
+  
 }
 
 .comentCar {
@@ -16,8 +17,8 @@
     border-radius: 1em;
     width: 30em;
     height: 7em;
-    position: relative;
-    left:10em;
+   
+   
     
    
 }
@@ -53,4 +54,27 @@
  left: 10em;
  top:2em;
  z-index: 1;
+}
+
+.comments{
+  color: aliceblue;
+}
+
+.indicadoresC{
+  position: relative;
+  bottom: 2em;
+}
+
+@media screen and (max-width: 1200px){
+  .containerRev{
+    width: 16em;  
+    position: relative;
+   left: 0.5em;
+   
+   
+}
+
+.quote{
+  position: relative;
+}
 }
