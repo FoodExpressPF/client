@@ -32,8 +32,8 @@ export default function ClientDashboard(){
                 
             </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div className='ContDash'>
                     <div class="tab-pane fade show active infoTable" id="user-info-tab-pane" role="tabpanel" aria-labelledby="user-info-tab" tabindex="0">
+                    <div className='ContDash'>
                         <ClientTabInfo/>
                     </div>
                     </div>

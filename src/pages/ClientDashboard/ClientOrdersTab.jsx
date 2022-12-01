@@ -22,15 +22,16 @@ export default function ClientOrdersTab({}){
                 setUserOrders(response.data.reverse());
             })
             .catch(err => console.log(err));
-    },[]);
-
-    useEffect(()=>{
         axios.get(`/reviews/user/${userInfo.id}`)
             .then((response)=>{
                 setUserReviews(response.data);
             })
             .catch(err => console.log(err));
     },[]);
+
+    useEffect(()=>{
+        console.log(userReviews);
+    },[userReviews]);
 
     useEffect(()=>{
         let newNumPages = Math.ceil(userOrders.length / pagination.ordersPerPage);
@@ -97,6 +98,8 @@ export default function ClientOrdersTab({}){
                                                     foodName={food.name}
                                                     foodId={food.id}
                                                     userId={userInfo.id}
+                                                    setUserReviews={setUserReviews}
+                                                    userInfo={userInfo}
                                                     ></ReviewModal>
                                                     : <></>}
                                                     
@@ -113,7 +116,5 @@ export default function ClientOrdersTab({}){
                 }
             </div>
             
-        </>
-        
-        )
-    } ;
+        </>)
+};
