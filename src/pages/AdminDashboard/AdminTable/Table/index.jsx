@@ -28,7 +28,7 @@ const Table = ({cols, dataToRender, handleDelete, handleEdit, handleBlock }) => 
                <th scope="row">{dataToRender.indexOf(row)+1}</th>
                {cols?.map(col=>{
                  if(col==='image') return <td key={`${row.img}${col}`}><img className={s.dataImage} src={row.image} alt={row.name}/></td>
-                 else if(col==='dietTypes') return <td>{row[col].map(type=>type.name+' ')}</td>
+                 else if(col==='dietTypes') return <td>{row[col]?.map(type=>type.name+' ')}</td>
                  else return <td key={`${row.id}${col}`}>{row[col].toString()}</td>
                })
                }
