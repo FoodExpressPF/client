@@ -11,6 +11,8 @@ import { useDispatch } from "react-redux";
 import Modal from "../Modal";
 import { getPlates } from "../../../redux/actions";
 
+import s from '../../DietTypes/dietTypes.module.css'
+
 const NewProduct = () => {
   const [previewImage, setPreviewImage] = useState(
     "https://res.cloudinary.com/dpnrbius0/image/upload/v1668650818/placeholder_crmhmu.png"
@@ -60,7 +62,7 @@ const NewProduct = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      url: "http://localhost:3001/foods/create",
+      url: "/foods/create",
       data: values,
     })   
      .then(response => {
@@ -70,7 +72,7 @@ const NewProduct = () => {
      })
      .catch(error=>{
       console.log(error)
-      setResponse(error.response.message)
+      setResponse(error.response.data)
       setLoading(false)
      });
 
@@ -87,13 +89,17 @@ const NewProduct = () => {
   const handleClickType = async e =>{
     e.preventDefault()
     const name = e.target.name
-    setInputType(
-      inputType.includes(name)?
-      inputType.filter(e => e!==name):
-      [...inputType,name]
-    )
-    // setActive(input.dietTypes)
+  
+
+    if(inputType.includes(name)){
+      setInputType(inputType.filter(e => e!==name))
+    }else if(inputType.length<=2){
+      setInputType([...inputType,name])
+    }
+
   }
+  
+    // setActive(input.dietTypes)
 
 
   return (  
@@ -217,7 +223,7 @@ const NewProduct = () => {
             )}
           </div>
 
-          {/* TYPE */}
+          {/* TYPE
 
           <div>
             <label className="w-100 mb-3">
@@ -237,7 +243,7 @@ const NewProduct = () => {
                 <option value="Others">Others</option>
               </select>
             </label>
-          </div>
+          </div> */}
 
           {/* CATEGORY */}
 
@@ -265,11 +271,11 @@ const NewProduct = () => {
            {/* DIET TYPES */}
 
           <fieldset>
-            <input type="dietType" value={inputType} onChange={handleChange} />
+            <input type="dietType" value={inputType} onChange={handleChange} className="form-control w-100" />
           {dietTypes &&
                 dietTypes.map((e,idx)=>(
                     <button 
-                        // className={dietTypes.includes(e.name)?s.button:s.inactive} 
+                        className={s.button} 
                         name={e.name} 
                         onClick={handleClickType} 
                         key={idx}>
