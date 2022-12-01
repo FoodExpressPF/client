@@ -10,14 +10,14 @@ const CheckoutTable = () => {
         return(
           <>
             <div>
-              <div class="checkout_container">
+              <div className="checkout_container">
                 Your shop cart is empty,
                 go back and fill it
                 <div>
                 <Link to="/home">
-                  <div class="d-flex gap-2 col-6 mx-auto p-5 p-md-3">
+                  <div className="d-flex gap-2 col-6 mx-auto p-5 p-md-3">
                     <button
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     type="button">
                       Back
                     </button>
@@ -31,8 +31,8 @@ const CheckoutTable = () => {
       }
 
     return (
-      <div class="table-responsive ">
-        <table class="table table-hover text-center">
+      <div className="table-responsive ">
+        <table className="table table-hover text-center">
             <thead>
               <tr>
                 <th scope="col">Photo</th>
@@ -42,17 +42,17 @@ const CheckoutTable = () => {
                 <th scope="col">#</th>
               </tr>
             </thead>
-            <tbody class="table-group-divider">
+            <tbody className="table-group-divider">
             {Cart.items &&
             Cart.items.map((item) => {
             return (
             <tr>
               <td>
-                  <img src={item.image} alt="" class="checkoutImage"/>
+                  <img src={item.image} alt="" className="checkoutImage"/>
               </td>
               <td class="botones btn-group rounded-0 p-0 p-md-5 pt-4">
                   <button
-                    class="btn btn-warning m-0 m-md-1"
+                    className="btn btn-warning m-0 m-md-1"
                     type="button"
                     onClick={() => Cart.discount(item)}
                   >
@@ -61,7 +61,7 @@ const CheckoutTable = () => {
                   </button>
                   <button class="btn btn-warning bg-white px-0 m-0 m-md-1" disabled>{item.count}</button>
                   <button
-                    class="btn btn-warning m-0 m-md-1"
+                    className="btn btn-warning m-0 m-md-1"
                     type="button"
                     onClick={() => Cart.add(item)}
                   >
@@ -69,15 +69,15 @@ const CheckoutTable = () => {
                     +{" "}
                   </button>
               </td>
-              <td class="pt-4 p-md-5">{item.name}</td>
-              <td class="pt-4 p-md-5">${item.price * item.count}</td>
-              <td><button class="remove bg-transparent border-0 pt-3 p-md-5"><img src="https://i.imgur.com/h1ldGRr.png" alt="X" onClick={() => Cart.remove(item)}/></button></td>
+              <td className="pt-4 p-md-5">{item.name}</td>
+              <td className="pt-4 p-md-5">${item.price * item.count}</td>
+              <td><button className="remove bg-transparent border-0 pt-3 p-md-5"><img src="https://i.imgur.com/h1ldGRr.png" alt="X" onClick={() => Cart.remove(item)}/></button></td>
               </tr>
               
             );
           })}
-          <tr class="totalprice">
-            <td class="light">Total:</td>
+          <tr className="totalprice">
+            <td className="light">Total:</td>
             <td colSpan="2">&nbsp;</td>
             <td colSpan="2">$
             {Cart.items &&

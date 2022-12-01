@@ -9,30 +9,24 @@ import s from './dietTypes.module.css'
 
 const DietTypes = ({ listOfItems, active, setActive}) => {
 
-    // const dispatch = useDispatch()
-    // const navigate = useNavigate()
-    // const {type} = useSelector(state=>state.filters)
 
     const handleOnClick = (e)=>{
         e.preventDefault()
         const name = e.target.name
+        if(active){
         const includes =  active.includes(name)
         if(!includes) setActive ([...active,name])
         else setActive([...active].filter(e=>e!=name))
+        }
     }
 
     return (
         <div>
-            {/* {all &&<button 
-                className={active==='false'?s.active:s.button} 
-                name= 'false' 
-                onClick={handleOnClick}>Todos
-            </button> } */}
             
             {listOfItems &&
                 listOfItems.map((e,idx)=>(
                     <button 
-                        className={active.includes(e.name)?s.active:s.button} 
+                        className={active?.includes(e.name)?s.active:s.button} 
                         name={e.name} 
                         onClick={handleOnClick} 
                         key={idx}>

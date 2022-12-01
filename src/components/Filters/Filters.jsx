@@ -6,17 +6,32 @@ import { INITIAL_FILTERS } from '../../utils/initialObjects.js';
 import { filterQueryParser } from '../../utils/parsers.js';
 import { getByFilters } from '../../redux/actions.js';
 import './Filters.css';
+import DietTypes from '../DietTypes/index.jsx';
+import axios from 'axios';
 
 function Filters({ menu }) {
   const dispatch = useDispatch();
   const [ filters, setFilters ] = useState(INITIAL_FILTERS);
   const [ input, setInput ] = useState("")
   const [ selectedInput, setSelectedInput ] = useState("");
+  const [activeType, setActiveType] = useState([])
+  const [listOfTypes, setList] = useState([])
   const allPlate = useSelector((state) => state.plates);
+
+  console.log(listOfTypes)
+
+  const getDietTypes = ()=>{
+    axios.get('/types')
+    .then(response=> {
+      setList(response.data)
+    })
+  }
 
   useEffect(() => {
     onChangeHandler(input);
-  },[input])
+    setFilters({...filters, dietTypes:activeType})
+    getDietTypes()
+  },[input, activeType])
 
   const onChangeHandler = (e) => setFilters({...filters, name: e});
   const onTypeHandler = (e) => setFilters({...filters, [e.target.name]: e.target.value});
@@ -30,7 +45,7 @@ function Filters({ menu }) {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(getByFilters(filterQueryParser(filters)));
+    dispatch(getByFilters(filterQueryParser(filters)))
   }
 
   return (

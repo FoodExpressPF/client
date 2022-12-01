@@ -64,7 +64,7 @@ function ReservationCart({ Cart }) {
                     </button>
                   </span>
                 </span>
-                <div class="d-flex justify-content-center">
+                <div className="d-flex justify-content-center">
                   <button
                     className="amount_button"
                     type="button"

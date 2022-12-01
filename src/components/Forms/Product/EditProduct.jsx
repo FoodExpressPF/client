@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './ProductsForm.css'
 
 import validationSchema from "./formValidations.js";
@@ -8,17 +8,29 @@ import { getPlates } from "../../../redux/actions";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import Modal from "../Modal";
 
 const EditProduct = ({item}) => {
 
   const initialValues = item  
 
-  const [previewImage, setPreviewImage] = useState(
-    "https://res.cloudinary.com/dpnrbius0/image/upload/v1668650818/placeholder_crmhmu.png"
-  );
+  const [activeModal, setActiveModal] = useState(false)
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(true);
+  const [dietTypes, setDietTypes] = useState([])
+  const [inputType, setInputType] = useState(item.dietTypes.map(type=>type.name))
   const dispatch = useDispatch()
+
+  const getCategories = ()=>{
+    axios.get("/types")
+    .then(response=>{
+      setDietTypes(response.data)
+    })
+  }
+
+  useEffect(()=>{
+    getCategories()
+  },[])
 
   ///////////////////////////////////////////////ONCHANGE IMAGE INPUT
   
@@ -28,15 +40,25 @@ const EditProduct = ({item}) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      values.image = reader.result;
-      setPreviewImage(reader.result);     
-      console.log(values)
+      values.image = reader.result;     
     };
   };
+
+  const handleClickType = async e =>{
+    e.preventDefault()
+    const name = e.target.name
+    setInputType(
+      inputType.includes(name)?
+      inputType.filter(e => e!==name):
+      [...inputType,name]
+    )
+    // setActive(input.dietTypes)
+  }
 
   ///////////////////////////////////////////////ONSUBMIT
   const onSubmit = (e) => {
     setLoading(true);
+    values.dietTypes=inputType
 
     axios({
       method: "put",
@@ -66,35 +88,19 @@ const EditProduct = ({item}) => {
   return (  
     <>
 
+      { activeModal
+        && 
+        <Modal 
+          setActiveModal={setActiveModal} 
+          loading={loading} 
+          response={response} 
+        /> 
+      }
+
       <h2>Edit Product</h2>
       
-      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              {loading? 
-                <div className="d-flex justify-content-center">
-                <div className="spinner-border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </div>
-              </div>
-                :<div>
-                  <h5 className="modal-title">{response}</h5>
-                </div>    
-              }
-            </div>
-
-              <div className="modal-footer">
-                <button 
-                type="button" 
-                className="btn btn-secondary" 
-                data-bs-dismiss="modal">Close</button>
-              </div>
-            </div>
-        </div>
-      </div>
-
-      <div className="back">
+      
+      <div className="productFormback">
 
         <form className="w-50 my-5" onSubmit={handleSubmit}>
           {/* IMAGE */}
@@ -224,6 +230,23 @@ const EditProduct = ({item}) => {
               </label>
             </div>
 
+            {/* DIET TYPES */}
+
+          <fieldset>
+            <input type="dietType" value={inputType} onChange={handleChange} />
+          {dietTypes &&
+                dietTypes.map((e,idx)=>(
+                    <button 
+                        // className={dietTypes.includes(e.name)?s.button:s.inactive} 
+                        name={e.name} 
+                        onClick={handleClickType} 
+                        key={idx}>
+                        {e.name}
+                    </button>
+                ))
+            }
+          </fieldset>
+
             {/* CATEGORY */}
 
             <div>
@@ -276,8 +299,7 @@ const EditProduct = ({item}) => {
                 ? "btn btn-danger btn-lg mx-auto"
                 : "btn btn-light btn-sm"
               }
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
+              onClick={()=>setActiveModal(true)}
               >
               Edit
             </button>
