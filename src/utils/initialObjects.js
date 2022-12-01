@@ -4,17 +4,19 @@
 export const INITIAL_GLOBAL_STATE = {
   plates: [],
   allPlates: [],
+  favorites: [],
   detail: [],
   allUsers: [],
   allOrders: [],
   user: {},
   allComents: [],
   allTables: [],
+  tables: []
 };
 
 export const INITIAL_FILTERS = {
   name: "",
-  type: "All",
+  dietTypes: [],
   sortby: "name",
   offer: "all",
   asc: false,

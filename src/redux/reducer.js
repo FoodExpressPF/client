@@ -10,6 +10,7 @@ import {
   GET_ALL_USER,
   GET_COMMENT,
   GET_ALL_TABLES,
+  GET_TABLES
 } from "./actions.js";
 
 function rootReducer(state = INITIAL_GLOBAL_STATE, action) {
@@ -65,6 +66,11 @@ function rootReducer(state = INITIAL_GLOBAL_STATE, action) {
         ...state,
         allTables: action.payload,
       };
+    case GET_TABLES:
+      return {
+        ...state,
+        tables: action.payload
+      }
 
     default:
       return { ...state };

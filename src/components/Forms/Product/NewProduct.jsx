@@ -11,7 +11,6 @@ import { useDispatch } from "react-redux";
 import Modal from "../Modal";
 import { getPlates } from "../../../redux/actions";
 
-
 const NewProduct = () => {
   const [previewImage, setPreviewImage] = useState(
     "https://res.cloudinary.com/dpnrbius0/image/upload/v1668650818/placeholder_crmhmu.png"
