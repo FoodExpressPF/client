@@ -33,7 +33,7 @@ function Detail() {
   useEffect(()=>{
 
   },[comments]);
-console.log(comments)
+console.log('comments',comments)
 
 
 
@@ -73,7 +73,7 @@ console.log(comments)
                        <h2 className="h1 font-weight-bold mb-4 text-white card-title">{details.name}</h2>
                        <p className="card-text text-white">Price: ${details.price}</p>
                        <p className="card-text text-white">Type: {details.type}</p>
-                       <p className="card-text text-white">Rating: {details.rating} ⭐ </p>
+                       <p className="card-text text-white">Rating: {comments.length>0?comments.reduce((acumulator, current) => acumulator + current.rating,0):0} ⭐ </p>
                        <p className="card-text text-white"> Description: {details.description}</p>
                        {/* <p className="card-text text-white">
                         Reviews:{" "}
