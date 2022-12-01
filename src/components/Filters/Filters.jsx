@@ -62,7 +62,7 @@ function Filters({ menu }) {
           />
         </div>
         <div className='type_container'>
-          <label className='offert'>
+          {/* <label className='offert'>
             Type:
           </label>
           <select
@@ -80,7 +80,10 @@ function Filters({ menu }) {
                 {type}
               </option>
             )}
-          </select>
+          </select> */}
+          <DietTypes listOfItems={listOfTypes} active={activeType} setActive={setActiveType} />
+
+
         </div>
         <hr/><hr/>
         <div className='filter-container'>
