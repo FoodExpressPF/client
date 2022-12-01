@@ -26,7 +26,7 @@ export const INITIAL_PRODUCT_FORM = {
   name: "",
   description: "",
   price: 0,
-  type: ['Vegan'],
+  type: "Vegan",
   rating: 0,
   image: "",
   category: "",
