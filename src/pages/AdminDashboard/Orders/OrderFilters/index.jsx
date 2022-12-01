@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './orderFilters.module.css'
-import AdminTables from '../../Orders/OrderFilters/AdminTable';
-import '../OrderFilters/AdminTable.css'
+import AdminTables from '../../numberTables/AdminTable';
+import '../../numberTables/AdminTable'
 
 const OrderFilters =({setListToRender,allOrders}) => {
   console.log('all',allOrders)

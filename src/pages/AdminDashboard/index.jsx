@@ -4,23 +4,30 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Tabs from './Tabs'
 
 import s from './admin.module.css'
-import { useDispatch, useSelector } from 'react-redux';
-
-import { getAllUser, getOrder } from '../../redux/actions';
 import Loading from '../../components/Loading/Loading';
 import useCheckRoles from '../../utils/checkRoles';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 const AdminDashboard = () => {
   const {user, isLoading} = useAuth0();
 
-  const stateOrders = useSelector((state) => state.allOrders);
-  const stateUsers = useSelector((state) => state.allUsers);
-
   const [allOrders, setAllOrders] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   const [checkRole, setCheckRole] = useState('');
-  const dispatch = useDispatch()
+
+  const getOrders = ()=>{
+    axios.get('/orders')
+    .then(response=> {
+      setAllOrders(response.data)
+    })
+  }
+  const getUsers = ()=>{
+    axios.get('/user')
+    .then(response=> {
+      setAllUsers(response.data)
+    })
+  }
 
   useEffect(() => {
     useCheckRoles(user.email)
@@ -28,11 +35,10 @@ const AdminDashboard = () => {
       setCheckRole(response)
     )
 
-    if (allOrders.length === 0) dispatch(getOrder());
-    setAllOrders(stateOrders);
+    if (allOrders.length === 0) getOrders();
 
-    if (allUsers.length === 0) dispatch(getAllUser());
-    setAllUsers(stateUsers);
+    if (allUsers.length === 0) getUsers();
+
   }, []);
 
   if(isLoading) return <Loading />

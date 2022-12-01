@@ -1,62 +1,110 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from "react";
+import {useState } from "react";
 import { getComment } from "../../redux/actions";
 import './Comment.css'
 import {FaQuoteLeft, FaQuoteRight} from "react-icons/fa";
+import axios from "axios";
 
 
-export default function Commment({id}) {
-    const dispatch = useDispatch()
+export default function Commment({id, comments}) {
+//     const dispatch = useDispatch()
 
-console.log(id, 'id comment')
-    useEffect(() => { 
-        dispatch(getComment(id)); //
-      }, [dispatch]);
-
-   
-    const comentarios = useSelector((state)=>state.allComents);   
-    console.log(comentarios, 'COMENTATIOS')
-    // console.log('user', comentarios[2].user.name)
+// console.log(id, 'id comment')
+//     useEffect(() => { 
+//         dispatch(getComment(id)); //
+//       }, [dispatch]);
 
    
-    let stars = []   
+    // const comments = useSelector((state)=>state.allComents);   
+    // console.log(comments, 'Yop')
+    // console.log('user', comments[2].user.name)
+    const [ reviews, setReviews] = useState([])
+ 
+    useEffect(()=>{
+     axios.get('reviews/'+id)
+     .then(response=> {setReviews(response.data)})
+    },[])
+    console.log(reviews)
+
+
+
+return(
+  <div>
+    <div id="carouselExampleIndicators"  className="carousel carousel-dark slide"  data-bs-ride="true" >
+    <div className="carouselUno">
+      {reviews.map((el,index) =>{
+         return <>
+         
+               <div className={index===0?'carousel-item active':'carousel-item'} >
+                    <FaQuoteRight className="quote"/>
+                        {
+                         el ?
+                        
+                         <div className="containerRev">
+                            
+                             <p className="nameRev">{!el.comment.user? el.user.name:"Error"}</p>
+                             <p className="contenidoRev">{!el.comment?"1 no reviews": el.comment}</p>
+                         </div>
+                        :  <p>"1 no reviews yet"</p>
+                         }       
+                 </div>
+                 
+                 
+                        </>
+                    })}
+    </div>
+    </div>
+    <div className="indicadoresC">
+      <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                   <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                     <span className="visually-hidden" >Previous</span>
+                   </button>
+                  <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Next</span>
+                   </button>
+                   </div>
+                   </div>
+)
+
+
+
+//     let stars = []   
   
     
-    comentarios?.map(a => {       
-        stars.push(a.rating)
-    })
-    // console.log(comment, 'comentrarios')
-    // console.log(stars, 'star')
+//     comments?.map(a => {       
+//         stars.push(a.rating)
+//     })
+//     // console.log(comment, 'comentrarios')
+//     // console.log(stars, 'star')
     
-    let suma = 0;
+//     let suma = 0;
 
-for(let i=0; i<stars.length; i++) {
-    suma = suma + stars[i]
-}
-let num  = 0
+// for(let i=0; i<stars.length; i++) {
+//     suma = suma + stars[i]
+// }
+// let num  = 0
 
-if(suma===0) {
-    num=0
-}
-else{
-    num = (suma/stars.length)
-    // console.log(num)
-}
-let prom = Math.round(suma/stars.length)
+// if(suma===0) {
+//     num=0
+// }
+// else{
+//     num = (suma/stars.length)
+//     // console.log(num)
+// }
+// let prom = Math.round(suma/stars.length)
 
     // console.log(prom, 'PROMEDIO')
 
     // return (
     //     <div>    
-    //     {/* <h4 className="text">  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-    //       <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-    //     </svg></h4> */}
+       
     //     <div className="comments">
     //             <ul>
-    //                 {comentarios.map(coment =>{
+    //                 {comments.map(el =>{
     //                     return <>
-    //                     <li className="text">{coment.comment}, {!coment.user ? <></>: coment.user.name}</li>
+    //                     <li className="text">{el.user ? <></>: el.user.name},{el.comment} </li>
     //                     </>
     //                 })}
                     
@@ -67,59 +115,59 @@ let prom = Math.round(suma/stars.length)
     //     )
     //     }
 
-    return (
-      <div id="carouselExampleIndicators"  className="carousel carousel-dark slide"  data-bs-ride="true" >
+    // return (
+    //   <div id="carouselExampleIndicators"  className="carousel carousel-dark slide"  data-bs-ride="true" >
      
-           <div className="carouselUno">
-                 <div className="carousel-item active">
-                 <FaQuoteRight className="quote"/>
-                       {
-                        comentarios.length >0 ?
+    //        <div className="carouselUno">
+    //              <div className="carousel-item active">
+    //              <FaQuoteRight className="quote"/>
+    //                    {
+    //                     comments ?
                         
-                        <div className="containerRev">
+    //                     <div className="containerRev">
                             
-                            <p className="nameRev">{comentarios[0].user.name}</p>
-                            <p className="contenidoRev">{comentarios[0].comment}</p>
-                        </div>
-                       :  <p>"no reviews yet"</p>
-                        }       
-                 </div>
+    //                         <p className="nameRev">{comments.comment.user? comments.user.name:"Error"}</p>
+    //                         <p className="contenidoRev">{comments.comment?"1 no reviews": comments.comment}</p>
+    //                     </div>
+    //                    :  <p>"1 no reviews yet"</p>
+    //                     }       
+    //              </div>
            
-                  <div className="carousel-item">
-                  <FaQuoteRight className="quote"/>
-                       {
-                          comentarios.length >0 ?
-                           <div className="containerRev">
-                              <p className="nameRev">{comentarios[1].user.name}</p>
-                              <p className="contenidoRev">{comentarios[1].comment}</p>
-                            </div>
-                             :  <p>"no reviews yet"</p>
-                        } 
+    //               <div className="carousel-item">
+    //               <FaQuoteRight className="quote"/>
+    //                    {
+    //                       comments ?
+    //                        <div className="containerRev">
+    //                           <p className="nameRev">{comments.comment.user? comments.user.name:"Error"}</p>
+    //                           <p className="contenidoRev">{comments.comment?"1 no reviews": comments.comment}</p>
+    //                         </div>
+    //                          :  <p>"2 no reviews yet"</p>
+    //                     } 
                  
-                  </div>
-                      <div className="carousel-item">
-                      <FaQuoteRight className="quote"/>
-                                 {
-                                   comentarios.length >0 ?
-                                    <div className="containerRev">
-                                         <p className="nameRev">{comentarios[2].user.name}</p>
-                                          <p className="contenidoRev">{comentarios[2].comment}</p>
-                                     </div>
-                                          : <p>"no reviews yet"</p>
-                                      } 
+    //               </div>
+    //                   <div className="carousel-item">
+    //                   <FaQuoteRight className="quote"/>
+    //                              {
+    //                                comments.length >0 ?
+    //                                 <div className="containerRev">
+    //                                      <p className="nameRev">{comments.comment.user? comments.user.name:"Error"}</p>
+    //                                       <p className="contenidoRev">{comments.comment}</p>
+    //                                  </div>
+    //                                       : <p>"3 no reviews yet"</p>
+    //                                   } 
 
                            
-                     </div>
+    //                  </div>
                  
-                </div>
-                  <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                   <span className="visually-hidden" >Previous</span>
-                 </button>
-                 <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-               <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span className="visually-hidden">Next</span>
-                  </button>
-    </div>
-      );
+    //             </div>
+    //               <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    //              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    //                <span className="visually-hidden" >Previous</span>
+    //              </button>
+    //              <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    //            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    //               <span className="visually-hidden">Next</span>
+    //               </button>
+    // </div>
+    //   );
     };

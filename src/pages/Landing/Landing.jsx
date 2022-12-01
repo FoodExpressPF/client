@@ -56,19 +56,19 @@ function Landing() {
          </div>
            <ul className={click ? "nav-menu active" : "nav-menu"}>
              <li className='nav-item'>
-              <a href="#sec1" spy={true} smooth={true} offset={50} duration={500} onClick={closeMenu}>Home</a>
+              <a href="#sec1" spy='true' smooth='true' offset={50} duration={500} onClick={closeMenu}>Home</a>
 	           </li>
              <li className='nav-item'>
-              <a href="#sec2" spy={true} smooth={true} offset={50} duration={500} onClick={closeMenu}>About</a>
+              <a href="#sec2" spy='true' smooth='true' offset={50} duration={500} onClick={closeMenu}>About</a>
 	           </li>
              <li className='nav-item'>
-             <a href="#sec3" spy={true} smooth={true} offset={50} duration={500} onClick={closeMenu}>Reviews</a>
+             <a href="#sec3" spy='true' smooth='true' offset={50} duration={500} onClick={closeMenu}>Reviews</a>
 	           </li>
              <li className='nav-item'>
-             <a href="#sec4" spy={true} smooth={true} offset={50} duration={500} onClick={closeMenu}>Contact</a>
+             <a href="#sec4" spy='true' smooth='true' offset={50} duration={500} onClick={closeMenu}>Contact</a>
 	           </li>
                <li className='nav-item'>
-                 <div className='ButtonLogin' spy={true} smooth={true} offset={50} duration={500} onClick={closeMenu}>{ isAuthenticated ? <LogoutButton  /> : <LoginButton />}</div>
+                 <div className='ButtonLogin' spy='true' smooth='true' offset={50} duration={500} onClick={closeMenu}>{ isAuthenticated ? <LogoutButton  /> : <LoginButton />}</div>
 	             </li>
      
             </ul>

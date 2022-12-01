@@ -10,6 +10,7 @@ export const GET_ORDERS = "GET_ORDERS";
 export const GET_ALL_USER = "GET_ALLUSER";
 export const GET_COMMENT = "GET_COMMENT";
 export const GET_ALL_TABLES = "GET_ALL_TABLES";
+export const GET_TABLES = 'GET_TABLES'
 
 export const getPlates = () => (dispatch) =>
   axios(`/foods`)
@@ -25,11 +26,11 @@ export const getPlates = () => (dispatch) =>
 export const getByFilters = (filters) => (dispatch) =>
   axios(`/foods?${filters}`)
     .then((response) => response.data)
-    .then((data) =>
+    .then((data) =>{console.log(data)
       dispatch({
         type: GET_PLATES_BY_FILTERS,
         payload: data,
-      })
+      })}
     )
     .catch((error) => alert(`not found, error: ${error}`));
 
@@ -116,12 +117,32 @@ export const getAllUser = () => (dispatch) =>
     )
     .catch((error) => alert(`not found, error: ${error}`));
 
+
+
 export function postComment(payload) {
   return async function () {
     const response = await axios.post("/reviews", payload);
     console.log(response);
     return response;
   };
+}
+
+export default function getTables() {
+  return async function (dispatch) {
+    var json = await axios.get('/number')
+    return dispatch({
+      type: 'GET_TABLES',
+      payload: json.data[0]
+    })
+  }
+}
+
+export function putTables(payload) {
+  return async function () {
+    const response = await axios.put('number/2', payload);
+    console.log(response)
+    return response
+  }
 }
 
 export const getComment = (id) => (dispatch) =>
@@ -159,29 +180,30 @@ export function postReserve(payload) {
 }
 
 
-export function postReview(userId, foodId, comments, rating){
-  return function(dispatch){
+export function postReview(userId, foodId, comments, rating) {
+  return function (dispatch) {
     axios({
       method: 'post',
       headers: {
-          "Content-Type": "application/json"
+        "Content-Type": "application/json"
       },
       url: '/reviews',
       data: {
-          userId: userId, 
-          foodId: foodId, 
-          comment: comments, 
-          rating: rating}
-  })
-  .then(response => response.data)
-  .then(data => {
-      swal({
+        userId: userId,
+        foodId: foodId,
+        comment: comments,
+        rating: rating
+      }
+    })
+      .then(response => response.data)
+      .then(data => {
+        swal({
           icon: 'success',
           text: 'Thanks for your comment!',
           timer: 1500,
           buttons: false
-      });
-  })
-  .catch(error => console.log(error.message));
+        });
+      })
+      .catch(error => console.log(error.message));
   }
 };
