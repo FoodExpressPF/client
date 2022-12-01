@@ -49,11 +49,11 @@ const Table = ({cols, dataToRender, handleDelete, handleEdit, handleBlock }) => 
                     </button>
                   </div>
                 </td>
-                {cols.includes('banned') &&
+                {cols.includes('banned') && 
                  <td>
                    <button
                       className='btn btn-dark '
-                      onClick={()=>handleBlock(row.id)}
+                      onClick={()=>handleBlock(row.id,row.banned)}
                     >
                       {ban}
                     </button>
