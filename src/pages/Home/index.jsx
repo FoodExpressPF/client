@@ -9,6 +9,7 @@ import CategorySection from "./CategorySection.jsx";
 import CarrouselBanners from "./CarrouselBanners.jsx";
 import ReservationCart from "../../components/ReservationCart/ReservationCart";
 import Contact from "./ContactHome.jsx";
+import NotFound from "../../components/404-NotFound/NotFound.jsx";
 
 //Styles
 import s from "./home.module.css";
@@ -32,6 +33,7 @@ export default function Home() {
   const Cart = useLocalStorage("CART", "");
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch()
+  const filteredItems = useSelector(state => state.plates);
   const { isAuthenticated, user } = useAuth0();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -76,7 +78,9 @@ export default function Home() {
       <div className={s.homeContainer}>
         <div className={s.categoriesBox}>
           <Category />
-            {CATEGORIES_SECTIONS.map((category, index) => 
+            {!filteredItems.length
+            ? <NotFound />
+            : CATEGORIES_SECTIONS.map((category, index) => 
               <CategorySection
                 key={index}
                 name={category}

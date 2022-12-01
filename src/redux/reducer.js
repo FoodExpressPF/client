@@ -2,6 +2,7 @@ import { INITIAL_GLOBAL_STATE } from "../utils/initialObjects.js";
 
 import {
   GET_PLATES,
+  CLEAR_PLATES,
   GET_PLATES_BY_FILTERS,
   GET_DETAIL,
   CLEAR_DETAIL,
@@ -20,6 +21,11 @@ function rootReducer(state = INITIAL_GLOBAL_STATE, action) {
         ...state,
         plates: action.payload,
         allPlates: action.payload,
+      };
+    case CLEAR_PLATES:
+      return {
+        ...state,
+        plates: [],
       };
     case GET_PLATES_BY_FILTERS:
       return {

@@ -11,23 +11,25 @@ const CategorySection = ({name, addHandler}) => {
  
   const nameId =name.replace(/ /g, "")
 
+  if(!filterPlates.length) return <></>;
+
   return (
     <section id={`${nameId}`}>
       <h3 className={s.sectionTitle}>{name}s</h3>
       <div>
         {filterPlates?.map((c) => {
           return (
-              <Card
-                key={c.id}
-                id={c.id}
-                name={c.name}
-                rating={c.rating}
-                price={c.price}
-                image={c.image}
-                onStock={c.onStock}
-                addHandler={(id, name, price, image)=>addHandler(id, name, price, image)}
-                lisOfTypes={c.dietTypes}
-              />
+            <Card
+              key={c.id}
+              id={c.id}
+              name={c.name}
+              rating={c.rating}
+              price={c.price}
+              image={c.image}
+              onStock={c.onStock}
+              addHandler={(id, name, price, image)=>addHandler(id, name, price, image)}
+              lisOfTypes={c.dietTypes}
+            />
           )
         })}
      </div> 
