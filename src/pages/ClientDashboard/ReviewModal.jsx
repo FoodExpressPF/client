@@ -4,7 +4,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 import { postReview } from '../../redux/actions';
 
-export default function ReviewModal({foodName, userId, foodId}){
+export default function ReviewModal({foodName, userId, foodId, setUserReviews, userInfo, userReviews}){
 
     const dispatch = useDispatch();
     let modalId = foodId;
@@ -24,9 +24,14 @@ export default function ReviewModal({foodName, userId, foodId}){
         setData({...fieldsData, [e.target.id]: e.target.value});
     };
 
-    function handleSubmit(){
+    async function handleSubmit(){
         if(errors.commentErr == '' && errors.ratingErr == ''){
             dispatch(postReview(userId, foodId, fieldsData.comments, fieldsData.rating));
+            axios.get(`/reviews/user/${userInfo.id}`)
+            .then((response)=>{
+                setUserReviews(response.data);
+            })
+            .catch(err => console.log(err));
         }else{
             sweetAlert({
                 text: 'Some fields are wrong!',
@@ -34,6 +39,7 @@ export default function ReviewModal({foodName, userId, foodId}){
             });
         }
     };
+    
     
     
     return(<>
