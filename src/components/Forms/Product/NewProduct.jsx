@@ -60,7 +60,7 @@ const NewProduct = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      url: "http://localhost:3001/foods/create",
+      url: "/foods/create",
       data: values,
     })   
      .then(response => {
@@ -217,7 +217,7 @@ const NewProduct = () => {
             )}
           </div>
 
-          {/* TYPE */}
+          {/* TYPE
 
           <div>
             <label className="w-100 mb-3">
@@ -237,7 +237,7 @@ const NewProduct = () => {
                 <option value="Others">Others</option>
               </select>
             </label>
-          </div>
+          </div> */}
 
           {/* CATEGORY */}
 

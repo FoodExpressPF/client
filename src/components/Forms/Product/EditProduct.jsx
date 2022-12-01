@@ -209,7 +209,7 @@ const EditProduct = ({item}) => {
 
             {/* TYPE */}
 
-            <div>
+            {/* <div>
               <label className="w-100 mb-3">
                 <select
                   className="form-select"
@@ -228,7 +228,7 @@ const EditProduct = ({item}) => {
                   <option value="Others">Others</option>
                 </select>
               </label>
-            </div>
+            </div> */}
 
             {/* DIET TYPES */}
 
