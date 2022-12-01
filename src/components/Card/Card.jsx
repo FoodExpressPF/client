@@ -57,7 +57,7 @@ function Card({ id, name, price, rating, image, addHandler, onStock, lisOfTypes 
         }
       <button
         className="favorites-button"
-        onClick={() => Favorites.toggle({id, name, price, rating, image, addHandler, onStock})}
+        onClick={() => Favorites.toggle({id, name, price, rating, image, onStock, lisOfTypes})}
       >
         {/*Logo de corazoncito*/}
         {Favorites.items && Favorites.items.find(el => el.id === id)

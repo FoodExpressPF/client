@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { buy, buyPaypal } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import "./ReservationCart.css";
+//import {  } from "react-icons/";
 
 function ReservationCart({ Cart }) {
   const dispatch = useDispatch();
