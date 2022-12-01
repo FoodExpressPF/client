@@ -11,6 +11,7 @@ import Commment from '../../components/Comment/Comment.jsx';
 
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import {Toaster, toast} from "react-hot-toast";
+import DietTypes from '../../components/DietTypes'
 
 
 
@@ -82,7 +83,8 @@ console.log(comments)
                         <p>coment1{comments.comment}</p>
                         : <div><Loading/></div>
                       } */}
-       
+
+                       <DietTypes listOfItems={details.dietTypes}/>     
                      
                         <Commment
                            id={id}
