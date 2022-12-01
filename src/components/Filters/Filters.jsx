@@ -6,17 +6,32 @@ import { INITIAL_FILTERS } from '../../utils/initialObjects.js';
 import { filterQueryParser } from '../../utils/parsers.js';
 import { getByFilters } from '../../redux/actions.js';
 import './Filters.css';
+import DietTypes from '../DietTypes/index.jsx';
+import axios from 'axios';
 
 function Filters({ menu }) {
   const dispatch = useDispatch();
   const [ filters, setFilters ] = useState(INITIAL_FILTERS);
   const [ input, setInput ] = useState("")
   const [ selectedInput, setSelectedInput ] = useState("");
+  const [activeType, setActiveType] = useState([])
+  const [listOfTypes, setList] = useState([])
   const allPlate = useSelector((state) => state.plates);
+
+  console.log(listOfTypes)
+
+  const getDietTypes = ()=>{
+    axios.get('/types')
+    .then(response=> {
+      setList(response.data)
+    })
+  }
 
   useEffect(() => {
     onChangeHandler(input);
-  },[input])
+    setFilters({...filters, dietTypes:activeType})
+    getDietTypes()
+  },[input, activeType])
 
   const onChangeHandler = (e) => setFilters({...filters, name: e});
   const onTypeHandler = (e) => setFilters({...filters, [e.target.name]: e.target.value});
@@ -30,7 +45,7 @@ function Filters({ menu }) {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(getByFilters(filterQueryParser(filters)));
+    dispatch(getByFilters(filterQueryParser(filters)))
   }
 
   return (
@@ -66,6 +81,12 @@ function Filters({ menu }) {
               </option>
             )}
           </select>
+      <DietTypes 
+        listOfItems={listOfTypes} 
+        active={activeType} 
+        setActive={setActiveType} 
+      />
+
         </div>
         <hr/><hr/>
         <div className='filter-container'>
@@ -120,7 +141,7 @@ function Filters({ menu }) {
             onClick={onSubmitHandler}
           >
             Go
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
             </svg>
           </button>
