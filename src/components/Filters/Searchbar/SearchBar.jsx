@@ -2,12 +2,12 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import { Autocomplete } from "@mui/material";
-import { Box } from "@mui/system";
 
-function SearchBar({data,input,setInput,selectedInput,setSelectedInput}) {
+function SearchBar({data, input, setInput, selectedInput, setSelectedInput}) {
 
     return <Stack sx={{ width: 300 }}>
         <Autocomplete
+            className="searchBar_container"
             value={selectedInput}
             onChange={(event, newValue) => {
                 setSelectedInput(newValue);

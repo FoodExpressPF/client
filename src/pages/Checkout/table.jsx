@@ -50,7 +50,7 @@ const CheckoutTable = () => {
               <td>
                   <img src={item.image} alt="" class="checkoutImage"/>
               </td>
-              <td class="botones btn-group rounded-0 p-4 p-md-5">
+              <td class="botones btn-group rounded-0 p-0 p-md-5 pt-4">
                   <button
                     class="btn btn-warning m-0 m-md-1"
                     type="button"
@@ -59,7 +59,7 @@ const CheckoutTable = () => {
                     {" "}
                     -{" "}
                   </button>
-                  <button class="btn btn-warning bg-white px-1 m-0 m-md-1" disabled>{item.count}</button>
+                  <button class="btn btn-warning bg-white px-0 m-0 m-md-1" disabled>{item.count}</button>
                   <button
                     class="btn btn-warning m-0 m-md-1"
                     type="button"

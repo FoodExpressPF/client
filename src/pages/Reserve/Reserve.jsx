@@ -92,6 +92,7 @@ function Reserve() {
           <div className="inputs_container">
             <p className="reserve_text">Date*</p>
             <input
+              className="reserve_inputs"
               type="date"
               name="name"
               onChange={onChangeHandlerDate}
@@ -99,9 +100,9 @@ function Reserve() {
               value={date}
             />
             <p className="reserve_text">Time *</p>
-            <input type="time" onChange={onChangeHandlerTime}></input>
+            <input className="reserve_inputs" type="time" onChange={onChangeHandlerTime}></input>
             <p className="reserve_text">People *</p>
-            <select onChange={onChangeHandlerChair}>
+            <select className="reserve_inputs" onChange={onChangeHandlerChair}>
               <option value="not specified">number of chairs</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -110,7 +111,7 @@ function Reserve() {
               <option value="5">5</option>
               <option value="6">6</option>
             </select>
-            <p className="reserve_text">Choose payment method:</p>
+            <p className="reserve_text text-center">Choose payment method:</p>
             <div className="Pagos">
               <div className="form-check">
                 <input
@@ -158,6 +159,7 @@ function Reserve() {
               src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669737776/pngwing.com_3_nqopad.png"
               width="500px"
               height="500px"
+              className="reserve_decoration_image"
             />
           </div>
         </div>
