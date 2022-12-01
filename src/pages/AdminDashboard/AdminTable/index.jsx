@@ -114,13 +114,14 @@ const AdminTable = ({ form,formEdit,name, data, cols, funDelete, funBlock, loadi
         >
           <div className ={s.tableHead}>
             <h2>{name}s</h2>
-            <button 
+            {!(name =='Order') &&<button 
               className='btn btn-primary' 
               type='button'
               onClick={handleNewProduct}
             >
               New {name} 
             </button>
+            }
           </div>
 
           {data.length === 0? <Loading />

@@ -40,7 +40,7 @@ const ProductsForm = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      url: "http://localhost:3001/foods/create",
+      url: "/foods/create",
       data: values,
     })   
      .then(response => {
