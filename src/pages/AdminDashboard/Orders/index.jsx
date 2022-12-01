@@ -7,9 +7,11 @@ import EditOrder from '../../../components/Forms/Orders/EditOrder'
 import OrderFilters from './OrderFilters'
 
 const Orders = () => {
-  const cols = ['state', 'total' , 'createdAt','coments', 'address']
+  const cols = ['id','state', 'total' , 'createdAt','coments', 'address']
   const [allOrders, setAllOrders] = useState([])
   const [listToRender, setListToRender] = useState([])
+  const [response, setResponse] = useState('')
+  const [loading, setLoading] = useState(false)
   console.log('all',allOrders)
   console.log('list',listToRender)
 
@@ -23,9 +25,19 @@ const Orders = () => {
   }
 
   const deleteOrder = (id)=>{
+    setLoading(true)
     axios.delete(`/orders/${id}`)
-    .then(response=> {console.log(response); getOrders()})
-    .catch(error=>console.log(error))
+    .then(response=> {
+      console.log(response); 
+      setResponse(response.data.message)
+      setLoading(false)
+      getOrders()
+    })
+    .catch(error=>{
+      console.log(error)
+      setResponse(response.data.message)
+      setLoading(false)
+    })
   }
 
   useEffect(()=>{
@@ -46,6 +58,8 @@ const Orders = () => {
         formEdit={<EditOrder />}
         cols={cols}
         funDelete={deleteOrder}
+        loading={loading}
+        response={response}
         get={getOrders}
 
       />

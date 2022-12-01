@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 //Libraries
 import { useFormik } from "formik";
 import validationSchema from "./formValidations";
-import { useDispatch } from 'react-redux';
 import OrderForm from './OrderForm';
-// import { getUser } from '../../../redux/actions';
-// import axios from "axios";
+import axios from "axios";
+import Modal from '../Modal';
 
 
 const EditOrder = ({item, get}) => {
@@ -56,9 +54,8 @@ const EditOrder = ({item, get}) => {
   }
 
   return (  
-    <div>
+    <>
       <h2 className='mt-3 text-center'>Edit an Order</h2>
-
       
       { activeModal
         && 
@@ -69,17 +66,17 @@ const EditOrder = ({item, get}) => {
         /> 
       }
 
-<OrderForm 
-        type='Edit'
-        errors = {errors}
-        touched={touched}
-        values = {values}
-        handleChange = {handleChange}
-        handleBlur = {handleBlur}
-        handleClick = {handleClick}
-        handleSubmit = {handleSubmit}
+    <OrderForm 
+      type='Edit'
+      errors = {errors}
+      touched={touched}
+      values = {values}
+      handleChange = {handleChange}
+      handleBlur = {handleBlur}
+      handleClick = {handleClick}
+      handleSubmit = {handleSubmit}
       />
-  </div>
+  </>
 );
 };
 

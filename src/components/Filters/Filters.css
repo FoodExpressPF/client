@@ -1,11 +1,15 @@
 .bacKfilters {
-  background-color: rgba(255, 207, 153, 0.788);
-  display: flex;
+  background-color: #f9f4e6;
 }
 
 .offert {
-  color: rgb(255, 102, 0);
-  padding-top: 7px;
+  color: #321313;
+  display: grid;
+  align-self: center;
+}
+
+.searchBar_container{
+  background-color: #ffffff;
 }
 
 .menu-container {
@@ -13,16 +17,15 @@
 }
 
 .menu-container.open {
-  display: flex;
-  flex-direction: column;
-  width:600px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 587px;
 }
 
 .filter-container {
-  background-color: rgb(255, 233, 193);
   border-radius: 10px;
   margin: 5px;
-  height: 35px;
+  height: 55px;
   display: flex;
   justify-content:center;
 }
@@ -37,34 +40,43 @@
   padding: 1px
 }
 
+.type_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .slct {
-  color: rgb(255, 102, 0);
-  background-color: rgb(252, 216, 150);
+  color: #321313;
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 186, 58);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   border-radius: 10px;
-  border-radius: 1rem;
   cursor: pointer;
-  padding: 3px;
-  font-size: 14px;
+  padding: 2px;
+  font-size: 16px;
   text-align: center;
-  width: 80px;
-  border-color: rgba(250, 204, 118, 0.411);
+  width: 80%;
+  border-color: #F4991A;
 }
 
 .slct:hover {
-  background-color: rgb(255, 192, 75);
-  scale: 1.1;
+  background-color: rgb(255, 212, 133);
+  color: #321313;
   transition: 0.8s;
 }
 
 
 .button1 {
   color: rgb(255, 255, 255);
-  background-color: rgb(255, 206, 116);
+  background-color: rgb(255, 186, 58);
   border-radius: 8px;
   cursor: pointer;
   font-size: 20px;
-  border-color: orange;
+  height: 40px;
+  width: 100px;
+  margin: 5px 10px 10px 10px;
+  border-color: #F4991A;
 }
 
 
@@ -80,6 +92,7 @@
   background-color: rgb(255, 186, 58);
   border-radius: 10px;
   cursor: pointer;
+  width: 100px;
   font-size: 20px;
   border-color: orange;
 }
@@ -113,4 +126,11 @@
 
 .form-control:hover {
   border-color: orange;
+}
+
+@media screen and (max-width:605px){
+  .menu-container.open{
+    max-width: 375px;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

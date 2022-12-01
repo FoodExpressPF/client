@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import NavBar from "../../components/NavBar/NavBar.jsx";
 import {
   buy,
   buyPaypal,
@@ -10,11 +11,13 @@ import {
   getUser,
   postReserve,
 } from "../../redux/actions";
+import "./Reserve.css";
 
 function Reserve() {
   const dispatch = useDispatch();
   const Cart = useLocalStorage("CART", "");
   const table = useSelector((state) => state.allTables);
+  const numberTables = useSelector((state) => state.tables.capacity)
 
   const [date, setDate] = useState("not specified");
   const [capacity, setCapacity] = useState("not specified");
@@ -31,28 +34,34 @@ function Reserve() {
     let price = Cart.items.reduce((acum, act) => {
       return acum + act.price * act.count;
     }, 0);
+    const redirect = "/reserved";
     buySelect == 1
-      ? dispatch(buyPaypal({ price })).then((url) => window.open(url, `${url}`))
-      : dispatch(buy({ price })).then((url) => window.open(url, `${url}`));
+      ? dispatch(buyPaypal({ price, redirect })).then((url) =>
+          window.open(url, `${url}`)
+        )
+      : dispatch(buy({ price, redirect })).then((url) =>
+          window.open(url, `${url}`)
+        );
   };
   let available = [];
 
   useEffect(() => {
     if (table.length === 0) dispatch(getAllTables());
     available = table.filter((obj) => obj.reservation_data === date);
-    if (available.length >= 2) alert("available");
+    if (available.length >= numberTables) alert("available");
   });
 
   const tables = async () => {
     if (
       capacity === "not specified" ||
       Time === "not specified" ||
-      date === "not specified"
+      date === "not specified" ||
+      available.length >= 2
     )
       return alert("please complete all required information");
     else {
       available = await table.filter((obj) => obj.reservation_data === date);
-      if (available.length >= 2) return alert("table occupied that date");
+      if (available.length >= tables) return alert("table occupied that date");
       else {
         dispatch(getUser(emailUser)).then((data) =>
           dispatch(
@@ -68,6 +77,7 @@ function Reserve() {
         );
         paypal();
         alert("orden creada");
+        history.push("/home");
       }
     }
   };
@@ -81,63 +91,92 @@ function Reserve() {
   };
   return (
     <>
-      <h1>Reservar</h1>
-      <input
-        type="date"
-        name="name"
-        onChange={onChangeHandlerDate}
-        placeholder="Shipping Address"
-        value={date}
-      />
-      <input type="time" onChange={onChangeHandlerTime}></input>
-      <select onChange={onChangeHandlerChair}>
-        <option value="not specified">number of chairs</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-      </select>
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="PayPal"
-          value="1"
-          checked={buySelect == "1" ? true : false}
-          onChange={select}
-        />
-        <label class="form-check-label" value="PayPal">
-          <img
-            src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669221456/4202081logopaymentpaypalsocialsocialmedia-115606_115695_bkggmq.png"
-            width="30"
-            height="30"
-          />
-          PayPal
-        </label>
+      <NavBar Cart={Cart} />
+
+      <div className="reserve_container">
+        <h1 className="reserve_title">Booking</h1>
+        <div className="inputsAndImage">
+          <div className="inputs_container">
+            <p className="reserve_text">Date*</p>
+            <input
+              className="reserve_inputs"
+              type="date"
+              name="name"
+              onChange={onChangeHandlerDate}
+              placeholder="Shipping Address"
+              value={date}
+            />
+            <p className="reserve_text">Time *</p>
+            <input className="reserve_inputs" type="time" onChange={onChangeHandlerTime}></input>
+            <p className="reserve_text">People *</p>
+            <select className="reserve_inputs" onChange={onChangeHandlerChair}>
+              <option value="not specified">number of chairs</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+            <p className="reserve_text text-center">Choose payment method:</p>
+            <div className="Pagos">
+              <div className="form-check">
+                <input
+                  class="payment_method_inputPP"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="PayPal"
+                  value="1"
+                  checked={buySelect == "1" ? true : false}
+                  onChange={select}
+                />
+                <label class="form-check-labelPP" for="PayPal" value="PayPal">
+                  <img
+                    className="reserve_image"
+                    src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669739509/paypalhoover_ojruhq.png"
+                  />
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="payment_method_inputPP"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="MercadoPago"
+                  value="2"
+                  checked={buySelect == "2" ? true : false}
+                  onChange={select}
+                />
+                <label
+                  class="form-check-labelPP"
+                  for="MercadoPago"
+                  value="MercadoPago"
+                >
+                  <img
+                    src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669739509/mercadopago_hoover_wx4egf.png"
+                    width="100"
+                    height="100"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+          <div className="image_container">
+            <img
+              src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669737776/pngwing.com_3_nqopad.png"
+              width="500px"
+              height="500px"
+              className="reserve_decoration_image"
+            />
+          </div>
+        </div>
+
+        <div class="d-grid gap-2 col-3 mx-auto p-5">
+          <button class="btn btn-primary" onClick={() => tables()}>
+            Reserve now
+          </button>
+        </div>
       </div>
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="MercadoPago"
-          value="2"
-          checked={buySelect == "2" ? true : false}
-          onChange={select}
-        />
-        <label class="form-check-label" value="MercadoPago">
-          <img
-            src="https://res.cloudinary.com/dbepwtmru/image/upload/v1669221456/unnamed_hbfgk7.png"
-            width="30"
-            height="30"
-          />
-          Mercado Pago
-        </label>
-      </div>
-      <button onClick={() => tables()}>prueba</button>
     </>
   );
 }

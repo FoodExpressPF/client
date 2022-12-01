@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './ProductsForm.css'
 
 import validationSchema from "./formValidations.js";
@@ -9,16 +9,31 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import Modal from "../Modal";
-
+import { getPlates } from "../../../redux/actions";
 
 const NewProduct = () => {
   const [previewImage, setPreviewImage] = useState(
-    "https://res.cloudinary.com/dpnrbius0/image/upload/v1668109807/foodExpressRecipes/placeholder_xtwile.png"
+    "https://res.cloudinary.com/dpnrbius0/image/upload/v1668650818/placeholder_crmhmu.png"
   );
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(true);
   const [activeModal, setActiveModal] = useState(false)
+  const [dietTypes, setDietTypes] = useState([])
+  const [inputType, setInputType] = useState([])
   const dispatch = useDispatch()
+
+  const getCategories = ()=>{
+    axios.get("/types")
+    .then(response=>{
+      setDietTypes(response.data)
+      
+    })
+  }
+  console.log('types',dietTypes)
+
+  useEffect(()=>{
+    getCategories()
+  },[])
 
   ///////////////////////////////////////////////ONCHANGE IMAGE INPUT
   
@@ -37,6 +52,8 @@ const NewProduct = () => {
   ///////////////////////////////////////////////ONSUBMIT
   const onSubmit = (e) => {
     setLoading(true);
+    values.dietTypes=inputType
+    console.log(values)
 
     axios({
       method: "post",
@@ -53,7 +70,7 @@ const NewProduct = () => {
      })
      .catch(error=>{
       console.log(error)
-      setResponse(error?.response.data)
+      setResponse(error.response.message)
       setLoading(false)
      });
 
@@ -66,6 +83,18 @@ const NewProduct = () => {
   const handleClick = () =>{
     setActiveModal(true)
   }
+
+  const handleClickType = async e =>{
+    e.preventDefault()
+    const name = e.target.name
+    setInputType(
+      inputType.includes(name)?
+      inputType.filter(e => e!==name):
+      [...inputType,name]
+    )
+    // setActive(input.dietTypes)
+  }
+
 
   return (  
       <>
@@ -221,6 +250,7 @@ const NewProduct = () => {
                 name="category"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                value={values.category}
               >
                 <option>Select a Category</option>
                 <option value="Main Course">Main Course</option>
@@ -232,6 +262,23 @@ const NewProduct = () => {
             </label>
           </div>
 
+           {/* DIET TYPES */}
+
+          <fieldset>
+            <input type="dietType" value={inputType} onChange={handleChange} />
+          {dietTypes &&
+                dietTypes.map((e,idx)=>(
+                    <button 
+                        // className={dietTypes.includes(e.name)?s.button:s.inactive} 
+                        name={e.name} 
+                        onClick={handleClickType} 
+                        key={idx}>
+                        {e.name}
+                    </button>
+                ))
+            }
+          </fieldset>
+
           {/* ONSTOCK */}
 
           <div>
@@ -240,7 +287,7 @@ const NewProduct = () => {
                 className="form-select"
                 aria-label="Default select example"
                 type="select"
-                name="category"
+                name="onStock"
                 onChange={handleChange}
                 onBlur={handleBlur}
               >

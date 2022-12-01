@@ -1,4 +1,4 @@
-.homeContainer{
+.homeContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -6,17 +6,17 @@
   height: 100%;
 }
 
-.categoriesBox{
+.categoriesBox {
   box-shadow: 0px 0px 10px 2px #00000030;
 }
 
 
-.hola{
+.hola {
   width: 100%;
 }
 
-.loadingfix{
-  padding:87px;
+.loadingfix {
+  padding: 200px;
 }
 
 .contactHome {

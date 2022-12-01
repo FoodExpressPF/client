@@ -11,11 +11,12 @@ export const INITIAL_GLOBAL_STATE = {
   user: {},
   allComents: [],
   allTables: [],
+  tables: []
 };
 
 export const INITIAL_FILTERS = {
   name: "",
-  type: "All",
+  dietTypes: [],
   sortby: "name",
   offer: "all",
   asc: false,
@@ -30,7 +31,8 @@ export const INITIAL_PRODUCT_FORM = {
   image: "",
   category: "",
   type_user: "admin",
-  offer: "false",
+  offer: false,
+  onStock:true
 };
 
 export const INITIAL_USER_FORM = {

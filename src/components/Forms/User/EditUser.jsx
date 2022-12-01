@@ -10,14 +10,13 @@ import Modal from '../Modal/index.jsx';
 import UserForm from './UserForm.jsx';
 
 
-const EditUser = ({item}) => {
+const EditUser = ({item, getItems}) => {
 
   const initialValues = item
 
   const [loading, setLoading] = useState(false);
   const[response, setResponse] = useState('');
   const [activeModal,setActiveModal] = useState(false)
-  const dispatch = useDispatch()
 
   ///////////////////////////////////////////////ONSUBMIT
   const onSubmit = (e) => {
@@ -34,13 +33,15 @@ const EditUser = ({item}) => {
      .then(response => {
       setResponse(response.data.message)
       console.log('response',response.data.message)
-      setLoading(false)   
+      setLoading(false)  
+      getItems() 
      })
      .catch(error=>{
       setResponse(error.message)
       setLoading(false)
      });
-     formik.resetForm()
+     
+     
   }
 
 

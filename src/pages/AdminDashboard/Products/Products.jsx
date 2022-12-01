@@ -5,6 +5,9 @@ import { getPlates } from '../../../redux/actions';
 import ProductsForm from '../../../components/Forms/Product/NewProduct' ;
 import AdminTable from '../AdminTable';
 import EditProduct from '../../../components/Forms/Product/EditProduct';
+import Categories from './Categories';
+
+import s from './products.module.css'
 
 const Products = () => {
   const statePlates = useSelector((state) => state.plates);
@@ -23,9 +26,9 @@ const Products = () => {
     setAllPlates(statePlates)
   },[statePlates])
 
-  const cols = ['image', 'name' ,'description', 'type', 'price', 'rating','onStock']
+  const cols = ['image', 'name' ,'description', 'dietTypes', 'price', 'rating','onStock']
   return (
-    <div>
+    <div className={s.container}>
       <AdminTable 
         form={<ProductsForm/>} 
         formEdit={<EditProduct />}
@@ -33,7 +36,8 @@ const Products = () => {
         data={allPlates} 
         cols={cols}
         funDelete= {deleteProducts}
-      />      
+      />     
+      <Categories /> 
     </div>
   );
 };
