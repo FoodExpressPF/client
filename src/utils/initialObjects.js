@@ -4,6 +4,7 @@
 export const INITIAL_GLOBAL_STATE = {
   plates: [],
   allPlates: [],
+  favorites: [],
   detail: [],
   allUsers: [],
   allOrders: [],
