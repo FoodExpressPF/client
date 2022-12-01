@@ -29,9 +29,13 @@ function Filters({ menu }) {
 
   useEffect(() => {
     onChangeHandler(input);
-    setFilters({...filters, dietTypes:activeType})
+    
     getDietTypes()
-  },[input, activeType])
+  },[input])
+
+  useEffect(()=>{
+    setFilters({...filters, dietTypes:activeType})
+  },[activeType])
 
   const onChangeHandler = (e) => setFilters({...filters, name: e});
   const onTypeHandler = (e) => setFilters({...filters, [e.target.name]: e.target.value});
