@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail, clearDetail } from "../../redux/actions.js";
+import { getDetail, clearDetail, getComment } from "../../redux/actions.js";
 import Loading from "../../components/Loading/Loading";
 import useLocalStorage from "../../hooks/useLocalStorage.js";
 import NavBar from '../../components/NavBar/NavBar.jsx';
 
 import "./Detail.css"
-// import FormComent from '../../components/Comment/FormComent.jsx';
- import Commment from '../../components/Comment/Comment.jsx';
+import Commment from '../../components/Comment/Comment.jsx';
 
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import {Toaster, toast} from "react-hot-toast";
+
 
 
 
@@ -19,13 +19,23 @@ function Detail() {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.detail);
   const { id } = useParams();
-
+ console.log(details);
   const Cart = useLocalStorage("CART", "");
+  const comments = useSelector(state => state.allComents);
 
   useEffect(() => {
     dispatch(getDetail(id));
+    dispatch(getComment(id));
     return dispatch(clearDetail());
-  }, [dispatch, id]);
+  }, []);
+
+  useEffect(()=>{
+
+  },[comments]);
+console.log(comments)
+
+
+
 
   const add = () => {
     const name = details.name;
@@ -67,19 +77,25 @@ function Detail() {
                        {/* <p className="card-text text-white">
                         Reviews:{" "}
                        {details.reviews
-                        ? details.reviews.join(" - ") : "No reviews yet"} </p> */}
-                        
-                          <div className='containerComment'>
-                            <Commment
-                              id={id}
-                                  />
-                          </div>
+                        ? details.reviews.join(" - ") : "No reviews yet" } </p> */}
+                        {/* {comments.comment ?
+                        <p>coment1{comments.comment}</p>
+                        : <div><Loading/></div>
+                      } */}
+       
+                     
+                        <Commment
+                           id={id}
+                            comments={comments}/>
                         <Toaster
                            position='top-center'
                            reverseOrder={false}
                            />
                   </div>
              </div>
+                  
+
+
              : <div><Loading/></div>}
          </div>
       </div>
