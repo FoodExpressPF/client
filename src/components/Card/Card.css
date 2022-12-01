@@ -1,5 +1,6 @@
 .card_container {
   display: flex;
+  position: relative;
   align-items:center;
   background-color: #F9F5F0;
   width: 100%;
@@ -116,6 +117,19 @@
   border-top: 1px dotted #321313;
 }
 
+.favorites-button{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: none;
+  background: none;
+  transform: scale(1.5);
+}
+
+.favorite-icon{
+  color: #f4581a;
+}
+
 /* Momento responsive */
 @media only screen and (max-width:1024px){
   .card_container{
@@ -149,5 +163,8 @@
     margin: 18px;
     font-size: 12px;
     width: 80px;
+  }
+  .favorites-button{
+    transform: scale(1.0);
   }
 }

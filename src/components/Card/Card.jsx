@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import useFavorites from "../../hooks/useFavorites.js";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 import DietTypes from "../DietTypes";
 
 import "./Card.css";
 
-function Card({ id, name, price, rating, image, addHandler, onStock,lisOfTypes }) {
-  //const [cantidad, setCantidad] = useState(1);
+function Card({ id, name, price, rating, image, addHandler, onStock, lisOfTypes }) {
+  const Favorites = useFavorites("FAVS");
 
   return (
     <div className="card_container">
@@ -44,18 +46,25 @@ function Card({ id, name, price, rating, image, addHandler, onStock,lisOfTypes }
           }
         </div>
       </div>
-        {
-          onStock === true ?
-      <div className="add_to_cartContainer">
-        <button
-          className="add_to_cart"
-          type="button"
-          onClick={()=>addHandler(id,name,price,image)}
-        />
-      </div> : 
-      <div> </div>
-
+        {onStock === true &&
+          <div className="add_to_cartContainer">
+            <button
+              className="add_to_cart"
+              type="button"
+              onClick={() => addHandler(id,name,price,image)}
+            />
+          </div>
         }
+      <button
+        className="favorites-button"
+        onClick={() => Favorites.toggle({id, name, price, rating, image, addHandler, onStock})}
+      >
+        {/*Logo de corazoncito*/}
+        {Favorites.items && Favorites.items.find(el => el.id === id)
+          ? <BsHeartFill className="favorite-icon"/>
+          : <BsHeart className="favorite-icon"/>
+        }
+      </button>
     </div>
   );
 }
